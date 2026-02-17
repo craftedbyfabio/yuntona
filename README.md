@@ -137,5 +137,5 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 <p align="center">
   <strong>Crafted by Fabio</strong><br>
-  <a href="https://yuntona.netlify.app">yuntona.netlify.app</a>
+  <!-- <a href="https://yuntona.netlify.app">yuntona.netlify.app</a> -->
 </p>
