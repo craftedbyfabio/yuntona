@@ -9,9 +9,9 @@
 
 Security professionals tasked with AI security face a fragmented landscape of tools, frameworks, and standards. New resources emerge weekly, and there's no single source of truth for what's available, what's mature, and what maps to which risks.
 
-Yuntona maps 95 resources across 9 categories — filtered by OWASP LLM Top 10 risk, implementation complexity, lifecycle stage, and team role — so you can find what you need without 40 hours of research.
+Yuntona maps 95+ resources across 9 categories — filtered by OWASP LLM Top 10 risk, implementation complexity, lifecycle stage, and team role — so you can find what you need without 40 hours of research.
 
-> 🌐 **Live index coming soon**
+> 🌐 **[Explore the live index → yuntona.netlify.app](https://yuntona.netlify.app)**
 
 ---
 
@@ -21,7 +21,7 @@ Yuntona maps 95 resources across 9 categories — filtered by OWASP LLM Top 10 r
 **For GRC analysts** mapping tools to risk frameworks and vendor assessments.
 **For security architects** evaluating guardrails, firewalls, and identity solutions for AI deployments.
 
-This isn't a developer tool directory. It's a **decision-making resource** for the people who choose what gets deployed.
+This isn't a developer tool directory. It's a decision-making resource for the people who choose what gets deployed.
 
 ---
 
@@ -78,7 +78,7 @@ Scope → Augment → Develop → Test → Release → Deploy → Operate → Mo
 
 ## Live Index
 
-The web interface - **coming soon** - will offer:
+The web interface at **[yuntona.netlify.app](https://yuntona.netlify.app)** offers:
 
 - Full-text search across all resources
 - AI-powered natural language queries
@@ -89,7 +89,7 @@ The web interface - **coming soon** - will offer:
 
 ## Roadmap
 
-- [x] Curated index with 95 resources
+- [x] Curated index with 95+ resources
 - [x] Web interface with multi-dimensional filtering
 - [x] OWASP LLM Top 10 + lifecycle mapping
 - [x] Complexity tiering system
@@ -125,8 +125,8 @@ Yuntona is curated by [Fabio](https://github.com/craftedbyfabio), a cybersecurit
 - [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
 - [MITRE ATLAS](https://atlas.mitre.org/)
 - [CoSAI (Coalition for Secure AI)](https://github.com/cosai-oasis)
-- [AWS Generative AI Security Scoping Matrix](https://aws.amazon.com/ai/security/generative-ai-scoping-matrix/)
-- [AWS Agentic AI Security Scoping Matrix](https://aws.amazon.com/ai/security/agentic-ai-scoping-matrix/)
+- [AWS AI Security Scoping Matrices](https://docs.aws.amazon.com/prescriptive-guidance/latest/llm-prompt-engineering-best-practices/welcome.html)
+
 ---
 
 ## License
@@ -137,5 +137,5 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 <p align="center">
   <strong>Crafted by Fabio</strong><br>
-  <!-- <a href="https://yuntona.netlify.app">yuntona.netlify.app</a> -->
+  <a href="https://yuntona.netlify.app">yuntona.netlify.app</a>
 </p>
