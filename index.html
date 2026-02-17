@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="Yuntona is a curated index of 94+ AI security tools, frameworks, and standards mapped to the OWASP LLM Top 10 and LLMSecOps lifecycle. Built for CISOs, GRC analysts, and security architects.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yuntona — The Builder's Index for AI Security</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0b1121;--surface:#111a2e;--surface2:#162036;--surface3:#1a2740;
   --border:#1e2d4a;--border-hover:#2d4268;
-  --text:#e4e8f1;--text-muted:#8899b4;--text-dim:#4e6283;
+  --text:#e4e8f1;--text-muted:#a8adb8;--text-dim:#4e6283;
   --accent:#c5f227;--accent-glow:rgba(197,242,39,.12);--accent-glow2:rgba(197,242,39,.06);--accent-dark:#9bc11a;
   --green:#22c55e;--yellow:#eab308;--orange:#f97316;--red:#ef4444;
   --cyan:#06b6d4;--pink:#ec4899;--purple:#a855f7;
@@ -30,12 +33,10 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .loading-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-text{margin-top:16px;font-size:.85rem;color:var(--text-dim);font-family:var(--font-mono)}
-.source-banner{display:none;align-items:center;justify-content:center;gap:8px;padding:8px 16px;background:var(--surface);border-bottom:1px solid var(--border);font-size:.72rem;color:var(--text-dim)}
-.source-banner.active{display:flex}
-.source-banner .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.source-banner{display:none;align-items:center;justify-content:center;gap:8px;padding:8px 16px;background:var(--surface);border-bottom:1px solid var(--border);font-size:.72rem;color:#a8adb8;height:6px;border-radius:50%;flex-shrink:0}
 .source-banner .dot.live{background:var(--green);box-shadow:0 0 6px rgba(34,197,94,.5)}
 .source-banner .dot.local{background:var(--yellow)}
-.source-banner a{color:var(--accent);text-decoration:none;font-weight:500}
+.source-banner a{color:#a8adb8;text-decoration:none;font-weight:500}
 .hero{position:relative;padding:3.5rem 2rem 1.5rem;text-align:center;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,rgba(197,242,39,.06) 0%,transparent 65%);pointer-events:none}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--accent-glow);border:1px solid rgba(197,242,39,.18);border-radius:100px;font-size:.75rem;font-weight:600;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeIn .6s ease}
@@ -87,7 +88,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .filter-trigger.has-value{background:var(--accent-glow);border-color:rgba(197,242,39,.25);color:var(--accent)}
 .filter-trigger svg{width:14px;height:14px;opacity:.5;transition:transform .2s}
 .filter-dropdown.open .filter-trigger svg{transform:rotate(180deg)}
-.filter-trigger .filter-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);font-weight:600}
+.filter-trigger .filter-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;color:#b0b5c0;font-weight:600}
 .filter-trigger .filter-value{font-weight:600}
 .filter-menu{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);min-width:200px;max-height:320px;overflow-y:auto;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,.4);z-index:500;display:none;padding:6px}
 .filter-dropdown.open .filter-menu{display:block;animation:menuIn .15s ease}
@@ -104,8 +105,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .active-chip svg{width:12px;height:12px}
 .grid-container{max-width:1280px;margin:0 auto;padding:16px 20px}
 .grid-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.result-count{font-size:.8rem;color:var(--text-dim)}
-.view-toggle{display:flex;gap:2px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2px}
+.result-count{font-size:.8rem;color:#a8adb8;gap:2px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2px}
 .view-btn{background:none;border:none;padding:6px 8px;border-radius:6px;color:var(--text-dim);cursor:pointer;display:flex;align-items:center;transition:all .2s}.view-btn:hover{color:var(--text-muted)}.view-btn.active{background:var(--surface3);color:var(--accent)}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
 .card-grid.list-view{grid-template-columns:1fr;max-width:800px}
@@ -117,7 +117,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .card-identity{display:flex;align-items:center;gap:10px;min-width:0}
 .card-icon{width:40px;height:40px;border-radius:10px;background:var(--surface3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;font-family:var(--font-mono);color:var(--accent);flex-shrink:0}
 .card-name{font-size:.92rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
-.card-category{font-size:.7rem;color:var(--text-dim);margin-top:1px}
+.card-category{font-size:.7rem;color:#9ca2ae;margin-top:1px}
 .complexity-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:100px;font-size:.62rem;font-weight:600;font-family:var(--font-mono);white-space:nowrap;flex-shrink:0;letter-spacing:.02em}
 .badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
 .tier-plug-and-play .complexity-badge,.complexity-badge.tier-plug-and-play{background:var(--tier1-bg);color:var(--tier1);border:1px solid var(--tier1-border)}.tier-plug-and-play .badge-dot{background:var(--tier1)}
@@ -126,7 +126,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .tier-enterprise-only .complexity-badge,.complexity-badge.tier-enterprise-only{background:var(--tier4-bg);color:var(--tier4);border:1px solid var(--tier4-border)}.tier-enterprise-only .badge-dot{background:var(--tier4)}
 .card-desc{font-size:.82rem;color:var(--text-muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
 .card-footer{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
-.tag{padding:2px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:100px;font-size:.65rem;color:var(--text-dim);font-weight:500}
+.tag{padding:2px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:100px;font-size:.65rem;color:#b0b5c0;font-weight:500}
 .tag.agentic{background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.25);color:var(--purple)}
 .tag.llm-risk{background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.2);color:var(--orange);font-family:var(--font-mono);font-size:.6rem}
 .no-results{display:none;flex-direction:column;align-items:center;justify-content:center;padding:64px 20px;color:var(--text-dim);text-align:center;gap:12px}
@@ -188,6 +188,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
     <div class="ai-hint" id="aiHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M18 14v1a6 6 0 0 1-12 0v-1"/><path d="M12 19v3"/></svg>Press Enter for AI-powered results</div>
   </div>
 </section>
+<main>
 <div class="ai-overlay" id="aiOverlay"><div class="ai-panel"><div class="ai-panel-header"><div class="ai-panel-title"><span class="ai-dot"></span> Yuntona AI Search</div><button class="ai-close" id="aiClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div><div class="ai-body" id="aiBody"></div></div></div>
 <div class="legend-bar"><div class="legend-inner">
   <div class="legend-item"><span class="legend-tier">Plug & Play</span><span class="legend-desc">Get value same day. No engineering needed.</span></div>
@@ -204,6 +205,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
   <div class="card-grid" id="cardGrid"></div>
   <div class="no-results" id="noResults" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/></svg><h3>No resources found</h3><p>Try adjusting your search or filters</p></div>
 </div>
+</main>
 <footer class="site-footer">
   <div style="margin-bottom:8px;opacity:.4"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><path d="M25 10 L45 50 L45 90 L35 90 L35 52 L15 10 Z" fill="#4e6283"/><path d="M55 90 L55 52 L75 10 L85 10 L63 55 L55 55 Z" fill="#4e6283"/><path d="M65 10 L85 10 L72 38 L62 38 Z" fill="#6b8a2a"/></svg></div>
   <p>Yuntona v5 — The builder's index for AI security. Curated by Fabio. OWASP LLM Top 10 mapped.</p>
