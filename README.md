@@ -219,9 +219,8 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 - [OWASP LLM Top 10](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/)
 - [OWASP LLM SecOps Lifecycle](https://genai.owasp.org/resource/owasp-genai-security-project-solutions-reference-guide-q2_q325/)
-- [OWASP Agentic Applications Top 10] (https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+- [OWASP Agentic Applications Top 10](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
 - [MITRE ATLAS](https://atlas.mitre.org/)
-- 
 
 ---
 
