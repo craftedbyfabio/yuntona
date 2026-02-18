@@ -209,18 +209,7 @@ function aiSearch(query){
     body.innerHTML=`<div class="ai-response">Found <strong>${scored.length}</strong> resources for "<strong>${query}</strong>", primarily in ${tc}.</div><div class="ai-results">${scored.map(r=>`<a class="ai-result-card" href="${r.url}" target="_blank" rel="noopener"><div class="ai-result-icon ${catMap[r.category]||''}"><div class="card-icon" style="width:36px;height:36px;font-size:.7rem">${initials(r.name)}</div></div><div class="ai-result-info"><h4>${r.name}<span class="complexity-badge tier-${r.complexity.tierKey}" style="font-size:.55rem;padding:2px 6px;margin-left:4px"><span class="badge-dot"></span>${r.complexity.tier}</span>${r.agentic?'<span class="tag agentic" style="font-size:.55rem;padding:1px 6px">⚡</span>':''}</h4><p>${r.desc}</p></div></a>`).join('')}</div>`;
   },400);
 }
-const AK='yuntona_airtable_config';
-function getAC(){try{return JSON.parse(localStorage.getItem(AK))||null}catch{return null}}
-function saveAC(c){localStorage.setItem(AK,JSON.stringify(c))}
-function clearAC(){localStorage.removeItem(AK)}
-async function fetchAT(c){let all=[],off=null;do{const u=`https://api.airtable.com/v0/${c.baseId}/${encodeURIComponent(c.tableName)}?pageSize=100${off?'&offset='+off:''}`;const r=await fetch(u,{headers:{'Authorization':`Bearer ${c.token}`}});if(!r.ok)throw new Error(`${r.status}`);const d=await r.json();all=all.concat(d.records||[]);off=d.offset||null}while(off);return all.map(rec=>{const f=rec.fields,tR=f['Tags']||'',tags=typeof tR==='string'?tR.split(';').map(t=>t.trim()).filter(Boolean):(Array.isArray(tR)?tR:[]);const llmR=f['LLM Top 10']||'',llm=typeof llmR==='string'?llmR.split(';').map(t=>t.trim()).filter(Boolean):(Array.isArray(llmR)?llmR:[]);const stR=f['Lifecycle']||'',stages=typeof stR==='string'?stR.split(';').map(t=>t.trim()).filter(Boolean):(Array.isArray(stR)?stR:[]);return{name:f['Name']||'Untitled',url:f['URL']||'#',category:f['Category']||'Uncategorized',desc:f['Description']||'',riskRaw:f['Risk Level']||'Safe',audience:f['Audience']||'All',tags,llm,stages,agentic:!!(f['Agentic']),complexityOverride:f['Complexity']||null}})}
-async function init(){
-  const ls=document.getElementById('loadingScreen'),cfg=getAC();
-  if(cfg&&cfg.token&&cfg.baseId){try{const d=await fetchAT(cfg);if(d.length>0){RES=enrich(d);banner(true,`Live from Airtable · ${RES.length} records · <a href="https://airtable.com/${cfg.baseId}" target="_blank">Edit ↗</a>`)}else{RES=enrich(R);banner(false,'Airtable empty — using built-in data')}}catch(e){RES=enrich(R);banner(false,'Airtable failed — built-in data')}}
-  else{RES=enrich(R);banner(false,'Using built-in data · Click ⚙ to connect Airtable')}
-  if(cfg){document.getElementById('cfgToken').value=cfg.token||'';document.getElementById('cfgBase').value=cfg.baseId||'';document.getElementById('cfgTable').value=cfg.tableName||'Resources'}
-  buildFilters();stats();render();ls.classList.add('hidden');
-}
+
 const si=document.getElementById('searchInput'),ah=document.getElementById('aiHint');let db;
 si.addEventListener('input',e=>{clearTimeout(db);const v=e.target.value.trim();ah.classList.toggle('visible',v.length>3&&isQ(v));db=setTimeout(()=>{sQ=v;if(!isQ(v))render()},200)});
 si.addEventListener('keydown',e=>{if(e.key==='Enter'){const v=si.value.trim();if(v&&isQ(v))aiSearch(v);else{sQ=v;render()}}});
