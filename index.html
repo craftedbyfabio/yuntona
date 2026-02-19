@@ -167,16 +167,16 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 </style>
 </head>
 <body>
-<div class="loading-screen" id="loadingScreen"><div class="loading-spinner"></div><div class="loading-text">Initialising index...</div></div>
+<div class="loading-screen" id="loadingScreen"><div class="loading-spinner"></div><div class="loading-text">Loading tools...</div></div>
 <div class="source-banner" id="sourceBanner"><span class="dot" id="sourceDot"></span><span id="sourceText"></span></div>
 <section class="hero">
   <div class="hero-badge"><span class="pulse"></span> AI Security Resource Index</div>
   <h1>Yuntona <span class="version-tag">v5</span></h1>
   <p>The builder's index for AI security — curated tools, frameworks, and standards mapped to the OWASP LLM Top 10 and LLMSecOps lifecycle.</p>
   <div class="stats-bar">
-    <div class="stat"><div class="stat-value" id="totalCount">0</div><div class="stat-label">Resources</div></div>
-    <div class="stat"><div class="stat-value" id="catCount">0</div><div class="stat-label">Categories</div></div>
-    <div class="stat"><div class="stat-value" id="tagCount">0</div><div class="stat-label">Tags</div></div>
+    <div class="stat"><div class="stat-value" id="totalCount">94</div><div class="stat-label">Resources</div></div>
+    <div class="stat"><div class="stat-value" id="catCount">9</div><div class="stat-label">Categories</div></div>
+    <div class="stat"><div class="stat-value" id="tagCount">135</div><div class="stat-label">Tags</div></div>
     <div class="stat"><div class="stat-value" id="riskCount">10</div><div class="stat-label">LLM Risks</div></div>
   </div>
   <div class="search-container">
@@ -208,14 +208,19 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 </main>
 <footer class="site-footer">
   <div style="margin-bottom:8px;opacity:.4"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><path d="M25 10 L45 50 L45 90 L35 90 L35 52 L15 10 Z" fill="#4e6283"/><path d="M55 90 L55 52 L75 10 L85 10 L63 55 L55 55 Z" fill="#4e6283"/><path d="M65 10 L85 10 L72 38 L62 38 Z" fill="#6b8a2a"/></svg></div>
-  <p>Yuntona v5 — The builder's index for AI security. Curated by Fabio. OWASP LLM Top 10 mapped.</p>
+  <p style="margin-bottom:8px">Yuntona — The builder's index for AI security. 94+ tools mapped to the OWASP LLM Top 10.</p>
+  <p style="margin-bottom:8px">Maintained by <strong>Fabio</strong> · Third-Party Cyber Risk Lead working at the intersection of vendor risk and AI security.</p>
+  <p style="margin-bottom:12px">
+    <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;margin-right:12px">GitHub ↗</a>
+    <a href="https://github.com/craftedbyfabio/yuntona/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;margin-right:12px">Contribute ↗</a>
+    <a href="https://www.linkedin.com/in/craftedbyfabio/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">LinkedIn ↗</a>
+  </p>
+  <p style="opacity:.5">Last curated: February 2026 · 94 tools across 9 categories</p>
 </footer>
 
 <div class="card-overlay" id="cardOverlay">
   <div class="card-detail" id="cardDetail"></div>
 </div>
-<script src="js/app.js"
-        xintegrity="sha384-h+LXR98xFLAAqlaGSmALRvQ0F9HbqqL3XYyM2FdpqPTbw0HuYDHtP85QeFjvtkvz"
-        crossorigin="anonymous"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

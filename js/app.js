@@ -218,11 +218,15 @@ function aiSearch(query){
 // Initialisation - Simplified (No Config Check)
 function init(){
   const ls=document.getElementById('loadingScreen');
-  RES=enrich(R);
-  // Source banner logic removed or simplified
-  if(document.getElementById('sourceBanner')) document.getElementById('sourceBanner').style.display = 'none';
-  buildFilters();stats();render();ls.classList.add('hidden');
+  try{
+    RES=enrich(R);
+    if(document.getElementById('sourceBanner')) document.getElementById('sourceBanner').style.display = 'none';
+    buildFilters();stats();render();
+  }catch(e){console.error('Init error:',e)}
+  ls.classList.add('hidden');
 }
+// Fallback: hide loading screen after 3s no matter what
+setTimeout(()=>{const ls=document.getElementById('loadingScreen');if(ls)ls.classList.add('hidden')},3000);
 
 const si=document.getElementById('searchInput'),ah=document.getElementById('aiHint');let db;
 si.addEventListener('input',e=>{clearTimeout(db);const v=e.target.value.trim();ah.classList.toggle('visible',v.length>3&&isQ(v));db=setTimeout(()=>{sQ=v;if(!isQ(v))render()},200)});
