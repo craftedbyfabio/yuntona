@@ -247,7 +247,7 @@ function showCardDetail(tool){
   if(tool.agentic)metaTags+=`<span class="meta-tag">Agentic</span>`;
   (tool.llm||[]).forEach(r=>{metaTags+=`<span class="meta-tag">${r}</span>`});
   (tool.stages||[]).forEach(s=>{metaTags+=`<span class="meta-tag">${s}</span>`});
-  detail.innerHTML=`<button class="back-close" onclick="closeCardDetail()" title="Close">&times;</button>
+  detail.innerHTML=`<button class="back-close" id="closeDetailBtn" title="Close">&times;</button>
     <div class="back-header"><div class="back-avatar" style="background:${color}20;color:${color}">${ini}</div><div><div class="back-title">${tool.name}</div><div class="back-cat">${tool.category}</div></div></div>
     ${tool.backWhat?`<div class="back-section"><div class="back-section-title">What It Does</div><p>${tool.backWhat}</p></div>`:''}
     ${tool.backSecurity?`<div class="back-section"><div class="back-section-title">Security Relevance</div><p>${tool.backSecurity}</p></div>`:''}
@@ -256,6 +256,7 @@ function showCardDetail(tool){
     <a href="${tool.url}" target="_blank" rel="noopener" class="back-link">Visit ${tool.name} <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>`;
   overlay.classList.add('active');
   document.body.style.overflow='hidden';
+  document.getElementById('closeDetailBtn').addEventListener('click',closeCardDetail);
 }
 function closeCardDetail(){
   document.getElementById('cardOverlay').classList.remove('active');
