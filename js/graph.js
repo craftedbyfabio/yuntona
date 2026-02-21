@@ -133,7 +133,7 @@ function render(tools) {
   node.on('mouseover',(event,d) => {
     if(d.type==='tool'){
       tt.innerHTML=`<div class="tt-name">${d.label}</div><div class="tt-cat">${d.category}</div>
-        <div class="tt-desc">${d.desc}</div><div class="tt-badges">
+        <div class="tt-desc">${d.desc}</div><div style="font-size:.6rem;color:#4e6283;margin-top:4px">Double-click to visit ↗</div><div class="tt-badges">
         ${d.risks.map(r=>`<span class="tt-risk">${r}</span>`).join('')}
         ${d.stages.map(s=>`<span class="tt-stage">${stageLabels[s]||s}</span>`).join('')}
         ${d.tags.slice(0,4).map(t=>`<span class="tt-tag">${t}</span>`).join('')}</div>`;
@@ -197,6 +197,12 @@ function render(tools) {
 
     d3.select(event.currentTarget).select('circle').transition().duration(300)
       .attr('filter','url(#strongGlow)').attr('stroke-width',3);
+  });
+
+  // Double-click tool node to open URL
+  node.on('dblclick',(event,d)=>{
+    event.stopPropagation();
+    if(d.type==='tool'&&d.url){window.open(d.url,'_blank','noopener')}
   });
 
   svg.on('click', resetHL);
