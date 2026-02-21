@@ -177,7 +177,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .card-detail .back-close:hover{background:rgba(255,255,255,.08);color:var(--text)}
 .card-detail .back-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:8px 16px;background:rgba(132,204,22,.1);color:var(--accent);border:1px solid rgba(132,204,22,.2);border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600;transition:all .2s}
 .card-detail .back-link:hover{background:rgba(132,204,22,.18)}
-.view-switch{position:fixed;top:16px;right:16px;z-index:999;display:flex;flex-direction:column;align-items:center}
+.view-switch{position:fixed;top:16px;right:16px;z-index:10001;display:flex;flex-direction:column;align-items:center}
 .view-switch-toggle{width:36px;height:36px;border-radius:50%;background:transparent;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0;transition:transform .2s}
 .view-switch-toggle:hover{transform:scale(1.1)}
 .view-switch-toggle .dot{width:5px;height:5px;border-radius:50%;background:#c5f227;transition:box-shadow .2s}
@@ -210,9 +210,12 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
   </div>
 </nav>
 <script>
-const vsBtn=document.getElementById('viewSwitchBtn'),vsMenu=document.getElementById('viewSwitchMenu');
-vsBtn.addEventListener('click',()=>{const open=vsMenu.classList.toggle('open');vsBtn.setAttribute('aria-expanded',open)});
-document.addEventListener('click',e=>{if(!e.target.closest('.view-switch')){vsMenu.classList.remove('open');vsBtn.setAttribute('aria-expanded','false')}});
+document.addEventListener('DOMContentLoaded',()=>{
+  const vsBtn=document.getElementById('viewSwitchBtn'),vsMenu=document.getElementById('viewSwitchMenu');
+  if(!vsBtn||!vsMenu)return;
+  vsBtn.addEventListener('click',e=>{e.stopPropagation();e.preventDefault();const open=vsMenu.classList.toggle('open');vsBtn.setAttribute('aria-expanded',open)});
+  document.addEventListener('click',e=>{if(!e.target.closest('.view-switch')){vsMenu.classList.remove('open');vsBtn.setAttribute('aria-expanded','false')}});
+});
 </script>
 <div class="loading-screen" id="loadingScreen"><div class="loading-spinner"></div><div class="loading-text">Loading tools...</div></div>
 <div class="source-banner" id="sourceBanner"><span class="dot" id="sourceDot"></span><span id="sourceText"></span></div>
