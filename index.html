@@ -195,10 +195,10 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 </head>
 <body>
 <nav class="view-switch" aria-label="View switcher">
-  <button class="view-switch-toggle" aria-label="Switch view" aria-expanded="false" onclick="var m=document.getElementById('viewSwitchMenu');m.classList.toggle('open');this.setAttribute('aria-expanded',m.classList.contains('open'))">
+  <button class="view-switch-toggle" aria-label="Switch view" aria-expanded="false" id="viewSwitchBtn">
     <span class="dot"></span><span class="dot"></span><span class="dot"></span>
   </button>
-  <div class="view-switch-menu" id="viewSwitchMenu" onclick="event.stopPropagation()">
+  <div class="view-switch-menu" id="viewSwitchMenu">
     <a href="index.html" class="active">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       Card Index
@@ -209,7 +209,6 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
     </a>
   </div>
 </nav>
-<script>document.addEventListener('click',function(e){if(!e.target.closest('.view-switch'))document.getElementById('viewSwitchMenu').classList.remove('open')})</script>
 <div class="loading-screen" id="loadingScreen"><div class="loading-spinner"></div><div class="loading-text">Loading tools...</div></div>
 <div class="source-banner" id="sourceBanner"><span class="dot" id="sourceDot"></span><span id="sourceText"></span></div>
 <section class="hero">

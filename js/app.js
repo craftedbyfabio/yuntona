@@ -293,3 +293,12 @@ document.getElementById('cardOverlay').addEventListener('click',function(e){if(e
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCardDetail()});
 
 init();
+
+// View switcher (three dots nav)
+(function(){
+  var btn=document.getElementById('viewSwitchBtn'),menu=document.getElementById('viewSwitchMenu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(e){e.stopPropagation();var open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open)});
+  menu.addEventListener('click',function(e){e.stopPropagation()});
+  document.addEventListener('click',function(e){if(!e.target.closest('.view-switch')){menu.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
+})();
