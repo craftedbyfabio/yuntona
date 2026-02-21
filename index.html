@@ -177,9 +177,43 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .card-detail .back-close:hover{background:rgba(255,255,255,.08);color:var(--text)}
 .card-detail .back-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:8px 16px;background:rgba(132,204,22,.1);color:var(--accent);border:1px solid rgba(132,204,22,.2);border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600;transition:all .2s}
 .card-detail .back-link:hover{background:rgba(132,204,22,.18)}
+.view-switch{position:fixed;top:16px;right:16px;z-index:999;display:flex;flex-direction:column;align-items:center}
+.view-switch-toggle{width:36px;height:36px;border-radius:50%;background:transparent;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0;transition:transform .2s}
+.view-switch-toggle:hover{transform:scale(1.1)}
+.view-switch-toggle .dot{width:5px;height:5px;border-radius:50%;background:#c5f227;transition:box-shadow .2s}
+.view-switch-toggle:hover .dot{box-shadow:0 0 8px rgba(197,242,39,.6)}
+.view-switch-menu{position:absolute;top:42px;right:0;background:rgba(17,26,46,.95);backdrop-filter:blur(12px);border:1px solid #1e2d4a;border-radius:10px;padding:6px;min-width:160px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .2s}
+.view-switch-menu.open{opacity:1;visibility:visible;transform:translateY(0)}
+.view-switch-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:7px;text-decoration:none;color:#a8adb8;font-size:.78rem;font-family:'Outfit',system-ui,sans-serif;transition:all .15s;white-space:nowrap}
+.view-switch-menu a:hover{background:rgba(197,242,39,.06);color:#c5f227}
+.view-switch-menu a.active{color:#c5f227;font-weight:500}
+.view-switch-menu a svg{flex-shrink:0;opacity:.6}
+.view-switch-menu a:hover svg,.view-switch-menu a.active svg{opacity:1}
+.view-switch-menu .menu-sep{height:1px;background:#1e2d4a;margin:4px 8px}
+@media(max-width:640px){.view-switch{top:10px;right:10px}.view-switch-toggle{width:32px;height:32px}.view-switch-toggle .dot{width:4px;height:4px}}
 </style>
 </head>
 <body>
+<nav class="view-switch" aria-label="View switcher">
+  <button class="view-switch-toggle" aria-label="Switch view" aria-expanded="false" id="viewSwitchBtn">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </button>
+  <div class="view-switch-menu" id="viewSwitchMenu">
+    <a href="index.html" class="active">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Card Index
+    </a>
+    <a href="graph.html">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 7.5 15.5 16.5M15.5 7.5 8.5 16.5"/></svg>
+      Knowledge Graph
+    </a>
+  </div>
+</nav>
+<script>
+const vsBtn=document.getElementById('viewSwitchBtn'),vsMenu=document.getElementById('viewSwitchMenu');
+vsBtn.addEventListener('click',()=>{const open=vsMenu.classList.toggle('open');vsBtn.setAttribute('aria-expanded',open)});
+document.addEventListener('click',e=>{if(!e.target.closest('.view-switch')){vsMenu.classList.remove('open');vsBtn.setAttribute('aria-expanded','false')}});
+</script>
 <div class="loading-screen" id="loadingScreen"><div class="loading-spinner"></div><div class="loading-text">Loading tools...</div></div>
 <div class="source-banner" id="sourceBanner"><span class="dot" id="sourceDot"></span><span id="sourceText"></span></div>
 <section class="hero">
