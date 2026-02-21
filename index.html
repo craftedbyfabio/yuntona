@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Yuntona is a curated index of 119 AI security tools, frameworks, and standards mapped to the OWASP LLM Top 10 and LLMSecOps lifecycle. Built for CISOs, GRC analysts, and security architects.">
+<meta name="description" content="Yuntona is a curated index of 116 AI security tools, frameworks, and standards mapped to the OWASP LLM Top 10 and LLMSecOps lifecycle. Built for CISOs, GRC analysts, and security architects.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yuntona — The Builder's Index for AI Security</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -42,7 +45,9 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--accent-glow);border:1px solid rgba(197,242,39,.18);border-radius:100px;font-size:.75rem;font-weight:600;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeIn .6s ease}
 .hero-badge .pulse{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
-.hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:.18em;text-transform:uppercase;line-height:1;margin-bottom:1rem;animation:fadeIn .6s ease .15s both;color:var(--text)}
+.hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:.18em;text-transform:uppercase;line-height:1;margin-bottom:0;animation:fadeIn .6s ease .15s both;color:var(--text)}
+.hero-brand{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:1rem;animation:fadeIn .6s ease .15s both}
+.hero-logo{flex-shrink:0;filter:drop-shadow(0 0 12px rgba(204,255,0,.15))}
 .hero p{font-size:1.05rem;color:var(--text-muted);max-width:600px;margin:0 auto 1.5rem;line-height:1.6;font-weight:300;animation:fadeIn .6s ease .25s both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .stats-bar{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:1.5rem;animation:fadeIn .6s ease .3s both}
@@ -112,7 +117,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text);transition:all .3s ease;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .3s}
 .card:hover{border-color:var(--border-hover);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.25)}.card:hover::before{opacity:1}
-.cat-redteam::before{background:var(--red)}.cat-governance::before{background:var(--yellow)}.cat-guardrails::before{background:var(--green)}.cat-devtools::before{background:var(--cyan)}.cat-codeassist::before{background:var(--pink)}.cat-models::before{background:var(--purple)}.cat-identity::before{background:#3b82f6}.cat-tprm::before{background:var(--orange)}.cat-compliance::before{background:#14b8a6}
+.cat-redteam::before{background:var(--red)}.cat-governance::before{background:var(--yellow)}.cat-guardrails::before{background:var(--green)}.cat-devtools::before{background:var(--cyan)}.cat-codeassist::before{background:var(--pink)}.cat-models::before{background:var(--purple)}.cat-identity::before{background:#3b82f6}.cat-tprm::before{background:var(--orange)}.cat-compliance::before{background:#14b8a6}.cat-education::before{background:#a78bfa}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .card-identity{display:flex;align-items:center;gap:10px;min-width:0}
 .card-icon{width:40px;height:40px;border-radius:10px;background:var(--surface3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;font-family:var(--font-mono);color:var(--accent);flex-shrink:0}
@@ -151,7 +156,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .btn-secondary{padding:10px 16px;background:var(--surface2);color:var(--text-muted);border:1px solid var(--border);border-radius:var(--radius-xs);font-weight:500;font-size:.82rem;cursor:pointer;font-family:var(--font-display);transition:all .2s}.btn-secondary:hover{border-color:var(--border-hover);color:var(--text)}
 .config-status{margin-top:12px;font-size:.78rem;text-align:center;padding:8px;border-radius:var(--radius-xs)}.config-status.success{background:rgba(34,197,94,.1);color:var(--green)}.config-status.error{background:rgba(239,68,68,.1);color:var(--red)}
 .version-tag{font-family:var(--font-mono);font-size:.65rem;color:var(--text-dim);background:var(--surface2);padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;border:1px solid var(--border)}
-@media(max-width:640px){.card-grid{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.hero{padding:2.5rem 1rem 1rem}.filters-section{padding:12px 10px 0}.card-grid{gap:8px}.filter-bar{gap:6px}.filter-trigger{padding:6px 10px;font-size:.75rem}.filter-menu{min-width:180px}.legend-inner{gap:12px}}
+@media(max-width:640px){.card-grid{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.hero{padding:2.5rem 1rem 1rem}.hero-logo{width:36px;height:36px}.hero-brand{gap:10px}.filters-section{padding:12px 10px 0}.card-grid{gap:8px}.filter-bar{gap:6px}.filter-trigger{padding:6px 10px;font-size:.75rem}.filter-menu{min-width:180px}.legend-inner{gap:12px}}
 
 .card-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s ease;backdrop-filter:blur(4px)}
 .card-overlay.active{opacity:1;pointer-events:all}
@@ -177,13 +182,20 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 <div class="loading-screen" id="loadingScreen"><div class="loading-spinner"></div><div class="loading-text">Loading tools...</div></div>
 <div class="source-banner" id="sourceBanner"><span class="dot" id="sourceDot"></span><span id="sourceText"></span></div>
 <section class="hero">
-  <h1>Yuntona</h1>
+  <div class="hero-brand">
+    <svg class="hero-logo" role="img" aria-label="Yuntona logo" width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M42 50 L58 50 L58 90 L42 90 Z" fill="#F8FAFC"/>
+      <path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#F8FAFC"/>
+      <path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#CCFF00"/>
+    </svg>
+    <h1>Yuntona</h1>
+  </div>
   <p>The builder's index for AI security — curated tools, frameworks, and standards mapped to the OWASP LLM Top 10 and LLMSecOps lifecycle.</p>
   <div class="curated-date">Last curated: February 2026</div>
   <div class="stats-bar">
-    <div class="stat"><div class="stat-value" id="totalCount">119</div><div class="stat-label">Resources</div></div>
-    <div class="stat"><div class="stat-value" id="catCount">9</div><div class="stat-label">Categories</div></div>
-    <div class="stat"><div class="stat-value" id="tagCount">158</div><div class="stat-label">Tags</div></div>
+    <div class="stat"><div class="stat-value" id="totalCount">116</div><div class="stat-label">Resources</div></div>
+    <div class="stat"><div class="stat-value" id="catCount">10</div><div class="stat-label">Categories</div></div>
+    <div class="stat"><div class="stat-value" id="tagCount">154</div><div class="stat-label">Tags</div></div>
     <div class="stat"><div class="stat-value" id="riskCount">10</div><div class="stat-label">LLM Risks</div></div>
   </div>
   <div class="contribute-links">
@@ -219,7 +231,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 </div>
 </main>
 <footer class="site-footer">
-  <div style="margin-bottom:8px;opacity:.4"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><path d="M25 10 L45 50 L45 90 L35 90 L35 52 L15 10 Z" fill="#4e6283"/><path d="M55 90 L55 52 L75 10 L85 10 L63 55 L55 55 Z" fill="#4e6283"/><path d="M65 10 L85 10 L72 38 L62 38 Z" fill="#6b8a2a"/></svg></div>
+  <div style="margin-bottom:8px;opacity:.4"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 100 100" fill="none"><path d="M42 50 L58 50 L58 90 L42 90 Z" fill="#F8FAFC"/><path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#F8FAFC"/><path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#CCFF00"/></svg></div>
   <p style="margin-bottom:8px">Yuntona — The builder's index for AI security.</p>
   <p>Maintained by <strong>Fabio</strong> · Third-Party Cyber Risk Lead · <a href="https://www.linkedin.com/in/fbaumeler" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">LinkedIn ↗</a></p>
 </footer>

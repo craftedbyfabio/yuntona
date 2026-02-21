@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+  <!-- Stem -->
+  <path d="M42 50 L58 50 L58 90 L42 90 Z" fill="#F8FAFC"/>
+  <!-- Left Branch -->
+  <path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#F8FAFC"/>
+  <!-- Right Branch (Acid Green) -->
+  <path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#CCFF00"/>
+</svg>
