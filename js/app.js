@@ -125,6 +125,8 @@ const R=[
 
 const catMap={'AI Red Teaming':'cat-redteam','AI Governance & Standards':'cat-governance','AI Guardrails & Firewalls':'cat-guardrails','AI Development Tools':'cat-devtools','AI Code Assistants':'cat-codeassist','Foundation Models':'cat-models','Identity & AppSec':'cat-identity','Third-Party Risk':'cat-tprm','Compliance Automation':'cat-compliance','Education & Research':'cat-education'};
 const initials=n=>{const w=n.replace(/[()]/g,'').split(/[\s-]+/);return w.length===1?w[0].substring(0,2).toUpperCase():(w[0][0]+w[1][0]).toUpperCase()};
+const getDomain=u=>{try{return new URL(u).hostname}catch(e){return''}};
+const faviconImg=(url,name,size=24)=>{const d=getDomain(url);if(!d)return initials(name);return `<img src="https://icons.duckduckgo.com/ip3/${d}.ico" alt="" width="${size}" height="${size}" style="border-radius:4px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:${size<30?'.7':'1'}rem">${initials(name)}</span>`};
 
 function assess(r){
   let s=0,d=0,g=0,p=0;const cat=r.category||'',risk=(r.riskRaw||'').toLowerCase(),tags=(r.tags||[]).map(t=>t.toLowerCase()),desc=(r.desc||'').toLowerCase(),aud=(r.audience||'').toLowerCase();
@@ -207,7 +209,7 @@ function mkCard(r){
   c.addEventListener('click',function(e){e.preventDefault();showCardDetail(r)});
   const ag=r.agentic?'<span class="tag agentic">⚡ Agentic</span>':'';
   const rt=(r.llm||[]).length>0?r.llm.slice(0,3).map(l=>`<span class="tag llm-risk">${l}</span>`).join('')+(r.llm.length>3?`<span class="tag llm-risk">+${r.llm.length-3}</span>`:''):'';
-  c.innerHTML=`<div class="card-top"><div class="card-identity"><div class="card-icon">${initials(r.name)}</div><div><div class="card-name">${r.name}</div><div class="card-category">${r.category}</div></div></div><span class="complexity-badge tier-${cx.tierKey}"><span class="badge-dot"></span>${cx.tier}</span></div><div class="card-desc">${r.desc}</div><div class="card-footer">${ag}${r.tags.slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('')}${rt}</div>`;
+  c.innerHTML=`<div class="card-top"><div class="card-identity"><div class="card-icon">${faviconImg(r.url,r.name,24)}</div><div><div class="card-name">${r.name}</div><div class="card-category">${r.category}</div></div></div><span class="complexity-badge tier-${cx.tierKey}"><span class="badge-dot"></span>${cx.tier}</span></div><div class="card-desc">${r.desc}</div><div class="card-footer">${ag}${r.tags.slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('')}${rt}</div>`;
   return c;
 }
 
@@ -236,7 +238,7 @@ function aiSearch(query){
     return{...r,score:sc}}).filter(r=>r.score>0).sort((a,b)=>b.score-a.score).slice(0,6);
     if(!scored.length){body.innerHTML=`<div class="ai-response">No resources found matching "<strong>${query}</strong>". Try different keywords or use the LLM Top 10 filters.</div>`;return}
     const tc=[...new Set(scored.map(r=>r.category))].slice(0,2).join(' and ');
-    body.innerHTML=`<div class="ai-response">Found <strong>${scored.length}</strong> resources for "<strong>${query}</strong>", primarily in ${tc}.</div><div class="ai-results">${scored.map(r=>`<a class="ai-result-card" href="${r.url}" target="_blank" rel="noopener"><div class="ai-result-icon ${catMap[r.category]||''}"><div class="card-icon" style="width:36px;height:36px;font-size:.7rem">${initials(r.name)}</div></div><div class="ai-result-info"><h4>${r.name}<span class="complexity-badge tier-${r.complexity.tierKey}" style="font-size:.55rem;padding:2px 6px;margin-left:4px"><span class="badge-dot"></span>${r.complexity.tier}</span>${r.agentic?'<span class="tag agentic" style="font-size:.55rem;padding:1px 6px">⚡</span>':''}</h4><p>${r.desc}</p></div></a>`).join('')}</div>`;
+    body.innerHTML=`<div class="ai-response">Found <strong>${scored.length}</strong> resources for "<strong>${query}</strong>", primarily in ${tc}.</div><div class="ai-results">${scored.map(r=>`<a class="ai-result-card" href="${r.url}" target="_blank" rel="noopener"><div class="ai-result-icon ${catMap[r.category]||''}"><div class="card-icon" style="width:36px;height:36px;font-size:.7rem">${faviconImg(r.url,r.name,20)}</div></div><div class="ai-result-info"><h4>${r.name}<span class="complexity-badge tier-${r.complexity.tierKey}" style="font-size:.55rem;padding:2px 6px;margin-left:4px"><span class="badge-dot"></span>${r.complexity.tier}</span>${r.agentic?'<span class="tag agentic" style="font-size:.55rem;padding:1px 6px">⚡</span>':''}</h4><p>${r.desc}</p></div></a>`).join('')}</div>`;
   },400);
 }
 
@@ -273,7 +275,7 @@ function showCardDetail(tool){
   (tool.llm||[]).forEach(r=>{metaTags+=`<span class="meta-tag">${r}</span>`});
   (tool.stages||[]).forEach(s=>{metaTags+=`<span class="meta-tag">${s}</span>`});
   detail.innerHTML=`<button class="back-close" id="closeDetailBtn" title="Close">&times;</button>
-    <div class="back-header"><div class="back-avatar" style="background:${color}20;color:${color}">${ini}</div><div><div class="back-title">${tool.name}</div><div class="back-cat">${tool.category}</div></div></div>
+    <div class="back-header"><div class="back-avatar" style="background:${color}20;color:${color}">${faviconImg(tool.url,tool.name,32)}</div><div><div class="back-title">${tool.name}</div><div class="back-cat">${tool.category}</div></div></div>
     ${tool.backWhat?`<div class="back-section"><div class="back-section-title">What It Does</div><p>${tool.backWhat}</p></div>`:''}
     ${tool.backSecurity?`<div class="back-section"><div class="back-section-title">Security Relevance</div><p>${tool.backSecurity}</p></div>`:''}
     ${tool.backWhen?`<div class="back-section"><div class="back-section-title">When to Use It</div><p>${tool.backWhen}</p></div>`:''}
