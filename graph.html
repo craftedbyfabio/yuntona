@@ -107,10 +107,10 @@
 </head>
 <body>
 <nav class="view-switch" aria-label="View switcher">
-  <button class="view-switch-toggle" aria-label="Switch view" aria-expanded="false" id="viewSwitchBtn">
+  <button class="view-switch-toggle" aria-label="Switch view" aria-expanded="false" onclick="var m=document.getElementById('viewSwitchMenu');m.classList.toggle('open');this.setAttribute('aria-expanded',m.classList.contains('open'))">
     <span class="dot"></span><span class="dot"></span><span class="dot"></span>
   </button>
-  <div class="view-switch-menu" id="viewSwitchMenu">
+  <div class="view-switch-menu" id="viewSwitchMenu" onclick="event.stopPropagation()">
     <a href="index.html">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       Card Index
@@ -121,14 +121,7 @@
     </a>
   </div>
 </nav>
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const vsBtn=document.getElementById('viewSwitchBtn'),vsMenu=document.getElementById('viewSwitchMenu');
-  if(!vsBtn||!vsMenu)return;
-  vsBtn.addEventListener('click',e=>{e.stopPropagation();e.preventDefault();const open=vsMenu.classList.toggle('open');vsBtn.setAttribute('aria-expanded',open)});
-  document.addEventListener('click',e=>{if(!e.target.closest('.view-switch')){vsMenu.classList.remove('open');vsBtn.setAttribute('aria-expanded','false')}});
-});
-</script>
+<script>document.addEventListener('click',function(e){if(!e.target.closest('.view-switch'))document.getElementById('viewSwitchMenu').classList.remove('open')})</script>
 
 <div class="graph-header">
   <div class="graph-brand">
