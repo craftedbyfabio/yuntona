@@ -126,7 +126,9 @@ const R=[
 const catMap={'AI Red Teaming':'cat-redteam','AI Governance & Standards':'cat-governance','AI Guardrails & Firewalls':'cat-guardrails','AI Development Tools':'cat-devtools','AI Code Assistants':'cat-codeassist','Foundation Models':'cat-models','Identity & AppSec':'cat-identity','Third-Party Risk':'cat-tprm','Compliance Automation':'cat-compliance','Education & Research':'cat-education'};
 const initials=n=>{const w=n.replace(/[()]/g,'').split(/[\s-]+/);return w.length===1?w[0].substring(0,2).toUpperCase():(w[0][0]+w[1][0]).toUpperCase()};
 const getDomain=u=>{try{return new URL(u).hostname}catch(e){return''}};
-const faviconImg=(url,name,size=24)=>{const d=getDomain(url);if(!d)return initials(name);return `<img src="https://icons.duckduckgo.com/ip3/${d}.ico" alt="" width="${size}" height="${size}" style="border-radius:4px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:${size<30?'.7':'1'}rem">${initials(name)}</span>`};
+const faviconImg=(url,name,size=24)=>{const d=getDomain(url);if(!d)return initials(name);return `<img src="https://icons.duckduckgo.com/ip3/${d}.ico" alt="" width="${size}" height="${size}" class="fav-ico" data-fallback="${initials(name)}"><span class="fav-fb" style="font-size:${size<30?'.7':'1'}rem">${initials(name)}</span>`};
+// Global favicon error handler — CSP-safe, no inline onerror
+document.addEventListener('error',function(e){var t=e.target;if(t.tagName==='IMG'&&t.classList.contains('fav-ico')){t.style.display='none';var fb=t.nextElementSibling;if(fb&&fb.classList.contains('fav-fb'))fb.style.display='flex'}},true);
 
 function assess(r){
   let s=0,d=0,g=0,p=0;const cat=r.category||'',risk=(r.riskRaw||'').toLowerCase(),tags=(r.tags||[]).map(t=>t.toLowerCase()),desc=(r.desc||'').toLowerCase(),aud=(r.audience||'').toLowerCase();

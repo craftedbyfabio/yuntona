@@ -300,17 +300,17 @@ function render(tools) {
 }
 
 // Load data from app.js
-fetch('js/app.js')
-  .then(r=>r.text())
-  .then(src=>{
-    const m=src.match(/const R=\[([\s\S]*?)\];/);
-    if(!m) throw new Error('R array not found');
-    const tools=new Function('return ['+m[1]+']')();
+fetch('data/tools.json')
+  .then(function(r){
+    if(!r.ok)throw new Error('HTTP '+r.status+' fetching data/tools.json');
+    return r.json();
+  })
+  .then(function(tools){
     render(tools);
   })
-  .catch(err=>{
+  .catch(function(err){
     console.error(err);
-    document.body.innerHTML='<div style="padding:40px;color:#ef4444">Failed to load tool data. Ensure app.js is in the same directory.</div>';
+    document.body.innerHTML='<div style="padding:40px;color:#ef4444;font-family:monospace">'+err.message+'</div>';
   });
 
 // View switcher (three dots nav)
