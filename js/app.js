@@ -103,7 +103,7 @@ function aiSearch(query){
 
   // Try Typesense first, fall back to local scorer
   if(window.typesenseReady){
-    window.typesenseSearch(query,{perPage:8,queryBy:'name,desc,tags,backWhat,backSecurity,backWhen,category,audience'})
+    window.typesenseSearch(query,{perPage:8,queryBy:'name,desc,tags,backWhat,backSecurity,backWhen,category,audience',queryByWeights:'6,3,4,2,2,1,3,2'})
       .then(function(result){
         if(result.found===0){aiSearchFallback(query);return}
         renderAiResults(query,result.hits.map(function(h){
@@ -175,39 +175,167 @@ function init(){
 // Fallback: hide loading screen after 3s no matter what
 setTimeout(()=>{const ls=document.getElementById('loadingScreen');if(ls)ls.classList.add('hidden')},3000);
 
-const si=document.getElementById('searchInput'),ah=document.getElementById('aiHint');let db;
-si.addEventListener('input',function(e){clearTimeout(db);var v=e.target.value.trim();ah.classList.toggle('visible',v.length>3&&isQ(v));db=setTimeout(function(){
-  sQ=v;
-  if(!isQ(v)){
-    // For regular text search: use Typesense if available for typo-tolerance
-    if(v.length>=2&&window.typesenseReady){
-      window.typesenseSearch(v,{perPage:50,queryBy:'name,desc,tags,category'})
-        .then(function(result){
-          // Build a Set of matched tool names, then filter RES to preserve enriched data
-          var matched=new Set(result.hits.map(function(h){return h.document.name}));
-          sQ='';  // Clear text filter so getF doesn't double-filter
-          var g=document.getElementById('cardGrid');
-          var filtered=getF().filter(function(r){return matched.has(r.name)});
-          // If Typesense returned results, show those; otherwise fall back to local
-          if(filtered.length>0||result.found===0){
-            g.innerHTML='';filtered.forEach(function(r){g.appendChild(mkCard(r))});
-            document.getElementById('resultCount').textContent=filtered.length+' of '+RES.length+' resources';
-            document.getElementById('noResults').style.display=filtered.length?'none':'block';
-          }else{
-            sQ=v;render();
-          }
-        })
-        .catch(function(){sQ=v;render()});
+const si=document.getElementById('searchInput'),ah=document.getElementById('aiHint'),acDrop=document.getElementById('acDropdown');
+let db,acIdx=-1,acItems=[];
+
+// --- Autocomplete: search-as-you-type ---
+si.addEventListener('input',function(e){
+  clearTimeout(db);
+  var v=e.target.value.trim();
+  ah.classList.toggle('visible',v.length>1);
+  acIdx=-1;
+
+  if(v.length<2){
+    acDrop.classList.remove('open');
+    sQ=v;render();return;
+  }
+
+  db=setTimeout(function(){
+    if(window.typesenseReady){
+      window.typesenseSearch(v,{
+        perPage:6,
+        queryBy:'name,desc,tags,category,backWhat,backSecurity,backWhen,audience',
+        queryByWeights:'6,3,4,3,1,1,1,2'
+      }).then(function(result){
+        if(!result.hits.length){
+          acDrop.classList.remove('open');
+          sQ=v;render();return;
+        }
+        renderAutocomplete(v,result);
+      }).catch(function(){
+        acDrop.classList.remove('open');
+        sQ=v;render();
+      });
     }else{
-      render();
+      sQ=v;render();
+    }
+  },120);
+});
+
+function renderAutocomplete(query,result){
+  var html='';
+
+  // Tool results
+  html+='<div class="ac-section"><div class="ac-section-label">Tools — '+result.found+' found</div>';
+  result.hits.forEach(function(h){
+    var doc=h.document;
+    var match=RES.find(function(r){return r.name===doc.name});
+    var cx=match?match.complexity:{tier:'',tierKey:''};
+    var name=highlightName(doc.name,query);
+    html+='<div class="ac-item" data-url="'+doc.url+'" data-name="'+doc.name+'">'
+      +'<div class="ac-item-icon">'+faviconImg(doc.url,doc.name,20)+'</div>'
+      +'<div class="ac-item-info"><div class="ac-item-name">'+name+'</div>'
+      +'<div class="ac-item-meta"><span class="ac-cat">'+doc.category+'</span>'
+      +(cx.tier?'<span class="ac-tier">'+cx.tier+'</span>':'')
+      +(doc.agentic?'<span style="color:var(--accent)">⚡ Agentic</span>':'')
+      +'</div></div></div>';
+  });
+  html+='</div>';
+
+  // Facets
+  var catFacet=(result.facets||[]).find(function(f){return f.field_name==='category'});
+  if(catFacet&&catFacet.counts&&catFacet.counts.length>1){
+    html+='<div class="ac-section"><div class="ac-section-label">Categories</div><div class="ac-facets">';
+    catFacet.counts.slice(0,6).forEach(function(c){
+      html+='<span class="ac-facet" data-filter="category:='+c.value+'">'+c.value+'<span class="ac-count">'+c.count+'</span></span>';
+    });
+    html+='</div></div>';
+  }
+
+  // Footer
+  html+='<div class="ac-footer"><kbd>↵</kbd> full results &nbsp; <kbd>↑↓</kbd> navigate &nbsp; <kbd>esc</kbd> close</div>';
+
+  acDrop.innerHTML=html;
+  acDrop.classList.add('open');
+
+  // Cache items for keyboard nav
+  acItems=acDrop.querySelectorAll('.ac-item');
+
+  // Click handlers
+  acDrop.querySelectorAll('.ac-item').forEach(function(el){
+    el.addEventListener('click',function(){
+      var name=el.getAttribute('data-name');
+      var tool=RES.find(function(r){return r.name===name});
+      if(tool){acDrop.classList.remove('open');si.value='';showCardDetail(tool)}
+    });
+  });
+
+  acDrop.querySelectorAll('.ac-facet').forEach(function(el){
+    el.addEventListener('click',function(){
+      var val=el.textContent.replace(/\d+$/,'').trim();
+      acDrop.classList.remove('open');si.value='';
+      // Set the category filter
+      aCat=val;sQ='';buildFilters();render();
+    });
+  });
+}
+
+function highlightName(name,query){
+  var words=query.toLowerCase().split(/\s+/);
+  var result=name;
+  words.forEach(function(w){
+    if(w.length<2)return;
+    var re=new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+    result=result.replace(re,'<mark>$1</mark>');
+  });
+  return result;
+}
+
+// --- Keyboard navigation in autocomplete ---
+si.addEventListener('keydown',function(e){
+  if(acDrop.classList.contains('open')){
+    if(e.key==='ArrowDown'){
+      e.preventDefault();
+      acIdx=Math.min(acIdx+1,acItems.length-1);
+      updateAcActive();return;
+    }
+    if(e.key==='ArrowUp'){
+      e.preventDefault();
+      acIdx=Math.max(acIdx-1,-1);
+      updateAcActive();return;
+    }
+    if(e.key==='Escape'){
+      acDrop.classList.remove('open');return;
+    }
+    if(e.key==='Enter'){
+      if(acIdx>=0&&acItems[acIdx]){
+        e.preventDefault();
+        acItems[acIdx].click();return;
+      }
     }
   }
-},250)});
-si.addEventListener('keydown',e=>{if(e.key==='Enter'){const v=si.value.trim();if(v&&isQ(v))aiSearch(v);else{sQ=v;render()}}});
-document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();si.focus()}if(e.key==='Escape'){document.getElementById('aiOverlay').classList.remove('active');si.blur()}});
-document.getElementById('aiClose').onclick=()=>document.getElementById('aiOverlay').classList.remove('active');
-document.getElementById('aiOverlay').onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('active')};
-document.querySelectorAll('.view-btn').forEach(b=>{b.onclick=()=>{document.querySelectorAll('.view-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('cardGrid').classList.toggle('list-view',b.dataset.view==='list')}});
+
+  if(e.key==='Enter'){
+    var v=si.value.trim();
+    if(v)aiSearch(v);
+  }
+});
+
+function updateAcActive(){
+  acItems.forEach(function(el,i){
+    el.classList.toggle('active',i===acIdx);
+  });
+  if(acIdx>=0&&acItems[acIdx])acItems[acIdx].scrollIntoView({block:'nearest'});
+}
+
+// Global shortcuts
+document.addEventListener('keydown',function(e){
+  if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();si.focus()}
+  if(e.key==='Escape'){
+    acDrop.classList.remove('open');
+    document.getElementById('aiOverlay').classList.remove('active');
+    si.blur();
+  }
+});
+
+// Close autocomplete when clicking outside
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.search-container'))acDrop.classList.remove('open');
+});
+
+document.getElementById('aiClose').onclick=function(){document.getElementById('aiOverlay').classList.remove('active')};
+document.getElementById('aiOverlay').onclick=function(e){if(e.target===e.currentTarget)e.currentTarget.classList.remove('active')};
+document.querySelectorAll('.view-btn').forEach(function(b){b.onclick=function(){document.querySelectorAll('.view-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.getElementById('cardGrid').classList.toggle('list-view',b.dataset.view==='list')}});
 
 function showCardDetail(tool){
   const overlay=document.getElementById('cardOverlay'),detail=document.getElementById('cardDetail');

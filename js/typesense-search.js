@@ -54,10 +54,17 @@
       'q=' + encodeURIComponent(query),
       'query_by=' + encodeURIComponent(queryBy),
       'per_page=' + perPage,
+      'prefix=true',
       'highlight_full_fields=name,desc',
+      'highlight_start_tag=' + encodeURIComponent('<mark>'),
+      'highlight_end_tag=' + encodeURIComponent('</mark>'),
       'num_typos=2',
-      'typo_tokens_threshold=1'
+      'typo_tokens_threshold=1',
+      'drop_tokens_threshold=1',
+      'split_join_tokens=fallback'
     ];
+
+    if (options.queryByWeights) params.push('query_by_weights=' + encodeURIComponent(options.queryByWeights));
 
     if (filterBy) params.push('filter_by=' + encodeURIComponent(filterBy));
     if (sortBy) params.push('sort_by=' + encodeURIComponent(sortBy));
