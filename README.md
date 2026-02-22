@@ -34,7 +34,7 @@ This isn't a developer tool directory. It's a decision-making resource for the p
 | 📊 Third-Party Risk | BitSight, Conveyor, Drata, Loopio | 18 |
 | 📜 AI Governance & Standards | OWASP AI Exchange, ISO 42001, ETSI AI Security | 15 |
 | 🛡️ AI Guardrails & Firewalls | LLM Guard, NeMo Guardrails, LlamaFirewall, E2B | 14 |
-| 🔐 Identity & AppSec | GitGuardian, Noma Security, Aembit, Entro | 13 |
+| 🔐 Identity & AppSec | GitGuardian, Noma Security, Aembit, Entro | 18 |
 | 📚 Education & Research | Ken Huang, Lethal Trifecta, AI Incident Database | 9 |
 | 🤖 Foundation Models | Ollama, Mistral, Hugging Face, DeepSeek | 7 |
 | 🔧 AI Development Tools | LangChain, LlamaIndex, Langfuse, Arize Phoenix | 6 |
