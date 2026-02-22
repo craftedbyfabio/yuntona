@@ -261,7 +261,7 @@ function renderAutocomplete(query,result){
     el.addEventListener('click',function(){
       var name=el.getAttribute('data-name');
       var tool=RES.find(function(r){return r.name===name});
-      if(tool){acDrop.classList.remove('open');si.value='';showCardDetail(tool)}
+      if(tool){acDrop.classList.remove('open');showCardDetail(tool)}
     });
   });
 
@@ -378,6 +378,11 @@ function showCardDetail(tool){
 function closeCardDetail(){
   document.getElementById('cardOverlay').classList.remove('active');
   document.body.style.overflow='';
+  // Reopen autocomplete if search input still has a query
+  if(si.value.trim().length>=2&&acDrop.innerHTML){
+    acDrop.classList.add('open');
+    repositionAc();
+  }
 }
 document.getElementById('cardOverlay').addEventListener('click',function(e){if(e.target===this)closeCardDetail()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCardDetail()});
