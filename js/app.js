@@ -307,7 +307,7 @@ si.addEventListener('keydown',function(e){
 
   if(e.key==='Enter'){
     var v=si.value.trim();
-    if(v)aiSearch(v);
+    if(v){acDrop.classList.remove('open');aiSearch(v);}
   }
 });
 
