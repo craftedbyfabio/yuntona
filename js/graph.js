@@ -150,9 +150,12 @@ function render(tools) {
     if(d.type==='tool') d3.select(event.currentTarget).select('.tool-label').transition().duration(150).attr('fill-opacity',.9);
   })
   .on('mousemove',(event)=>{
-    let x=event.clientX+15,y=event.clientY-10;
-    if(x+320>window.innerWidth) x=event.clientX-330;
-    if(y+200>window.innerHeight) y=event.clientY-200;
+    var ttW=tt.offsetWidth||320, ttH=tt.offsetHeight||200;
+    var x=event.clientX+15, y=event.clientY-10;
+    if(x+ttW>window.innerWidth) x=Math.max(8,window.innerWidth-ttW-8);
+    if(x<8) x=8;
+    if(y+ttH>window.innerHeight) y=Math.max(8,window.innerHeight-ttH-8);
+    if(y<8) y=8;
     tt.style.left=x+'px'; tt.style.top=y+'px';
   })
   .on('mouseout',(event,d)=>{
@@ -165,8 +168,35 @@ function render(tools) {
 
   node.on('click',(event,d)=>{
     event.stopPropagation();
-    if(selectedNode===d.id){ resetHL(); return; }
+    if(selectedNode===d.id){ resetHL(); tt.classList.remove('visible'); return; }
     selectedNode=d.id;
+
+    // Show tooltip on click (essential for mobile/touch)
+    if(d.type==='tool'){
+      tt.innerHTML='<div class="tt-name">'+d.label+'</div><div class="tt-cat">'+d.category+'</div><div class="tt-desc">'+d.desc+'</div><div style="font-size:.6rem;color:#4e6283;margin-top:4px">Double-click to visit ↗</div><div class="tt-badges">'+d.risks.map(function(r){return '<span class="tt-risk">'+r+'</span>'}).join('')+d.stages.map(function(s){return '<span class="tt-stage">'+(stageLabels[s]||s)+'</span>'}).join('')+d.tags.slice(0,4).map(function(t){return '<span class="tt-tag">'+t+'</span>'}).join('')+'</div>';
+    } else if(d.type==='risk'){
+      var ct=links.filter(function(l){return(l.target.id||l.target)===d.id||(l.source.id||l.source)===d.id}).length;
+      tt.innerHTML='<div class="tt-name">'+d.label+' — '+d.fullLabel+'</div><div class="tt-desc">OWASP LLM Top 10 risk. Connected to '+ct+' tools.</div>';
+    } else {
+      var ct2=links.filter(function(l){return(l.target.id||l.target)===d.id||(l.source.id||l.source)===d.id}).length;
+      tt.innerHTML='<div class="tt-name">'+d.label+'</div><div class="tt-desc">LLMSecOps lifecycle stage. Connected to '+ct2+' tools.</div>';
+    }
+    tt.classList.add('visible');
+    // Position tooltip centred at bottom of viewport on mobile, near cursor on desktop
+    var isMobile=window.innerWidth<768;
+    if(isMobile){
+      tt.style.left='8px';tt.style.right='8px';tt.style.maxWidth='none';tt.style.width='auto';
+      tt.style.top='auto';tt.style.bottom='12px';
+    } else {
+      tt.style.right='';tt.style.bottom='';tt.style.maxWidth='320px';tt.style.width='';
+      var ttW=tt.offsetWidth||320,ttH=tt.offsetHeight||200;
+      var x=event.clientX+15,y=event.clientY-10;
+      if(x+ttW>window.innerWidth)x=Math.max(8,window.innerWidth-ttW-8);
+      if(x<8)x=8;
+      if(y+ttH>window.innerHeight)y=Math.max(8,window.innerHeight-ttH-8);
+      if(y<8)y=8;
+      tt.style.left=x+'px';tt.style.top=y+'px';
+    }
 
     const conn=new Set([d.id]);
     links.forEach(l=>{
@@ -209,6 +239,8 @@ function render(tools) {
 
   function resetHL(){
     selectedNode=null;
+    tt.classList.remove('visible');
+    tt.style.right='';tt.style.bottom='';tt.style.maxWidth='320px';tt.style.width='';
     node.select('circle').transition().duration(300)
       .attr('fill-opacity',d=>d.type==='tool'?.65:undefined)
       .attr('stroke-opacity',d=>d.type==='tool'?.35:undefined)
