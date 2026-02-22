@@ -1,8 +1,8 @@
 # Yuntona
 
-**The curated AI security resource index** — 116 tools, frameworks, and standards mapped to the OWASP LLM Top 10 and LLMSecOps lifecycle.
+**The curated AI security resource index** — 121 tools, frameworks, and standards mapped to the OWASP LLM Top 10 and LLMSecOps lifecycle.
 
-[![Tools](https://img.shields.io/badge/tools-116-brightgreen)](https://yuntona.netlify.app)
+[![Tools](https://img.shields.io/badge/tools-121-brightgreen)](https://yuntona.netlify.app)
 [![Categories](https://img.shields.io/badge/categories-10-blue)](https://yuntona.netlify.app)
 [![OWASP LLM](https://img.shields.io/badge/OWASP%20LLM-Top%2010-orange)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 [![Observatory](https://img.shields.io/badge/Mozilla%20Observatory-115%2F100-blueviolet)](https://developer.mozilla.org/en-US/observatory/analyze?host=yuntona.netlify.app)
@@ -10,7 +10,7 @@
 
 Security professionals tasked with AI security face a fragmented landscape of tools, frameworks, and standards. New resources emerge weekly, and there's no single source of truth for what's available, what's mature, and what maps to which risks.
 
-Yuntona maps 116 resources across 10 categories — filtered by OWASP LLM Top 10 risk, implementation complexity, lifecycle stage, and team role — so you can find what you need without 40 hours of research.
+Yuntona maps 121 resources across 10 categories — filtered by OWASP LLM Top 10 risk, implementation complexity, lifecycle stage, and team role — so you can find what you need without 40 hours of research.
 
 > 🌐 **[Explore the live index → yuntona.netlify.app](https://yuntona.netlify.app)**
 
@@ -45,7 +45,7 @@ This isn't a developer tool directory. It's a decision-making resource for the p
 
 ## Knowledge Graph
 
-An interactive force-directed visualisation of all 116 tools and their relationships to OWASP LLM risks and lifecycle stages. Click any node to highlight its connections. Double-click a tool to visit it.
+An interactive force-directed visualisation of all 121 tools and their relationships to OWASP LLM risks and lifecycle stages. Click any node to highlight its connections. Double-click a tool to visit it.
 
 > 🕸️ **[Explore the knowledge graph → yuntona.netlify.app/graph.html](https://yuntona.netlify.app/graph.html)**
 
@@ -114,7 +114,7 @@ Yuntona is a static site with no cookies, no tracking, no login, and no external
 
 ## Roadmap
 
-- [x] Curated index with 116 resources across 10 categories
+- [x] Curated index with 121 resources across 10 categories
 - [x] Web interface with multi-dimensional filtering
 - [x] OWASP LLM Top 10 + lifecycle mapping
 - [x] Complexity tiering system
