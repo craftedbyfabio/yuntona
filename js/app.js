@@ -247,6 +247,11 @@ function renderAutocomplete(query,result){
 
   acDrop.innerHTML=html;
   acDrop.classList.add('open');
+  // Position fixed dropdown below the search input
+  var rect=si.getBoundingClientRect();
+  acDrop.style.left=rect.left+'px';
+  acDrop.style.top=(rect.bottom+4)+'px';
+  acDrop.style.width=rect.width+'px';
 
   // Cache items for keyboard nav
   acItems=acDrop.querySelectorAll('.ac-item');
@@ -330,8 +335,19 @@ document.addEventListener('keydown',function(e){
 
 // Close autocomplete when clicking outside
 document.addEventListener('click',function(e){
-  if(!e.target.closest('.search-container'))acDrop.classList.remove('open');
+  if(!e.target.closest('.search-container')&&!e.target.closest('.ac-dropdown'))acDrop.classList.remove('open');
 });
+
+// Reposition dropdown on scroll/resize
+function repositionAc(){
+  if(!acDrop.classList.contains('open'))return;
+  var rect=si.getBoundingClientRect();
+  acDrop.style.left=rect.left+'px';
+  acDrop.style.top=(rect.bottom+4)+'px';
+  acDrop.style.width=rect.width+'px';
+}
+window.addEventListener('scroll',repositionAc,{passive:true});
+window.addEventListener('resize',repositionAc);
 
 document.getElementById('aiClose').onclick=function(){document.getElementById('aiOverlay').classList.remove('active')};
 document.getElementById('aiOverlay').onclick=function(e){if(e.target===e.currentTarget)e.currentTarget.classList.remove('active')};

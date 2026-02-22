@@ -63,7 +63,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .search-shortcut{position:absolute;right:16px;top:50%;transform:translateY(-50%);padding:4px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-size:.7rem;font-family:var(--font-mono);color:var(--text-dim);pointer-events:none}
 .ai-hint{display:flex;align-items:center;justify-content:center;gap:6px;font-size:.75rem;color:var(--text-dim);margin-top:10px;opacity:0;transition:opacity .3s}
 .ai-hint.visible{opacity:1}.ai-hint svg{width:14px;height:14px;color:var(--accent)}
-.ac-dropdown{display:none;position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;z-index:10002;box-shadow:0 12px 40px rgba(0,0,0,.45);max-height:420px;overflow-y:auto}
+.ac-dropdown{display:none;position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;z-index:10002;box-shadow:0 12px 40px rgba(0,0,0,.45);max-height:420px;overflow-y:auto}
 .ac-dropdown.open{display:block}
 .ac-section{padding:8px 0}
 .ac-section-label{padding:4px 16px;font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);font-family:var(--font-mono)}
@@ -260,7 +260,6 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       <span class="search-shortcut">⌘K</span>
     </div>
-    <div class="ac-dropdown" id="acDropdown"></div>
     <div class="ai-hint" id="aiHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M18 14v1a6 6 0 0 1-12 0v-1"/><path d="M12 19v3"/></svg>Press Enter for full results</div>
   </div>
 </section>
@@ -290,5 +289,6 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
   data-key="j3JxzPVKlMJNv1rFzkv9QQw3vqvbayK4"
   data-collection="tools"></script>
 <script src="js/app.js"></script>
+<div class="ac-dropdown" id="acDropdown"></div>
 </body>
 </html>
