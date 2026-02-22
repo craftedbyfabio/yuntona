@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+  command = "node scripts/index-typesense.js"
+
+# Skip indexing for deploy previews without env vars
+[context.deploy-preview]
+  command = "echo 'Skipping Typesense indexing for preview deploy'"

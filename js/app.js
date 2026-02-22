@@ -97,28 +97,60 @@ function stats(){document.getElementById('totalCount').textContent=RES.length;do
 function isQ(q){const l=q.toLowerCase().trim();return l.includes('?')||/^(what|which|how|why|where|who|can|do|does|is|are|show|find|list|recommend|suggest|help|tell|give|compare)/.test(l)}
 
 function aiSearch(query){
-  const ov=document.getElementById('aiOverlay'),body=document.getElementById('aiBody');ov.classList.add('active');
-  body.innerHTML=`<div class="ai-loading"><div class="dots"><span></span><span></span><span></span></div>Searching ${RES.length} resources...</div>`;
-  setTimeout(()=>{
-    const q=query.toLowerCase(),kw=q.replace(/[?.,!]/g,'').split(/\s+/).filter(w=>w.length>2&&!['what','which','how','the','that','this','for','are','can','with','from','does','about','help','show','find','list','some','best','good','tools','tool','any','easy','simple'].includes(w));
-    const scored=RES.map(r=>{let sc=0;const h=(r.name+' '+r.desc+' '+r.tags.join(' ')+' '+r.category+' '+r.audience+' '+r.complexity.tier+' '+(r.llm||[]).join(' ')).toLowerCase();kw.forEach(k=>{if(h.includes(k))sc+=h.split(k).length});r.tags.forEach(t=>{if(q.includes(t.toLowerCase()))sc+=3});
+  var ov=document.getElementById('aiOverlay'),body=document.getElementById('aiBody');
+  ov.classList.add('active');
+  body.innerHTML='<div class="ai-loading"><div class="dots"><span></span><span></span><span></span></div>Searching '+RES.length+' resources...</div>';
+
+  // Try Typesense first, fall back to local scorer
+  if(window.typesenseReady){
+    window.typesenseSearch(query,{perPage:8,queryBy:'name,desc,tags,backWhat,backSecurity,backWhen,category,audience'})
+      .then(function(result){
+        if(result.found===0){aiSearchFallback(query);return}
+        renderAiResults(query,result.hits.map(function(h){
+          // Match hit document to enriched RES entry for complexity/tier data
+          var doc=h.document;
+          var match=RES.find(function(r){return r.name===doc.name})||doc;
+          return match;
+        }));
+      })
+      .catch(function(err){
+        console.warn('Typesense search failed, using fallback:',err);
+        aiSearchFallback(query);
+      });
+  }else{
+    aiSearchFallback(query);
+  }
+}
+
+function aiSearchFallback(query){
+  setTimeout(function(){
+    var q=query.toLowerCase(),kw=q.replace(/[?.,!]/g,'').split(/\s+/).filter(function(w){return w.length>2&&!['what','which','how','the','that','this','for','are','can','with','from','does','about','help','show','find','list','some','best','good','tools','tool','any','easy','simple'].includes(w)});
+    var scored=RES.map(function(r){var sc=0;var h=(r.name+' '+r.desc+' '+r.tags.join(' ')+' '+r.category+' '+r.audience+' '+r.complexity.tier+' '+(r.llm||[]).join(' ')).toLowerCase();kw.forEach(function(k){if(h.includes(k))sc+=h.split(k).length});r.tags.forEach(function(t){if(q.includes(t.toLowerCase()))sc+=3});
     if(q.includes('tprm')||q.includes('third-party')||q.includes('vendor risk'))if(r.category==='Third-Party Risk')sc+=5;
     if(q.includes('questionnaire')&&r.desc.toLowerCase().includes('questionnaire'))sc+=5;
-    if(q.includes('compliance')&&(r.category==='Compliance Automation'||r.tags.some(t=>t.toLowerCase().includes('compliance'))))sc+=4;
+    if(q.includes('compliance')&&(r.category==='Compliance Automation'||r.tags.some(function(t){return t.toLowerCase().includes('compliance')})))sc+=4;
     if(q.includes('red team')&&r.category==='AI Red Teaming')sc+=4;
-    if((q.includes('guard')||q.includes('injection')||q.includes('firewall'))&&(r.category==='AI Guardrails & Firewalls'||r.tags.some(t=>t.toLowerCase().includes('guard')||t.toLowerCase().includes('firewall'))))sc+=5;
+    if((q.includes('guard')||q.includes('injection')||q.includes('firewall'))&&(r.category==='AI Guardrails & Firewalls'||r.tags.some(function(t){return t.toLowerCase().includes('guard')||t.toLowerCase().includes('firewall')})))sc+=5;
     if(q.includes('identity')&&r.category==='Identity & AppSec')sc+=4;
     if((q.includes('code')||q.includes('copilot'))&&r.category==='AI Code Assistants')sc+=4;
-    if(q.includes('observ')||q.includes('trac')||q.includes('monitor'))if(r.tags.some(t=>t==='Observability'||t==='Tracing'))sc+=5;
+    if(q.includes('observ')||q.includes('trac')||q.includes('monitor'))if(r.tags.some(function(t){return t==='Observability'||t==='Tracing'}))sc+=5;
     if((q.includes('beginner')||q.includes('easy'))&&r.complexity.tierKey==='plug-and-play')sc+=4;
     if(q.includes('governance')||q.includes('standard'))if(r.category==='AI Governance & Standards')sc+=4;
     if(q.includes('agent')||q.includes('agentic'))if(r.agentic)sc+=5;
-    if(q.match(/llm0[1-9]|llm10/)){const m=q.match(/llm0[1-9]|llm10/g);m.forEach(lm=>{if((r.llm||[]).includes(lm.toUpperCase()))sc+=6})}
-    return{...r,score:sc}}).filter(r=>r.score>0).sort((a,b)=>b.score-a.score).slice(0,6);
-    if(!scored.length){body.innerHTML=`<div class="ai-response">No resources found matching "<strong>${query}</strong>". Try different keywords or use the LLM Top 10 filters.</div>`;return}
-    const tc=[...new Set(scored.map(r=>r.category))].slice(0,2).join(' and ');
-    body.innerHTML=`<div class="ai-response">Found <strong>${scored.length}</strong> resources for "<strong>${query}</strong>", primarily in ${tc}.</div><div class="ai-results">${scored.map(r=>`<a class="ai-result-card" href="${r.url}" target="_blank" rel="noopener"><div class="ai-result-icon ${catMap[r.category]||''}"><div class="card-icon" style="width:36px;height:36px;font-size:.7rem">${faviconImg(r.url,r.name,20)}</div></div><div class="ai-result-info"><h4>${r.name}<span class="complexity-badge tier-${r.complexity.tierKey}" style="font-size:.55rem;padding:2px 6px;margin-left:4px"><span class="badge-dot"></span>${r.complexity.tier}</span>${r.agentic?'<span class="tag agentic" style="font-size:.55rem;padding:1px 6px">⚡</span>':''}</h4><p>${r.desc}</p></div></a>`).join('')}</div>`;
-  },400);
+    if(q.match(/llm0[1-9]|llm10/)){var m=q.match(/llm0[1-9]|llm10/g);m.forEach(function(lm){if((r.llm||[]).includes(lm.toUpperCase()))sc+=6})}
+    return Object.assign({},r,{score:sc})}).filter(function(r){return r.score>0}).sort(function(a,b){return b.score-a.score}).slice(0,8);
+    renderAiResults(query,scored);
+  },300);
+}
+
+function renderAiResults(query,results){
+  var body=document.getElementById('aiBody');
+  if(!results.length){body.innerHTML='<div class="ai-response">No resources found matching "<strong>'+query+'</strong>". Try different keywords or use the LLM Top 10 filters.</div>';return}
+  var tc=[...new Set(results.map(function(r){return r.category}))].slice(0,2).join(' and ');
+  body.innerHTML='<div class="ai-response">Found <strong>'+results.length+'</strong> resources for "<strong>'+query+'</strong>", primarily in '+tc+'.</div><div class="ai-results">'+results.map(function(r){
+    var cx=r.complexity||{tier:'',tierKey:''};
+    return '<a class="ai-result-card" href="'+r.url+'" target="_blank" rel="noopener"><div class="ai-result-icon '+(catMap[r.category]||'')+'"><div class="card-icon" style="width:36px;height:36px;font-size:.7rem">'+faviconImg(r.url,r.name,20)+'</div></div><div class="ai-result-info"><h4>'+r.name+'<span class="complexity-badge tier-'+cx.tierKey+'" style="font-size:.55rem;padding:2px 6px;margin-left:4px"><span class="badge-dot"></span>'+cx.tier+'</span>'+(r.agentic?'<span class="tag agentic" style="font-size:.55rem;padding:1px 6px">⚡</span>':'')+'</h4><p>'+r.desc+'</p></div></a>'
+  }).join('')+'</div>';
 }
 
 // Initialisation — fetch tool data from JSON (single source of truth)
@@ -144,7 +176,33 @@ function init(){
 setTimeout(()=>{const ls=document.getElementById('loadingScreen');if(ls)ls.classList.add('hidden')},3000);
 
 const si=document.getElementById('searchInput'),ah=document.getElementById('aiHint');let db;
-si.addEventListener('input',e=>{clearTimeout(db);const v=e.target.value.trim();ah.classList.toggle('visible',v.length>3&&isQ(v));db=setTimeout(()=>{sQ=v;if(!isQ(v))render()},200)});
+si.addEventListener('input',function(e){clearTimeout(db);var v=e.target.value.trim();ah.classList.toggle('visible',v.length>3&&isQ(v));db=setTimeout(function(){
+  sQ=v;
+  if(!isQ(v)){
+    // For regular text search: use Typesense if available for typo-tolerance
+    if(v.length>=2&&window.typesenseReady){
+      window.typesenseSearch(v,{perPage:50,queryBy:'name,desc,tags,category'})
+        .then(function(result){
+          // Build a Set of matched tool names, then filter RES to preserve enriched data
+          var matched=new Set(result.hits.map(function(h){return h.document.name}));
+          sQ='';  // Clear text filter so getF doesn't double-filter
+          var g=document.getElementById('cardGrid');
+          var filtered=getF().filter(function(r){return matched.has(r.name)});
+          // If Typesense returned results, show those; otherwise fall back to local
+          if(filtered.length>0||result.found===0){
+            g.innerHTML='';filtered.forEach(function(r){g.appendChild(mkCard(r))});
+            document.getElementById('resultCount').textContent=filtered.length+' of '+RES.length+' resources';
+            document.getElementById('noResults').style.display=filtered.length?'none':'block';
+          }else{
+            sQ=v;render();
+          }
+        })
+        .catch(function(){sQ=v;render()});
+    }else{
+      render();
+    }
+  }
+},250)});
 si.addEventListener('keydown',e=>{if(e.key==='Enter'){const v=si.value.trim();if(v&&isQ(v))aiSearch(v);else{sQ=v;render()}}});
 document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();si.focus()}if(e.key==='Escape'){document.getElementById('aiOverlay').classList.remove('active');si.blur()}});
 document.getElementById('aiClose').onclick=()=>document.getElementById('aiOverlay').classList.remove('active');
