@@ -333,7 +333,12 @@ document.addEventListener('keydown',function(e){
   }
 });
 
-// Close autocomplete when clicking outside
+si.addEventListener('focus',function(){
+  if(si.value.trim().length>=2&&acDrop.innerHTML){
+    acDrop.classList.add('open');
+    repositionAc();
+  }
+});
 document.addEventListener('click',function(e){
   if(!e.target.closest('.search-container')&&!e.target.closest('.ac-dropdown'))acDrop.classList.remove('open');
 });
@@ -378,11 +383,6 @@ function showCardDetail(tool){
 function closeCardDetail(){
   document.getElementById('cardOverlay').classList.remove('active');
   document.body.style.overflow='';
-  // Reopen autocomplete if search input still has a query
-  if(si.value.trim().length>=2&&acDrop.innerHTML){
-    acDrop.classList.add('open');
-    repositionAc();
-  }
 }
 document.getElementById('cardOverlay').addEventListener('click',function(e){if(e.target===this)closeCardDetail()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCardDetail()});
