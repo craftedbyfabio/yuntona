@@ -45,7 +45,7 @@
    */
   window.typesenseSearch = function (query, options) {
     options = options || {};
-    var queryBy = options.queryBy || 'name,desc,tags,backWhat,backSecurity,backWhen,category';
+    var queryBy = options.queryBy || 'name,desc,tags,url,backWhat,backSecurity,backWhen,category';
     var perPage = options.perPage || 12;
     var filterBy = options.filterBy || '';
     var sortBy = options.sortBy || '';
@@ -112,7 +112,7 @@
         return {
           collection: COLLECTION,
           q: s.query || '*',
-          query_by: s.queryBy || 'name,desc,tags',
+          query_by: s.queryBy || 'name,desc,tags,url',
           per_page: s.perPage || 6,
           filter_by: s.filterBy || '',
           num_typos: 2

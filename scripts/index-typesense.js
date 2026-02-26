@@ -67,7 +67,7 @@ const schema = {
   name: COLLECTION,
   fields: [
     { name: 'name',           type: 'string' },
-    { name: 'url',            type: 'string',   index: false },
+    { name: 'url',            type: 'string' },
     { name: 'category',       type: 'string',   facet: true },
     { name: 'desc',           type: 'string' },
     { name: 'riskRaw',        type: 'string',   facet: true, optional: true },
@@ -189,6 +189,44 @@ async function main() {
   }
 
   console.log(`✓ Indexed ${importResult.total} tools into Typesense (${HOST})`);
+
+  // --- Configure synonyms (Typesense v30+ synonym_sets API) ---
+  const synonymItems = [
+    { id: 'tprm',       synonyms: ['tprm', 'third-party risk', 'vendor risk', 'supply chain risk', 'third party'] },
+    { id: 'injection',   synonyms: ['injection', 'prompt injection', 'jailbreak', 'jailbreaking'] },
+    { id: 'guard',       synonyms: ['guardrails', 'guardrail', 'guard', 'firewall', 'llm firewall'] },
+    { id: 'governance',  synonyms: ['governance', 'compliance', 'regulation', 'standard', 'policy', 'framework'] },
+    { id: 'redteam',     synonyms: ['red team', 'red teaming', 'adversarial', 'pentesting', 'pentest'] },
+    { id: 'identity',    synonyms: ['identity', 'iam', 'authentication', 'authorization', 'nhi', 'non-human identity'] },
+    { id: 'observability', synonyms: ['observability', 'monitoring', 'tracing', 'logging'] },
+    { id: 'agent',       synonyms: ['agent', 'agentic', 'agentic ai', 'ai agent'] },
+    { id: 'codegen',     synonyms: ['code assistant', 'copilot', 'code generation', 'ai coding'] },
+    { id: 'llm',         synonyms: ['llm', 'large language model', 'foundation model', 'language model'] },
+    { id: 'spm',         synonyms: ['ai-spm', 'ai spm', 'security posture management', 'posture management'] }
+  ];
+
+  const SYNONYM_SET_NAME = 'tools-synonyms';
+
+  console.log('Configuring synonyms (v30 synonym_sets API)...');
+
+  // Delete existing synonym set if present (ignore 404)
+  try {
+    await typesenseRequest('DELETE', `/synonym_sets/${SYNONYM_SET_NAME}`);
+  } catch (e) {
+    // 404 is fine — set didn't exist yet
+  }
+
+  // Create synonym set with all items
+  await typesenseRequest('PUT', `/synonym_sets/${SYNONYM_SET_NAME}`, {
+    items: synonymItems
+  });
+
+  // Link synonym set to the tools collection
+  await typesenseRequest('PATCH', `/collections/${COLLECTION}`, {
+    synonym_sets: [SYNONYM_SET_NAME]
+  });
+
+  console.log(`✓ Configured ${synonymItems.length} synonym groups in set '${SYNONYM_SET_NAME}' (linked to '${COLLECTION}')`);
 }
 
 main().catch(err => {

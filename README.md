@@ -1,170 +1,164 @@
-# Yuntona
+# Yuntona™ — The Builder's Index for AI Security
 
-**The curated AI security resource index** — 121 tools, frameworks, and standards mapped to the OWASP LLM Top 10 and LLMSecOps lifecycle.
+![Version](https://img.shields.io/badge/version-1.3.1-C5F227?style=flat-square)
+![Tools](https://img.shields.io/badge/tools-127-blue?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Mozilla Observatory](https://img.shields.io/badge/Mozilla_Observatory-115%2F100-brightgreen?style=flat-square)
 
-[![Tools](https://img.shields.io/badge/tools-121-brightgreen)](https://yuntona.netlify.app)
-[![Categories](https://img.shields.io/badge/categories-10-blue)](https://yuntona.netlify.app)
-[![OWASP LLM](https://img.shields.io/badge/OWASP%20LLM-Top%2010-orange)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-[![Observatory](https://img.shields.io/badge/Mozilla%20Observatory-115%2F100-blueviolet)](https://developer.mozilla.org/en-US/observatory/analyze?host=yuntona.netlify.app)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+**Yuntona™** is a curated, risk-rated index of AI security tools, frameworks, and standards — mapped to the **OWASP LLM Top 10** and **LLMSecOps lifecycle**.
 
-Security professionals tasked with AI security face a fragmented landscape of tools, frameworks, and standards. New resources emerge weekly, and there's no single source of truth for what's available, what's mature, and what maps to which risks.
+> **127 resources** · **10 categories** · **168 tags** · **10 LLM risk mappings**
 
-Yuntona maps 121 resources across 10 categories — filtered by OWASP LLM Top 10 risk, implementation complexity, lifecycle stage, and team role — so you can find what you need without 40 hours of research.
-
-> 🌐 **[Explore the live index → yuntona.netlify.app](https://yuntona.netlify.app)**
+🔗 **Live:** [yuntona.netlify.app](https://yuntona.netlify.app)
 
 ---
 
-## Who Is This For?
+## Goal
 
-**For CISOs** handed the "AI security" brief and building a security posture from scratch.
-**For GRC analysts** mapping tools to risk frameworks and vendor assessments.
-**For security architects** evaluating guardrails, firewalls, and identity solutions for AI deployments.
+Accelerate discovery in the fragmented AI security ecosystem by providing a centralised index with risk-based assessments, OWASP mappings, complexity tiers, and an interactive knowledge graph — positioned between high-level analyst reports and unstructured GitHub awesome-lists.
 
-This isn't a developer tool directory. It's a decision-making resource for the people who choose what gets deployed.
+## Target Audience
+
+- **Builders** — developers integrating guardrails, sandboxes, and security APIs into AI applications
+- **Blue Team** — SOC analysts and defenders monitoring AI workloads, shadow AI, and non-human identities
+- **Red Team** — offensive security professionals testing LLMs, agents, and MCP-based architectures
+- **CISOs & GRC Analysts** — leaders building AI governance programmes, managing third-party AI vendor risk, and mapping controls to ISO 42001, EU AI Act, and NIST AI RMF
+- **Security Architects** — designing zero-trust, least-privilege architectures for agentic AI systems
+
+**2026 focus:** Agentic AI security — MCP governance, agent identity, autonomous tool-use controls, and multi-agent threat modelling.
 
 ---
 
 ## What's Inside
 
-| Category | Examples | Tools |
-|----------|----------|:-----:|
-| 🔴 AI Red Teaming | Garak, Promptfoo, HarmBench, BlackIce | 26 |
-| 📊 Third-Party Risk | BitSight, Conveyor, Drata, Loopio | 18 |
-| 📜 AI Governance & Standards | OWASP AI Exchange, ISO 42001, ETSI AI Security | 15 |
-| 🛡️ AI Guardrails & Firewalls | LLM Guard, NeMo Guardrails, LlamaFirewall, E2B | 14 |
-| 🔐 Identity & AppSec | GitGuardian, Noma Security, Aembit, Entro | 18 |
-| 📚 Education & Research | Ken Huang, Lethal Trifecta, AI Incident Database | 9 |
-| 🤖 Foundation Models | Ollama, Mistral, Hugging Face, DeepSeek | 7 |
-| 🔧 AI Development Tools | LangChain, LlamaIndex, Langfuse, Arize Phoenix | 6 |
-| 💻 AI Code Assistants | GitHub Copilot, Cursor, Continue, Tabnine | 5 |
-| ✅ Compliance Automation | Sprinto, Delve, Scrut | 3 |
+Every tool card includes:
+
+| Field | Description |
+|-------|-------------|
+| **Risk Rating** | Safe · Caution · Red Flag — opinionated, hand-written assessments |
+| **OWASP LLM Mapping** | Which of the LLM Top 10 risks the tool addresses |
+| **Lifecycle Stage** | Where it fits in the LLMSecOps lifecycle (Scope → Govern → Develop → Test → Deploy → Operate → Monitor) |
+| **Complexity Tier** | Plug & Play · Guided Setup · Expert Required · Enterprise Only |
+| **Agentic Flag** | Whether the tool addresses agentic AI security specifically |
+| **Flip-Card Detail** | Hand-written "What / Security Relevance / When to Use" — not scraped, not generated |
+
+## Categories
+
+| Category | Count | Examples |
+|----------|-------|---------|
+| AI Red Teaming | 22 | Garak, Shannon, Promptfoo, MAESTRO Sentinel, Agentic Radar |
+| AI Guardrails & Firewalls | 16 | Guardrails AI, NeMo Guardrails, LlamaFirewall, Koi, Ackuity |
+| AI Governance & Standards | 11 | OWASP AI Exchange, MITRE ATLAS, ISO 42001, AIUC-1, Collibra AI Governance |
+| Identity & AppSec | 15 | Wiz AI-SPM, Stacklok/ToolHive, PlainID, Cerbos, Cyata, Oasis Security |
+| Third-Party Risk | 14 | BitSight, SecurityScorecard, Vanta, Conveyor, Zip |
+| AI Development Tools | 6 | LangChain, LlamaIndex, Langfuse, Arize Phoenix |
+| AI Code Assistants | 6 | GitHub Copilot, Cursor, Continue, Tabnine, Tabby |
+| Foundation Models | 6 | Ollama, Hugging Face, RiskRubric, DeepSeek |
+| Education & Research | 9 | CoSAI, Lethal Trifecta, Ken Huang, AI Incident Database |
+| Compliance Automation | 3 | Sprinto, Delve, Scrut |
 
 ---
 
-## Knowledge Graph
+## Search & Discovery
 
-An interactive force-directed visualisation of all 121 tools and their relationships to OWASP LLM risks and lifecycle stages. Click any node to highlight its connections. Double-click a tool to visit it.
+Yuntona uses **Typesense Cloud** for intelligent search:
 
-> 🕸️ **[Explore the knowledge graph → yuntona.netlify.app/graph.html](https://yuntona.netlify.app/graph.html)**
-
-![Yuntona Knowledge Graph](docs/knowledge-graph.png)
+- **Typo-tolerant** — finds results even with misspellings
+- **Fuzzy matching** — handles partial queries and abbreviations
+- **URL search** — paste a tool's URL to find its card instantly
+- **Field-weighted ranking** — prioritises tool names and tags over descriptions
+- **11 synonym groups** — maps security jargon (e.g. "tprm" → "third-party risk", "nhi" → "non-human identity")
+- **Search-as-you-type autocomplete** — dropdown results after 2+ characters with keyboard navigation
+- **Faceted filtering** — filter by category, risk, audience, complexity, OWASP mapping, lifecycle stage, and agentic flag
 
 ---
 
-## How Resources Are Classified
+## Tech Stack
 
-### Complexity Tiers
+| Layer | Technology |
+|-------|-----------|
+| Site | Static HTML/CSS/JS on Netlify |
+| Data | `tools.json` (single source of truth) |
+| Search | Typesense Cloud (typo-tolerance, synonyms, field weighting) |
+| Indexing | Node.js build-time script (`scripts/index-typesense.js`) |
+| Fonts | Clash Display (brand), Outfit (body), JetBrains Mono (code) |
+| Security | CSP-compliant, 115/100 Mozilla Observatory |
 
-Every tool is assessed for implementation complexity so you know what you're getting into before you evaluate:
+---
 
-| Tier | What It Means |
-|------|---------------|
-| 🟢 **Plug & Play** | Open a browser, click go. Minimal setup. |
-| 🔵 **Guided Setup** | Some configuration needed. Documentation required. |
-| 🟠 **Expert Required** | Security expertise needed. Non-trivial deployment. |
-| 🟣 **Enterprise Only** | Full governance stack. Procurement process. |
+## Recent Changes (v1.3.1)
 
-### OWASP LLM Top 10
+### New Tools (+6)
+- **Shannon (Keygraph)** — Autonomous AI pentester with proof-by-exploitation, 96% XBOW success rate
+- **Guardrails AI** — Open-source Python framework with the largest community validator hub (50+ validators)
+- **Stacklok / ToolHive** — Enterprise MCP platform with container isolation, Sigstore verification, Cedar policies
+- **Koi (Palo Alto Networks)** — Agentic Endpoint Security for AI agents, MCP servers, extensions, packages
+- **CoSAI (Coalition for Secure AI)** — OASIS Open Project producing AI security frameworks (Risk Map, Agentic Principles, IR Framework)
+- **Collibra AI Governance** — Enterprise AI governance with model cataloguing, lineage, EU AI Act compliance
 
-Each resource is tagged with the LLM risks it addresses:
+### Updated
+- **Cisco AI Runtime → Cisco AI Defense** — renamed and expanded with Feb 2026 updates (AI BOM, MCP Catalog, agentic guardrails, NeMo integration)
 
-| ID | Risk | ID | Risk |
-|----|------|----|------|
-| LLM01 | Prompt Injection | LLM06 | Sensitive Information Disclosure |
-| LLM02 | Insecure Output Handling | LLM07 | Insecure Plugin Design |
-| LLM03 | Training Data Poisoning | LLM08 | Excessive Agency |
-| LLM04 | Model Denial of Service | LLM09 | Overreliance |
-| LLM05 | Supply Chain Vulnerabilities | LLM10 | Model Theft |
+### Search Improvements
+- URL field now searchable — paste a tool URL to find its card
+- URL included in search field weighting for autocomplete and full search
 
-### LLMSecOps Lifecycle
+### Branding
+- Yuntona™ wordmark now rendered in Clash Display font (via Fontshare CDN)
+- Trademark symbol (™) added to brand name
 
-Resources are mapped to the stages where they apply:
+---
+
+## Development
+
+```bash
+# Clone
+git clone https://github.com/craftedbyfabio/yuntona.git
+cd yuntona
+
+# Install dependencies (for Typesense indexing)
+npm install
+
+# Re-index Typesense (requires TYPESENSE_API_KEY env var)
+node scripts/index-typesense.js
+
+# Serve locally
+npx serve .
+```
+
+### Data Architecture
+
+All tool data lives in `data/tools.json`. The indexing script reads this file, computes complexity tiers, and pushes documents to Typesense Cloud. The browser client queries Typesense directly — no backend server required.
 
 ```
-Scope → Augment → Develop → Test → Release → Deploy → Operate → Monitor → Govern
+data/tools.json            → Single source of truth (127 tools)
+scripts/index-typesense.js → Build-time indexer (Node.js)
+js/typesense-search.js     → Browser search client
+app.js                     → UI logic, filters, cards, autocomplete
+index.html                 → Static page with inline CSS
 ```
-
----
-
-## Live Index
-
-The web interface at **[yuntona.netlify.app](https://yuntona.netlify.app)** offers:
-
-- Full-text search across all resources
-- AI-powered natural language queries
-- Five filter dimensions: category, role, complexity, LLM risk, and lifecycle stage
-- Active filter chips with one-click removal
-- Website favicons for every tool via DuckDuckGo's privacy-friendly icon service
-- Interactive knowledge graph for visual discovery of tool relationships
-
----
-
-## Security
-
-Yuntona is a static site with no cookies, no tracking, no login, and no external API calls from the main index. The site scores **115/100** on [Mozilla Observatory](https://developer.mozilla.org/en-US/observatory/analyze?host=yuntona.netlify.app), with:
-
-- Strict Content Security Policy — no inline scripts, no inline event handlers
-- Subresource Integrity on third-party scripts
-- HSTS preloaded, X-Content-Type-Options, X-Frame-Options
-- All favicons loaded via DuckDuckGo (privacy-friendly, no Google)
-
----
-
-## Roadmap
-
-- [x] Curated index with 121 resources across 10 categories
-- [x] Web interface with multi-dimensional filtering
-- [x] OWASP LLM Top 10 + lifecycle mapping
-- [x] Complexity tiering system
-- [x] Interactive knowledge graph (D3.js)
-- [x] Community contribution workflow (issue templates + CONTRIBUTING.md)
-- [ ] Semantic search (Typesense)
-- [ ] AI-powered chatbot recommendations (Mistral)
-- [ ] Tool-vs-tool comparison guides
-- [ ] Quarterly AI Security Landscape briefing
 
 ---
 
 ## Contributing
 
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+We welcome contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-Quick options:
-
-- [Suggest a tool](https://github.com/craftedbyfabio/yuntona/issues/new?template=tool-suggestion.md) — tool name, URL, and suggested category
-- [Report an issue](https://github.com/craftedbyfabio/yuntona/issues/new?template=bug-report.md) — bugs, broken links, or incorrect mappings
-- Fork the repo and submit a pull request
-
----
-
-## About
-
-Yuntona is curated by [Fabio](https://github.com/craftedbyfabio), a cybersecurity professional working at the intersection of third-party risk and AI security. Built from hands-on research into the OWASP GenAI ecosystem, CoSAI, the emerging agentic security landscape, and the conviction that AI security shouldn't require reinventing the wheel — the tools exist, they just need to be found.
-
----
-
-## Acknowledgments
-
-- [OWASP LLM Top 10](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/)
-- [OWASP GenAI Security Solutions Reference Guide](https://genai.owasp.org/resource/owasp-genai-security-project-solutions-reference-guide-q2_q325/)
-- [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
-- [MITRE ATLAS](https://atlas.mitre.org/)
-- [CoSAI (Coalition for Secure AI)](https://github.com/cosai-oasis)
-- [Ken Huang](https://kenhuangus.substack.com/) — MAESTRO framework co-creator, 16 books on AI security
-- [Noma Security / Haize Labs](https://noma.security/) — RiskRubric AI model risk scoring
-- [D3.js](https://d3js.org/) — knowledge graph visualisation
+**Ways to contribute:**
+- Suggest a tool via [GitHub Issues](https://github.com/craftedbyfabio/yuntona/issues/new?template=tool-suggestion.md)
+- Report bugs or UX issues
+- Improve tool descriptions or risk assessments
+- Add OWASP mappings or lifecycle stage assignments
 
 ---
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
+MIT — see [LICENSE](LICENSE) for details.
 
 ---
 
 <p align="center">
-  <strong>Crafted by Fabio</strong><br>
-  <a href="https://yuntona.netlify.app">yuntona.netlify.app</a>
+  <strong>Yuntona™</strong> — The builder's index for AI security.<br>
+  Built by <a href="https://github.com/craftedbyfabio">@craftedbyfabio</a>
 </p>
