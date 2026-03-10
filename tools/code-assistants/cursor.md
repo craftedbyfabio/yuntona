@@ -6,7 +6,8 @@ tier: "Guided Setup"
 audience: "Builder"
 risk: "Medium Risk"
 agentic: false
-llm_risks: [LLM06]
+owaspLLM: [LLM06]
+owaspASI: [ASI05, ASI09]
 stages: [develop]
 tags: 
   - Code

@@ -1,13 +1,13 @@
 # Yuntona™ — The Builder's Index for AI Security
 
-![Version](https://img.shields.io/badge/version-1.3.1-C5F227?style=flat-square)
-![Tools](https://img.shields.io/badge/tools-127-blue?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.4.0-C5F227?style=flat-square)
+![Tools](https://img.shields.io/badge/tools-134-blue?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 ![Mozilla Observatory](https://img.shields.io/badge/Mozilla_Observatory-115%2F100-brightgreen?style=flat-square)
 
-**Yuntona™** is a curated, risk-rated index of AI security tools, frameworks, and standards — mapped to the **OWASP LLM Top 10** and **LLMSecOps lifecycle**.
+**Yuntona™** is a curated, risk-rated index of AI security tools, frameworks, and standards — mapped to both the **OWASP LLM Top 10** (2025) and the **OWASP Agentic Top 10** (2026).
 
-> **127 resources** · **10 categories** · **168 tags** · **10 LLM risk mappings**
+> **134 resources** · **10 categories** · **174 tags** · **20 OWASP risk mappings** (LLM01–LLM10 + ASI01–ASI10)
 
 🔗 **Live:** [yuntona.netlify.app](https://yuntona.netlify.app)
 
@@ -36,7 +36,8 @@ Every tool card includes:
 | Field | Description |
 |-------|-------------|
 | **Risk Rating** | Safe · Caution · Red Flag — opinionated, hand-written assessments |
-| **OWASP LLM Mapping** | Which of the LLM Top 10 risks the tool addresses |
+| **OWASP LLM Mapping** | Which of the LLM Top 10 (2025) risks the tool addresses |
+| **OWASP Agentic Mapping** | Which of the Agentic Top 10 (2026) risks the tool addresses |
 | **Lifecycle Stage** | Where it fits in the LLMSecOps lifecycle (Scope → Govern → Develop → Test → Deploy → Operate → Monitor) |
 | **Complexity Tier** | Plug & Play · Guided Setup · Expert Required · Enterprise Only |
 | **Agentic Flag** | Whether the tool addresses agentic AI security specifically |
@@ -46,8 +47,8 @@ Every tool card includes:
 
 | Category | Count | Examples |
 |----------|-------|---------|
-| AI Red Teaming | 22 | Garak, Shannon, Promptfoo, MAESTRO Sentinel, Agentic Radar |
-| AI Guardrails & Firewalls | 16 | Guardrails AI, NeMo Guardrails, LlamaFirewall, Koi, Ackuity |
+| AI Red Teaming | 30 | Garak, Shannon, Promptfoo, Patronus AI, HiddenLayer, deepchecks |
+| AI Guardrails & Firewalls | 19 | Guardrails AI, NeMo Guardrails, LlamaFirewall, TrojAI, Lasso Security |
 | AI Governance & Standards | 11 | OWASP AI Exchange, MITRE ATLAS, ISO 42001, AIUC-1, Collibra AI Governance |
 | Identity & AppSec | 15 | Wiz AI-SPM, Stacklok/ToolHive, PlainID, Cerbos, Cyata, Oasis Security |
 | Third-Party Risk | 14 | BitSight, SecurityScorecard, Vanta, Conveyor, Zip |
@@ -87,6 +88,27 @@ Yuntona uses **Typesense Cloud** for intelligent search:
 ---
 
 ## Recent Changes (v1.3.1)
+
+### New Tools (+7)
+- **HiddenLayer** — Enterprise AI security platform with discovery, supply chain (AIBOM), runtime defense, and attack simulation. Gartner Cool Vendor.
+- **TrojAI** — AI security platform with Detect (red teaming), Defend (runtime firewall), and Defend for MCP (agentic workflow security). Gartner AI TRiSM vendor.
+- **Patronus AI** — AI evaluation and guardrails platform with Lynx hallucination detection and LLM-as-a-Judge scoring. OWASP/NIST compliant.
+- **Lasso Security** — GenAI security platform for shadow AI discovery, real-time guardrails, and data leakage prevention.
+- **Credo AI** — AI governance platform for responsible AI compliance, EU AI Act readiness, and policy enforcement.
+- **Vijil** — LLM security testing with automated vulnerability scanning and continuous behavioral monitoring.
+- **deepchecks** — Open-source LLM evaluation and testing framework for hallucination, bias, and data integrity validation.
+
+### Dual OWASP Framework (Schema Change)
+- **`llm` field renamed to `owaspLLM`** — maps to OWASP Top 10 for LLM Applications 2025 (LLM01–LLM10)
+- **New `owaspASI` field added** — maps to OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10)
+- 93 of 134 tools now have owaspASI mappings
+- **New UI toggle:** LLM Top 10 ↔ Agentic Top 10 filter in the filter bar
+
+### Enriched Flip Cards
+- 14 existing tool cards enriched with CB Insights AI Agent Bible data and OWASP ASI references
+- Updated: Witness.ai, Zenity, Langfuse, A2A Protocol, GitHub Copilot, Cursor, E2B, Agentic Radar, CycloneDX, MAESTRO Sentinel, MCP Secure Gateway, Noma Security, LangChain, Arize Phoenix
+
+### v1.3.1 (Feb 2026)
 
 ### New Tools (+6)
 - **Shannon (Keygraph)** — Autonomous AI pentester with proof-by-exploitation, 96% XBOW success rate
@@ -131,10 +153,11 @@ npx serve .
 All tool data lives in `data/tools.json`. The indexing script reads this file, computes complexity tiers, and pushes documents to Typesense Cloud. The browser client queries Typesense directly — no backend server required.
 
 ```
-data/tools.json            → Single source of truth (127 tools)
+data/tools.json            → Single source of truth (134 tools, owaspLLM + owaspASI fields)
 scripts/index-typesense.js → Build-time indexer (Node.js)
 js/typesense-search.js     → Browser search client
-app.js                     → UI logic, filters, cards, autocomplete
+app.js                     → UI logic, filters, framework toggle, cards, autocomplete
+graph.js                   → Knowledge graph (D3.js, LLM + ASI risk nodes)
 index.html                 → Static page with inline CSS
 ```
 

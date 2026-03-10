@@ -6,7 +6,8 @@ tier: "Plug & Play"
 audience: "Red Team"
 risk: "Safe"
 agentic: false
-llm_risks: []
+owaspLLM: []
+owaspASI: [ASI01, ASI02, ASI03, ASI04, ASI05, ASI06, ASI07, ASI08, ASI09, ASI10]
 stages: [scope]
 tags: 
   - Framework

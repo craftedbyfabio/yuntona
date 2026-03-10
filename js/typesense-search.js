@@ -70,7 +70,7 @@
     if (sortBy) params.push('sort_by=' + encodeURIComponent(sortBy));
 
     // Request facets for category, complexity, agentic
-    params.push('facet_by=category,complexity,agentic,llm,stages');
+    params.push('facet_by=category,complexity,agentic,owaspLLM,owaspASI,stages');
     params.push('max_facet_values=20');
 
     var url = BASE + '/collections/' + COLLECTION + '/documents/search?' + params.join('&');

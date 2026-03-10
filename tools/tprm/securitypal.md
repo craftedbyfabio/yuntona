@@ -6,7 +6,8 @@ tier: "Guided Setup"
 audience: "Blue Team"
 risk: "Safe"
 agentic: true
-llm_risks: []
+owaspLLM: []
+owaspASI: []
 stages: [scope]
 tags: 
   - Reviews

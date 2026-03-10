@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Red Team"
 risk: "Medium"
 agentic: false
-llm_risks: [LLM01, LLM02, LLM06]
+owaspLLM: [LLM01, LLM02, LLM06]
+owaspASI: [ASI01, ASI02]
 stages: [test]
 tags: 
   - Container

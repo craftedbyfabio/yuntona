@@ -6,7 +6,8 @@ tier: "Enterprise Only"
 audience: "Blue Team"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM06]
+owaspLLM: [LLM06]
+owaspASI: [ASI09]
 stages: [govern, monitor]
 tags: 
   - Shadow AI

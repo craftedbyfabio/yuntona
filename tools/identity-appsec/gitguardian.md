@@ -6,7 +6,8 @@ tier: "Guided Setup"
 audience: "Blue Team"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM06]
+owaspLLM: [LLM06]
+owaspASI: [ASI04]
 stages: [develop, monitor]
 tags: 
   - Secrets

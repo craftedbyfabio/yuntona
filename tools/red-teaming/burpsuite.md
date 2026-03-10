@@ -6,7 +6,8 @@ tier: "Guided Setup"
 audience: "Red Team"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM02]
+owaspLLM: [LLM02]
+owaspASI: [ASI05]
 stages: [test, develop]
 tags: 
   - Web Sec

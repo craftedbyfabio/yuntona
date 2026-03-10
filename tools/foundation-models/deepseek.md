@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Builder"
 risk: "Critical (Red Flag)"
 agentic: false
-llm_risks: [LLM06]
+owaspLLM: [LLM06]
+owaspASI: []
 stages: []
 tags: 
   - LLM

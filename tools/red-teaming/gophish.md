@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Red Team"
 risk: "Caution (Offensive)"
 agentic: false
-llm_risks: []
+owaspLLM: []
+owaspASI: []
 stages: [test]
 tags: 
   - Phishing

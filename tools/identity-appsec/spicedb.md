@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Builder"
 risk: "Safe"
 agentic: true
-llm_risks: [LLM01, LLM07, LLM08]
+owaspLLM: [LLM01, LLM07, LLM08]
+owaspASI: [ASI02, ASI03]
 stages: [scope, develop]
 tags: 
   - AuthZ

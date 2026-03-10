@@ -6,7 +6,8 @@ tier: "Enterprise Only"
 audience: "Blue Team"
 risk: "Safe"
 agentic: true
-llm_risks: [LLM01, LLM07]
+owaspLLM: [LLM01, LLM07]
+owaspASI: [ASI02, ASI03, ASI10]
 stages: [govern, operate]
 tags: 
   - Low-Code

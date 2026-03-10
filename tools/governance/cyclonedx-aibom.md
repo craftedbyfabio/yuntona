@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Builder"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM03, LLM05]
+owaspLLM: [LLM03, LLM05]
+owaspASI: [ASI04]
 stages: [release, govern]
 tags: 
   - SBOM

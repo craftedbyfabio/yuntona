@@ -6,7 +6,8 @@ tier: "Plug & Play"
 audience: "All"
 risk: "Safe"
 agentic: true
-llm_risks: [LLM01, LLM07, LLM08]
+owaspLLM: [LLM01, LLM07, LLM08]
+owaspASI: [ASI01, ASI02, ASI04]
 stages: [scope]
 tags: 
   - Education

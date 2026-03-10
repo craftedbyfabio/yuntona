@@ -6,7 +6,8 @@ tier: "Plug & Play"
 audience: "Builder"
 risk: "Medium"
 agentic: false
-llm_risks: []
+owaspLLM: []
+owaspASI: []
 stages: [develop]
 tags: 
   - Code Analysis

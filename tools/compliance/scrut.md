@@ -6,7 +6,8 @@ tier: "Enterprise Only"
 audience: "Blue Team"
 risk: "Safe"
 agentic: false
-llm_risks: []
+owaspLLM: []
+owaspASI: []
 stages: [govern, monitor]
 tags: 
   - Compliance

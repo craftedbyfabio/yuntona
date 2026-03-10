@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Builder"
 risk: "Safe"
 agentic: false
-llm_risks: []
+owaspLLM: []
+owaspASI: []
 stages: []
 tags: 
   - Foundation Model

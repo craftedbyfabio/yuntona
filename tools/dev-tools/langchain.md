@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Builder"
 risk: "Safe"
 agentic: true
-llm_risks: []
+owaspLLM: []
+owaspASI: [ASI02, ASI04]
 stages: [develop]
 tags: 
   - Framework

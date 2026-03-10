@@ -6,7 +6,8 @@ tier: "Guided Setup"
 audience: "Builder"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM01, LLM02, LLM06]
+owaspLLM: [LLM01, LLM02, LLM06]
+owaspASI: [ASI01]
 stages: [test, operate]
 tags: 
   - APIs

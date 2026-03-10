@@ -6,7 +6,8 @@ tier: "Enterprise Only"
 audience: "Blue Team"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM04, LLM08]
+owaspLLM: [LLM04, LLM06, LLM07, LLM08]
+owaspASI: [ASI03, ASI04, ASI05]
 stages: [scope, monitor]
 tags: 
   - Cloud

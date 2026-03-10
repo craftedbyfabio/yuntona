@@ -6,7 +6,8 @@ tier: "Plug & Play"
 audience: "All"
 risk: "Medium Risk"
 agentic: false
-llm_risks: [LLM06]
+owaspLLM: [LLM06]
+owaspASI: []
 stages: []
 tags: 
   - LLM

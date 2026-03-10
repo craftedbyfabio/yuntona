@@ -6,7 +6,8 @@ tier: "Enterprise Only"
 audience: "Builder"
 risk: "Safe"
 agentic: false
-llm_risks: []
+owaspLLM: []
+owaspASI: []
 stages: [test, augment]
 tags: 
   - Data

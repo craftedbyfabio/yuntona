@@ -6,7 +6,8 @@ tier: "Enterprise Only"
 audience: "Blue Team"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM08]
+owaspLLM: [LLM08]
+owaspASI: [ASI03]
 stages: [deploy, operate]
 tags: 
   - Identity

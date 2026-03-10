@@ -6,7 +6,8 @@ tier: "Enterprise Only"
 audience: "Blue Team"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM01, LLM02, LLM10]
+owaspLLM: [LLM01, LLM02, LLM10]
+owaspASI: [ASI01, ASI02]
 stages: [operate]
 tags: 
   - Gateway

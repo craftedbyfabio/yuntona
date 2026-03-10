@@ -6,7 +6,8 @@ tier: "Enterprise Only"
 audience: "Blue Team"
 risk: "Safe"
 agentic: true
-llm_risks: []
+owaspLLM: []
+owaspASI: []
 stages: [scope, monitor]
 tags: 
   - TPRM

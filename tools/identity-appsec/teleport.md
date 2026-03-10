@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Blue Team"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM08]
+owaspLLM: [LLM08]
+owaspASI: [ASI03]
 stages: [deploy, monitor, govern]
 tags: 
   - Zero-Trust

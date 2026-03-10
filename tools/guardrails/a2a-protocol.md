@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Builder"
 risk: "Safe"
 agentic: true
-llm_risks: [LLM07, LLM08]
+owaspLLM: [LLM07, LLM08]
+owaspASI: [ASI07]
 stages: [scope, deploy]
 tags: 
   - Protocol

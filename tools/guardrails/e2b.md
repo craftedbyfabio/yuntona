@@ -6,7 +6,8 @@ tier: "Guided Setup"
 audience: "Builder"
 risk: "Safe"
 agentic: true
-llm_risks: [LLM02, LLM07]
+owaspLLM: [LLM02, LLM07]
+owaspASI: [ASI05]
 stages: [operate]
 tags: 
   - Sandbox

@@ -6,7 +6,8 @@ tier: "Plug & Play"
 audience: "All"
 risk: "Safe"
 agentic: false
-llm_risks: []
+owaspLLM: []
+owaspASI: []
 stages: [govern]
 tags: 
   - Legal

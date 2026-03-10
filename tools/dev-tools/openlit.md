@@ -6,7 +6,8 @@ tier: "Guided Setup"
 audience: "Builder"
 risk: "Safe"
 agentic: false
-llm_risks: []
+owaspLLM: []
+owaspASI: [ASI06, ASI08]
 stages: [monitor]
 tags: 
   - Observability

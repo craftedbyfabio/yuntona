@@ -6,7 +6,8 @@ tier: "Expert Required"
 audience: "Builder"
 risk: "Safe"
 agentic: false
-llm_risks: [LLM01, LLM02]
+owaspLLM: [LLM01, LLM02]
+owaspASI: [ASI01, ASI02, ASI07]
 stages: [operate, deploy]
 tags: 
   - Guardrails

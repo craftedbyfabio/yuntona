@@ -6,7 +6,8 @@ tier: "Plug & Play"
 audience: "Red Team"
 risk: "Safe"
 agentic: false
-llm_risks: []
+owaspLLM: []
+owaspASI: []
 stages: [test]
 tags: 
   - Training
