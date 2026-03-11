@@ -105,6 +105,13 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .ai-result-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--surface3)}
 .ai-result-info h4{font-size:.85rem;font-weight:600;margin-bottom:3px;display:flex;align-items:center;flex-wrap:wrap;gap:4px}
 .ai-result-info p{font-size:.78rem;color:var(--text-dim);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nl-badge{display:inline-flex;align-items:center;justify-content:center;padding:2px 7px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.06em;border-radius:4px;text-transform:uppercase;vertical-align:middle}
+.nl-interpretation{font-size:.78rem;color:var(--text-muted);padding:10px 14px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:var(--radius-sm);margin-bottom:12px;display:flex;align-items:center;flex-wrap:wrap;gap:6px;line-height:1.6}
+.nl-chip{display:inline-flex;padding:2px 8px;background:rgba(139,92,246,.15);color:#c4b5fd;border-radius:100px;font-size:.7rem;font-weight:500;white-space:nowrap}
+.nl-chip-sort{background:rgba(197,242,39,.12);color:var(--accent)}
+.nl-chip-q{background:rgba(56,189,248,.12);color:#7dd3fc}
+.nl-time{margin-left:auto;font-size:.65rem;opacity:.5}
+.ai-loading .nl-badge{margin-bottom:4px}
 .legend-bar{padding:8px 20px;background:var(--surface);border-bottom:1px solid var(--border)}
 .legend-inner{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
 .legend-item{display:flex;align-items:center;gap:6px;font-size:.68rem;color:var(--text-dim)}
@@ -273,7 +280,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       <span class="search-shortcut">⌘K</span>
     </div>
-    <div class="ai-hint" id="aiHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M18 14v1a6 6 0 0 1-12 0v-1"/><path d="M12 19v3"/></svg>Press Enter for full results</div>
+    <div class="ai-hint" id="aiHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M18 14v1a6 6 0 0 1-12 0v-1"/><path d="M12 19v3"/></svg>Press Enter — ask in plain English</div>
   </div>
 </section>
 <main>
@@ -290,7 +297,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 </main>
 <footer class="site-footer">
   <div style="margin-bottom:8px;opacity:.4"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 100 100" fill="none"><path d="M42 50 L58 50 L58 90 L42 90 Z" fill="#F8FAFC"/><path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#F8FAFC"/><path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#CCFF00"/></svg></div>
-  <p style="margin-bottom:8px">Yuntona™ v1.4.0 — Open-source risk operationalization for AI systems.</p>
+  <p style="margin-bottom:8px">Yuntona™ v1.5.0 — Open-source risk operationalization for AI systems.</p>
   <p>Maintained by <strong>Fabio</strong> · Third-Party Cyber Risk Lead · <a href="https://www.linkedin.com/in/fbaumeler" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">LinkedIn ↗</a></p>
   <p style="margin-top:8px;opacity:.5">134 tools · OWASP LLM Top 10 + Agentic Top 10 · LLMSecOps lifecycle</p>
 </footer>
@@ -299,10 +306,10 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
   <div class="card-detail" id="cardDetail"></div>
 </div>
 <div class="ac-dropdown" id="acDropdown"></div>
-<script src="js/typesense-search.js?v=1.4.0"
+<script src="js/typesense-search.js?v=1.5.0"
   data-host="c0fogpmr3htu5yabp-1.a2.typesense.net"
   data-key="j3JxzPVKlMJNv1rFzkv9QQw3vqvbayK4"
   data-collection="tools"></script>
-<script src="js/app.js?v=1.4.0"></script>
+<script src="js/app.js?v=1.5.0"></script>
 </body>
 </html>

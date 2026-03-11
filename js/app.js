@@ -106,15 +106,44 @@ function isQ(q){const l=q.toLowerCase().trim();return l.includes('?')||/^(what|w
 function aiSearch(query){
   var ov=document.getElementById('aiOverlay'),body=document.getElementById('aiBody');
   ov.classList.add('active');
-  body.innerHTML='<div class="ai-loading"><div class="dots"><span></span><span></span><span></span></div>Searching '+RES.length+' resources...</div>';
 
-  // Try Typesense first, fall back to local scorer
+  // Detect if query looks like natural language (question or intent)
+  var useNL=window.typesenseNLReady&&isQ(query);
+
+  if(useNL){
+    body.innerHTML='<div class="ai-loading"><div class="dots"><span></span><span></span><span></span></div><span class="nl-badge">NL</span> Understanding your question across '+RES.length+' resources...</div>';
+    window.typesenseNLSearch(query,{perPage:8,queryBy:'name,desc,tags,url,backWhat,backSecurity,backWhen,category,audience'})
+      .then(function(result){
+        if(result.found===0){
+          // NL returned nothing — fall back to keyword search
+          body.innerHTML='<div class="ai-loading"><div class="dots"><span></span><span></span><span></span></div>Retrying with keyword search...</div>';
+          aiSearchKeyword(query);return;
+        }
+        renderAiResults(query,result.hits.map(function(h){
+          var doc=h.document;
+          var match=RES.find(function(r){return r.name===doc.name})||doc;
+          return match;
+        }),result.nlParsed);
+      })
+      .catch(function(err){
+        console.warn('NL search failed, falling back to keyword:',err);
+        aiSearchKeyword(query);
+      });
+  }else if(window.typesenseReady){
+    body.innerHTML='<div class="ai-loading"><div class="dots"><span></span><span></span><span></span></div>Searching '+RES.length+' resources...</div>';
+    aiSearchKeyword(query);
+  }else{
+    body.innerHTML='<div class="ai-loading"><div class="dots"><span></span><span></span><span></span></div>Searching '+RES.length+' resources...</div>';
+    aiSearchFallback(query);
+  }
+}
+
+function aiSearchKeyword(query){
   if(window.typesenseReady){
     window.typesenseSearch(query,{perPage:8,queryBy:'name,desc,tags,url,backWhat,backSecurity,backWhen,category,audience',queryByWeights:'6,3,4,3,2,2,1,3,2'})
       .then(function(result){
         if(result.found===0){aiSearchFallback(query);return}
         renderAiResults(query,result.hits.map(function(h){
-          // Match hit document to enriched RES entry for complexity/tier data
           var doc=h.document;
           var match=RES.find(function(r){return r.name===doc.name})||doc;
           return match;
@@ -151,11 +180,47 @@ function aiSearchFallback(query){
   },300);
 }
 
-function renderAiResults(query,results){
+function renderAiResults(query,results,nlParsed){
   var body=document.getElementById('aiBody');
   if(!results.length){body.innerHTML='<div class="ai-response">No resources found matching "<strong>'+query+'</strong>". Try different keywords or use the LLM Top 10 filters.</div>';return}
   var tc=[...new Set(results.map(function(r){return r.category}))].slice(0,2).join(' and ');
-  body.innerHTML='<div class="ai-response">Found <strong>'+results.length+'</strong> resources for "<strong>'+query+'</strong>", primarily in '+tc+'.</div><div class="ai-results">'+results.map(function(r){
+
+  // Build NL interpretation banner if available
+  var nlBanner='';
+  if(nlParsed&&nlParsed.generated_params){
+    var gp=nlParsed.generated_params;
+    var chips=[];
+    if(gp.filter_by){
+      // Parse filter_by into human-readable chips
+      gp.filter_by.split('&&').forEach(function(f){
+        var ft=f.trim();
+        if(!ft)return;
+        // Map known filters to readable labels
+        var label=ft
+          .replace(/category:=/g,'Category: ').replace(/category:/g,'Category: ')
+          .replace(/riskRaw:=/g,'Risk: ').replace(/riskRaw:/g,'Risk: ')
+          .replace(/audience:=/g,'Audience: ').replace(/audience:/g,'Audience: ')
+          .replace(/complexity:=/g,'Complexity: ').replace(/complexity:/g,'Complexity: ')
+          .replace(/agentic:=/g,'Agentic: ').replace(/agentic:/g,'Agentic: ')
+          .replace(/owaspLLM:=/g,'OWASP LLM: ').replace(/owaspLLM:/g,'OWASP LLM: ')
+          .replace(/owaspASI:=/g,'OWASP ASI: ').replace(/owaspASI:/g,'OWASP ASI: ')
+          .replace(/stages:=/g,'Stage: ').replace(/stages:/g,'Stage: ')
+          .replace(/tags:=/g,'Tag: ').replace(/tags:/g,'Tag: ');
+        chips.push('<span class="nl-chip">'+label+'</span>');
+      });
+    }
+    if(gp.sort_by){
+      chips.push('<span class="nl-chip nl-chip-sort">Sort: '+gp.sort_by.replace(':',' ')+'</span>');
+    }
+    if(gp.q&&gp.q!=='*'){
+      chips.unshift('<span class="nl-chip nl-chip-q">Search: '+gp.q+'</span>');
+    }
+    if(chips.length){
+      nlBanner='<div class="nl-interpretation"><span class="nl-badge">NL</span> Interpreted as: '+chips.join(' ')+'<span class="nl-time">'+(nlParsed.parse_time_ms||'')+'ms</span></div>';
+    }
+  }
+
+  body.innerHTML=nlBanner+'<div class="ai-response">Found <strong>'+results.length+'</strong> resources for "<strong>'+query+'</strong>", primarily in '+tc+'.</div><div class="ai-results">'+results.map(function(r){
     var cx=r.complexity||{tier:'',tierKey:''};
     return '<a class="ai-result-card" href="'+r.url+'" target="_blank" rel="noopener"><div class="ai-result-icon '+(catMap[r.category]||'')+'"><div class="card-icon" style="width:36px;height:36px;font-size:.7rem">'+faviconImg(r.url,r.name,20)+'</div></div><div class="ai-result-info"><h4>'+r.name+'<span class="complexity-badge tier-'+cx.tierKey+'" style="font-size:.55rem;padding:2px 6px;margin-left:4px"><span class="badge-dot"></span>'+cx.tier+'</span>'+(r.agentic?'<span class="tag agentic" style="font-size:.55rem;padding:1px 6px">⚡</span>':'')+'</h4><p>'+r.desc+'</p></div></a>'
   }).join('')+'</div>';
