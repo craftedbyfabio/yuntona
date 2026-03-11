@@ -38,7 +38,7 @@ function parseTier(v){if(!v)return null;const l=v.trim().toLowerCase();for(let i
 
 function enrich(raw){return raw.map(r=>{const oi=parseTier(r.complexityOverride);let cx;if(oi!==null){cx={tier:TL[oi],tierKey:TK[oi],scores:{skill:0,deployment:0,governance:0,privacy:0},total:-1,overridden:true}}else{cx=assess(r)}return{...r,complexity:cx}})}
 
-let RES=[],aCat='All',aAud='All',aTier='all',aRisk='All',aStage='All',sQ='';
+let RES=[],aCat='All',aAud='All',aTier='all',aRisk='All',aStage='All',aFramework='LLM',sQ='';
 
 // UI Builders
 function buildFilters(){
@@ -62,7 +62,13 @@ function buildFilters(){
   mkDrop('cat','Category',cats,()=>aCat,v=>{aCat=v});
   mkDrop('role','Role',[{key:'All',label:'All Roles',count:RES.length},{key:'Blue Team',label:'Blue Team',count:RES.filter(r=>r.audience==='Blue Team').length},{key:'Red Team',label:'Red Team',count:RES.filter(r=>r.audience==='Red Team').length},{key:'Builder',label:'Builder',count:RES.filter(r=>r.audience==='Builder').length}],()=>aAud,v=>{aAud=v});
   mkDrop('tier','Expertise',[{key:'all',label:'All Levels',count:RES.length},{key:'plug-and-play',label:'Plug & Play',count:RES.filter(r=>r.complexity.tierKey==='plug-and-play').length},{key:'guided-setup',label:'Guided Setup',count:RES.filter(r=>r.complexity.tierKey==='guided-setup').length},{key:'expert-required',label:'Expert Required',count:RES.filter(r=>r.complexity.tierKey==='expert-required').length},{key:'enterprise-only',label:'Enterprise Only',count:RES.filter(r=>r.complexity.tierKey==='enterprise-only').length}],()=>aTier,v=>{aTier=v});
-  mkDrop('risk','LLM Risk',[{key:'All',label:'All Risks',count:RES.length},...['LLM01','LLM02','LLM03','LLM04','LLM05','LLM06','LLM07','LLM08','LLM09','LLM10'].map(r=>{const n={'LLM01':'Prompt Injection','LLM02':'Insecure Output','LLM03':'Supply Chain','LLM04':'Data Poisoning','LLM05':'Improper Output','LLM06':'Info Disclosure','LLM07':'Insecure Plugin','LLM08':'Excessive Agency','LLM09':'Overreliance','LLM10':'Model Theft'};return{key:r,label:n[r],code:r,count:RES.filter(x=>(x.llm||[]).includes(r)).length}})],()=>aRisk,v=>{aRisk=v});
+  // OWASP Framework toggle
+  const fwWrap=document.createElement('div');fwWrap.className='framework-toggle';
+  fwWrap.innerHTML=`<button class="fw-btn${aFramework==='LLM'?' active':''}" data-fw="LLM">LLM Top 10</button><button class="fw-btn${aFramework==='ASI'?' active':''}" data-fw="ASI">Agentic Top 10</button>`;
+  fwWrap.querySelectorAll('.fw-btn').forEach(b=>{b.onclick=()=>{aFramework=b.dataset.fw;aRisk='All';buildFilters();render();updateChips()}});
+  bar.appendChild(fwWrap);
+  if(aFramework==='LLM'){mkDrop('risk','LLM Top 10',[{key:'All',label:'All LLM Risks',count:RES.length},...['LLM01','LLM02','LLM03','LLM04','LLM05','LLM06','LLM07','LLM08','LLM09','LLM10'].map(r=>{const n={'LLM01':'Prompt Injection','LLM02':'Insecure Output','LLM03':'Supply Chain','LLM04':'Data Poisoning','LLM05':'Improper Output','LLM06':'Info Disclosure','LLM07':'Insecure Plugin','LLM08':'Excessive Agency','LLM09':'Overreliance','LLM10':'Model Theft'};return{key:r,label:n[r],code:r,count:RES.filter(x=>(x.owaspLLM||[]).includes(r)).length}})],()=>aRisk,v=>{aRisk=v})}
+  else{mkDrop('risk','Agentic Top 10',[{key:'All',label:'All Agentic Risks',count:RES.length},...['ASI01','ASI02','ASI03','ASI04','ASI05','ASI06','ASI07','ASI08','ASI09','ASI10'].map(r=>{const n={'ASI01':'Goal Hijack','ASI02':'Tool Misuse','ASI03':'Identity Abuse','ASI04':'Supply Chain','ASI05':'Code Execution','ASI06':'Memory Poisoning','ASI07':'Inter-Agent Comms','ASI08':'Cascading Failures','ASI09':'Trust Exploitation','ASI10':'Rogue Agents'};return{key:r,label:n[r],code:r,count:RES.filter(x=>(x.owaspASI||[]).includes(r)).length}})],()=>aRisk,v=>{aRisk=v})}
   const sl={scope:'Scope & Plan',augment:'Augment Data',develop:'Develop',test:'Test & Eval',release:'Release',deploy:'Deploy',operate:'Operate',monitor:'Monitor',govern:'Govern'};
   mkDrop('stage','Stage',[{key:'All',label:'All Stages',count:RES.length},...Object.entries(sl).map(([k,v])=>({key:k,label:v,count:RES.filter(x=>(x.stages||[]).includes(k)).length}))],()=>aStage,v=>{aStage=v});
   updateChips();
@@ -81,14 +87,15 @@ function updateChips(){
   if(aStage!=='All'){const sl={scope:'Scope & Plan',augment:'Augment Data',develop:'Develop',test:'Test & Eval',release:'Release',deploy:'Deploy',operate:'Operate',monitor:'Monitor',govern:'Govern'};const c=document.createElement('span');c.className='active-chip';c.innerHTML=(sl[aStage]||aStage)+x;c.onclick=()=>{aStage='All';buildFilters();render()};af.appendChild(c)}
 }
 
-function getF(){return RES.filter(r=>{if(aCat!=='All'&&r.category!==aCat)return false;if(aAud!=='All'&&r.audience!==aAud&&r.audience!=='All')return false;if(aTier!=='all'&&r.complexity.tierKey!==aTier)return false;if(aRisk!=='All'&&!(r.llm||[]).includes(aRisk))return false;if(aStage!=='All'&&!(r.stages||[]).includes(aStage))return false;if(sQ){const q=sQ.toLowerCase();return(r.name+' '+r.category+' '+r.desc+' '+r.tags.join(' ')+' '+r.audience+' '+r.complexity.tier+' '+(r.llm||[]).join(' ')).toLowerCase().includes(q)}return true})}
+function getF(){return RES.filter(r=>{if(aCat!=='All'&&r.category!==aCat)return false;if(aAud!=='All'&&r.audience!==aAud&&r.audience!=='All')return false;if(aTier!=='all'&&r.complexity.tierKey!==aTier)return false;if(aRisk!=='All'){if(aFramework==='LLM'){if(!(r.owaspLLM||[]).includes(aRisk))return false}else{if(!(r.owaspASI||[]).includes(aRisk))return false}}if(aStage!=='All'&&!(r.stages||[]).includes(aStage))return false;if(sQ){const q=sQ.toLowerCase();return(r.name+' '+r.category+' '+r.desc+' '+r.tags.join(' ')+' '+r.audience+' '+r.complexity.tier+' '+(r.owaspLLM||[]).join(' ')+' '+(r.owaspASI||[]).join(' ')).toLowerCase().includes(q)}return true})}
 
 function mkCard(r){
   const cx=r.complexity,c=document.createElement('div');c.className=`card ${catMap[r.category]||''} tier-${cx.tierKey}`;c.style.cursor='pointer';
   c.addEventListener('click',function(e){e.preventDefault();showCardDetail(r)});
   const ag=r.agentic?'<span class="tag agentic">⚡ Agentic</span>':'';
-  const rt=(r.llm||[]).length>0?r.llm.slice(0,3).map(l=>`<span class="tag llm-risk">${l}</span>`).join('')+(r.llm.length>3?`<span class="tag llm-risk">+${r.llm.length-3}</span>`:''):'';
-  c.innerHTML=`<div class="card-top"><div class="card-identity"><div class="card-icon">${faviconImg(r.url,r.name,24)}</div><div><div class="card-name">${r.name}</div><div class="card-category">${r.category}</div></div></div><span class="complexity-badge tier-${cx.tierKey}"><span class="badge-dot"></span>${cx.tier}</span></div><div class="card-desc">${r.desc}</div><div class="card-footer">${ag}${r.tags.slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('')}${rt}</div>`;
+  const rt=(r.owaspLLM||[]).length>0?r.owaspLLM.slice(0,2).map(l=>`<span class="tag llm-risk">${l}</span>`).join(''):'';
+  const at=(r.owaspASI||[]).length>0?r.owaspASI.slice(0,2).map(l=>`<span class="tag asi-risk">${l}</span>`).join(''):'';
+  c.innerHTML=`<div class="card-top"><div class="card-identity"><div class="card-icon">${faviconImg(r.url,r.name,24)}</div><div><div class="card-name">${r.name}</div><div class="card-category">${r.category}</div></div></div><span class="complexity-badge tier-${cx.tierKey}"><span class="badge-dot"></span>${cx.tier}</span></div><div class="card-desc">${r.desc}</div><div class="card-footer">${ag}${r.tags.slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('')}${rt}${at}</div>`;
   return c;
 }
 
@@ -125,7 +132,7 @@ function aiSearch(query){
 function aiSearchFallback(query){
   setTimeout(function(){
     var q=query.toLowerCase(),kw=q.replace(/[?.,!]/g,'').split(/\s+/).filter(function(w){return w.length>2&&!['what','which','how','the','that','this','for','are','can','with','from','does','about','help','show','find','list','some','best','good','tools','tool','any','easy','simple'].includes(w)});
-    var scored=RES.map(function(r){var sc=0;var h=(r.name+' '+r.desc+' '+r.tags.join(' ')+' '+r.category+' '+r.audience+' '+r.complexity.tier+' '+(r.llm||[]).join(' ')).toLowerCase();kw.forEach(function(k){if(h.includes(k))sc+=h.split(k).length});r.tags.forEach(function(t){if(q.includes(t.toLowerCase()))sc+=3});
+    var scored=RES.map(function(r){var sc=0;var h=(r.name+' '+r.desc+' '+r.tags.join(' ')+' '+r.category+' '+r.audience+' '+r.complexity.tier+' '+(r.owaspLLM||[]).join(' ')+' '+(r.owaspASI||[]).join(' ')).toLowerCase();kw.forEach(function(k){if(h.includes(k))sc+=h.split(k).length});r.tags.forEach(function(t){if(q.includes(t.toLowerCase()))sc+=3});
     if(q.includes('tprm')||q.includes('third-party')||q.includes('vendor risk'))if(r.category==='Third-Party Risk')sc+=5;
     if(q.includes('questionnaire')&&r.desc.toLowerCase().includes('questionnaire'))sc+=5;
     if(q.includes('compliance')&&(r.category==='Compliance Automation'||r.tags.some(function(t){return t.toLowerCase().includes('compliance')})))sc+=4;
@@ -137,7 +144,8 @@ function aiSearchFallback(query){
     if((q.includes('beginner')||q.includes('easy'))&&r.complexity.tierKey==='plug-and-play')sc+=4;
     if(q.includes('governance')||q.includes('standard'))if(r.category==='AI Governance & Standards')sc+=4;
     if(q.includes('agent')||q.includes('agentic'))if(r.agentic)sc+=5;
-    if(q.match(/llm0[1-9]|llm10/)){var m=q.match(/llm0[1-9]|llm10/g);m.forEach(function(lm){if((r.llm||[]).includes(lm.toUpperCase()))sc+=6})}
+    if(q.match(/llm0[1-9]|llm10/)){var m=q.match(/llm0[1-9]|llm10/g);m.forEach(function(lm){if((r.owaspLLM||[]).includes(lm.toUpperCase()))sc+=6})}
+    if(q.match(/asi0[1-9]|asi10/)){var ma=q.match(/asi0[1-9]|asi10/g);ma.forEach(function(ai){if((r.owaspASI||[]).includes(ai.toUpperCase()))sc+=6})}
     return Object.assign({},r,{score:sc})}).filter(function(r){return r.score>0}).sort(function(a,b){return b.score-a.score}).slice(0,8);
     renderAiResults(query,scored);
   },300);
@@ -367,7 +375,8 @@ function showCardDetail(tool){
   if(tool.complexity)metaTags+=`<span class="meta-tag">${tool.complexity.tier}</span>`;
   if(tool.audience&&tool.audience!=='All')metaTags+=`<span class="meta-tag">${tool.audience}</span>`;
   if(tool.agentic)metaTags+=`<span class="meta-tag">Agentic</span>`;
-  (tool.llm||[]).forEach(r=>{metaTags+=`<span class="meta-tag">${r}</span>`});
+  (tool.owaspLLM||[]).forEach(r=>{metaTags+=`<span class="meta-tag">${r}</span>`});
+  (tool.owaspASI||[]).forEach(r=>{metaTags+=`<span class="meta-tag asi">${r}</span>`});
   (tool.stages||[]).forEach(s=>{metaTags+=`<span class="meta-tag">${s}</span>`});
   detail.innerHTML=`<button class="back-close" id="closeDetailBtn" title="Close">&times;</button>
     <div class="back-header"><div class="back-avatar" style="background:${color}20;color:${color}">${faviconImg(tool.url,tool.name,32)}</div><div><div class="back-title">${tool.name}</div><div class="back-cat">${tool.category}</div></div></div>
