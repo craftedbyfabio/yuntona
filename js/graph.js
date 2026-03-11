@@ -9,7 +9,10 @@ const catColors = {
 const riskLabels = {
   LLM01:'Prompt Injection',LLM02:'Insecure Output',LLM03:'Training Data Poisoning',
   LLM04:'Model DoS',LLM05:'Supply Chain Vulns',LLM06:'Sensitive Info Disclosure',
-  LLM07:'Insecure Plugin Design',LLM08:'Excessive Agency',LLM09:'Overreliance',LLM10:'Model Theft'
+  LLM07:'Insecure Plugin Design',LLM08:'Excessive Agency',LLM09:'Overreliance',LLM10:'Model Theft',
+  ASI01:'Goal Hijack',ASI02:'Tool Misuse',ASI03:'Identity Abuse',ASI04:'Agentic Supply Chain',
+  ASI05:'Code Execution',ASI06:'Memory Poisoning',ASI07:'Inter-Agent Comms',ASI08:'Cascading Failures',
+  ASI09:'Trust Exploitation',ASI10:'Rogue Agents'
 };
 
 const stageLabels = {
@@ -21,7 +24,7 @@ function buildGraph(tools) {
   const nodes = [], links = [], nodeMap = new Map();
 
   Object.keys(riskLabels).forEach(id => {
-    const n = { id, label: id, fullLabel: riskLabels[id], type:'risk', color:'#ef4444' };
+    const n = { id, label: id, fullLabel: riskLabels[id], type:'risk', color: id.startsWith('ASI')?'#8b5cf6':'#ef4444' };
     nodes.push(n); nodeMap.set(id, n);
   });
 
@@ -36,11 +39,12 @@ function buildGraph(tools) {
     const n = {
       id, label:t.name, type:'tool', color: catColors[t.category]||'#c5f227',
       category:t.category, desc:t.desc, tags:t.tags||[], url:t.url,
-      risks:t.llm||[], stages:t.stages||[], agentic:t.agentic
+      risks:t.owaspLLM||[], asiRisks:t.owaspASI||[], stages:t.stages||[], agentic:t.agentic
     };
     nodes.push(n); nodeMap.set(id, n);
 
-    (t.llm||[]).forEach(r => { if(nodeMap.has(r)) links.push({source:id,target:r,type:'risk'}); });
+    (t.owaspLLM||[]).forEach(r => { if(nodeMap.has(r)) links.push({source:id,target:r,type:'risk'}); });
+    (t.owaspASI||[]).forEach(r => { if(nodeMap.has(r)) links.push({source:id,target:r,type:'risk'}); });
     (t.stages||[]).forEach(s => { const sid='stage-'+s; if(nodeMap.has(sid)) links.push({source:id,target:sid,type:'stage'}); });
   });
 
@@ -135,11 +139,13 @@ function render(tools) {
       tt.innerHTML=`<div class="tt-name">${d.label}</div><div class="tt-cat">${d.category}</div>
         <div class="tt-desc">${d.desc}</div><div style="font-size:.6rem;color:#4e6283;margin-top:4px">Double-click to visit ↗</div><div class="tt-badges">
         ${d.risks.map(r=>`<span class="tt-risk">${r}</span>`).join('')}
+        ${(d.asiRisks||[]).map(r=>`<span class="tt-risk" style="background:rgba(139,92,246,.15);color:#a78bfa">${r}</span>`).join('')}
         ${d.stages.map(s=>`<span class="tt-stage">${stageLabels[s]||s}</span>`).join('')}
         ${d.tags.slice(0,4).map(t=>`<span class="tt-tag">${t}</span>`).join('')}</div>`;
     } else if(d.type==='risk'){
       const ct=links.filter(l=>(l.target.id||l.target)===d.id||(l.source.id||l.source)===d.id).length;
-      tt.innerHTML=`<div class="tt-name">${d.label} — ${d.fullLabel}</div><div class="tt-desc">OWASP LLM Top 10 risk. Connected to ${ct} tools.</div>`;
+      const isASI=d.id.startsWith('ASI');
+      tt.innerHTML=`<div class="tt-name">${d.label} — ${d.fullLabel}</div><div class="tt-desc">OWASP ${isASI?'Agentic':'LLM'} Top 10 risk. Connected to ${ct} tools.</div>`;
     } else {
       const ct=links.filter(l=>(l.target.id||l.target)===d.id||(l.source.id||l.source)===d.id).length;
       tt.innerHTML=`<div class="tt-name">${d.label}</div><div class="tt-desc">LLMSecOps lifecycle stage. Connected to ${ct} tools.</div>`;
@@ -173,10 +179,11 @@ function render(tools) {
 
     // Show tooltip on click (essential for mobile/touch)
     if(d.type==='tool'){
-      tt.innerHTML='<div class="tt-name">'+d.label+'</div><div class="tt-cat">'+d.category+'</div><div class="tt-desc">'+d.desc+'</div><div style="font-size:.6rem;color:#4e6283;margin-top:4px">Double-click to visit ↗</div><div class="tt-badges">'+d.risks.map(function(r){return '<span class="tt-risk">'+r+'</span>'}).join('')+d.stages.map(function(s){return '<span class="tt-stage">'+(stageLabels[s]||s)+'</span>'}).join('')+d.tags.slice(0,4).map(function(t){return '<span class="tt-tag">'+t+'</span>'}).join('')+'</div>';
+      tt.innerHTML='<div class="tt-name">'+d.label+'</div><div class="tt-cat">'+d.category+'</div><div class="tt-desc">'+d.desc+'</div><div style="font-size:.6rem;color:#4e6283;margin-top:4px">Double-click to visit ↗</div><div class="tt-badges">'+d.risks.map(function(r){return '<span class="tt-risk">'+r+'</span>'}).join('')+(d.asiRisks||[]).map(function(r){return '<span class="tt-risk" style="background:rgba(139,92,246,.15);color:#a78bfa">'+r+'</span>'}).join('')+d.stages.map(function(s){return '<span class="tt-stage">'+(stageLabels[s]||s)+'</span>'}).join('')+d.tags.slice(0,4).map(function(t){return '<span class="tt-tag">'+t+'</span>'}).join('')+'</div>';
     } else if(d.type==='risk'){
       var ct=links.filter(function(l){return(l.target.id||l.target)===d.id||(l.source.id||l.source)===d.id}).length;
-      tt.innerHTML='<div class="tt-name">'+d.label+' — '+d.fullLabel+'</div><div class="tt-desc">OWASP LLM Top 10 risk. Connected to '+ct+' tools.</div>';
+      var isASI=d.id.indexOf('ASI')===0;
+      tt.innerHTML='<div class="tt-name">'+d.label+' — '+d.fullLabel+'</div><div class="tt-desc">OWASP '+(isASI?'Agentic':'LLM')+' Top 10 risk. Connected to '+ct+' tools.</div>';
     } else {
       var ct2=links.filter(function(l){return(l.target.id||l.target)===d.id||(l.source.id||l.source)===d.id}).length;
       tt.innerHTML='<div class="tt-name">'+d.label+'</div><div class="tt-desc">LLMSecOps lifecycle stage. Connected to '+ct2+' tools.</div>';
@@ -272,7 +279,7 @@ function render(tools) {
       } else if(v==='risks'){
         node.transition().duration(400).attr('opacity',d=>{
           if(d.type==='risk')return 1; if(d.type==='stage')return .04;
-          return d.risks&&d.risks.length>0?.75:.04;
+          return (d.risks&&d.risks.length>0)||(d.asiRisks&&d.asiRisks.length>0)?.75:.04;
         });
         link.transition().duration(400).attr('opacity',d=>d.type==='risk'?1:.02);
       } else {
