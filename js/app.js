@@ -229,7 +229,7 @@ function renderAiResults(query,results,nlParsed){
 // Initialisation — fetch tool data from JSON (single source of truth)
 function init(){
   var ls=document.getElementById('loadingScreen');
-  fetch('data/tools.json')
+  fetch('/data/tools.json')
     .then(function(r){
       if(!r.ok)throw new Error('HTTP '+r.status);
       return r.json();

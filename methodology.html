@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methodology — Yuntona™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07070a;
+      --surface: #0e0e12;
+      --surface2: #141418;
+      --surface3: #1a1a1f;
+      --border: #222228;
+      --border-hover: #333340;
+      --text: #f0f0f2;
+      --text-muted: #9d9da8;
+      --text-dim: #636370;
+      --accent: #22d3ee;
+      --accent-glow: rgba(34, 211, 238, 0.12);
+      --accent-glow2: rgba(34, 211, 238, 0.06);
+      --accent-dark: #0ea5e9;
+      --accent-border: rgba(34, 211, 238, 0.18);
+      --warm: #eab308;
+      --warm-glow: rgba(234, 179, 8, 0.08);
+      --warm-border: rgba(234, 179, 8, 0.18);
+      --green: #22c55e;
+      --font-brand: 'Clash Display', 'General Sans', sans-serif;
+      --font-display: 'General Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-display);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    .page-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .page-header {
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .breadcrumb {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      font-family: var(--font-mono);
+    }
+
+    .breadcrumb a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.4; }
+
+    h1 {
+      font-family: var(--font-brand);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle { font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; max-width: 600px; font-weight: 300; }
+
+    h2 {
+      font-family: var(--font-brand);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 3rem 0 1rem;
+    }
+
+    p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 0.95rem; font-weight: 300; }
+
+    .principles { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0 2rem; }
+
+    .principle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.35rem 1.5rem;
+      transition: border-color 0.25s;
+    }
+
+    .principle:hover { border-color: var(--border-hover); }
+
+    .principle-label { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+    .principle-text { color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; margin-bottom: 0; font-weight: 300; }
+
+    .source-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1.5rem 0 2rem; }
+
+    .source-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+      transition: border-color 0.25s;
+    }
+
+    .source-item:hover { border-color: var(--border-hover); }
+    .source-name { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+    .source-desc { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; font-weight: 300; }
+
+    .callout { border-radius: 12px; padding: 1.35rem 1.5rem; margin: 2rem 0; }
+    .callout-accent { background: var(--accent-glow2); border: 1px solid var(--accent-border); }
+    .callout-warm { background: var(--warm-glow); border: 1px solid var(--warm-border); }
+    .callout p { color: var(--text-muted); margin-bottom: 0; font-size: 0.88rem; }
+    .callout strong { color: var(--text); }
+    .callout a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+    .coverage-row { display: flex; align-items: center; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); }
+    .coverage-row:last-child { border-bottom: none; }
+    .coverage-label { font-size: 0.85rem; font-weight: 500; min-width: 200px; }
+    .coverage-bar-track { flex: 1; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+    .coverage-bar-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+    .coverage-value { font-size: 0.78rem; color: var(--text-dim); min-width: 45px; text-align: right; font-family: var(--font-mono); }
+
+    .footer-note {
+      font-size: 0.8rem; color: var(--text-dim); line-height: 1.6;
+      margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); font-weight: 300;
+    }
+
+    @media (max-width: 600px) {
+      .page-container { padding: 2.5rem 1.25rem 4rem; }
+      h1 { font-size: 1.8rem; }
+      .source-grid { grid-template-columns: 1fr; }
+      .coverage-row { flex-wrap: wrap; gap: 0.5rem; }
+      .coverage-label { min-width: 100%; }
+    }
+  /* ─── SHARED NAV ─── */
+.site-nav{padding:0;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10001;background:rgba(7,7,10,.92);backdrop-filter:blur(16px)}
+.site-nav .nav-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;height:56px}
+.site-nav .wordmark{font-family:var(--font-brand);font-size:1.1rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text);text-decoration:none}
+.site-nav .wordmark .tm{font-size:.45em;opacity:.4;vertical-align:super;font-weight:400;font-family:var(--font-display)}
+.site-nav .wordmark-tag{font-family:var(--font-display);font-size:.72rem;font-weight:400;letter-spacing:.01em;text-transform:none;color:var(--text-dim);margin-left:.5rem;padding-left:.75rem;border-left:1px solid var(--border);line-height:1.2}
+.site-nav .nav-links{display:flex;gap:0;align-items:center;height:100%}
+.site-nav .nav-link{font-size:.84rem;color:var(--text-muted);text-decoration:none;transition:color .2s;padding:0 1rem;height:100%;display:flex;align-items:center;position:relative;font-weight:400}
+.site-nav .nav-link:hover,.site-nav .nav-link:focus-visible{color:var(--text)}
+.site-nav .nav-link::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;background:var(--accent);opacity:0;transition:opacity .2s}
+.site-nav .nav-link:hover::after{opacity:1}
+.site-nav .nav-link[aria-current="page"]::after{opacity:1}
+.site-nav .nav-link[aria-current="page"]{color:var(--text);font-weight:500}
+.site-nav .nav-dropdown{position:relative;height:100%;display:flex;align-items:center}
+.site-nav .nav-dropdown-trigger{font-size:.84rem;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:0 1rem;height:100%;display:flex;align-items:center;gap:5px;font-family:var(--font-display);transition:color .2s;position:relative;font-weight:400}
+.site-nav .nav-dropdown-trigger:hover,.site-nav .nav-dropdown-trigger:focus-visible,.site-nav .nav-dropdown.open .nav-dropdown-trigger{color:var(--text)}
+.site-nav .nav-dropdown-trigger::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;background:var(--accent);opacity:0;transition:opacity .2s}
+.site-nav .nav-dropdown:hover .nav-dropdown-trigger::after,.site-nav .nav-dropdown.open .nav-dropdown-trigger::after{opacity:1}
+.site-nav .nav-dropdown-chevron{width:12px;height:12px;opacity:.5;transition:transform .2s}
+.site-nav .nav-dropdown.open .nav-dropdown-chevron{transform:rotate(180deg)}
+.site-nav .nav-dropdown-menu{position:absolute;top:100%;left:0;min-width:220px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .2s;z-index:200}
+.site-nav .nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(4px)}
+.site-nav .nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;text-decoration:none;color:var(--text-muted);font-size:.84rem;transition:all .15s}
+.site-nav .nav-dropdown-item:hover,.site-nav .nav-dropdown-item:focus-visible{background:var(--accent-glow);color:var(--text)}
+.site-nav .nav-dropdown-item svg{width:16px;height:16px;opacity:.5;flex-shrink:0}
+.site-nav .nav-dropdown-item:hover svg{opacity:.8}
+.site-nav .nav-dropdown-item-desc{font-size:.7rem;color:var(--text-dim);margin-top:1px}
+.site-nav .nav-cta{font-size:.82rem;color:var(--bg);background:var(--accent);padding:.4rem 1.1rem;border-radius:8px;font-weight:600;transition:all .2s;text-decoration:none;margin-left:.5rem;white-space:nowrap}
+.site-nav .nav-cta:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.site-nav .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--text-muted);transition:color .2s;border-radius:8px;-webkit-tap-highlight-color:transparent}
+.site-nav .nav-hamburger:hover,.site-nav .nav-hamburger:focus-visible{color:var(--text)}
+.site-nav .nav-hamburger svg{display:block}
+.nav-mobile{display:none;position:fixed;inset:0;top:56px;background:var(--bg);z-index:9999;padding:1.5rem;flex-direction:column;gap:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.nav-mobile.open{display:flex}
+.nav-mobile-link{display:flex;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid var(--border);color:var(--text-muted);text-decoration:none;font-size:1rem;font-weight:400;transition:color .15s}
+.nav-mobile-link:hover,.nav-mobile-link:focus-visible{color:var(--text)}
+.nav-mobile-link svg{width:18px;height:18px;opacity:.5}
+.nav-mobile-label{font-size:.68rem;font-family:var(--font-mono);font-weight:600;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;padding:20px 0 6px}
+.nav-mobile-cta{display:flex;align-items:center;justify-content:center;margin-top:1.5rem;padding:.8rem;background:var(--accent);color:var(--bg);border-radius:10px;text-decoration:none;font-weight:600;font-size:.92rem}
+@media(max-width:768px){.site-nav .nav-links{display:none}.site-nav .nav-hamburger{display:flex}.site-nav .wordmark-tag{display:none}}
+
+</style>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="site-nav" role="navigation" aria-label="Main navigation"><div class="nav-inner">
+  <a href="/" class="wordmark" aria-label="Yuntona home">YUNTONA<span class="tm">™</span> <span class="wordmark-tag">Risk operationalization for AI systems</span></a>
+  <div class="nav-links" id="desktopNav">
+    <div class="nav-dropdown" id="platformDropdown">
+      <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="platformMenu">Platform <svg class="nav-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="nav-dropdown-menu" id="platformMenu" role="menu">
+        <a href="/directory" class="nav-dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><div><div>Tool Directory</div><div class="nav-dropdown-item-desc">147 tools · Search &amp; filter</div></div></a>
+        <a href="/graph" class="nav-dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 7.5 15.5 16.5M15.5 7.5 8.5 16.5"/></svg><div><div>Knowledge Graph</div><div class="nav-dropdown-item-desc">Interactive risk visualisation</div></div></a>
+      </div>
+    </div>
+    <a href="/methodology" class="nav-link" aria-current="page">Methodology</a>
+    <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" class="nav-link">GitHub</a>
+    <a href="/directory" class="nav-cta">Explore Directory</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-expanded="false" aria-controls="navMobile" aria-label="Open menu"><svg id="hamburgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+</div></nav>
+<div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile navigation">
+  <div class="nav-mobile-label">Platform</div>
+  <a href="/directory" class="nav-mobile-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Tool Directory</a>
+  <a href="/graph" class="nav-mobile-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 7.5 15.5 16.5M15.5 7.5 8.5 16.5"/></svg>Knowledge Graph</a>
+  <div class="nav-mobile-label">Resources</div>
+  <a href="/methodology" class="nav-mobile-link">Methodology</a>
+  <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" class="nav-mobile-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+  <a href="/directory" class="nav-mobile-cta">Explore Directory →</a>
+</div>
+
+  <div class="page-container">
+    <header class="page-header">
+
+      <h1>How We Curate</h1>
+      <p class="subtitle">Yuntona is built on practitioner-led continuous intelligence gathering with expert curation — not automated scraping or vendor self-submission.</p>
+    </header>
+
+    <h2>Philosophy</h2>
+    <p>The AI security tooling landscape moves faster than any automated system can meaningfully evaluate. New tools, frameworks, and attack surfaces emerge weekly. Keeping pace requires continuous immersion in the practitioner community, not periodic desk research.</p>
+    <p>Every tool in the Yuntona directory has been individually evaluated by a security professional with over a decade of experience spanning SOC/NOC operations, third-party risk management, financial services regulation, and hands-on AI security research. The directory reflects professional judgement informed by real-world operational context — not algorithmic scoring.</p>
+
+    <h2>Curation Principles</h2>
+    <div class="principles">
+      <div class="principle">
+        <div class="principle-label">Multi-Source Intelligence</div>
+        <p class="principle-text">Discovery draws from practitioner discourse on LinkedIn and specialist forums, industry conference proceedings, standards body publications, OWASP working group publications, industry intelligence newsletters, and direct engagement with thought leaders in AI security.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-label">Expert Signal Filtering</div>
+        <p class="principle-text">Not everything discovered gets listed. Each candidate tool is assessed against the current threat landscape, mapped to OWASP risk categories, and evaluated for genuine operational utility. Tools that duplicate existing coverage without meaningful differentiation are excluded.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-label">Community-Embedded Discovery</div>
+        <p class="principle-text">The best tools surface in comment threads, conference hallway conversations, and working group discussions — not product launch pages. Following the practitioners who build and break AI systems is how Yuntona finds tools before they reach mainstream awareness.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-label">Continuous Rather Than Periodic</div>
+        <p class="principle-text">The directory is updated on a rolling basis as new tools are discovered and evaluated. This is not a quarterly report — it is a living artefact maintained through daily engagement with the AI security ecosystem.</p>
+      </div>
+    </div>
+
+    <h2>Intelligence Sources</h2>
+    <div class="source-grid">
+      <div class="source-item">
+        <div class="source-name">Standards Bodies</div>
+        <div class="source-desc">OWASP, NIST, CSA, MITRE, ISO/IEC publications and working group output</div>
+      </div>
+      <div class="source-item">
+        <div class="source-name">Industry Intelligence</div>
+        <div class="source-desc">CB Insights, analyst reports, vendor-neutral market research, emerging technology coverage</div>
+      </div>
+      <div class="source-item">
+        <div class="source-name">Conferences & Events</div>
+        <div class="source-desc">NHIcon, CSA summits, AI security workshops, vendor-neutral industry events</div>
+      </div>
+      <div class="source-item">
+        <div class="source-name">Practitioner Networks</div>
+        <div class="source-desc">OWASP AIUC community, LinkedIn specialist groups, thought leader commentary</div>
+      </div>
+      <div class="source-item">
+        <div class="source-name">Primary Research</div>
+        <div class="source-desc">Academic papers, arXiv preprints, vendor documentation, GitHub repositories</div>
+      </div>
+    </div>
+
+    <h2>OWASP Risk Mapping</h2>
+    <p>Every tool is mapped against the OWASP LLM Top 10 (2025) and the OWASP Agentic Top 10 (2026) to show which risks it addresses. Mappings are derived from analysis of each tool's documented capabilities, target threat model, and operational scope — assessed against the published risk descriptions in each OWASP standard.</p>
+
+    <div style="margin: 1.5rem 0 2rem;">
+      <div class="coverage-row">
+        <span class="coverage-label">LLM Top 10 (2025)</span>
+        <div class="coverage-bar-track"><div class="coverage-bar-fill" style="width:100%"></div></div>
+        <span class="coverage-value">10 / 10</span>
+      </div>
+      <div class="coverage-row">
+        <span class="coverage-label">Agentic Top 10 (2026)</span>
+        <div class="coverage-bar-track"><div class="coverage-bar-fill" style="width:100%"></div></div>
+        <span class="coverage-value">10 / 10</span>
+      </div>
+    </div>
+
+    <div class="callout callout-accent">
+      <p><strong>AI-Assisted Execution, Human Design.</strong> OWASP risk mappings across 147 tools and 20 risk categories were produced using AI as an analytical engine. The methodology, evaluation schema, and framework inputs were designed by the curator. Every output was reviewed and validated against the published OWASP standards. This is human-directed analysis at scale — not automated classification.</p>
+    </div>
+
+    <h2>What Gets Listed</h2>
+    <p>A tool or framework is added to the directory when it meets three criteria: it addresses a genuine security risk in the generative or agentic AI stack, it is operational or near-operational (not vaporware), and it offers meaningful capability that is not already covered by existing entries. Open-source tools, commercial platforms, and frameworks are all eligible. Vendor sponsorship does not influence inclusion or risk ratings.</p>
+
+    <div class="callout callout-warm">
+      <p><strong>Transparency note.</strong> Yuntona is maintained by a single practitioner. The directory reflects one expert's informed judgement — not committee consensus or crowd-sourced voting. This is a deliberate choice: curation quality depends on accountability, not volume. If you believe a tool should be included or a mapping corrected, <a href="/submit">submit it for review</a>.</p>
+    </div>
+
+    <div class="footer-note">
+      Yuntona™ is an independent, open-source project. It is not affiliated with or endorsed by OWASP, NIST, MITRE, or any vendor listed in the directory. OWASP risk categories are used under the Creative Commons licence. Last updated March 2026.
+    </div>
+  </div>
+<script>
+// ─── Shared nav: Platform dropdown + Mobile hamburger ───
+(function(){
+  var dd=document.getElementById('platformDropdown');
+  if(!dd)return;
+  var trigger=dd.querySelector('.nav-dropdown-trigger');
+  var menu=dd.querySelector('.nav-dropdown-menu');
+  var items=menu.querySelectorAll('.nav-dropdown-item');
+  function openDD(){dd.classList.add('open');trigger.setAttribute('aria-expanded','true');if(items[0])items[0].focus()}
+  function closeDD(){dd.classList.remove('open');trigger.setAttribute('aria-expanded','false')}
+  function toggleDD(){dd.classList.contains('open')?closeDD():openDD()}
+  trigger.addEventListener('click',function(e){e.stopPropagation();toggleDD()});
+  dd.addEventListener('mouseenter',function(){if(window.innerWidth>768)openDD()});
+  dd.addEventListener('mouseleave',function(){if(window.innerWidth>768)closeDD()});
+  menu.addEventListener('keydown',function(e){
+    var idx=Array.from(items).indexOf(document.activeElement);
+    if(e.key==='ArrowDown'){e.preventDefault();items[(idx+1)%items.length].focus()}
+    else if(e.key==='ArrowUp'){e.preventDefault();items[(idx-1+items.length)%items.length].focus()}
+    else if(e.key==='Escape'){closeDD();trigger.focus()}
+    else if(e.key==='Tab'){closeDD()}
+  });
+  document.addEventListener('click',function(e){if(!dd.contains(e.target))closeDD()});
+})();
+(function(){
+  var btn=document.getElementById('navHamburger');
+  var mobile=document.getElementById('navMobile');
+  if(!btn||!mobile)return;
+  var openIcon=document.getElementById('hamburgerIcon');
+  var closeIcon=document.getElementById('closeIcon');
+  function toggleMobile(){
+    var isOpen=mobile.classList.toggle('open');
+    btn.setAttribute('aria-expanded',isOpen);
+    openIcon.style.display=isOpen?'none':'block';
+    closeIcon.style.display=isOpen?'block':'none';
+    btn.setAttribute('aria-label',isOpen?'Close menu':'Open menu');
+    document.body.style.overflow=isOpen?'hidden':'';
+  }
+  btn.addEventListener('click',toggleMobile);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mobile.classList.contains('open'))toggleMobile()});
+  window.addEventListener('resize',function(){if(window.innerWidth>768&&mobile.classList.contains('open'))toggleMobile()});
+  mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(mobile.classList.contains('open'))toggleMobile()})});
+})();
+
+</script>
+</body>
+</html>

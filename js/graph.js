@@ -37,7 +37,7 @@ function buildGraph(tools) {
   tools.forEach((t, i) => {
     const id = 'tool-'+i;
     const n = {
-      id, label:t.name, type:'tool', color: catColors[t.category]||'#c5f227',
+      id, label:t.name, type:'tool', color: catColors[t.category]||'#22d3ee',
       category:t.category, desc:t.desc, tags:t.tags||[], url:t.url,
       risks:t.owaspLLM||[], asiRisks:t.owaspASI||[], stages:t.stages||[], agentic:t.agentic
     };
@@ -116,7 +116,7 @@ function render(tools) {
     .attr('fill','rgba(6,182,212,.06)').attr('stroke','#06b6d4').attr('stroke-width',2).attr('filter','url(#glow)');
   node.filter(d=>d.type==='stage').append('text').text(d=>d.label)
     .attr('text-anchor','middle').attr('dy','.35em')
-    .attr('font-size','6px').attr('font-weight','600').attr('font-family','Outfit,system-ui').attr('fill','#06b6d4');
+    .attr('font-size','6px').attr('font-weight','600').attr('font-family',''General Sans',system-ui').attr('fill','#06b6d4');
 
   // Tool nodes
   node.filter(d=>d.type==='tool').append('circle')
@@ -128,7 +128,7 @@ function render(tools) {
   node.filter(d=>d.type==='tool').append('text')
     .text(d=>d.label.length>22?d.label.slice(0,20)+'…':d.label)
     .attr('x',10).attr('dy','.35em').attr('font-size','6px')
-    .attr('font-family','Outfit,system-ui').attr('fill',d=>d.color)
+    .attr('font-family',''General Sans',system-ui').attr('fill',d=>d.color)
     .attr('fill-opacity',0).attr('class','tool-label');
 
   // Tooltip
@@ -137,7 +137,7 @@ function render(tools) {
   node.on('mouseover',(event,d) => {
     if(d.type==='tool'){
       tt.innerHTML=`<div class="tt-name">${d.label}</div><div class="tt-cat">${d.category}</div>
-        <div class="tt-desc">${d.desc}</div><div style="font-size:.6rem;color:#4e6283;margin-top:4px">Double-click to visit ↗</div><div class="tt-badges">
+        <div class="tt-desc">${d.desc}</div><div style="font-size:.6rem;color:#636370;margin-top:4px">Double-click to visit ↗</div><div class="tt-badges">
         ${d.risks.map(r=>`<span class="tt-risk">${r}</span>`).join('')}
         ${(d.asiRisks||[]).map(r=>`<span class="tt-risk" style="background:rgba(139,92,246,.15);color:#a78bfa">${r}</span>`).join('')}
         ${d.stages.map(s=>`<span class="tt-stage">${stageLabels[s]||s}</span>`).join('')}
@@ -179,7 +179,7 @@ function render(tools) {
 
     // Show tooltip on click (essential for mobile/touch)
     if(d.type==='tool'){
-      tt.innerHTML='<div class="tt-name">'+d.label+'</div><div class="tt-cat">'+d.category+'</div><div class="tt-desc">'+d.desc+'</div><div style="font-size:.6rem;color:#4e6283;margin-top:4px">Double-click to visit ↗</div><div class="tt-badges">'+d.risks.map(function(r){return '<span class="tt-risk">'+r+'</span>'}).join('')+(d.asiRisks||[]).map(function(r){return '<span class="tt-risk" style="background:rgba(139,92,246,.15);color:#a78bfa">'+r+'</span>'}).join('')+d.stages.map(function(s){return '<span class="tt-stage">'+(stageLabels[s]||s)+'</span>'}).join('')+d.tags.slice(0,4).map(function(t){return '<span class="tt-tag">'+t+'</span>'}).join('')+'</div>';
+      tt.innerHTML='<div class="tt-name">'+d.label+'</div><div class="tt-cat">'+d.category+'</div><div class="tt-desc">'+d.desc+'</div><div style="font-size:.6rem;color:#636370;margin-top:4px">Double-click to visit ↗</div><div class="tt-badges">'+d.risks.map(function(r){return '<span class="tt-risk">'+r+'</span>'}).join('')+(d.asiRisks||[]).map(function(r){return '<span class="tt-risk" style="background:rgba(139,92,246,.15);color:#a78bfa">'+r+'</span>'}).join('')+d.stages.map(function(s){return '<span class="tt-stage">'+(stageLabels[s]||s)+'</span>'}).join('')+d.tags.slice(0,4).map(function(t){return '<span class="tt-tag">'+t+'</span>'}).join('')+'</div>';
     } else if(d.type==='risk'){
       var ct=links.filter(function(l){return(l.target.id||l.target)===d.id||(l.source.id||l.source)===d.id}).length;
       var isASI=d.id.indexOf('ASI')===0;
@@ -345,9 +345,9 @@ function render(tools) {
 }
 
 // Load data from app.js
-fetch('data/tools.json')
+fetch('/data/tools.json')
   .then(function(r){
-    if(!r.ok)throw new Error('HTTP '+r.status+' fetching data/tools.json');
+    if(!r.ok)throw new Error('HTTP '+r.status+' fetching /data/tools.json');
     return r.json();
   })
   .then(function(tools){

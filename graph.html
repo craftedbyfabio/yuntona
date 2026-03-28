@@ -7,17 +7,19 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --bg:#0b1121;--surface:#111a2e;--border:#1e2d4a;
-    --text:#e4e8f1;--text-muted:#a8adb8;--text-dim:#4e6283;
-    --accent:#c5f227;--accent-glow:rgba(197,242,39,.15);
+    --bg:#07070a;--surface:#0e0e12;--border:#222228;
+    --text:#f0f0f2;--text-muted:#9d9da8;--text-dim:#636370;
+    --accent:#22d3ee;--accent-glow:rgba(34,211,238,.15);
     --red:#ef4444;--yellow:#eab308;--green:#22c55e;--cyan:#06b6d4;
     --pink:#ec4899;--purple:#a855f7;--orange:#f97316;
   }
-  body{background:var(--bg);color:var(--text);font-family:'Outfit',system-ui,sans-serif;overflow:hidden;height:100vh}
+  body{background:var(--bg);color:var(--text);font-family:'General Sans',system-ui,sans-serif;overflow:hidden;height:100vh}
   
   .graph-header{
     position:fixed;top:0;left:0;right:0;z-index:100;
@@ -27,7 +29,7 @@
     border-bottom:1px solid var(--border);
   }
   .graph-brand{display:flex;align-items:center;gap:2px}
-  .graph-brand svg{filter:drop-shadow(0 0 8px rgba(204,255,0,.2))}
+  .graph-brand svg{filter:drop-shadow(0 0 8px rgba(34,211,238,.2))}
   .graph-brand h1{font-size:1.1rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;display:flex;align-items:center;gap:0}
   .graph-brand span{font-size:.75rem;color:var(--text-dim);margin-left:8px;font-weight:400;letter-spacing:.05em}
   
@@ -37,7 +39,7 @@
     background:var(--surface);color:var(--text-muted);font-size:.7rem;
     cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.03em;
   }
-  .ctrl-btn:hover,.ctrl-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(197,242,39,.05)}
+  .ctrl-btn:hover,.ctrl-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(34,211,238,.05)}
   .ctrl-group{display:flex;gap:4px;flex-wrap:wrap}
   .ctrl-label{font-size:.6rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-right:4px;align-self:center}
   
@@ -57,7 +59,7 @@
   .tooltip .tt-cat{font-size:.65rem;color:var(--text-dim);margin-bottom:6px}
   .tooltip .tt-desc{color:var(--text-muted);font-size:.7rem}
   .tooltip .tt-badges{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px}
-  .tooltip .tt-tag{padding:2px 6px;border-radius:3px;font-size:.6rem;background:rgba(197,242,39,.08);color:var(--accent);border:1px solid rgba(197,242,39,.15)}
+  .tooltip .tt-tag{padding:2px 6px;border-radius:3px;font-size:.6rem;background:rgba(34,211,238,.08);color:var(--accent);border:1px solid rgba(34,211,238,.15)}
   .tooltip .tt-risk{padding:2px 6px;border-radius:3px;font-size:.6rem;font-weight:600;background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.2)}
   .tooltip .tt-stage{padding:2px 6px;border-radius:3px;font-size:.6rem;font-weight:600;background:rgba(6,182,212,.1);color:var(--cyan);border:1px solid rgba(6,182,212,.2)}
   
@@ -92,45 +94,86 @@
     .stat-val{font-size:.85rem}
     .ctrl-btn{padding:4px 8px;font-size:.6rem}
   }
-  .view-switch{position:fixed;top:16px;right:16px;z-index:10001;display:flex;flex-direction:column;align-items:center}
-  .view-switch-toggle{width:36px;height:36px;border-radius:50%;background:transparent;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0;transition:transform .2s}
-  .view-switch-toggle:hover{transform:scale(1.1)}
-  .view-switch-toggle .dot{width:5px;height:5px;border-radius:50%;background:#c5f227;transition:box-shadow .2s}
-  .view-switch-toggle:hover .dot{box-shadow:0 0 8px rgba(197,242,39,.6)}
-  .view-switch-menu{position:absolute;top:42px;right:0;background:rgba(17,26,46,.95);backdrop-filter:blur(12px);border:1px solid #1e2d4a;border-radius:10px;padding:6px;min-width:160px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .2s}
-  .view-switch-menu.open{opacity:1;visibility:visible;transform:translateY(0)}
-  .view-switch-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:7px;text-decoration:none;color:#a8adb8;font-size:.78rem;font-family:'Outfit',system-ui,sans-serif;transition:all .15s;white-space:nowrap}
-  .view-switch-menu a:hover{background:rgba(197,242,39,.06);color:#c5f227}
-  .view-switch-menu a.active{color:#c5f227;font-weight:500}
-  .view-switch-menu a svg{flex-shrink:0;opacity:.6}
-  .view-switch-menu a:hover svg,.view-switch-menu a.active svg{opacity:1}
-  .view-switch-menu .menu-sep{height:1px;background:#1e2d4a;margin:4px 8px}
-  @media(max-width:768px){.view-switch{top:10px;right:10px}.view-switch-toggle{width:32px;height:32px}.view-switch-toggle .dot{width:4px;height:4px}}
+/* ─── SHARED NAV ─── */
+.site-nav{padding:0;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10001;background:rgba(7,7,10,.92);backdrop-filter:blur(16px)}
+.site-nav .nav-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;height:56px}
+.site-nav .wordmark{font-family:var(--font-brand);font-size:1.1rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text);text-decoration:none}
+.site-nav .wordmark .tm{font-size:.45em;opacity:.4;vertical-align:super;font-weight:400;font-family:var(--font-display)}
+.site-nav .wordmark-tag{font-family:var(--font-display);font-size:.72rem;font-weight:400;letter-spacing:.01em;text-transform:none;color:var(--text-dim);margin-left:.5rem;padding-left:.75rem;border-left:1px solid var(--border);line-height:1.2}
+.site-nav .nav-links{display:flex;gap:0;align-items:center;height:100%}
+.site-nav .nav-link{font-size:.84rem;color:var(--text-muted);text-decoration:none;transition:color .2s;padding:0 1rem;height:100%;display:flex;align-items:center;position:relative;font-weight:400}
+.site-nav .nav-link:hover,.site-nav .nav-link:focus-visible{color:var(--text)}
+.site-nav .nav-link::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;background:var(--accent);opacity:0;transition:opacity .2s}
+.site-nav .nav-link:hover::after{opacity:1}
+.site-nav .nav-link[aria-current="page"]::after{opacity:1}
+.site-nav .nav-link[aria-current="page"]{color:var(--text);font-weight:500}
+.site-nav .nav-dropdown{position:relative;height:100%;display:flex;align-items:center}
+.site-nav .nav-dropdown-trigger{font-size:.84rem;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:0 1rem;height:100%;display:flex;align-items:center;gap:5px;font-family:var(--font-display);transition:color .2s;position:relative;font-weight:400}
+.site-nav .nav-dropdown-trigger:hover,.site-nav .nav-dropdown-trigger:focus-visible,.site-nav .nav-dropdown.open .nav-dropdown-trigger{color:var(--text)}
+.site-nav .nav-dropdown-trigger::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;background:var(--accent);opacity:0;transition:opacity .2s}
+.site-nav .nav-dropdown:hover .nav-dropdown-trigger::after,.site-nav .nav-dropdown.open .nav-dropdown-trigger::after{opacity:1}
+.site-nav .nav-dropdown-chevron{width:12px;height:12px;opacity:.5;transition:transform .2s}
+.site-nav .nav-dropdown.open .nav-dropdown-chevron{transform:rotate(180deg)}
+.site-nav .nav-dropdown-menu{position:absolute;top:100%;left:0;min-width:220px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .2s;z-index:200}
+.site-nav .nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(4px)}
+.site-nav .nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;text-decoration:none;color:var(--text-muted);font-size:.84rem;transition:all .15s}
+.site-nav .nav-dropdown-item:hover,.site-nav .nav-dropdown-item:focus-visible{background:var(--accent-glow);color:var(--text)}
+.site-nav .nav-dropdown-item svg{width:16px;height:16px;opacity:.5;flex-shrink:0}
+.site-nav .nav-dropdown-item:hover svg{opacity:.8}
+.site-nav .nav-dropdown-item-desc{font-size:.7rem;color:var(--text-dim);margin-top:1px}
+.site-nav .nav-cta{font-size:.82rem;color:var(--bg);background:var(--accent);padding:.4rem 1.1rem;border-radius:8px;font-weight:600;transition:all .2s;text-decoration:none;margin-left:.5rem;white-space:nowrap}
+.site-nav .nav-cta:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.site-nav .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--text-muted);transition:color .2s;border-radius:8px;-webkit-tap-highlight-color:transparent}
+.site-nav .nav-hamburger:hover,.site-nav .nav-hamburger:focus-visible{color:var(--text)}
+.site-nav .nav-hamburger svg{display:block}
+.nav-mobile{display:none;position:fixed;inset:0;top:56px;background:var(--bg);z-index:9999;padding:1.5rem;flex-direction:column;gap:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.nav-mobile.open{display:flex}
+.nav-mobile-link{display:flex;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid var(--border);color:var(--text-muted);text-decoration:none;font-size:1rem;font-weight:400;transition:color .15s}
+.nav-mobile-link:hover,.nav-mobile-link:focus-visible{color:var(--text)}
+.nav-mobile-link svg{width:18px;height:18px;opacity:.5}
+.nav-mobile-label{font-size:.68rem;font-family:var(--font-mono);font-weight:600;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;padding:20px 0 6px}
+.nav-mobile-cta{display:flex;align-items:center;justify-content:center;margin-top:1.5rem;padding:.8rem;background:var(--accent);color:var(--bg);border-radius:10px;text-decoration:none;font-weight:600;font-size:.92rem}
+@media(max-width:768px){.site-nav .nav-links{display:none}.site-nav .nav-hamburger{display:flex}.site-nav .wordmark-tag{display:none}}
+
+/* Graph page: nav is fixed not sticky, sits above the graph */
+.site-nav{position:fixed;left:0;right:0;top:0}
+#graph{margin-top:56px}
 </style>
 </head>
 <body>
-<nav class="view-switch" aria-label="View switcher">
-  <button class="view-switch-toggle" aria-label="Switch view" aria-expanded="false" id="viewSwitchBtn">
-    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-  </button>
-  <div class="view-switch-menu" id="viewSwitchMenu">
-    <a href="index.html">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-      Card Index
-    </a>
-    <a href="graph.html" class="active">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 7.5 15.5 16.5M15.5 7.5 8.5 16.5"/></svg>
-      Knowledge Graph
-    </a>
+<nav class="site-nav" role="navigation" aria-label="Main navigation"><div class="nav-inner">
+  <a href="/" class="wordmark" aria-label="Yuntona home">YUNTONA<span class="tm">™</span> <span class="wordmark-tag">Risk operationalization for AI systems</span></a>
+  <div class="nav-links" id="desktopNav">
+    <div class="nav-dropdown" id="platformDropdown">
+      <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="platformMenu">Platform <svg class="nav-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="nav-dropdown-menu" id="platformMenu" role="menu">
+        <a href="/directory" class="nav-dropdown-item" role="menuitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><div><div>Tool Directory</div><div class="nav-dropdown-item-desc">147 tools · Search &amp; filter</div></div></a>
+        <a href="/graph" class="nav-dropdown-item" role="menuitem" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 7.5 15.5 16.5M15.5 7.5 8.5 16.5"/></svg><div><div>Knowledge Graph</div><div class="nav-dropdown-item-desc">Interactive risk visualisation</div></div></a>
+      </div>
+    </div>
+    <a href="/methodology" class="nav-link">Methodology</a>
+    <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" class="nav-link">GitHub</a>
+    <a href="/directory" class="nav-cta">Explore Directory</a>
   </div>
-</nav>
+  <button class="nav-hamburger" id="navHamburger" aria-expanded="false" aria-controls="navMobile" aria-label="Open menu"><svg id="hamburgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+</div></nav>
+<div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile navigation">
+  <div class="nav-mobile-label">Platform</div>
+  <a href="/directory" class="nav-mobile-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Tool Directory</a>
+  <a href="/graph" class="nav-mobile-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 7.5 15.5 16.5M15.5 7.5 8.5 16.5"/></svg>Knowledge Graph</a>
+  <div class="nav-mobile-label">Resources</div>
+  <a href="/methodology" class="nav-mobile-link">Methodology</a>
+  <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" class="nav-mobile-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+  <a href="/directory" class="nav-mobile-cta">Explore Directory →</a>
+</div>
+
 
 <div class="graph-header">
   <div class="graph-brand">
     <svg width="18" height="18" viewBox="0 0 100 100" fill="none" role="img" aria-label="Yuntona logo">
       <path d="M42 50 L58 50 L58 90 L42 90 Z" fill="#F8FAFC"/>
       <path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#F8FAFC"/>
-      <path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#CCFF00"/>
+      <path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#22d3ee"/>
     </svg>
     <h1><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Y</span>UNTONA</h1>
     <span>Knowledge Graph</span>
@@ -168,6 +211,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
-<script src="js/graph.js?v=1.4.0"></script>
+<script src="/js/graph.js?v=1.7.0"></script>
 </body>
 </html>
