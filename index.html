@@ -600,7 +600,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
   var menu=dd.querySelector('.nav-dropdown-menu');
   var items=menu.querySelectorAll('.nav-dropdown-item');
 
-  function openDD(){dd.classList.add('open');trigger.setAttribute('aria-expanded','true');items[0].focus()}
+  function openDD(){dd.classList.add('open');trigger.setAttribute('aria-expanded','true')}
   function closeDD(){dd.classList.remove('open');trigger.setAttribute('aria-expanded','false')}
   function toggleDD(){dd.classList.contains('open')?closeDD():openDD()}
 
@@ -628,6 +628,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 (function(){
   var btn=document.getElementById('navHamburger');
   var mobile=document.getElementById('navMobile');
+  if(!btn||!mobile)return;
   var openIcon=document.getElementById('hamburgerIcon');
   var closeIcon=document.getElementById('closeIcon');
 
