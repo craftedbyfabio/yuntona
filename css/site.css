@@ -1,0 +1,49 @@
+:root{--bg:#07070a;--surface:#0e0e12;--surface2:#141418;--surface3:#1a1a1f;--border:#222228;--border-hover:#333340;--text:#f0f0f2;--text-muted:#9d9da8;--text-dim:#636370;--accent:#22d3ee;--accent-glow:rgba(34,211,238,.10);--accent-glow2:rgba(34,211,238,.05);--accent-dark:#0ea5e9;--accent-border:rgba(34,211,238,.18);--warm:#f59e0b;--green:#22c55e;--red:#ef4444;--purple:#a855f7;--font-display:'General Sans',sans-serif;--font-brand:'Clash Display','General Sans',sans-serif;--font-mono:'JetBrains Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-display);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+
+/* ─── SHARED NAV ─── */
+.site-nav{padding:0;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10001;background:rgba(7,7,10,.92);backdrop-filter:blur(16px)}
+.site-nav .nav-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;height:56px}
+.site-nav .wordmark{font-family:var(--font-brand);font-size:1.1rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text);text-decoration:none}
+.site-nav .wordmark .tm{font-size:.45em;opacity:.4;vertical-align:super;font-weight:400;font-family:var(--font-display)}
+.site-nav .wordmark-tag{font-family:var(--font-display);font-size:.72rem;font-weight:400;letter-spacing:.01em;text-transform:none;color:var(--text-dim);margin-left:.5rem;padding-left:.75rem;border-left:1px solid var(--border);line-height:1.2}
+.site-nav .nav-links{display:flex;gap:0;align-items:center;height:100%}
+.site-nav .nav-link{font-size:.84rem;color:var(--text-muted);text-decoration:none;transition:color .2s;padding:0 1rem;height:100%;display:flex;align-items:center;position:relative;font-weight:400}
+.site-nav .nav-link:hover,.site-nav .nav-link:focus-visible{color:var(--text)}
+.site-nav .nav-link::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;background:var(--accent);opacity:0;transition:opacity .2s}
+.site-nav .nav-link:hover::after{opacity:1}
+.site-nav .nav-link[aria-current="page"]::after{opacity:1}
+.site-nav .nav-link[aria-current="page"]{color:var(--text);font-weight:500}
+.site-nav .nav-dropdown{position:relative;height:100%;display:flex;align-items:center}
+.site-nav .nav-dropdown-trigger{font-size:.84rem;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:0 1rem;height:100%;display:flex;align-items:center;gap:5px;font-family:var(--font-display);transition:color .2s;position:relative;font-weight:400}
+.site-nav .nav-dropdown-trigger:hover,.site-nav .nav-dropdown-trigger:focus-visible,.site-nav .nav-dropdown.open .nav-dropdown-trigger{color:var(--text)}
+.site-nav .nav-dropdown-trigger::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:2px;background:var(--accent);opacity:0;transition:opacity .2s}
+.site-nav .nav-dropdown:hover .nav-dropdown-trigger::after,.site-nav .nav-dropdown.open .nav-dropdown-trigger::after{opacity:1}
+.site-nav .nav-dropdown-chevron{width:12px;height:12px;opacity:.5;transition:transform .2s}
+.site-nav .nav-dropdown.open .nav-dropdown-chevron{transform:rotate(180deg)}
+.site-nav .nav-dropdown-menu{position:absolute;top:100%;left:0;min-width:220px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .2s;z-index:200}
+.site-nav .nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(4px)}
+.site-nav .nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;text-decoration:none;color:var(--text-muted);font-size:.84rem;transition:all .15s}
+.site-nav .nav-dropdown-item:hover,.site-nav .nav-dropdown-item:focus-visible{background:var(--accent-glow);color:var(--text)}
+.site-nav .nav-dropdown-item svg{width:16px;height:16px;opacity:.5;flex-shrink:0}
+.site-nav .nav-dropdown-item:hover svg{opacity:.8}
+.site-nav .nav-dropdown-item-desc{font-size:.7rem;color:var(--text-dim);margin-top:1px}
+.site-nav .nav-cta{font-size:.82rem;color:var(--bg);background:var(--accent);padding:.4rem 1.1rem;border-radius:8px;font-weight:600;transition:all .2s;text-decoration:none;margin-left:.5rem;white-space:nowrap}
+.site-nav .nav-cta:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.site-nav .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--text-muted);transition:color .2s;border-radius:8px;-webkit-tap-highlight-color:transparent}
+.site-nav .nav-hamburger:hover,.site-nav .nav-hamburger:focus-visible{color:var(--text)}
+.site-nav .nav-hamburger svg{display:block}
+.nav-mobile{display:none;position:fixed;inset:0;top:56px;background:var(--bg);z-index:9999;padding:1.5rem;flex-direction:column;gap:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.nav-mobile.open{display:flex}
+.nav-mobile-link{display:flex;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid var(--border);color:var(--text-muted);text-decoration:none;font-size:1rem;font-weight:400;transition:color .15s}
+.nav-mobile-link:hover,.nav-mobile-link:focus-visible{color:var(--text)}
+.nav-mobile-link svg{width:18px;height:18px;opacity:.5}
+.nav-mobile-label{font-size:.68rem;font-family:var(--font-mono);font-weight:600;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;padding:20px 0 6px}
+.nav-mobile-cta{display:flex;align-items:center;justify-content:center;margin-top:1.5rem;padding:.8rem;background:var(--accent);color:var(--bg);border-radius:10px;text-decoration:none;font-weight:600;font-size:.92rem}
+@media(max-width:768px){.site-nav .nav-links{display:none}.site-nav .nav-hamburger{display:flex}.site-nav .wordmark-tag{display:none}}
+.announce-bar{background:var(--surface);border-bottom:1px solid var(--border);text-align:center;padding:10px 1rem}
+.announce-bar a{font-size:.78rem;color:var(--accent);text-decoration:none;font-weight:500;transition:color .2s}
+.announce-bar a:hover{color:var(--text)}
+.announce-bar a .sep{opacity:.4;margin:0 .5rem}
