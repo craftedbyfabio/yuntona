@@ -10,6 +10,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <script type="application/ld+json">
 [
   {"@context":"https://schema.org","@type":"WebApplication","name":"Yuntona","url":"https://yuntona.netlify.app","description":"A curated, open-source directory of 147 AI security tools mapped to the OWASP LLM Top 10 (2025) and OWASP Agentic Top 10 (2026). Maintained by a financial services risk practitioner.","applicationCategory":"SecurityApplication","operatingSystem":"Web","dateModified":"2026-03-27","version":"1.7.0","keywords":"AI security tools, OWASP LLM Top 10, OWASP Agentic Top 10, prompt injection, AI governance, agentic AI security, AI risk management, third-party AI risk, MCP security, AI guardrails","author":{"@type":"Person","name":"Fabio Baumeler","jobTitle":"Third-Party Cyber Risk Lead","worksFor":{"@type":"Organization","name":"Financial Conduct Authority"},"url":"https://www.linkedin.com/in/fbaumeler","sameAs":["https://github.com/craftedbyfabio"]},"offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"license":"https://opensource.org/licenses/MIT"},
@@ -348,11 +351,11 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
         </div>
       </div>
       <div class="hero-demo anim visible anim-d3">
-        <div class="demo-bar">
+        <a href="/directory" class="demo-bar" style="text-decoration:none;cursor:pointer">
           <span class="demo-icon">⌘K</span>
-          <input type="text" placeholder="Ask in plain English..." readonly>
+          <span style="flex:1;color:var(--text-dim);font-size:.9rem">Ask in plain English...</span>
           <span class="demo-shortcut">Enter</span>
-        </div>
+        </a>
         <div class="demo-hint">Example: "tools for prompt injection in agentic workflows"</div>
         <div class="demo-results">
           <div class="demo-result">
@@ -592,6 +595,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 // ─── Platform dropdown ───
 (function(){
   var dd=document.getElementById('platformDropdown');
+  if(!dd)return;
   var trigger=dd.querySelector('.nav-dropdown-trigger');
   var menu=dd.querySelector('.nav-dropdown-menu');
   var items=menu.querySelectorAll('.nav-dropdown-item');
