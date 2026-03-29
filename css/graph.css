@@ -1,5 +1,5 @@
 .graph-header{
-    position:fixed;top:0;left:0;right:0;z-index:100;
+    position:fixed;top:56px;left:0;right:0;z-index:100;
     display:flex;align-items:center;justify-content:space-between;
     padding:12px 20px;
     background:rgba(11,17,33,.85);backdrop-filter:blur(12px);
@@ -75,7 +75,7 @@
 
 /* Graph page: nav is fixed not sticky, sits above the graph */
 .site-nav{position:fixed;left:0;right:0;top:0}
-#graph{margin-top:56px}
+#graph{margin-top:110px}
 
 .initially-hidden{display:none}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
