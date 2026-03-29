@@ -4364,13 +4364,7 @@
       "enterprise",
       "commercial"
     ],
-    "audience": [
-      "CISO",
-      "TPRM Lead",
-      "GRC",
-      "Privacy",
-      "InfoSec"
-    ],
+    "audience": "Blue Team",
     "pricing": "Commercial (Enterprise)",
     "complexity": "Medium",
     "lifecycle": [
@@ -4381,6 +4375,16 @@
     "riskRating": "Safe",
     "isAgentic": true,
     "openSource": false,
-    "desc": "AI-native third-party risk management platform that identifies, assesses, and monitors AI risk across vendor ecosystems. Maps 26 risk vectors to OWASP LLM Top 10, NIST AI RMF, and MITRE ATLAS."
+    "desc": "AI-native third-party risk management platform that identifies, assesses, and monitors AI risk across vendor ecosystems. Maps 26 risk vectors to OWASP LLM Top 10, NIST AI RMF, and MITRE ATLAS.",
+    "riskRaw": "Safe",
+    "stages": [
+      "govern",
+      "monitor",
+      "operate"
+    ],
+    "agentic": true,
+    "backWhat": "AI-native TPRM platform that identifies, assesses, and continuously monitors AI risk across vendor ecosystems. Maps 26 risk vectors to OWASP LLM Top 10, NIST AI RMF, and MITRE ATLAS.",
+    "backSecurity": "Addresses the blind spot in traditional TPRM for AI \u2014 understanding how vendors use AI, what data their models interact with, and how their AI functionality changes over time. Continuous monitoring alerts when vendors change AI scope or permissions.",
+    "backWhen": "When your organisation consumes AI through third-party vendors and needs structured risk assessment beyond questionnaires. Particularly relevant for regulated industries where AI vendor dependency compounds risk."
   }
 ]
