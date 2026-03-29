@@ -4380,6 +4380,7 @@
     ],
     "riskRating": "Safe",
     "isAgentic": true,
-    "openSource": false
+    "openSource": false,
+    "desc": "AI-native third-party risk management platform that identifies, assesses, and monitors AI risk across vendor ecosystems. Maps 26 risk vectors to OWASP LLM Top 10, NIST AI RMF, and MITRE ATLAS."
   }
 ]
