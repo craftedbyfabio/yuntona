@@ -11,8 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -271,6 +271,13 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .nav-mobile-cta{display:flex;align-items:center;justify-content:center;margin-top:1.5rem;padding:.8rem;background:var(--accent);color:var(--bg);border-radius:10px;text-decoration:none;font-weight:600;font-size:.92rem}
 @media(max-width:768px){.site-nav .nav-links{display:none}.site-nav .nav-hamburger{display:flex}.site-nav .wordmark-tag{display:none}}
 
+
+.initially-hidden{display:none}
+.mb-8{margin-bottom:8px}
+.mt-8{margin-top:8px}
+.dim{opacity:.4}
+.dim-half{opacity:.5}
+.accent-link{color:var(--accent);text-decoration:none}
 </style>
 </head>
 <body>
@@ -288,7 +295,7 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
     <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" class="nav-link">GitHub</a>
     <a href="/graph" class="nav-cta">Explore Knowledge Graph</a>
   </div>
-  <button class="nav-hamburger" id="navHamburger" aria-expanded="false" aria-controls="navMobile" aria-label="Open menu"><svg id="hamburgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <button class="nav-hamburger" id="navHamburger" aria-expanded="false" aria-controls="navMobile" aria-label="Open menu"><svg id="hamburgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="initially-hidden"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
 </div></nav>
 <div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile navigation">
   <div class="nav-mobile-label">Platform</div>
@@ -341,14 +348,14 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 <div class="grid-container">
   <div class="grid-header"><span class="result-count" id="resultCount"></span><div class="view-toggle"><button class="view-btn active" data-view="grid" title="Grid"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></button><button class="view-btn" data-view="list" title="List"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></button></div></div>
   <div class="card-grid" id="cardGrid"></div>
-  <div class="no-results" id="noResults" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/></svg><h3>No resources found</h3><p>Try adjusting your search or filters</p></div>
+  <div class="no-results" id="noResults" class="initially-hidden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/></svg><h3>No resources found</h3><p>Try adjusting your search or filters</p></div>
 </div>
 </main>
 <footer class="site-footer">
-  <div style="margin-bottom:8px;opacity:.4"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 100 100" fill="none"><path d="M42 50 L58 50 L58 90 L42 90 Z" fill="#F8FAFC"/><path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#F8FAFC"/><path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#22d3ee"/></svg></div>
-  <p style="margin-bottom:8px">Yuntona™ v1.7.0 — Open-source risk operationalization for AI systems.</p>
-  <p>Maintained by <strong>Fabio</strong> · Third-Party Cyber Risk Lead · <a href="https://www.linkedin.com/in/fbaumeler" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">LinkedIn ↗</a></p>
-  <p style="margin-top:8px;opacity:.5">147 tools · OWASP LLM Top 10 + Agentic Top 10 · LLMSecOps lifecycle</p>
+  <div class="mb-8 dim"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 100 100" fill="none"><path d="M42 50 L58 50 L58 90 L42 90 Z" fill="#F8FAFC"/><path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#F8FAFC"/><path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#22d3ee"/></svg></div>
+  <p class="mb-8">Yuntona™ v1.7.0 — Open-source risk operationalization for AI systems.</p>
+  <p>Maintained by <strong>Fabio</strong> · Third-Party Cyber Risk Lead · <a href="https://www.linkedin.com/in/fbaumeler" target="_blank" rel="noopener" class="accent-link">LinkedIn ↗</a></p>
+  <p class="mt-8 dim-half">147 tools · OWASP LLM Top 10 + Agentic Top 10 · LLMSecOps lifecycle</p>
 </footer>
 
 <div class="card-overlay" id="cardOverlay">

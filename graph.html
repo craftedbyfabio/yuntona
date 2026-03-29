@@ -8,8 +8,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
@@ -138,6 +138,13 @@
 /* Graph page: nav is fixed not sticky, sits above the graph */
 .site-nav{position:fixed;left:0;right:0;top:0}
 #graph{margin-top:56px}
+
+.initially-hidden{display:none}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.ml-8{margin-left:8px}
+.bg-accent{background:var(--accent)}
+.border-red{border-color:var(--red)}
+.border-cyan{border-color:#06b6d4}
 </style>
 </head>
 <body>
@@ -155,7 +162,7 @@
     <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" class="nav-link">GitHub</a>
     <a href="/directory" class="nav-cta">Explore Directory</a>
   </div>
-  <button class="nav-hamburger" id="navHamburger" aria-expanded="false" aria-controls="navMobile" aria-label="Open menu"><svg id="hamburgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <button class="nav-hamburger" id="navHamburger" aria-expanded="false" aria-controls="navMobile" aria-label="Open menu"><svg id="hamburgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="initially-hidden"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
 </div></nav>
 <div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile navigation">
   <div class="nav-mobile-label">Platform</div>
@@ -175,7 +182,7 @@
       <path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#F8FAFC"/>
       <path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#22d3ee"/>
     </svg>
-    <h1><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Y</span>UNTONA</h1>
+    <h1><span class="sr-only">Y</span>UNTONA</h1>
     <span>Knowledge Graph</span>
   </div>
   <div class="controls">
@@ -185,7 +192,7 @@
       <button class="ctrl-btn" data-view="risks">LLM Risks</button>
       <button class="ctrl-btn" data-view="stages">Lifecycle</button>
     </div>
-    <span class="ctrl-label" style="margin-left:8px">Category</span>
+    <span class="ctrl-label" class="ml-8">Category</span>
     <div class="ctrl-group" id="catFilters"></div>
     <button class="ctrl-btn" id="resetBtn">&#x27F2; Reset</button>
   </div>
@@ -197,9 +204,9 @@
 
 <div class="info-panel" role="complementary" aria-label="Graph legend">
   <div class="info-title">Node Types</div>
-  <div class="legend-row"><div class="legend-dot" style="background:var(--accent)"></div><span>Tools (coloured by category)</span></div>
-  <div class="legend-row"><div class="legend-ring" style="border-color:var(--red)"></div><span>LLM Risks (OWASP Top 10)</span></div>
-  <div class="legend-row"><div class="legend-ring" style="border-color:var(--cyan)"></div><span>Lifecycle Stages</span></div>
+  <div class="legend-row"><div class="legend-dot" class="bg-accent"></div><span>Tools (coloured by category)</span></div>
+  <div class="legend-row"><div class="legend-ring" class="border-red"></div><span>LLM Risks (OWASP Top 10)</span></div>
+  <div class="legend-row"><div class="legend-ring" class="border-cyan"></div><span>Lifecycle Stages</span></div>
   <hr class="info-sep">
   <div class="info-hint">Click node to highlight connections. Double-click tool to visit. Drag to reposition. Scroll to zoom.</div>
 </div>

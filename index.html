@@ -6,10 +6,10 @@
 <title>Yuntona™ — Open-Source Risk Operationalization for AI Systems</title>
 <meta name="description" content="Yuntona is a curated directory of 147 AI security tools mapped to the OWASP LLM Top 10 and Agentic Top 10. Find the right defence for every risk in your AI stack.">
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -264,6 +264,28 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
   .risk-row .risk-bar,.risk-header span:last-child{display:none}
   .hero-actions{flex-direction:column;align-items:stretch}
 }
+
+/* Utility classes (replacing inline styles for CSP compliance) */
+.initially-hidden{display:none}
+.demo-bar-link{text-decoration:none;cursor:pointer}
+.demo-placeholder{flex:1;color:var(--text-dim);font-size:.9rem}
+.mt-8{margin-top:8px}
+.accent-link{color:var(--accent)}
+.w100{width:100%}
+.w15{width:15%}
+.w25{width:25%}
+.w30{width:30%}
+.w32{width:32%}
+.w34{width:34%}
+.w36{width:36%}
+.w38{width:38%}
+.w47{width:47%}
+.w49{width:49%}
+.w60{width:60%}
+.w70{width:70%}
+.w77{width:77%}
+.w87{width:87%}
+.w96{width:96%}
 </style>
 </head>
 <body>
@@ -307,7 +329,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
   <!-- Hamburger (mobile) -->
   <button class="nav-hamburger" id="navHamburger" aria-expanded="false" aria-controls="navMobile" aria-label="Open menu">
     <svg id="hamburgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-    <svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    <svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="initially-hidden"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
 </div></nav>
 
@@ -351,9 +373,9 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
         </div>
       </div>
       <div class="hero-demo anim visible anim-d3">
-        <a href="/directory" class="demo-bar" style="text-decoration:none;cursor:pointer">
+        <a href="/directory" class="demo-bar demo-bar-link">
           <span class="demo-icon">⌘K</span>
-          <span style="flex:1;color:var(--text-dim);font-size:.9rem">Ask in plain English...</span>
+          <span class="demo-placeholder">Ask in plain English...</span>
           <span class="demo-shortcut">Enter</span>
         </a>
         <div class="demo-hint">Example: "tools for prompt injection in agentic workflows"</div>
@@ -457,8 +479,8 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
       <p>Type a question and Yuntona's search parses your intent, extracts filters, and returns ranked results from 147 tools. A future iteration will add conversational follow-up queries.</p>
       <div class="tab-mock">
         <div><span class="q">→ "open source tools for securing MCP integrations"</span></div>
-        <div style="margin-top:8px"><span class="chip">category: MCP Security</span> <span class="chip">tag: open source</span> <span class="chip">risk: ASI04</span></div>
-        <div style="margin-top:8px"><span class="res">3 results · Stacklok/ToolHive, MCP Secure Gateway, FuzzingLabs</span></div>
+        <div class="mt-8"><span class="chip">category: MCP Security</span> <span class="chip">tag: open source</span> <span class="chip">risk: ASI04</span></div>
+        <div class="mt-8"><span class="res">3 results · Stacklok/ToolHive, MCP Secure Gateway, FuzzingLabs</span></div>
       </div>
     </div></div>
     <div class="tab-panel" id="tab-graph"><div class="tab-content">
@@ -481,31 +503,31 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
     <div class="fw-panel active" id="fw-llm">
       <div class="risk-grid">
         <div class="risk-header"><span>Risk</span><span>Name</span><span>Tools</span><span>Coverage</span></div>
-        <div class="risk-row"><span class="risk-code llm">LLM01</span><span class="risk-name">Prompt Injection</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:100%"></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM02</span><span class="risk-name">Sensitive Information Disclosure</span><span class="risk-count">46</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:87%"></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM03</span><span class="risk-name">Supply Chain Vulnerabilities</span><span class="risk-count">19</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:36%"></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM04</span><span class="risk-name">Data and Model Poisoning</span><span class="risk-count">13</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:25%"></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM05</span><span class="risk-name">Improper Output Handling</span><span class="risk-count">18</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:34%"></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM06</span><span class="risk-name">Excessive Agency</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:96%"></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM07</span><span class="risk-name">System Prompt Leakage</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:77%"></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM08</span><span class="risk-name">Vector &amp; Embedding Weaknesses</span><span class="risk-count">37</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:70%"></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM09</span><span class="risk-name">Misinformation</span><span class="risk-count">19</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:36%"></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM10</span><span class="risk-name">Unbounded Consumption</span><span class="risk-count">8</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:15%"></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM01</span><span class="risk-name">Prompt Injection</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM02</span><span class="risk-name">Sensitive Information Disclosure</span><span class="risk-count">46</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM03</span><span class="risk-name">Supply Chain Vulnerabilities</span><span class="risk-count">19</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM04</span><span class="risk-name">Data and Model Poisoning</span><span class="risk-count">13</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM05</span><span class="risk-name">Improper Output Handling</span><span class="risk-count">18</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM06</span><span class="risk-name">Excessive Agency</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM07</span><span class="risk-name">System Prompt Leakage</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM08</span><span class="risk-name">Vector &amp; Embedding Weaknesses</span><span class="risk-count">37</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM09</span><span class="risk-name">Misinformation</span><span class="risk-count">19</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code llm">LLM10</span><span class="risk-name">Unbounded Consumption</span><span class="risk-count">8</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
       </div>
     </div>
     <div class="fw-panel" id="fw-asi">
       <div class="risk-grid">
         <div class="risk-header"><span>Risk</span><span>Name</span><span>Tools</span><span>Coverage</span></div>
-        <div class="risk-row"><span class="risk-code asi">ASI01</span><span class="risk-name">Excessive Agency &amp; Autonomy</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:100%"></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI02</span><span class="risk-name">Insufficient Access Controls</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:96%"></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI03</span><span class="risk-name">Inadequate Sandboxing</span><span class="risk-count">32</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:60%"></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI04</span><span class="risk-name">Insecure Tool Integration</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:77%"></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI05</span><span class="risk-name">Insecure Output Consumption</span><span class="risk-count">25</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:47%"></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI06</span><span class="risk-name">Lack of Runtime Guardrails</span><span class="risk-count">20</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:38%"></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI07</span><span class="risk-name">Insecure Multi-Agent Orchestration</span><span class="risk-count">26</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:49%"></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI08</span><span class="risk-name">Inadequate Logging &amp; Monitoring</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:30%"></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI09</span><span class="risk-name">Trust Boundary Violations</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:30%"></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI10</span><span class="risk-name">Insufficient Error Handling</span><span class="risk-count">17</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:32%"></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI01</span><span class="risk-name">Excessive Agency &amp; Autonomy</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI02</span><span class="risk-name">Insufficient Access Controls</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI03</span><span class="risk-name">Inadequate Sandboxing</span><span class="risk-count">32</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI04</span><span class="risk-name">Insecure Tool Integration</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI05</span><span class="risk-name">Insecure Output Consumption</span><span class="risk-count">25</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI06</span><span class="risk-name">Lack of Runtime Guardrails</span><span class="risk-count">20</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI07</span><span class="risk-name">Insecure Multi-Agent Orchestration</span><span class="risk-count">26</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI08</span><span class="risk-name">Inadequate Logging &amp; Monitoring</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI09</span><span class="risk-name">Trust Boundary Violations</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+        <div class="risk-row"><span class="risk-code asi">ASI10</span><span class="risk-name">Insufficient Error Handling</span><span class="risk-count">17</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
       </div>
     </div>
   </div>
@@ -541,7 +563,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
     <h2 class="section-title">What do security teams ask about Yuntona?</h2>
     <p class="section-sub">Quick answers to the questions practitioners and AI search engines ask most.</p>
     <div class="faq-grid">
-      <div class="faq-item"><div class="faq-q">How do you decide what tools go into the directory?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Every tool is individually evaluated against three criteria: it addresses a genuine security risk in the generative or agentic AI stack, it is operational or near-operational (not vaporware), and it offers meaningful capability not already covered by existing entries. Discovery draws from OWASP working groups, industry conferences, practitioner networks, and primary research. Tools that duplicate existing coverage without differentiation are excluded. <a href="/methodology" style="color:var(--accent)">Read the full methodology →</a></p></div></div>
+      <div class="faq-item"><div class="faq-q">How do you decide what tools go into the directory?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Every tool is individually evaluated against three criteria: it addresses a genuine security risk in the generative or agentic AI stack, it is operational or near-operational (not vaporware), and it offers meaningful capability not already covered by existing entries. Discovery draws from OWASP working groups, industry conferences, practitioner networks, and primary research. Tools that duplicate existing coverage without differentiation are excluded. <a href="/methodology" class="accent-link">Read the full methodology →</a></p></div></div>
       <div class="faq-item"><div class="faq-q">Is Yuntona free and open source?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Yes. Fully open source under the MIT licence. 147 tools accessible without login or paywall. Source code on GitHub.</p></div></div>
       <div class="faq-item"><div class="faq-q">How is Yuntona different from an awesome-list or analyst report?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Awesome-lists are flat link collections with no risk mapping. Analyst reports are paywalled snapshots. Yuntona sits between: every tool is individually evaluated, mapped to OWASP risk codes, tagged by complexity, and searchable via AI-powered natural language. Continuously updated.</p></div></div>
       <div class="faq-item"><div class="faq-q">How does Yuntona handle AI-assisted curation?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Tool discovery is practitioner-led. OWASP risk mappings use AI as an analytical engine — the methodology and schema are human-designed, every output validated against published standards. Human-directed analysis at scale, not automated classification.</p></div></div>
