@@ -116,7 +116,7 @@ function render(tools) {
     .attr('fill','rgba(6,182,212,.06)').attr('stroke','#06b6d4').attr('stroke-width',2).attr('filter','url(#glow)');
   node.filter(d=>d.type==='stage').append('text').text(d=>d.label)
     .attr('text-anchor','middle').attr('dy','.35em')
-    .attr('font-size','6px').attr('font-weight','600').attr('font-family',''General Sans',system-ui').attr('fill','#06b6d4');
+    .attr('font-size','6px').attr('font-weight','600').attr('font-family','General Sans, system-ui').attr('fill','#06b6d4');
 
   // Tool nodes
   node.filter(d=>d.type==='tool').append('circle')
@@ -128,7 +128,7 @@ function render(tools) {
   node.filter(d=>d.type==='tool').append('text')
     .text(d=>d.label.length>22?d.label.slice(0,20)+'…':d.label)
     .attr('x',10).attr('dy','.35em').attr('font-size','6px')
-    .attr('font-family',''General Sans',system-ui').attr('fill',d=>d.color)
+    .attr('font-family','General Sans, system-ui').attr('fill',d=>d.color)
     .attr('fill-opacity',0).attr('class','tool-label');
 
   // Tooltip

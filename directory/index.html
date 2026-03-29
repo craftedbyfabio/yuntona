@@ -360,11 +360,6 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
   data-key="JJsWlR1vsGWblnFS39Enh2fulxTjzSHE"
   data-collection="tools"></script>
 <script src="/js/app.js?v=1.7.0"></script>
-<script>
-// Nav dropdown
-(function(){var dd=document.getElementById('platformDropdown');if(!dd)return;var trigger=dd.querySelector('.nav-dropdown-trigger');var menu=dd.querySelector('.nav-dropdown-menu');var items=menu.querySelectorAll('.nav-dropdown-item');function openDD(){dd.classList.add('open');trigger.setAttribute('aria-expanded','true')}function closeDD(){dd.classList.remove('open');trigger.setAttribute('aria-expanded','false')}trigger.addEventListener('click',function(e){e.stopPropagation();dd.classList.contains('open')?closeDD():openDD()});dd.addEventListener('mouseenter',function(){if(window.innerWidth>768)openDD()});dd.addEventListener('mouseleave',function(){if(window.innerWidth>768)closeDD()});menu.addEventListener('keydown',function(e){var idx=Array.from(items).indexOf(document.activeElement);if(e.key==='ArrowDown'){e.preventDefault();items[(idx+1)%items.length].focus()}else if(e.key==='ArrowUp'){e.preventDefault();items[(idx-1+items.length)%items.length].focus()}else if(e.key==='Escape'){closeDD();trigger.focus()}else if(e.key==='Tab'){closeDD()}});document.addEventListener('click',function(e){if(!dd.contains(e.target))closeDD()})})();
-// Hamburger
-(function(){var btn=document.getElementById('navHamburger');var mobile=document.getElementById('navMobile');if(!btn||!mobile)return;var oi=document.getElementById('hamburgerIcon');var ci=document.getElementById('closeIcon');function toggle(){var o=mobile.classList.toggle('open');btn.setAttribute('aria-expanded',o);oi.style.display=o?'none':'block';ci.style.display=o?'block':'none';btn.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.style.overflow=o?'hidden':''}btn.addEventListener('click',toggle);document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mobile.classList.contains('open'))toggle()});window.addEventListener('resize',function(){if(window.innerWidth>768&&mobile.classList.contains('open'))toggle()});mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(mobile.classList.contains('open'))toggle()})})})();
-</script>
+<script src="/js/site-nav.js"></script>
 </body>
 </html>
