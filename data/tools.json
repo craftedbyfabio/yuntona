@@ -19,7 +19,8 @@
     "agentic": false,
     "backWhat": "An interactive browser game created by Lakera that teaches prompt injection through hands-on challenges.",
     "backSecurity": "Builds intuition for how LLMs can be manipulated.",
-    "backWhen": "Use as a training exercise for security teams new to AI threats."
+    "backWhen": "Use as a training exercise for security teams new to AI threats.",
+    "slug": "gandalf-lakera"
   },
   {
     "name": "HexStrike",
@@ -48,7 +49,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A SaaS red teaming platform purpose-built for testing LLM vulnerabilities. Provides structured adversarial testing workflows with automated attack generation and results tracking.",
     "backSecurity": "Covers prompt injection, data leakage, and output manipulation testing in a managed environment. The platform approach means you get consistent, repeatable tests rather than ad-hoc manual probing \u2014 critical for demonstrating coverage to auditors.",
-    "backWhen": "Use when you need structured, repeatable red team engagements against LLM-powered applications. Best suited for teams that want a managed platform rather than building their own testing harness from open-source tools."
+    "backWhen": "Use when you need structured, repeatable red team engagements against LLM-powered applications. Best suited for teams that want a managed platform rather than building their own testing harness from open-source tools.",
+    "slug": "hexstrike"
   },
   {
     "name": "Medusa",
@@ -76,7 +78,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "An open-source offensive AI testing framework from Pantheon Security. Provides a library of jailbreaking techniques, prompt injection payloads, and adversarial attack patterns against LLMs.",
     "backSecurity": "Medusa aggregates known attack techniques into a reusable framework, making it easier to systematically test LLM defences. Covers jailbreak methods, role-playing attacks, and encoding-based bypasses that map directly to LLM01 and LLM02.",
-    "backWhen": "Use when you need granular control over offensive testing and want to extend or customise attack patterns. Requires Python expertise and familiarity with adversarial ML concepts. Not a point-and-click tool \u2014 this is for hands-on red teamers."
+    "backWhen": "Use when you need granular control over offensive testing and want to extend or customise attack patterns. Requires Python expertise and familiarity with adversarial ML concepts. Not a point-and-click tool \u2014 this is for hands-on red teamers.",
+    "slug": "medusa"
   },
   {
     "name": "BlackIce (Databricks)",
@@ -106,7 +109,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "A containerised red teaming toolkit from Databricks designed for AI security testing. Ships as Docker containers with pre-configured testing environments and attack tooling.",
     "backSecurity": "The containerised approach ensures reproducible test environments \u2014 critical when you need to demonstrate consistent findings across engagements. Integrates with Databricks' ML ecosystem but can be used standalone against any LLM endpoint.",
-    "backWhen": "Use when you need isolated, reproducible red team environments, particularly in regulated industries where test environment consistency matters. Requires Docker knowledge and red team experience."
+    "backWhen": "Use when you need isolated, reproducible red team environments, particularly in regulated industries where test environment consistency matters. Requires Docker knowledge and red team experience.",
+    "slug": "blackice-databricks"
   },
   {
     "name": "Purple Llama (Meta)",
@@ -139,7 +143,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "Meta's open-source trust and safety toolkit for evaluating generative AI systems. Includes CyberSecEval benchmarks for measuring LLM security, Llama Guard for content classification, and Code Shield for detecting insecure code generation.",
     "backSecurity": "CyberSecEval is one of the few standardised benchmarks for measuring LLM security posture. It tests for prompt injection susceptibility, insecure code generation, and cybersecurity knowledge. Llama Guard provides a practical content safety classifier that can be deployed as a guardrail layer.",
-    "backWhen": "Use during model evaluation to benchmark security properties before deployment. CyberSecEval gives you comparable metrics across different models. Llama Guard is useful as a building block for content safety pipelines."
+    "backWhen": "Use during model evaluation to benchmark security properties before deployment. CyberSecEval gives you comparable metrics across different models. Llama Guard is useful as a building block for content safety pipelines.",
+    "slug": "purple-llama-meta"
   },
   {
     "name": "Promptfoo",
@@ -171,7 +176,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A CLI tool for testing, evaluating, and red teaming LLM prompts. Supports custom test suites in YAML, automated red teaming with plugin-based attack generation, and side-by-side model comparison. Extensible with custom plugins and assertions.",
     "backSecurity": "Promptfoo bridges the gap between development-time testing and security evaluation. Its red teaming mode generates adversarial inputs automatically, while its evaluation framework lets you define security-specific assertions (no PII leakage, no jailbreak success, output format compliance).",
-    "backWhen": "Use as part of your CI/CD pipeline to catch prompt injection vulnerabilities and output safety issues before deployment. Excellent for teams that want to shift security testing left without building custom tooling. The YAML-based config makes it accessible to security engineers who aren't ML specialists."
+    "backWhen": "Use as part of your CI/CD pipeline to catch prompt injection vulnerabilities and output safety issues before deployment. Excellent for teams that want to shift security testing left without building custom tooling. The YAML-based config makes it accessible to security engineers who aren't ML specialists.",
+    "slug": "promptfoo"
   },
   {
     "name": "AIVSS",
@@ -204,7 +210,8 @@
     "agentic": false,
     "backWhat": "The AI Vulnerability Scoring System \u2014 a web-based calculator that provides standardised risk ratings for AI-specific vulnerabilities, similar to how CVSS scores traditional software vulnerabilities.",
     "backSecurity": "Brings much-needed standardisation to AI vulnerability assessment. Without a common scoring framework, teams struggle to prioritise AI security findings consistently. AIVSS provides a structured approach to rating severity across dimensions specific to AI systems.",
-    "backWhen": "Use when you need to communicate AI vulnerability severity to stakeholders in a standardised way. Particularly useful for GRC teams building AI risk registers who need consistent scoring across different types of AI findings."
+    "backWhen": "Use when you need to communicate AI vulnerability severity to stakeholders in a standardised way. Particularly useful for GRC teams building AI risk registers who need consistent scoring across different types of AI findings.",
+    "slug": "aivss"
   },
   {
     "name": "Arcanum Security Context",
@@ -226,7 +233,8 @@
     "agentic": false,
     "backWhat": "A security context and research repository maintained on GitHub that catalogues AI vulnerabilities, attack patterns, and defensive techniques. Serves as a reference library for AI security practitioners.",
     "backSecurity": "Functions as a curated knowledge base that maps real-world AI vulnerabilities to defensive strategies. Useful for understanding the current threat landscape and finding relevant research when investigating specific attack vectors.",
-    "backWhen": "Use as a reference resource when researching specific AI vulnerabilities or building threat models. Good starting point for teams new to AI security who need to understand the landscape of known attack patterns."
+    "backWhen": "Use as a reference resource when researching specific AI vulnerabilities or building threat models. Good starting point for teams new to AI security who need to understand the landscape of known attack patterns.",
+    "slug": "arcanum-security-context"
   },
   {
     "name": "XM Cyber",
@@ -250,7 +258,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An enterprise Breach and Attack Simulation (BAS) platform that continuously maps attack paths across hybrid infrastructure. Models how an attacker could move laterally through networks, including paths that traverse AI workloads and ML infrastructure.",
     "backSecurity": "XM Cyber's value for AI security is in understanding how AI infrastructure fits into the broader attack surface. ML training pipelines, model serving endpoints, and data stores create new lateral movement paths that traditional vulnerability scanning misses.",
-    "backWhen": "Use when you need to understand how AI infrastructure affects your overall attack surface. Enterprise deployment requiring procurement, network access, and agent installation across infrastructure. Not an AI-specific tool, but increasingly relevant as AI workloads expand."
+    "backWhen": "Use when you need to understand how AI infrastructure affects your overall attack surface. Enterprise deployment requiring procurement, network access, and agent installation across infrastructure. Not an AI-specific tool, but increasingly relevant as AI workloads expand.",
+    "slug": "xm-cyber"
   },
   {
     "name": "GoPhish",
@@ -273,7 +282,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "An open-source phishing simulation toolkit for running controlled social engineering campaigns. Provides campaign management, email template creation, landing page cloning, and results tracking.",
     "backSecurity": "Relevant to AI security because LLMs are transforming phishing attacks \u2014 generating more convincing, personalised, and scalable social engineering content. GoPhish lets you test whether your organisation can detect AI-generated phishing, and whether your AI-powered email security actually catches sophisticated campaigns.",
-    "backWhen": "Use when testing your organisation's resilience against AI-enhanced phishing attacks. Requires a mail server, careful scoping, and offensive security expertise. Always get written authorisation before running campaigns."
+    "backWhen": "Use when testing your organisation's resilience against AI-enhanced phishing attacks. Requires a mail server, careful scoping, and offensive security expertise. Always get written authorisation before running campaigns.",
+    "slug": "gophish"
   },
   {
     "name": "BurpSuite",
@@ -301,7 +311,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "PortSwigger's industry-standard web application security testing platform. Provides intercepting proxy, vulnerability scanner, and extensible testing framework for web applications.",
     "backSecurity": "AI applications are web applications. Every LLM-powered product has an HTTP layer that can be tested with traditional AppSec tools. BurpSuite is essential for testing the web surface of AI applications \u2014 API endpoints, authentication, session management, and the interaction layer between users and LLM backends.",
-    "backWhen": "Use alongside AI-specific tools to test the full attack surface of LLM-powered applications. The AI-specific red teaming tools test the model layer; BurpSuite tests everything around it. Most AI security assessments should include both."
+    "backWhen": "Use alongside AI-specific tools to test the full attack surface of LLM-powered applications. The AI-specific red teaming tools test the model layer; BurpSuite tests everything around it. Most AI security assessments should include both.",
+    "slug": "burpsuite"
   },
   {
     "name": "Husn Canary",
@@ -330,7 +341,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "Canary tokens designed specifically for detecting AI model data leakage. Creates unique, trackable tokens that can be embedded in training data, documents, or knowledge bases to detect when an AI system exposes them.",
     "backSecurity": "Addresses LLM06 (Sensitive Information Disclosure) through detection rather than prevention. If your canary token appears in an LLM's output, you have concrete evidence that the model has been trained on or has access to your data. This is particularly valuable for detecting unauthorised training data usage.",
-    "backWhen": "Use as a detection layer alongside guardrails. Embed canary tokens in sensitive documents before they enter RAG pipelines or training datasets. Monitor for token exposure in LLM outputs. Lightweight to deploy but requires a monitoring strategy."
+    "backWhen": "Use as a detection layer alongside guardrails. Embed canary tokens in sensitive documents before they enter RAG pipelines or training datasets. Monitor for token exposure in LLM outputs. Lightweight to deploy but requires a monitoring strategy.",
+    "slug": "husn-canary"
   },
   {
     "name": "Garak",
@@ -361,7 +373,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "The leading open-source LLM vulnerability scanner. Systematically probes language models for prompt injection, data leakage, hallucination, and other vulnerabilities using a library of configurable attack probes and detectors.",
     "backSecurity": "Garak is the closest thing to an automated vulnerability scanner for LLMs. It maps directly to the OWASP LLM Top 10, testing for prompt injection (LLM01), insecure output handling (LLM02), information disclosure (LLM06), and overreliance (LLM09). Results are structured and reportable.",
-    "backWhen": "Use as a baseline security scan for any LLM deployment. Run it during development to catch obvious vulnerabilities, and periodically in production as models are updated. Requires Python and API access to target models, but the scan configuration is straightforward."
+    "backWhen": "Use as a baseline security scan for any LLM deployment. Run it during development to catch obvious vulnerabilities, and periodically in production as models are updated. Requires Python and API access to target models, but the scan configuration is straightforward.",
+    "slug": "garak"
   },
   {
     "name": "HarmBench",
@@ -392,7 +405,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "An academic benchmark framework for evaluating adversarial robustness of language models. Provides standardised evaluation of both attack methods and defence mechanisms, with automated red teaming capabilities across multiple attack vectors.",
     "backSecurity": "HarmBench offers the most rigorous academic evaluation of LLM safety. It tests models against a curated set of harmful behaviours and measures both the success rate of attacks and the robustness of refusals. Useful for comparing model safety properties before procurement decisions.",
-    "backWhen": "Use when you need academic-grade evaluation of model robustness, particularly for model selection decisions. Requires GPU infrastructure, model loading expertise, and familiarity with evaluation pipelines. Not a quick scan \u2014 this is deep evaluation work."
+    "backWhen": "Use when you need academic-grade evaluation of model robustness, particularly for model selection decisions. Requires GPU infrastructure, model loading expertise, and familiarity with evaluation pipelines. Not a quick scan \u2014 this is deep evaluation work.",
+    "slug": "harmbench"
   },
   {
     "name": "Giskard",
@@ -422,7 +436,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An open-source testing framework for LLM vulnerabilities, bias, and hallucination. Provides automated test generation, vulnerability scanning, and continuous testing integration with a focus on both security and fairness.",
     "backSecurity": "Giskard uniquely combines security testing (prompt injection, data leakage) with fairness and bias evaluation. This dual focus is valuable because regulatory frameworks like the EU AI Act require both security and fairness assessments. One tool covering both reduces integration complexity.",
-    "backWhen": "Use when you need to evaluate both security vulnerabilities and bias/fairness issues, particularly for EU AI Act compliance. Good for teams that want a growing open-source alternative to commercial red teaming platforms."
+    "backWhen": "Use when you need to evaluate both security vulnerabilities and bias/fairness issues, particularly for EU AI Act compliance. Good for teams that want a growing open-source alternative to commercial red teaming platforms.",
+    "slug": "giskard"
   },
   {
     "name": "Mindgard",
@@ -454,7 +469,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A continuous AI Dynamic Application Security Testing (DAST) platform. Discovers runtime-only vulnerabilities in AI applications through dynamic testing against live endpoints, similar to how traditional DAST tools test web applications.",
     "backSecurity": "Mindgard brings the DAST paradigm to AI security \u2014 testing running applications rather than static models. This catches vulnerabilities that only manifest at runtime: prompt injection through specific input combinations, data leakage under load, and denial-of-service through adversarial inputs.",
-    "backWhen": "Use for continuous security testing of deployed AI applications. The DAST approach complements static analysis tools like Garak. Best suited for teams with established DevSecOps practices who want to add AI testing to their existing pipeline."
+    "backWhen": "Use for continuous security testing of deployed AI applications. The DAST approach complements static analysis tools like Garak. Best suited for teams with established DevSecOps practices who want to add AI testing to their existing pipeline.",
+    "slug": "mindgard"
   },
   {
     "name": "Adversa AI",
@@ -485,7 +501,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A red teaming platform for LLMs with automated benchmarking and adversarial testing capabilities. Covers prompt injection, data extraction, jailbreaking, and increasingly agentic AI threats.",
     "backSecurity": "Adversa AI provides structured red teaming with benchmarking \u2014 meaning you get not just vulnerability findings but comparative scores against baseline safety metrics. Their coverage of agentic threats is notable as most tools haven't caught up to agent-specific attack vectors yet.",
-    "backWhen": "Use when you need both red teaming findings and benchmark scores for reporting to leadership. The agentic coverage makes it relevant for teams deploying AI agents. SaaS platform with guided setup \u2014 lower barrier than self-hosted alternatives."
+    "backWhen": "Use when you need both red teaming findings and benchmark scores for reporting to leadership. The agentic coverage makes it relevant for teams deploying AI agents. SaaS platform with guided setup \u2014 lower barrier than self-hosted alternatives.",
+    "slug": "adversa-ai"
   },
   {
     "name": "Agentic Radar",
@@ -516,7 +533,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "The first open-source security scanner purpose-built for agentic AI systems. Analyses agent configurations, scans for insecure tool bindings, and simulates multi-agent attack scenarios. From Splx AI (now part of ZScaler).",
     "backSecurity": "Addresses a critical gap \u2014 most AI security tools focus on single-model interactions, but agentic systems introduce new attack surfaces: insecure tool use (LLM07), excessive agency (LLM08), and inter-agent manipulation. Agentic Radar scans for these agent-specific vulnerabilities. Maps directly to three OWASP Agentic Top 10 entries: ASI02 (Tool Misuse \u2014 scans for insecure tool bindings), ASI04 (Supply Chain \u2014 validates MCP server integrity), and ASI07 (Inter-Agent Communication \u2014 detects insecure agent-to-agent patterns). Now part of ZScaler's security portfolio.",
-    "backWhen": "Use when deploying AI agents that use tools, access APIs, or interact with other agents. Essential for any MCP-based architecture or multi-agent system. Open-source and actively maintained, but requires Python setup and familiarity with agent architectures."
+    "backWhen": "Use when deploying AI agents that use tools, access APIs, or interact with other agents. Essential for any MCP-based architecture or multi-agent system. Open-source and actively maintained, but requires Python setup and familiarity with agent architectures.",
+    "slug": "agentic-radar"
   },
   {
     "name": "Prompt Fuzzer",
@@ -545,7 +563,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An open-source interactive prompt resilience testing tool from Prompt Security. Generates and tests adversarial inputs against LLM system prompts to evaluate their robustness against injection and manipulation attacks.",
     "backSecurity": "Focused specifically on system prompt resilience \u2014 testing whether an LLM's instructions can be overridden, extracted, or bypassed. This is the core of LLM01 (Prompt Injection) and one of the most common real-world attack vectors.",
-    "backWhen": "Use when hardening system prompts before deployment. Run against your production prompts to find injection vectors, then iterate on prompt design. Quick to set up via CLI, but requires understanding of prompt injection techniques to interpret results effectively."
+    "backWhen": "Use when hardening system prompts before deployment. Run against your production prompts to find injection vectors, then iterate on prompt design. Quick to set up via CLI, but requires understanding of prompt injection techniques to interpret results effectively.",
+    "slug": "prompt-fuzzer"
   },
   {
     "name": "OWASP AI Exchange",
@@ -590,7 +609,8 @@
     "agentic": false,
     "backWhat": "The comprehensive open-source guide to AI security maintained by OWASP. Covers threats, controls, and governance across the entire AI lifecycle. The definitive reference for understanding the AI threat landscape.",
     "backSecurity": "This is the single most important reference document in AI security. It maps threats across all 10 LLM risks, provides control recommendations, and connects to the broader OWASP ecosystem. If you read one resource, make it this one.",
-    "backWhen": "Use as your foundational reference when building AI security programmes, writing policies, or assessing risks. Consult it when mapping controls to specific threats. Updated regularly by the OWASP community."
+    "backWhen": "Use as your foundational reference when building AI security programmes, writing policies, or assessing risks. Consult it when mapping controls to specific threats. Updated regularly by the OWASP community.",
+    "slug": "owasp-ai-exchange"
   },
   {
     "name": "OWASP GenAI Solutions",
@@ -623,7 +643,8 @@
     "agentic": false,
     "backWhat": "OWASP's curated Solutions Landscape directory mapping AI security vendors and tools to specific GenAI security use cases. Part of the broader OWASP GenAI Security Project.",
     "backSecurity": "Provides an OWASP-endorsed view of the vendor landscape, helping teams identify solutions that map to specific OWASP risks. Useful as a cross-reference when evaluating tools \u2014 if a vendor appears in both Yuntona and the OWASP directory, that's a stronger signal.",
-    "backWhen": "Use when evaluating vendors to cross-reference against OWASP's own assessment. Helpful for procurement justification \u2014 being listed in an OWASP directory carries weight with auditors and compliance teams."
+    "backWhen": "Use when evaluating vendors to cross-reference against OWASP's own assessment. Helpful for procurement justification \u2014 being listed in an OWASP directory carries weight with auditors and compliance teams.",
+    "slug": "owasp-genai-solutions"
   },
   {
     "name": "ISO/IEC 42001",
@@ -646,7 +667,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "The global standard for AI Management Systems, published by ISO/IEC. Specifies requirements for establishing, implementing, maintaining, and continually improving an AI management system within organisations.",
     "backSecurity": "ISO 42001 is becoming the gold standard for demonstrating AI governance maturity. It provides a structured framework for managing AI risks, similar to how ISO 27001 frames information security. Certification demonstrates to customers, regulators, and partners that your AI practices meet international standards.",
-    "backWhen": "Pursue when your organisation needs to demonstrate AI governance maturity to enterprise customers, regulators, or partners. This is an organisational commitment requiring cross-functional implementation, internal audit capability, and ongoing maintenance. Plan for 6-12 months minimum."
+    "backWhen": "Pursue when your organisation needs to demonstrate AI governance maturity to enterprise customers, regulators, or partners. This is an organisational commitment requiring cross-functional implementation, internal audit capability, and ongoing maintenance. Plan for 6-12 months minimum.",
+    "slug": "iso-iec-42001"
   },
   {
     "name": "ETSI AI Security Standard",
@@ -669,7 +691,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "The European Telecommunications Standards Institute's standard (TS 104 223) for securing AI systems. One of the first formal technical standards specifically addressing AI security requirements.",
     "backSecurity": "Provides prescriptive technical requirements for AI security rather than just principles. Covers secure development, deployment, and operation of AI systems with specific controls. Particularly relevant for organisations operating in European markets or regulated industries.",
-    "backWhen": "Adopt when building AI systems for European markets or regulated sectors. The standard complements ISO 42001 (management system) with technical security requirements. Enterprise-level commitment requiring process changes and potentially external assessment."
+    "backWhen": "Adopt when building AI systems for European markets or regulated sectors. The standard complements ISO 42001 (management system) with technical security requirements. Enterprise-level commitment requiring process changes and potentially external assessment.",
+    "slug": "etsi-ai-security-standard"
   },
   {
     "name": "EU AI Act Practical Guide",
@@ -691,7 +714,8 @@
     "agentic": false,
     "backWhat": "A practical legal guide by Cuatrecasas for navigating the European AI regulation. Breaks down the EU AI Act's risk classification system, prohibited practices, transparency requirements, and compliance obligations into actionable guidance.",
     "backSecurity": "The EU AI Act is the most comprehensive AI regulation globally and will affect any organisation deploying AI in European markets. Understanding the risk classification system (unacceptable, high, limited, minimal risk) is essential for determining what security and governance controls are legally required.",
-    "backWhen": "Read when your organisation deploys AI systems that affect EU citizens or operates in European markets. Essential background for GRC teams building AI compliance programmes. The guide makes the dense regulation accessible without requiring legal expertise."
+    "backWhen": "Read when your organisation deploys AI systems that affect EU citizens or operates in European markets. Essential background for GRC teams building AI compliance programmes. The guide makes the dense regulation accessible without requiring legal expertise.",
+    "slug": "eu-ai-act-practical-guide"
   },
   {
     "name": "NIST AI RMF Maturity Model",
@@ -715,7 +739,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A framework for assessing organisational maturity in AI risk management, based on NIST's AI Risk Management Framework. Provides a structured approach to measuring and improving AI governance capabilities across multiple dimensions.",
     "backSecurity": "Maps AI risk management capabilities to maturity levels, helping organisations understand where they stand and what to prioritise. Useful for building a roadmap from ad-hoc AI usage to structured AI governance, with clear milestones along the way.",
-    "backWhen": "Use when building an AI governance roadmap or assessing current maturity for leadership reporting. Requires mapping to your organisation's specific processes and capabilities \u2014 not just reading the framework but applying it to your context."
+    "backWhen": "Use when building an AI governance roadmap or assessing current maturity for leadership reporting. Requires mapping to your organisation's specific processes and capabilities \u2014 not just reading the framework but applying it to your context.",
+    "slug": "nist-ai-rmf-maturity-model"
   },
   {
     "name": "Witness.ai",
@@ -743,7 +768,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An enterprise AI safety platform that provides visibility and policy enforcement for shadow AI usage across the organisation. Monitors employee interactions with AI tools and enforces data protection policies in real-time.",
     "backSecurity": "Shadow AI is one of the most immediate risks for enterprises \u2014 employees using ChatGPT, Claude, and other AI tools with sensitive data, bypassing security controls. Witness.ai provides visibility into this usage and enforcement of data protection policies without blocking productivity. One of the fastest-growing AI agent security startups per CB Insights, gaining 100+ Mosaic health score points in 12 months \u2014 reflecting surging enterprise demand for monitoring human-AI interactions.",
-    "backWhen": "Deploy when shadow AI is an identified risk and you need both visibility and policy enforcement. Enterprise platform requiring procurement, org-wide deployment, and policy configuration. Most valuable in regulated industries with strict data handling requirements."
+    "backWhen": "Deploy when shadow AI is an identified risk and you need both visibility and policy enforcement. Enterprise platform requiring procurement, org-wide deployment, and policy configuration. Most valuable in regulated industries with strict data handling requirements.",
+    "slug": "witness-ai"
   },
   {
     "name": "Harmonic Security",
@@ -771,7 +797,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A data protection platform specifically designed for governing Shadow AI usage in enterprises. Detects AI tool usage, classifies data being shared with AI services, and enforces data loss prevention policies across AI interactions.",
     "backSecurity": "Addresses the DLP gap that traditional tools miss \u2014 data leaving through AI chat interfaces, API calls to LLM providers, and embedded AI features in productivity tools. Harmonic tracks what data goes where and enforces policies to prevent sensitive information from reaching external AI services.",
-    "backWhen": "Deploy when you need enterprise-wide DLP specifically for AI channels. Procurement, integration with existing DLP infrastructure, and organisation-wide rollout are required. Complements traditional DLP rather than replacing it."
+    "backWhen": "Deploy when you need enterprise-wide DLP specifically for AI channels. Procurement, integration with existing DLP infrastructure, and organisation-wide rollout are required. Complements traditional DLP rather than replacing it.",
+    "slug": "harmonic-security"
   },
   {
     "name": "Zenity",
@@ -802,7 +829,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A governance and security platform for Low-Code/No-Code AI agents and copilots. Provides visibility, risk assessment, and policy enforcement for AI-powered automations built by business users rather than developers.",
     "backSecurity": "The Low-Code/No-Code AI explosion means business users are building AI agents without security review. Zenity provides governance for this shadow development \u2014 discovering AI automations, assessing their risk, and enforcing policies without blocking citizen developer productivity. CB Insights tracks Zenity gaining 100+ Mosaic score points year-over-year, reflecting enterprise demand for low-code/no-code AI governance. Cited in the OWASP Agentic Top 10 ASI Exploits Tracker for discovering a Microsoft Copilot Studio flaw where agents were public by default without authentication.",
-    "backWhen": "Deploy when business users are building AI-powered automations in platforms like Power Platform, Zapier, or custom copilots. Enterprise platform requiring procurement and integration with your Low-Code/No-Code ecosystem."
+    "backWhen": "Deploy when business users are building AI-powered automations in platforms like Power Platform, Zapier, or custom copilots. Enterprise platform requiring procurement and integration with your Low-Code/No-Code ecosystem.",
+    "slug": "zenity"
   },
   {
     "name": "Lethal Trifecta (Simon Willison)",
@@ -832,7 +860,8 @@
     "agentic": true,
     "backWhat": "An essential article by Simon Willison (creator of Datasette) that describes the fundamental security threat model for AI agents: the combination of Prompt Injection + Tool Use + Permissions that creates the core vulnerability pattern in agentic AI systems.",
     "backSecurity": "This is the conceptual framework every AI security professional should internalise. The 'Lethal Trifecta' explains why agentic AI is fundamentally dangerous: LLMs that can be manipulated (prompt injection) given the ability to act (tool use) with real permissions creates an exploitable attack surface that no single control fully mitigates.",
-    "backWhen": "Read this as foundational education before designing security controls for any AI agent system. Share with engineering teams building agentic applications. Reference in threat models and architecture reviews. It takes 10 minutes to read and will reshape how you think about AI agent security."
+    "backWhen": "Read this as foundational education before designing security controls for any AI agent system. Share with engineering teams building agentic applications. Reference in threat models and architecture reviews. It takes 10 minutes to read and will reshape how you think about AI agent security.",
+    "slug": "lethal-trifecta-simon-willison"
   },
   {
     "name": "Ken Huang",
@@ -864,7 +893,8 @@
     "agentic": true,
     "backWhat": "One of the foremost thought leaders in AI security. Author of 16 books on generative and agentic AI security. Co-creator of the CSA MAESTRO framework and the MAESTRO Sentinel threat modelling tool. Researcher behind the award-winning Agent Name Service (ANS) paper. Also creator of the ZeroTrustAgent reference implementation.",
     "backSecurity": "Ken's work spans the full breadth of AI security \u2014 from foundational frameworks (MAESTRO) to practical tools (MAESTRO Sentinel, ZeroTrustAgent) to cutting-edge research (ANS). His publications at distributedapps.ai cover agentic AI security, multi-agent systems, and zero-trust architectures for autonomous agents.",
-    "backWhen": "Follow on Substack for ongoing AI security research and insights. Reference his publications when building security architectures for agentic AI systems. His books provide comprehensive coverage for teams building AI security programmes from scratch."
+    "backWhen": "Follow on Substack for ongoing AI security research and insights. Reference his publications when building security architectures for agentic AI systems. His books provide comprehensive coverage for teams building AI security programmes from scratch.",
+    "slug": "ken-huang"
   },
   {
     "name": "MITRE ATLAS",
@@ -908,7 +938,8 @@
     "agentic": false,
     "backWhat": "The Adversarial Threat Landscape for AI Systems \u2014 MITRE's knowledge base of adversary tactics and techniques for attacking AI systems. The AI equivalent of MITRE ATT&CK, providing a structured taxonomy of how AI systems are attacked in the real world.",
     "backSecurity": "ATLAS is foundational for AI threat modelling. It provides a common language for describing AI attacks, maps real-world case studies to techniques, and enables structured threat analysis. If ATT&CK is how you communicate about traditional threats, ATLAS is how you communicate about AI threats.",
-    "backWhen": "Use as a reference framework when conducting AI threat modelling, writing detection rules, or communicating AI risks to stakeholders. Essential knowledge base for any AI security programme. Browse it, learn the taxonomy, and reference it in assessments."
+    "backWhen": "Use as a reference framework when conducting AI threat modelling, writing detection rules, or communicating AI risks to stakeholders. Essential knowledge base for any AI security programme. Browse it, learn the taxonomy, and reference it in assessments.",
+    "slug": "mitre-atlas"
   },
   {
     "name": "CycloneDX (AIBOM)",
@@ -937,7 +968,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "The CycloneDX standard extended for AI/ML Bill of Materials. Provides a structured format for documenting all components of an AI system \u2014 models, training data, hyperparameters, dependencies, and deployment configurations.",
     "backSecurity": "AI supply chain attacks (LLM03, LLM05) are growing as organisations consume pre-trained models, fine-tuning datasets, and ML libraries from external sources. An AIBOM provides the inventory needed to track what's in your AI stack, detect compromised components, and respond to supply chain incidents. The OWASP Agentic Top 10 (Appendix B) explicitly identifies CycloneDX as foundational to ASI04 (Supply Chain) defense. CycloneDX answers 'what components are in my AI system?' while the ASI framework addresses 'how can those components behave unsafely?'",
-    "backWhen": "Implement when you need formal supply chain governance for AI systems. Requires integration with CI/CD pipelines, ML training infrastructure, and model registries. Expert-level work that builds on existing SBOM practices."
+    "backWhen": "Implement when you need formal supply chain governance for AI systems. Requires integration with CI/CD pipelines, ML training infrastructure, and model registries. Expert-level work that builds on existing SBOM practices.",
+    "slug": "cyclonedx-aibom"
   },
   {
     "name": "LLM Guard (Protect AI)",
@@ -968,7 +1000,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An open-source security toolkit from Protect AI that scans both LLM inputs and outputs in real-time. Provides modular scanners for prompt injection detection, PII redaction, toxicity filtering, and output validation.",
     "backSecurity": "LLM Guard sits in the request/response path and applies security scanning at both ends. Input scanners catch injection attempts and sensitive data before it reaches the model. Output scanners detect PII leakage, toxic content, and malformed responses before they reach the user. Modular design means you deploy only the scanners you need.",
-    "backWhen": "Use when you need runtime input/output scanning for LLM applications. Python library that integrates into your application code \u2014 requires API integration and scanner configuration but well-documented. Good starting point for teams implementing guardrails for the first time."
+    "backWhen": "Use when you need runtime input/output scanning for LLM applications. Python library that integrates into your application code \u2014 requires API integration and scanner configuration but well-documented. Good starting point for teams implementing guardrails for the first time.",
+    "slug": "llm-guard-protect-ai"
   },
   {
     "name": "NeMo Guardrails (NVIDIA)",
@@ -999,7 +1032,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "NVIDIA's open-source toolkit for adding programmable guardrails to LLM-based systems. Uses Colang \u2014 a custom modelling language \u2014 to define conversational rails that control what the LLM can and cannot do.",
     "backSecurity": "NeMo Guardrails provides deep, programmable control over LLM behaviour. Unlike pattern-matching filters, Colang rails can implement complex conversational policies: topic restrictions, fact-checking flows, and multi-turn safety checks. This granularity is essential for high-stakes applications.",
-    "backWhen": "Use when you need fine-grained control over LLM behaviour beyond simple input/output filtering. Requires learning Colang, designing rail policies, and integrating with your LLM pipeline. Expert-level work but provides the most customisable guardrail system available."
+    "backWhen": "Use when you need fine-grained control over LLM behaviour beyond simple input/output filtering. Requires learning Colang, designing rail policies, and integrating with your LLM pipeline. Expert-level work but provides the most customisable guardrail system available.",
+    "slug": "nemo-guardrails-nvidia"
   },
   {
     "name": "LlamaFirewall (Meta)",
@@ -1032,7 +1066,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "Meta's open-source host-level firewall designed specifically for LLM agents. Prevents malicious tool use by intercepting and validating agent actions before they execute, acting as a security enforcement layer between the LLM and its tools.",
     "backSecurity": "Directly addresses the Lethal Trifecta \u2014 LlamaFirewall intercepts tool calls from LLM agents and validates them against security policies before execution. This breaks the chain between prompt injection and harmful action by adding an independent validation layer that the LLM cannot bypass.",
-    "backWhen": "Deploy when building AI agents that use tools with real-world effects (file access, API calls, database queries). Requires architectural integration \u2014 the firewall must sit between the agent and its tool layer. Expert-level deployment but essential for any agent with meaningful permissions."
+    "backWhen": "Deploy when building AI agents that use tools with real-world effects (file access, API calls, database queries). Requires architectural integration \u2014 the firewall must sit between the agent and its tool layer. Expert-level deployment but essential for any agent with meaningful permissions.",
+    "slug": "llamafirewall-meta"
   },
   {
     "name": "E2B",
@@ -1060,7 +1095,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A cloud-based sandboxed execution environment for AI-generated code. Provides isolated containers where LLM-generated code can run safely without access to the host system, network, or sensitive data. CB Insights places E2B in the Browser Infrastructure layer of the AI agent tech stack alongside Browserbase and Skyvern. Directly addresses ASI05 (Unexpected Code Execution) \u2014 the OWASP Agentic Top 10 entry that covers sandbox escape and vibe coding risks.",
     "backSecurity": "Code generation is one of the most powerful \u2014 and dangerous \u2014 capabilities of LLM agents. E2B ensures that when an agent generates and runs code, it executes in a fully isolated environment. This prevents malicious or buggy generated code from accessing sensitive data or compromising infrastructure.",
-    "backWhen": "Use when your AI agents generate and execute code. The SDK integrates with popular agent frameworks. Guided setup \u2014 requires API integration and environment configuration, but the sandboxing is managed for you."
+    "backWhen": "Use when your AI agents generate and execute code. The SDK integrates with popular agent frameworks. Guided setup \u2014 requires API integration and environment configuration, but the sandboxing is managed for you.",
+    "slug": "e2b"
   },
   {
     "name": "A2A Protocol",
@@ -1089,7 +1125,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "The Agent-to-Agent protocol standard that defines how AI agents communicate, authenticate, and collaborate. Specifies the message formats, security boundaries, and trust models for multi-agent systems.",
     "backSecurity": "As multi-agent systems proliferate, the communication layer between agents becomes a critical attack surface. A2A Protocol defines how agents establish trust, authenticate requests, and maintain security boundaries \u2014 preventing one compromised agent from manipulating others. CB Insights confirms all three major cloud providers (Amazon, Google, Microsoft) have adopted A2A for agent interoperability, making it a de facto standard. The OWASP Agentic Top 10 identifies A2A registration spoofing and Agent-in-the-Middle attacks as key ASI07 threats.",
-    "backWhen": "Implement when building multi-agent systems where agents need to communicate securely. Requires protocol implementation, identity management, and security boundary design. Expert-level architecture work but essential for any production multi-agent deployment."
+    "backWhen": "Implement when building multi-agent systems where agents need to communicate securely. Requires protocol implementation, identity management, and security boundary design. Expert-level architecture work but essential for any production multi-agent deployment.",
+    "slug": "a2a-protocol"
   },
   {
     "name": "Pangea",
@@ -1120,7 +1157,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A developer-first platform providing security-as-a-service APIs for AI applications. Offers Prompt Guard (injection detection), AI Guard (content filtering), Redact (PII removal), Secure Audit Log, and authentication services \u2014 all as simple API calls.",
     "backSecurity": "Pangea lowers the barrier to implementing AI security by providing production-ready security capabilities as APIs. Instead of building your own PII redaction or prompt injection detection, you make an API call. This is particularly valuable for development teams that need security controls but lack security engineering expertise.",
-    "backWhen": "Use when you want to add security capabilities to AI applications without building them from scratch. API-first approach means integration is straightforward \u2014 configure API keys, select services, integrate SDK calls. Days rather than weeks to deploy."
+    "backWhen": "Use when you want to add security capabilities to AI applications without building them from scratch. API-first approach means integration is straightforward \u2014 configure API keys, select services, integrate SDK calls. Days rather than weeks to deploy.",
+    "slug": "pangea"
   },
   {
     "name": "Cisco AI Defense",
@@ -1162,7 +1200,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "Cisco's enterprise AI security platform \u2014 the most comprehensive offering from a major network vendor. Provides three core capabilities: Discover (AI Cloud Visibility including AI BOM and MCP Catalog for supply chain governance), Detect (algorithmic red teaming with multi-turn, multi-language adversarial testing for models and agents), and Protect (runtime guardrails for prompts, responses, and agentic interactions including MCP traffic inspection). Integrates with NVIDIA NeMo Guardrails. Maps to NIST AI RMF, MITRE ATLAS, and OWASP LLM Top 10.",
     "backSecurity": "Covers the full AI security lifecycle from supply chain to runtime. The Feb 2026 expansion added critical agentic capabilities: real-time inspection of MCP traffic, detection of poisoned tools and unauthorized tool use, and AI BOM for tracking AI software assets including MCP servers and third-party dependencies. Network-layer enforcement means policies apply across all AI traffic traversing Cisco infrastructure.",
-    "backWhen": "Deploy when you need organisation-wide AI security enforcement integrated with existing Cisco infrastructure. The breadth of coverage (supply chain + red teaming + runtime) reduces the need for multiple point solutions. Enterprise procurement with network integration and policy management required. Strongest for organisations already in the Cisco ecosystem."
+    "backWhen": "Deploy when you need organisation-wide AI security enforcement integrated with existing Cisco infrastructure. The breadth of coverage (supply chain + red teaming + runtime) reduces the need for multiple point solutions. Enterprise procurement with network integration and policy management required. Strongest for organisations already in the Cisco ecosystem.",
+    "slug": "cisco-ai-defense"
   },
   {
     "name": "F5 AI Gateway",
@@ -1192,7 +1231,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "F5's network-layer AI security gateway that protects, accelerates, and observes AI-powered applications. Sits in the network path between users and AI services, providing security scanning, rate limiting, and observability.",
     "backSecurity": "Network-layer enforcement means F5 AI Gateway can protect AI applications regardless of their implementation. It catches threats at the network boundary \u2014 prompt injection in HTTP payloads, data exfiltration in responses, and model theft through excessive API usage (LLM10).",
-    "backWhen": "Deploy when you need network-level AI security enforcement across multiple AI applications. Enterprise network appliance requiring procurement, infrastructure integration, and network architecture changes. Best suited for organisations already using F5 infrastructure."
+    "backWhen": "Deploy when you need network-level AI security enforcement across multiple AI applications. Enterprise network appliance requiring procurement, infrastructure integration, and network architecture changes. Best suited for organisations already using F5 infrastructure.",
+    "slug": "f5-ai-gateway"
   },
   {
     "name": "MCP Secure Gateway",
@@ -1224,7 +1264,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "An open-source security gateway for Model Context Protocol (MCP) connections. Provides runtime guardrails, authentication, and policy enforcement for the protocol that connects LLMs to external tools and data sources.",
     "backSecurity": "MCP is becoming the standard for connecting LLMs to tools \u2014 but the protocol itself has minimal built-in security. MCP Secure Gateway adds the missing security layer: authenticating MCP connections, validating tool calls against policies, and monitoring for suspicious patterns. Addresses three OWASP Agentic Top 10 entries: ASI02 (Tool Misuse \u2014 MCP tool poisoning), ASI04 (Supply Chain \u2014 compromised MCP servers), and ASI07 (Inter-Agent Communication \u2014 MCP descriptor injection and protocol abuse). The ASI Exploits Tracker lists multiple real-world MCP attacks including the first in-the-wild malicious MCP server on npm.",
-    "backWhen": "Deploy when using MCP-based agent architectures in production. Requires MCP protocol knowledge, deployment infrastructure, and security policy configuration. Essential for any production MCP deployment but requires expert-level understanding of the protocol."
+    "backWhen": "Deploy when using MCP-based agent architectures in production. Requires MCP protocol knowledge, deployment infrastructure, and security policy configuration. Essential for any production MCP deployment but requires expert-level understanding of the protocol.",
+    "slug": "mcp-secure-gateway"
   },
   {
     "name": "ZenGuard AI",
@@ -1254,7 +1295,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A developer-first API platform providing low-latency GenAI guardrails and vulnerability testing. Focuses on delivering the fastest possible guardrail response times to minimise impact on user experience.",
     "backSecurity": "Latency is the practical barrier to guardrail adoption \u2014 if your security scanning adds noticeable delay, developers will bypass it. ZenGuard AI optimises for speed, making it feasible to add guardrails to latency-sensitive applications like chatbots and real-time assistants.",
-    "backWhen": "Use when latency is a critical requirement for your guardrail deployment. API-based integration with SDK support. Guided setup similar to Pangea \u2014 configure API keys, select guardrails, integrate into your application."
+    "backWhen": "Use when latency is a critical requirement for your guardrail deployment. API-based integration with SDK support. Guided setup similar to Pangea \u2014 configure API keys, select guardrails, integrate into your application.",
+    "slug": "zenguard-ai"
   },
   {
     "name": "LangChain",
@@ -1280,7 +1322,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "The dominant LLM orchestration framework for building AI agents and chains. Provides abstractions for connecting LLMs to tools, data sources, memory, and other components. Core infrastructure that a huge portion of AI applications are built on. CB Insights places LangChain as one of the core developer frameworks in the AI agent tech stack. The OWASP Agentic Top 10 maps LangChain to ASI02 (Tool Misuse) and ASI04 (Supply Chain) \u2014 agent frameworks introduce new attack surfaces through dynamic tool loading and dependency management.",
     "backSecurity": "Every security team needs to understand LangChain because a large percentage of the AI applications they'll assess are built with it. Understanding LangChain's chain architecture, tool binding mechanisms, and memory patterns is essential for identifying where security controls should be applied.",
-    "backWhen": "Study when you need to understand how AI applications are built \u2014 this is foundational knowledge for AI security assessments. Using LangChain to build requires framework-level commitment: architectural decisions, ongoing maintenance, and keeping up with rapid API changes."
+    "backWhen": "Study when you need to understand how AI applications are built \u2014 this is foundational knowledge for AI security assessments. Using LangChain to build requires framework-level commitment: architectural decisions, ongoing maintenance, and keeping up with rapid API changes.",
+    "slug": "langchain"
   },
   {
     "name": "LlamaIndex",
@@ -1307,7 +1350,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "A data framework for connecting LLMs to external data sources, primarily through Retrieval Augmented Generation (RAG) pipelines. Handles document ingestion, indexing, vector storage, and retrieval \u2014 the backbone of knowledge-grounded AI applications.",
     "backSecurity": "RAG pipelines are a primary vector for data exfiltration (LLM06) and injection attacks. LlamaIndex manages the pipeline that retrieves context and feeds it to the LLM \u2014 meaning it controls what data the model sees. Poisoning the index, manipulating retrieval, or extracting sensitive chunks are all real attack vectors.",
-    "backWhen": "Study when assessing RAG-based AI applications. Using LlamaIndex to build requires data pipeline design, vector store selection, index configuration, and ongoing maintenance. Expert-level framework that underpins most enterprise RAG deployments."
+    "backWhen": "Study when assessing RAG-based AI applications. Using LlamaIndex to build requires data pipeline design, vector store selection, index configuration, and ongoing maintenance. Expert-level framework that underpins most enterprise RAG deployments.",
+    "slug": "llamaindex"
   },
   {
     "name": "Langfuse",
@@ -1334,7 +1378,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An open-source LLM observability platform providing traces, evaluations, and prompt management. Captures every LLM interaction \u2014 prompts, completions, latency, costs, and scores \u2014 creating a complete audit trail for AI systems. Cited by CB Insights as a leading AI agent observability tool in the emerging Trust & Performance layer of the agent tech stack. Critical for detecting ASI06 (Memory & Context Poisoning) and ASI08 (Cascading Failures) in agentic deployments.",
     "backSecurity": "Observability is the foundation of AI security monitoring. Without traces, you can't detect prompt injection attempts, data leakage, or anomalous model behaviour. Langfuse provides the audit trail that security teams need to investigate incidents and demonstrate compliance.",
-    "backWhen": "Deploy when you need observability and audit trails for LLM applications. SDK integration is straightforward \u2014 add tracing calls to your application code. Self-hosted or cloud options. Essential infrastructure for any AI security monitoring programme."
+    "backWhen": "Deploy when you need observability and audit trails for LLM applications. SDK integration is straightforward \u2014 add tracing calls to your application code. Self-hosted or cloud options. Essential infrastructure for any AI security monitoring programme.",
+    "slug": "langfuse"
   },
   {
     "name": "Arize Phoenix",
@@ -1362,7 +1407,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An open-source LLM tracing, evaluation, and hallucination detection platform. Provides detailed traces of LLM interactions with built-in evaluation frameworks for measuring output quality, relevance, and factual accuracy. CB Insights positions Arize in the AI agent tech stack Oversight layer alongside Langfuse and Patronus AI. Critical for detecting ASI06 (Memory & Context Poisoning) through drift monitoring and ASI08 (Cascading Failures) through multi-agent trace analysis.",
     "backSecurity": "Hallucination detection is a security concern \u2014 LLM09 (Overreliance) becomes dangerous when models generate confident but incorrect information that users trust. Arize Phoenix's evaluation framework helps quantify hallucination rates and identify patterns in unreliable outputs.",
-    "backWhen": "Use when you need to measure and monitor LLM output quality, particularly hallucination rates. Python-based with straightforward integration. Guided setup \u2014 install, instrument your application, configure evaluations."
+    "backWhen": "Use when you need to measure and monitor LLM output quality, particularly hallucination rates. Python-based with straightforward integration. Guided setup \u2014 install, instrument your application, configure evaluations.",
+    "slug": "arize-phoenix"
   },
   {
     "name": "OpenLIT",
@@ -1388,7 +1434,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An OpenTelemetry-native LLM observability solution that provides one-line integration for tracking costs, tokens, prompts, and performance metrics. Built on the OTEL standard for seamless integration with existing observability stacks.",
     "backSecurity": "If your organisation already uses OpenTelemetry for application observability, OpenLIT extends that investment to AI workloads. Security teams can monitor AI metrics alongside application metrics in the same dashboards, making it easier to correlate AI anomalies with broader system events.",
-    "backWhen": "Use when you have an existing OTEL-based observability stack and want to add LLM monitoring. One-line integration is genuinely quick, but you need the OTEL infrastructure already in place. Natural fit for teams with mature observability practices."
+    "backWhen": "Use when you have an existing OTEL-based observability stack and want to add LLM monitoring. One-line integration is genuinely quick, but you need the OTEL infrastructure already in place. Natural fit for teams with mature observability practices.",
+    "slug": "openlit"
   },
   {
     "name": "Scale AI",
@@ -1412,7 +1459,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An enterprise platform for data labelling, model evaluation, and AI testing services. Provides human-in-the-loop evaluation, dataset curation, and benchmarking services used by major AI companies and government agencies.",
     "backSecurity": "Scale AI's evaluation services are relevant for security testing at scale \u2014 particularly for measuring model safety properties, evaluating guardrail effectiveness, and benchmarking security controls. Their government and enterprise focus means they understand compliance requirements.",
-    "backWhen": "Engage when you need large-scale evaluation services backed by human reviewers. Enterprise procurement process with project scoping. This is a service engagement, not a software tool \u2014 think consulting plus platform."
+    "backWhen": "Engage when you need large-scale evaluation services backed by human reviewers. Enterprise procurement process with project scoping. This is a service engagement, not a software tool \u2014 think consulting plus platform.",
+    "slug": "scale-ai"
   },
   {
     "name": "GitHub Copilot",
@@ -1440,7 +1488,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "GitHub's AI coding assistant powered by OpenAI models. Provides code completion, chat-based development, and increasingly autonomous coding capabilities within VS Code, JetBrains, and other IDEs. GitHub Copilot reached 15M users (up 4x year-over-year). Microsoft reports 1M custom agents created on SharePoint and Copilot Studio. Featured in the OWASP ASI Exploits Tracker for prompt injection vulnerabilities that injected backdoors into production code.",
     "backSecurity": "The primary security concern is LLM06 (Sensitive Information Disclosure) \u2014 proprietary code, internal API patterns, and security-sensitive logic being sent to external AI models. Additionally, Copilot-generated code may contain vulnerabilities that developers accept without review. Governance policies are essential.",
-    "backWhen": "If your organisation uses Copilot, ensure governance policies cover data classification (what code can be sent to the model), code review requirements for AI-generated code, and enterprise configuration to limit data exposure. Requires org-level admin setup beyond individual installation."
+    "backWhen": "If your organisation uses Copilot, ensure governance policies cover data classification (what code can be sent to the model), code review requirements for AI-generated code, and enterprise configuration to limit data exposure. Requires org-level admin setup beyond individual installation.",
+    "slug": "github-copilot"
   },
   {
     "name": "Cursor",
@@ -1468,7 +1517,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An AI-native code editor built on VS Code with deep model integration. Provides code completion, multi-file editing, codebase-aware chat, and increasingly autonomous coding capabilities. Same underlying technology concerns as GitHub Copilot. Anysphere's Cursor reached $500M ARR \u2014 the highest-revenue AI agent startup per CB Insights, with $3.2M revenue per employee. Featured in multiple OWASP ASI exploit entries: config overwrite via case mismatch (ASI05), workspace file injection (ASI05), and MCP OAuth response exploitation (ASI07).",
     "backSecurity": "Same governance implications as Copilot \u2014 proprietary code exposure to external models, generated code quality and security, and shadow AI risk if developers adopt it without approval. Cursor's codebase indexing means it may process more code context than simpler assistants.",
-    "backWhen": "Govern the same way as Copilot. If developers are using Cursor, ensure governance policies address code classification, model provider selection, and review requirements. Desktop application requiring installation, subscription, and governance policy compliance."
+    "backWhen": "Govern the same way as Copilot. If developers are using Cursor, ensure governance policies address code classification, model provider selection, and review requirements. Desktop application requiring installation, subscription, and governance policy compliance.",
+    "slug": "cursor"
   },
   {
     "name": "Continue",
@@ -1495,7 +1545,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An open-source AI code assistant for VS Code and JetBrains. Connects to any LLM provider (including self-hosted models) and provides code completion, chat, and editing capabilities with full control over where your code is sent.",
     "backSecurity": "Continue's key security advantage is model provider flexibility \u2014 you can point it at self-hosted models (via Ollama or similar) to keep all code on-premises. This makes it the strongest option for organisations with strict data sovereignty requirements where no code can leave the network.",
-    "backWhen": "Use when data sovereignty requires self-hosted models for code assistance. Requires IDE extension setup, model provider configuration, and potentially self-hosted model infrastructure. The guided setup varies significantly depending on whether you use cloud or self-hosted models."
+    "backWhen": "Use when data sovereignty requires self-hosted models for code assistance. Requires IDE extension setup, model provider configuration, and potentially self-hosted model infrastructure. The guided setup varies significantly depending on whether you use cloud or self-hosted models.",
+    "slug": "continue"
   },
   {
     "name": "Tabnine",
@@ -1522,7 +1573,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An AI code assistant with an enterprise focus, offering private models that can be trained on your codebase without data leaving your environment. Provides code completion and chat with strict data privacy guarantees.",
     "backSecurity": "Tabnine's differentiator is the privacy-first architecture \u2014 enterprise versions train private models on your code without sending data to external providers. This addresses the core LLM06 concern that makes other code assistants risky for sensitive codebases.",
-    "backWhen": "Evaluate when you need AI code assistance but cannot send code to external providers. Enterprise configuration includes admin controls, model privacy settings, and compliance features. Guided setup for the IDE extension, but enterprise deployment requires admin configuration."
+    "backWhen": "Evaluate when you need AI code assistance but cannot send code to external providers. Enterprise configuration includes admin controls, model privacy settings, and compliance features. Guided setup for the IDE extension, but enterprise deployment requires admin configuration.",
+    "slug": "tabnine"
   },
   {
     "name": "Tabby",
@@ -1549,7 +1601,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "A self-hosted open-source AI coding assistant. Runs entirely on your infrastructure with your choice of model, providing code completion and chat without any data leaving your environment.",
     "backSecurity": "Complete data sovereignty \u2014 everything runs on your hardware with your chosen model. No external API calls, no data transmission, no third-party processing. The strongest privacy guarantee available for AI code assistance, but comes with the operational burden of self-hosting.",
-    "backWhen": "Deploy when you require air-gapped or fully sovereign AI code assistance. Requires GPU server provisioning, model selection and download, deployment configuration, and ongoing maintenance. Expert-level infrastructure work but the only option for truly air-gapped environments."
+    "backWhen": "Deploy when you require air-gapped or fully sovereign AI code assistance. Requires GPU server provisioning, model selection and download, deployment configuration, and ongoing maintenance. Expert-level infrastructure work but the only option for truly air-gapped environments.",
+    "slug": "tabby"
   },
   {
     "name": "SoftwareAnalyst.io",
@@ -1571,7 +1624,8 @@
     "agentic": false,
     "backWhat": "An education and research resource covering Data & AI security topics. Publishes reports and analysis on emerging AI security threats, data protection in AI systems, and governance developments.",
     "backSecurity": "Provides accessible research reports on the intersection of data security and AI. Useful for staying current on how AI impacts data protection requirements and for building awareness across security teams.",
-    "backWhen": "Reference when researching Data & AI security topics. Good resource for teams building AI data governance programmes or needing to understand how AI affects existing data protection controls."
+    "backWhen": "Reference when researching Data & AI security topics. Good resource for teams building AI data governance programmes or needing to understand how AI affects existing data protection controls.",
+    "slug": "softwareanalyst-io"
   },
   {
     "name": "Ollama",
@@ -1594,7 +1648,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A tool for running LLMs locally on your own hardware. Downloads, manages, and serves open-source models with a simple CLI. Supports a wide range of models from Llama to Mistral to custom fine-tunes.",
     "backSecurity": "Essential infrastructure for AI security work. Running models locally means no data leaves your environment \u2014 critical for red team labs, sensitive testing, and air-gapped deployments. Also enables testing against specific model versions without API variability.",
-    "backWhen": "Use when you need local LLM inference for testing, red teaming, or sovereign deployment. Requires local installation, sufficient hardware (RAM/GPU depending on model size), and CLI familiarity. Guided setup \u2014 the tool is straightforward but choosing the right model and hardware configuration requires some knowledge."
+    "backWhen": "Use when you need local LLM inference for testing, red teaming, or sovereign deployment. Requires local installation, sufficient hardware (RAM/GPU depending on model size), and CLI familiarity. Guided setup \u2014 the tool is straightforward but choosing the right model and hardware configuration requires some knowledge.",
+    "slug": "ollama"
   },
   {
     "name": "DeepSeek",
@@ -1618,7 +1673,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "A Chinese AI company producing high-performance LLMs, particularly strong at code generation. DeepSeek models have achieved competitive benchmarks at lower cost, making them attractive but controversial due to data sovereignty concerns.",
     "backSecurity": "DeepSeek presents significant data privacy and sovereignty risks. As a Chinese-headquartered company, data processed through DeepSeek's API may be subject to Chinese data access laws. The models themselves can be run locally via Ollama to mitigate API risks, but the governance decision requires careful analysis of your regulatory environment.",
-    "backWhen": "Evaluate with extreme caution in regulated environments. If using DeepSeek models, run them locally rather than through the API. Requires a thorough governance review covering data sovereignty, regulatory compliance, and supply chain risk before any organisational adoption."
+    "backWhen": "Evaluate with extreme caution in regulated environments. If using DeepSeek models, run them locally rather than through the API. Requires a thorough governance review covering data sovereignty, regulatory compliance, and supply chain risk before any organisational adoption.",
+    "slug": "deepseek"
   },
   {
     "name": "Mistral AI",
@@ -1639,7 +1695,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A European AI company building foundation models and agent capabilities. Offers both API access and open-weight models, positioning as the EU data sovereignty alternative to US AI providers.",
     "backSecurity": "Mistral's European headquarters and EU data processing provide a sovereignty alternative for organisations concerned about US cloud provider data access. Their open-weight models can also be self-hosted for complete data control.",
-    "backWhen": "Evaluate when EU data sovereignty is a requirement. API access is straightforward (Guided Setup), but self-hosted deployment of larger models requires GPU infrastructure. The sovereignty story is Mistral's key differentiator for security-conscious European organisations."
+    "backWhen": "Evaluate when EU data sovereignty is a requirement. API access is straightforward (Guided Setup), but self-hosted deployment of larger models requires GPU infrastructure. The sovereignty story is Mistral's key differentiator for security-conscious European organisations.",
+    "slug": "mistral-ai"
   },
   {
     "name": "Hugging Face",
@@ -1668,7 +1725,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "The largest open-source ML community hub hosting models, datasets, and spaces. Provides model discovery, evaluation, and deployment tools. The primary distribution channel for open-source AI models.",
     "backSecurity": "Hugging Face is the biggest AI supply chain attack surface. Poisoned models, malicious datasets, and compromised model files are real threats (LLM03, LLM05). Anyone can upload models, and verification mechanisms are still maturing. Security teams need to understand the risks of pulling models from Hugging Face.",
-    "backWhen": "Use for model discovery and evaluation, but implement supply chain verification before deploying any model from Hugging Face. Check model provenance, scan for malicious code in model files, and validate model behaviour before production use."
+    "backWhen": "Use for model discovery and evaluation, but implement supply chain verification before deploying any model from Hugging Face. Check model provenance, scan for malicious code in model files, and validate model behaviour before production use.",
+    "slug": "hugging-face"
   },
   {
     "name": "Llama (Meta)",
@@ -1689,7 +1747,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "Meta's family of open-source foundation models. Available in multiple sizes (from 1B to 405B parameters) for self-hosted deployment. The most widely used open-source model family for enterprise AI.",
     "backSecurity": "Self-hosted Llama models provide data sovereignty \u2014 no data leaves your environment. However, self-hosting means you're responsible for the full security stack: model integrity, serving infrastructure, access controls, and monitoring. Understanding Llama's capabilities and limitations is essential for red team planning.",
-    "backWhen": "Deploy when you need sovereign, self-hosted foundation model capabilities. Requires GPU infrastructure, model serving setup (via Ollama, vLLM, or similar), and operational expertise. Expert-level deployment but the most mature option for enterprise self-hosted AI."
+    "backWhen": "Deploy when you need sovereign, self-hosted foundation model capabilities. Requires GPU infrastructure, model serving setup (via Ollama, vLLM, or similar), and operational expertise. Expert-level deployment but the most mature option for enterprise self-hosted AI.",
+    "slug": "llama-meta"
   },
   {
     "name": "Perplexity",
@@ -1711,7 +1770,8 @@
     "agentic": false,
     "backWhat": "A conversational web search engine powered by multiple LLMs. Provides sourced, cited answers to queries by searching the web and synthesising results in real-time.",
     "backSecurity": "Perplexity is a shadow AI risk vector \u2014 employees using it for research may inadvertently share sensitive query context with external AI services. Unlike traditional search engines, Perplexity processes and reasons about query context, potentially exposing more information than a simple search query would.",
-    "backWhen": "Monitor for shadow AI usage in your organisation. Perplexity itself is a browser-based tool with zero setup \u2014 the security concern is governance and awareness rather than technical controls."
+    "backWhen": "Monitor for shadow AI usage in your organisation. Perplexity itself is a browser-based tool with zero setup \u2014 the security concern is governance and awareness rather than technical controls.",
+    "slug": "perplexity"
   },
   {
     "name": "GitGuardian",
@@ -1739,7 +1799,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A real-time secrets detection platform that scans code repositories, CI/CD pipelines, and collaboration tools for exposed credentials. Detects API keys, tokens, certificates, and other secrets before they become security incidents.",
     "backSecurity": "AI deployments multiply the secrets attack surface \u2014 API keys for LLM providers, vector database credentials, model registry tokens, and service account keys all need protection. GitGuardian catches these before they're committed to repositories or shared in CI/CD logs.",
-    "backWhen": "Deploy across all repositories that contain AI application code. SaaS with CI/CD integration requiring repo connections, policy configuration, and alert tuning. Critical infrastructure for any development team working with AI APIs and services."
+    "backWhen": "Deploy across all repositories that contain AI application code. SaaS with CI/CD integration requiring repo connections, policy configuration, and alert tuning. Critical infrastructure for any development team working with AI APIs and services.",
+    "slug": "gitguardian"
   },
   {
     "name": "Noma Security",
@@ -1784,7 +1845,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An end-to-end AI application security platform providing AI Security Posture Management (AI-SPM). Covers the full AI development lifecycle from data preparation through production monitoring, with visibility into model risks, data flows, and security posture.",
     "backSecurity": "Noma provides the broadest coverage of any AI security platform \u2014 spanning all 10 OWASP LLM risks across all lifecycle stages. Their AI-SPM approach gives security teams a single pane of glass for understanding AI risk across the organisation. Discovered the ForcedLeak vulnerability in Salesforce Agentforce \u2014 a critical prompt injection allowing external attackers to exfiltrate CRM data. Also discovered the AgentSmith prompt-hub proxy attack. Both are tracked in the OWASP ASI Exploits & Incidents Tracker.",
-    "backWhen": "Evaluate when you need comprehensive AI security coverage from a single platform. Enterprise procurement with org-wide deployment across AI development teams and infrastructure. This is a platform commitment, not a point tool."
+    "backWhen": "Evaluate when you need comprehensive AI security coverage from a single platform. Enterprise procurement with org-wide deployment across AI development teams and infrastructure. This is a platform commitment, not a point tool.",
+    "slug": "noma-security"
   },
   {
     "name": "Aembit",
@@ -1811,7 +1873,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A Workload Identity and Access Management platform that secures non-human identities in AI pipelines. Provides secretless authentication between workloads, eliminating the need for static credentials in AI infrastructure.",
     "backSecurity": "AI pipelines create dense webs of service-to-service communication \u2014 model serving, data stores, vector databases, monitoring tools. Each connection traditionally requires credentials. Aembit replaces static secrets with dynamic workload identity, reducing the credential attack surface to zero.",
-    "backWhen": "Deploy when securing the identity layer of AI infrastructure. Enterprise platform requiring procurement, infrastructure integration, and migration from static credentials. Most valuable in complex AI deployments with many service-to-service connections."
+    "backWhen": "Deploy when securing the identity layer of AI infrastructure. Enterprise platform requiring procurement, infrastructure integration, and migration from static credentials. Most valuable in complex AI deployments with many service-to-service connections.",
+    "slug": "aembit"
   },
   {
     "name": "Entro Security",
@@ -1839,7 +1902,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A Non-Human Identity Management platform that discovers and secures machine identities and secrets across enterprise infrastructure. Provides visibility into the full lifecycle of non-human credentials \u2014 from creation to rotation to decommissioning.",
     "backSecurity": "AI systems generate a proliferation of non-human identities \u2014 API keys, service accounts, OAuth tokens, certificates \u2014 that are often unmanaged and over-privileged. Entro discovers these identities, assesses their risk, and provides lifecycle management to prevent credential-based attacks.",
-    "backWhen": "Deploy when you need visibility and governance over the non-human identities in your AI infrastructure. Enterprise platform requiring procurement, infrastructure discovery, and integration with identity providers and secret managers."
+    "backWhen": "Deploy when you need visibility and governance over the non-human identities in your AI infrastructure. Enterprise platform requiring procurement, infrastructure discovery, and integration with identity providers and secret managers.",
+    "slug": "entro-security"
   },
   {
     "name": "SPIFFE",
@@ -1867,7 +1931,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "The Secure Production Identity Framework for Everyone \u2014 an open standard for workload identity in cloud-native and AI infrastructure. SPIRE (the SPIFFE Runtime Environment) provides the production implementation for issuing and managing workload identities.",
     "backSecurity": "SPIFFE provides cryptographic workload identity without static credentials. Every workload \u2014 including AI model serving instances, data pipelines, and agent processes \u2014 gets a verifiable identity (SVID) that enables mutual TLS and fine-grained authorisation. This is the foundation for zero-trust AI infrastructure.",
-    "backWhen": "Implement when building zero-trust infrastructure for AI workloads. Requires deploying SPIRE servers, registering workloads, configuring PKI, and integrating with your service mesh. Expert-level infrastructure work but the open-standard approach avoids vendor lock-in."
+    "backWhen": "Implement when building zero-trust infrastructure for AI workloads. Requires deploying SPIRE servers, registering workloads, configuring PKI, and integrating with your service mesh. Expert-level infrastructure work but the open-standard approach avoids vendor lock-in.",
+    "slug": "spiffe"
   },
   {
     "name": "Silverfort",
@@ -1895,7 +1960,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A Unified Identity Protection platform that extends MFA and adaptive authentication to resources that traditionally can't support it \u2014 including service accounts, legacy applications, and AI workloads.",
     "backSecurity": "Service accounts and machine identities used by AI systems are often the weakest link \u2014 they can't do MFA, they have static passwords, and they're over-privileged. Silverfort applies adaptive authentication and risk-based access controls to these identities without modifying the underlying systems.",
-    "backWhen": "Deploy when you need to secure service accounts and machine identities used by AI infrastructure. Enterprise platform requiring procurement, Active Directory integration, and organisation-wide policy deployment."
+    "backWhen": "Deploy when you need to secure service accounts and machine identities used by AI infrastructure. Enterprise platform requiring procurement, Active Directory integration, and organisation-wide policy deployment.",
+    "slug": "silverfort"
   },
   {
     "name": "Wiz",
@@ -1929,7 +1995,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "The leading Cloud Native Application Protection Platform (CNAPP) with comprehensive AI Security Posture Management (AI-SPM). Continuously discovers AI models, agents, MCP servers, and services across cloud and SaaS environments. Identifies AI-specific risks including sensitive data exposure, missing guardrails, and exposed endpoints.",
     "backSecurity": "Wiz AI-SPM connects context across infrastructure, identity, data, and AI to understand real risk \u2014 not just isolated findings. Discovers shadow AI workloads, assesses AI-specific configurations, and detects runtime threats from data exposure to malicious agent actions. Provides the full picture: visibility into what AI exists, posture assessment of how it's configured, and runtime detection of active threats.",
-    "backWhen": "Deploy when you need cloud security coverage that includes comprehensive AI workload discovery, posture assessment, and runtime threat detection. Enterprise CNAPP requiring procurement, cloud account integration, and organisation-wide deployment. Most valuable for multi-cloud environments with distributed AI workloads."
+    "backWhen": "Deploy when you need cloud security coverage that includes comprehensive AI workload discovery, posture assessment, and runtime threat detection. Enterprise CNAPP requiring procurement, cloud account integration, and organisation-wide deployment. Most valuable for multi-cloud environments with distributed AI workloads.",
+    "slug": "wiz"
   },
   {
     "name": "AppOmni",
@@ -1956,7 +2023,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "AppOmni's AI Security Posture Management solution extends their core SaaS Security Posture Management (SSPM) platform to cover AI-specific risks. Provides shadow AI visibility, SaaS AI configuration monitoring, and anomaly detection. Agentic AI blocking currently limited to ServiceNow.",
     "backSecurity": "As SaaS vendors embed AI features into their products, new data exposure risks emerge. AppOmni monitors AI configurations across your SaaS portfolio \u2014 which AI features are enabled, what data they can access, and whether settings are appropriate. Catches shadow AI and misconfigurations that traditional CASB tools miss.",
-    "backWhen": "Deploy when you need visibility into AI features across your SaaS portfolio. Enterprise SSPM requiring procurement and SaaS integrations. Core competency is SaaS security with AI as an extension \u2014 strongest for organisations already using or evaluating SSPM solutions."
+    "backWhen": "Deploy when you need visibility into AI features across your SaaS portfolio. Enterprise SSPM requiring procurement and SaaS integrations. Core competency is SaaS security with AI as an extension \u2014 strongest for organisations already using or evaluating SSPM solutions.",
+    "slug": "appomni"
   },
   {
     "name": "SpiceDB / AuthZed",
@@ -1989,7 +2057,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "A Google Zanzibar-inspired fine-grained authorisation database (SpiceDB, open source, 6.4k+ GitHub stars) with a commercial cloud offering (AuthZed). Provides relationship-based access control (ReBAC) that scales to billions of relationships, with schema versioning and consistency guarantees. OpenAI uses AuthZed for ChatGPT authorization.",
     "backSecurity": "AI applications need authorisation that traditional RBAC cannot provide \u2014 per-document access in RAG pipelines, per-tool permissions for agents, and context-dependent access decisions. SpiceDB's relationship-based model maps naturally to these AI-specific authorisation patterns. A centralised permission system eliminates authorization silos across your application ecosystem.",
-    "backWhen": "Implement when you need fine-grained authorisation for AI applications, particularly RAG systems with document-level access control or agent systems with tool-level permissions. SpiceDB is self-hosted (Expert Required); AuthZed Cloud is a managed alternative. Schema design and application integration required either way."
+    "backWhen": "Implement when you need fine-grained authorisation for AI applications, particularly RAG systems with document-level access control or agent systems with tool-level permissions. SpiceDB is self-hosted (Expert Required); AuthZed Cloud is a managed alternative. Schema design and application integration required either way.",
+    "slug": "spicedb-authzed"
   },
   {
     "name": "Teleport",
@@ -2018,7 +2087,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "An infrastructure access platform providing zero-trust access to servers, Kubernetes clusters, databases, and AI/ML workloads. Uses short-lived certificates instead of static keys, with session recording and audit logging.",
     "backSecurity": "Provides zero-trust access to the infrastructure that AI systems run on \u2014 GPU clusters, model serving platforms, training environments, and data stores. Session recording creates audit trails for all administrative access to AI infrastructure, essential for compliance and incident investigation.",
-    "backWhen": "Deploy when you need zero-trust infrastructure access for AI workloads. Requires deployment, certificate management, and integration with your infrastructure. Expert-level work but provides strong access governance for AI infrastructure."
+    "backWhen": "Deploy when you need zero-trust infrastructure access for AI workloads. Requires deployment, certificate management, and integration with your infrastructure. Expert-level work but provides strong access governance for AI infrastructure.",
+    "slug": "teleport"
   },
   {
     "name": "BitSight",
@@ -2042,7 +2112,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An AI-powered cyber risk intelligence platform providing security ratings, attack surface management, and continuous monitoring across your third-party ecosystem. Uses data-driven models to quantify cyber risk.",
     "backSecurity": "BitSight's AI-powered risk quantification is increasingly relevant as organisations assess AI vendors. Understanding a vendor's security posture before giving them access to training data or model endpoints is critical for AI supply chain governance.",
-    "backWhen": "Deploy when you need continuous third-party risk monitoring at enterprise scale. Procurement process with vendor portfolio integration. Most valuable for organisations managing large vendor ecosystems that include AI service providers."
+    "backWhen": "Deploy when you need continuous third-party risk monitoring at enterprise scale. Procurement process with vendor portfolio integration. Most valuable for organisations managing large vendor ecosystems that include AI service providers.",
+    "slug": "bitsight"
   },
   {
     "name": "Conveyor",
@@ -2065,7 +2136,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A trust centre platform with AI-powered automation for security questionnaires and RFx responses. Provides a public-facing trust centre plus AI agents that assist with questionnaire completion.",
     "backSecurity": "Helps organisations demonstrate their AI security posture to customers and partners through a managed trust centre. The AI-assisted questionnaire completion accelerates response times for security assessments \u2014 relevant as more customers ask AI-specific security questions.",
-    "backWhen": "Use when you need a customer-facing trust centre and want to accelerate security questionnaire responses. SaaS with content upload, questionnaire configuration, and branding setup. Guided setup that a security operations team can manage."
+    "backWhen": "Use when you need a customer-facing trust centre and want to accelerate security questionnaire responses. SaaS with content upload, questionnaire configuration, and branding setup. Guided setup that a security operations team can manage.",
+    "slug": "conveyor"
   },
   {
     "name": "Drata",
@@ -2088,7 +2160,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An enterprise compliance automation platform providing continuous evidence collection, trust centres, and AI-assisted questionnaire completion. Acquired SafeBase to expand trust centre capabilities. Supports SOC2, ISO 27001, and emerging AI governance frameworks.",
     "backSecurity": "Drata's compliance automation is increasingly relevant as AI governance frameworks (ISO 42001, EU AI Act) require auditable evidence. Automated evidence collection reduces the manual burden of demonstrating AI compliance, while the trust centre communicates your AI security posture to customers.",
-    "backWhen": "Deploy when you need automated compliance evidence collection and trust centre capabilities. Enterprise platform requiring procurement, integration with 100+ tools, and organisation-wide adoption. Most valuable when pursuing AI-specific certifications."
+    "backWhen": "Deploy when you need automated compliance evidence collection and trust centre capabilities. Enterprise platform requiring procurement, integration with 100+ tools, and organisation-wide adoption. Most valuable when pursuing AI-specific certifications.",
+    "slug": "drata"
   },
   {
     "name": "Loopio",
@@ -2111,7 +2184,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An AI-powered RFP and security questionnaire software platform. Uses machine learning to suggest answers from a content library, accelerating procurement and TPRM workflows.",
     "backSecurity": "As AI security questions become standard in procurement questionnaires, having AI-powered response capabilities becomes operationally important. Loopio helps teams build and maintain a knowledge base of AI security answers that can be reused across questionnaires.",
-    "backWhen": "Use when your team regularly responds to security questionnaires and RFPs. SaaS requiring content library setup, team onboarding, and integration with procurement workflows."
+    "backWhen": "Use when your team regularly responds to security questionnaires and RFPs. SaaS requiring content library setup, team onboarding, and integration with procurement workflows.",
+    "slug": "loopio"
   },
   {
     "name": "Mitratech Prevalent",
@@ -2136,7 +2210,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An end-to-end Third-Party Risk Management platform covering every stage of the vendor lifecycle. Provides risk assessments, compliance monitoring, and remediation workflows for managing vendor relationships.",
     "backSecurity": "Prevalent's lifecycle approach is relevant as AI vendor relationships require ongoing monitoring \u2014 not just initial assessment. Model updates, data handling changes, and new AI features all affect risk posture and need continuous evaluation.",
-    "backWhen": "Deploy when you need comprehensive TPRM coverage across the full vendor lifecycle. Enterprise platform requiring procurement, vendor portfolio migration, and process redesign."
+    "backWhen": "Deploy when you need comprehensive TPRM coverage across the full vendor lifecycle. Enterprise platform requiring procurement, vendor portfolio migration, and process redesign.",
+    "slug": "mitratech-prevalent"
   },
   {
     "name": "Panorays",
@@ -2159,7 +2234,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A TPRM platform focused on security questionnaires with AI-powered task automation and auto-fill response capabilities. Streamlines the questionnaire exchange process between organisations and their vendors.",
     "backSecurity": "Accelerates the vendor assessment process with AI automation, freeing security teams to focus on evaluating AI-specific risks rather than administrative questionnaire processing. The automation also ensures more consistent assessments across vendors.",
-    "backWhen": "Use when you need to streamline vendor security assessments. SaaS with vendor list upload and workflow configuration. Guided setup that a TPRM team can implement."
+    "backWhen": "Use when you need to streamline vendor security assessments. SaaS with vendor list upload and workflow configuration. Guided setup that a TPRM team can implement.",
+    "slug": "panorays"
   },
   {
     "name": "ProcessUnity",
@@ -2183,7 +2259,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An enterprise TPRM platform centred on a Global Risk Exchange with NLP and GenAI-powered controls review. Provides access to 360K+ vendor profiles and automated assessment capabilities.",
     "backSecurity": "The vendor profile database and AI-powered controls review is relevant for assessing AI vendors at scale. NLP-based analysis of vendor documentation can identify security gaps faster than manual review, particularly when evaluating new AI service providers.",
-    "backWhen": "Deploy when you need enterprise-grade TPRM with AI-enhanced analysis. Procurement, vendor exchange configuration, and workflow design required."
+    "backWhen": "Deploy when you need enterprise-grade TPRM with AI-enhanced analysis. Procurement, vendor exchange configuration, and workflow design required.",
+    "slug": "processunity"
   },
   {
     "name": "Responsive",
@@ -2206,7 +2283,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An AI-driven response management platform that leads the RFP software market. Uses AI to suggest and improve responses to security questionnaires, RFPs, and other procurement documents.",
     "backSecurity": "Helps security teams respond efficiently to the growing volume of AI-related security questions in procurement processes. The AI-powered response suggestions ensure consistency across questionnaire responses about AI security practices.",
-    "backWhen": "Use when your team regularly responds to RFPs and security questionnaires. SaaS with content library setup and team configuration."
+    "backWhen": "Use when your team regularly responds to RFPs and security questionnaires. SaaS with content library setup and team configuration.",
+    "slug": "responsive"
   },
   {
     "name": "RiskRecon",
@@ -2230,7 +2308,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A Mastercard company providing cybersecurity risk ratings and continuous monitoring. Integrates with Whistic for AI-assisted questionnaire completion, combining outside-in ratings with vendor-provided assessment data.",
     "backSecurity": "The integration of security ratings with questionnaire data provides a more complete picture of vendor risk. For AI vendors specifically, outside-in monitoring can detect infrastructure changes, certificate issues, or security degradation that questionnaire responses won't reveal.",
-    "backWhen": "Deploy when you need continuous outside-in monitoring of vendor security posture. Enterprise platform requiring procurement and vendor portfolio integration."
+    "backWhen": "Deploy when you need continuous outside-in monitoring of vendor security posture. Enterprise platform requiring procurement and vendor portfolio integration.",
+    "slug": "riskrecon"
   },
   {
     "name": "SAFE",
@@ -2253,7 +2332,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An AI-driven cyber risk quantification and management platform. Translates technical security metrics into financial risk language, enabling risk-based decision making for TPRM and AI security investments.",
     "backSecurity": "Risk quantification in financial terms is essential for justifying AI security investments to leadership. SAFE translates technical findings (number of AI vulnerabilities, guardrail coverage gaps) into monetary risk exposure that CISOs can present to boards.",
-    "backWhen": "Deploy when you need to quantify AI security risk in financial terms for leadership communication. Enterprise platform requiring procurement and integration with risk data sources."
+    "backWhen": "Deploy when you need to quantify AI security risk in financial terms for leadership communication. Enterprise platform requiring procurement and integration with risk data sources.",
+    "slug": "safe"
   },
   {
     "name": "SafeBase",
@@ -2276,7 +2356,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A trust centre platform (now part of Drata) that provides a public-facing portal for sharing security documentation, certifications, and compliance status with customers and partners.",
     "backSecurity": "As customers increasingly ask about AI security practices, a trust centre provides a scalable way to communicate your AI governance posture. Self-service access to AI-related security documentation reduces the volume of ad-hoc security questionnaires.",
-    "backWhen": "Use when you need a customer-facing portal for AI security documentation. SaaS with content upload, branding, and access management setup."
+    "backWhen": "Use when you need a customer-facing portal for AI security documentation. SaaS with content upload, branding, and access management setup.",
+    "slug": "safebase"
   },
   {
     "name": "SecurityPal",
@@ -2299,7 +2380,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A platform combining AI agents with human security experts to deliver faster security reviews. The AI handles routine questionnaire completion while humans review complex or sensitive responses.",
     "backSecurity": "The hybrid AI-plus-human approach is particularly relevant for AI security questionnaires, where some questions have standard answers (encryption in transit, SOC2 compliance) while others require nuanced, context-specific responses about AI governance and model security.",
-    "backWhen": "Use when you need to scale security review capacity without sacrificing quality on complex AI security questions. SaaS with content upload and workflow configuration."
+    "backWhen": "Use when you need to scale security review capacity without sacrificing quality on complex AI security questions. SaaS with content upload and workflow configuration.",
+    "slug": "securitypal"
   },
   {
     "name": "SecurityScorecard",
@@ -2323,7 +2405,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A Supply Chain Detection and Response (SCDR) platform that connects TPRM and SOC teams. Provides security ratings, continuous monitoring, and incident response workflows for third-party risk.",
     "backSecurity": "SecurityScorecard's SCDR approach is relevant for AI supply chain incidents \u2014 when an AI vendor is breached or a model supply chain is compromised, you need to quickly assess impact across your vendor portfolio and coordinate response.",
-    "backWhen": "Deploy when you need enterprise TPRM with SOC integration for incident response. Enterprise platform requiring procurement and vendor portfolio integration."
+    "backWhen": "Deploy when you need enterprise TPRM with SOC integration for incident response. Enterprise platform requiring procurement and vendor portfolio integration.",
+    "slug": "securityscorecard"
   },
   {
     "name": "TrustCloud",
@@ -2346,7 +2429,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An AI-powered platform for automating security, privacy, and risk assessments. Streamlines the evidence collection and assessment process for compliance frameworks.",
     "backSecurity": "TrustCloud's automation is relevant as AI governance frameworks add new assessment requirements. Automating evidence collection for AI-specific controls reduces the compliance burden as regulatory requirements expand.",
-    "backWhen": "Use when you need automated risk and compliance assessment capabilities. SaaS with integration setup and assessment configuration."
+    "backWhen": "Use when you need automated risk and compliance assessment capabilities. SaaS with integration setup and assessment configuration.",
+    "slug": "trustcloud"
   },
   {
     "name": "UpGuard",
@@ -2370,7 +2454,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A platform combining security questionnaire automation, attack surface management, and AI-powered Security Profiles. Provides both outside-in monitoring and vendor-provided assessment data.",
     "backSecurity": "The combination of ASM and questionnaire automation provides visibility into AI vendors from both external scanning and self-reported assessment data. AI-powered Security Profiles automatically summarise vendor security posture for faster decision-making.",
-    "backWhen": "Use when you need both attack surface monitoring and questionnaire automation for vendor assessment. SaaS with vendor list setup, monitoring configuration, and questionnaire workflows."
+    "backWhen": "Use when you need both attack surface monitoring and questionnaire automation for vendor assessment. SaaS with vendor list setup, monitoring configuration, and questionnaire workflows.",
+    "slug": "upguard"
   },
   {
     "name": "Vanta",
@@ -2393,7 +2478,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A security compliance automation platform supporting SOC2, ISO 27001, HIPAA, and emerging AI governance frameworks. Provides automated evidence collection with 300+ integrations, trust centres, and vendor risk management.",
     "backSecurity": "Vanta's extensive integration library makes it well-suited for demonstrating AI governance compliance \u2014 connecting to cloud providers, code repositories, and infrastructure to automatically collect evidence for AI-specific controls.",
-    "backWhen": "Deploy when you need comprehensive compliance automation with AI governance support. Enterprise platform requiring procurement, integration configuration, and organisation-wide adoption."
+    "backWhen": "Deploy when you need comprehensive compliance automation with AI governance support. Enterprise platform requiring procurement, integration configuration, and organisation-wide adoption.",
+    "slug": "vanta"
   },
   {
     "name": "Whistic",
@@ -2417,7 +2503,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A TPRM platform focused on modernising vendor risk assessments through automated questionnaires, vendor insights network, and continuous monitoring. Integrates with RiskRecon for combined ratings and assessment data.",
     "backSecurity": "Whistic's vendor network approach is relevant for AI vendor assessment \u2014 if an AI vendor already has a Whistic profile, you can access pre-completed assessment data rather than starting from scratch, significantly accelerating the evaluation process.",
-    "backWhen": "Use when you need to streamline vendor security assessments with network-based data sharing. SaaS with vendor profile setup, assessment configuration, and monitoring."
+    "backWhen": "Use when you need to streamline vendor security assessments with network-based data sharing. SaaS with vendor profile setup, assessment configuration, and monitoring.",
+    "slug": "whistic"
   },
   {
     "name": "Zip",
@@ -2440,7 +2527,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An agentic procurement orchestration platform providing AI-native intake-to-PO workflows. Uses AI agents to automate procurement processes from initial request through purchase order.",
     "backSecurity": "Zip represents the emerging category of AI-native procurement \u2014 where AI agents handle parts of the procurement workflow. This creates both opportunity (faster vendor assessment) and risk (AI agents making procurement decisions need governance controls).",
-    "backWhen": "Deploy when you need AI-powered procurement automation. Enterprise platform requiring procurement process redesign and organisation-wide rollout."
+    "backWhen": "Deploy when you need AI-powered procurement automation. Enterprise platform requiring procurement process redesign and organisation-wide rollout.",
+    "slug": "zip"
   },
   {
     "name": "Sprinto",
@@ -2463,7 +2551,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A compliance automation platform and strong Vanta competitor with extensive integration coverage. Automates evidence collection, control monitoring, and audit preparation across multiple compliance frameworks.",
     "backSecurity": "Sprinto's integration-first approach is valuable as AI governance compliance requires connecting to diverse infrastructure \u2014 cloud providers, ML platforms, model registries, and monitoring tools. Automated evidence collection reduces the manual burden of demonstrating AI compliance.",
-    "backWhen": "Deploy when you need compliance automation with strong integration coverage. Enterprise platform requiring procurement, organisation-wide integration, and ongoing compliance monitoring."
+    "backWhen": "Deploy when you need compliance automation with strong integration coverage. Enterprise platform requiring procurement, organisation-wide integration, and ongoing compliance monitoring.",
+    "slug": "sprinto"
   },
   {
     "name": "Delve",
@@ -2486,7 +2575,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A compliance automation platform that uses AI agents to integrate directly into your tech stack for evidence gathering. The AI-first approach means evidence collection is more automated and less dependent on manual processes.",
     "backSecurity": "Delve's AI agent approach to evidence collection is particularly relevant for AI governance \u2014 the agent can discover and document AI workloads, model configurations, and security controls across your infrastructure automatically.",
-    "backWhen": "Use when you want AI-automated evidence collection for compliance. Requires integration with your tech stack and evidence configuration. The AI agent approach reduces setup time compared to traditional integration-based tools."
+    "backWhen": "Use when you want AI-automated evidence collection for compliance. Requires integration with your tech stack and evidence configuration. The AI agent approach reduces setup time compared to traditional integration-based tools.",
+    "slug": "delve"
   },
   {
     "name": "Scrut",
@@ -2510,7 +2600,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A continuous security compliance monitoring platform with 70+ integrations. Provides real-time compliance status, automated evidence collection, and risk assessment across multiple frameworks.",
     "backSecurity": "Continuous monitoring is essential for AI governance because AI systems change rapidly \u2014 model updates, new data sources, configuration changes. Scrut's real-time monitoring catches compliance drift as AI infrastructure evolves.",
-    "backWhen": "Deploy when you need continuous compliance monitoring with broad integration support. Enterprise platform requiring procurement, integration configuration, and organisation-wide adoption."
+    "backWhen": "Deploy when you need continuous compliance monitoring with broad integration support. Enterprise platform requiring procurement, integration configuration, and organisation-wide adoption.",
+    "slug": "scrut"
   },
   {
     "name": "AIUC-1",
@@ -2565,7 +2656,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "AIUC-1 (Artificial Intelligence Unified Controls) is the first comprehensive certification standard specifically designed for AI agents in enterprise environments. Created by the Artificial Intelligence Underwriting Company with technical contributors including MITRE, Cisco, Cloud Security Alliance, Stanford's Trustworthy AI Research Lab, and MIT Sloan. Covers six risk domains: Data & Privacy, Security, Safety, Reliability, Accountability, and Societal Impact. Certification requires 2000+ technical evaluations and a comprehensive audit of AI policies and guardrails, conducted by Schellman. Updated quarterly (Jan/Apr/Jul/Oct). Integrated into IBM Risk Atlas Nexus. First certifications: UiPath (Mar 2026), ElevenLabs (voice AI).",
     "backSecurity": "Operationalises multiple frameworks into a single certifiable standard. Maps directly to MITRE ATLAS techniques (e.g., AITech-1.1 prompt injection mitigated by requirements B001/B002/B005), OWASP LLM Top 10 threats, NIST AI RMF functions, and EU AI Act compliance requirements. Specifically addresses agent-centric risks: autonomous action boundaries, tool access governance, non-human identity management, decision auditability, and adversarial robustness under production conditions. Includes insurance-enabling risk quantification.",
-    "backWhen": "Use when building AI agent certification programmes, evaluating AI vendor risk, or establishing enterprise AI governance. Particularly relevant for procurement teams assessing AI agent vendors and for organisations seeking a unified compliance signal across OWASP, NIST, MITRE, and EU AI Act requirements."
+    "backWhen": "Use when building AI agent certification programmes, evaluating AI vendor risk, or establishing enterprise AI governance. Particularly relevant for procurement teams assessing AI agent vendors and for organisations seeking a unified compliance signal across OWASP, NIST, MITRE, and EU AI Act requirements.",
+    "slug": "aiuc-1"
   },
   {
     "name": "MAESTRO Sentinel",
@@ -2600,7 +2692,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An AI-powered threat modelling tool purpose-built for multi-agent and agentic AI systems. Based on the Cloud Security Alliance's MAESTRO 7-layer framework. Analyses architecture descriptions or connects to GitHub repos to identify threats per layer with mitigation recommendations.",
     "backSecurity": "MAESTRO is becoming the de facto threat modelling framework for agentic AI. Sentinel makes it actionable \u2014 not just a paper framework but a running tool. Identifies both traditional and agentic-specific threats (non-determinism, autonomy, trust boundary issues) across all seven MAESTRO layers. Maps to four OWASP Agentic Top 10 entries: ASI02 (Tool Misuse), ASI07 (Inter-Agent Communication), ASI08 (Cascading Failures), and ASI10 (Rogue Agents). Purpose-built for the multi-agent orchestration security gap that traditional tools miss.",
-    "backWhen": "Use when threat modelling multi-agent or agentic AI systems. Free tier offers 3 scans per month. Provide a detailed architecture description for best results \u2014 the better the input, the more grounded the threat model. Can also scan GitHub repos directly for code-level findings."
+    "backWhen": "Use when threat modelling multi-agent or agentic AI systems. Free tier offers 3 scans per month. Provide a detailed architecture description for best results \u2014 the better the input, the more grounded the threat model. Can also scan GitHub repos directly for code-level findings.",
+    "slug": "maestro-sentinel"
   },
   {
     "name": "Cyata",
@@ -2632,7 +2725,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "The control plane for agentic identities. Discovers, governs, and controls AI agents across enterprise environments by scanning endpoints and SaaS for shadow agents. Acquired by Check Point in February 2026. Founded by Unit 8200 alumni from Cellebrite and Check Point.",
     "backSecurity": "Addresses the critical non-human identity (NHI) gap for AI agents. Traditional IAM/PAM tools can't handle ephemeral, autonomous agents that spawn instantly and disappear before detection. Cyata provides forensic observability that captures agent intent in real-time, requiring agents to justify their reasoning.",
-    "backWhen": "Deploy when AI agents are proliferating across your organisation \u2014 even if you think they aren't. Cyata has found cases where organisations had no idea Copilot or Cursor was running in full impersonation mode. Enterprise deployment integrating with identity providers and endpoint infrastructure."
+    "backWhen": "Deploy when AI agents are proliferating across your organisation \u2014 even if you think they aren't. Cyata has found cases where organisations had no idea Copilot or Cursor was running in full impersonation mode. Enterprise deployment integrating with identity providers and endpoint infrastructure.",
+    "slug": "cyata"
   },
   {
     "name": "Edera",
@@ -2663,7 +2757,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "Hardened runtime isolation for AI and container workloads. Replaces shared Linux kernels with per-container micro-VMs, providing complete workload isolation. GPU workload isolation prevents data leakage between tenants. $20M total funding, M12 (Microsoft) led Series A. Performance within 5% of native containers.",
     "backSecurity": "Solves the sandboxing problem for AI agents \u2014 each agent runs in full isolation without access to host OS, file system, or other agents. Prevents privilege escalation, lateral movement, and container escapes. Research showed running agents in Edera can actually be faster than Docker while being significantly more secure.",
-    "backWhen": "Deploy when running AI agents that generate or execute code, or when multi-tenant AI workloads share infrastructure. Requires Kubernetes expertise and infrastructure-level deployment. Essential for any production multi-agent system where agents have meaningful permissions."
+    "backWhen": "Deploy when running AI agents that generate or execute code, or when multi-tenant AI workloads share infrastructure. Requires Kubernetes expertise and infrastructure-level deployment. Essential for any production multi-agent system where agents have meaningful permissions.",
+    "slug": "edera"
   },
   {
     "name": "PromptIntel (NOVA)",
@@ -2693,7 +2788,8 @@
     "agentic": false,
     "backWhat": "A free collaborative database of adversarial prompts known as Indicators of Prompt Compromise (IoPC). Created by Thomas Roccia as part of the NOVA prompt pattern matching ecosystem. 38+ techniques classified across four categories: instruction manipulation, misuse, extraction, and evasion. API available for integration.",
     "backSecurity": "The first community-driven threat intelligence feed specifically for adversarial prompts \u2014 think VirusTotal for prompt attacks. Each entry includes the prompt, classification, technique mapping, and metadata. Searchable by tag, technique, and keyword. Integrates with the NOVA detection engine for automated prompt pattern matching.",
-    "backWhen": "Use for red teaming research, building detection rules, and testing guardrail effectiveness against known adversarial prompts. The API enables automated integration into security workflows. Contribute your own findings to strengthen the community database."
+    "backWhen": "Use for red teaming research, building detection rules, and testing guardrail effectiveness against known adversarial prompts. The API enables automated integration into security workflows. Contribute your own findings to strengthen the community database.",
+    "slug": "promptintel-nova"
   },
   {
     "name": "Wiz SITF",
@@ -2723,7 +2819,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "The SDLC Infrastructure Threat Framework from Wiz \u2014 an open-source framework for analysing supply chain attacks across five SDLC pillars: Endpoint/IDE, VCS, CI/CD, Registry, and Production. Includes an interactive attack flow visualiser, 70+ techniques, auto-generated controls matrix, and Claude AI skills for automated analysis.",
     "backSecurity": "Supply chain security is increasingly relevant to AI \u2014 model poisoning, package manipulation, and CI/CD compromise directly affect AI pipelines. SITF maps real-world attacks (CircleCI breach, tj-actions, Shai-Hulud-2) to techniques and controls, providing evidence-based defence prioritisation.",
-    "backWhen": "Use when building threat models for AI development pipelines or analysing supply chain incidents. The interactive visualiser runs in-browser with no server needed. Requires understanding of SDLC security concepts and supply chain attack patterns. Complements MITRE ATLAS with SDLC-specific focus."
+    "backWhen": "Use when building threat models for AI development pipelines or analysing supply chain incidents. The interactive visualiser runs in-browser with no server needed. Requires understanding of SDLC security concepts and supply chain attack patterns. Complements MITRE ATLAS with SDLC-specific focus.",
+    "slug": "wiz-sitf"
   },
   {
     "name": "Ackuity",
@@ -2758,7 +2855,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An AI-native security observability platform purpose-built for autonomous agents in production. Real-time monitoring of interactions between users, agents, and backend systems. 100+ detection rules mapped to NIST and OWASP Agentic AI categories. Data masking, redaction, and RBAC enforcement. Founded by the Paladion team (acquired by Atos).",
     "backSecurity": "Goes beyond guardrails into full security observability for the agentic layer. Monitors threats in the interaction space between users \u2194 agents \u2194 backend systems that traditional tools are blind to. Detects injection attacks, data poisoning, agent takeover, anomalous behaviour, API attacks, and permission bypass.",
-    "backWhen": "Deploy when AI agents are in production and you need security operations visibility. Enterprise platform requiring integration with agent platforms and backend systems. DataTribe Challenge finalist \u2014 validated by the cybersecurity startup ecosystem."
+    "backWhen": "Deploy when AI agents are in production and you need security operations visibility. Enterprise platform requiring integration with agent platforms and backend systems. DataTribe Challenge finalist \u2014 validated by the cybersecurity startup ecosystem.",
+    "slug": "ackuity"
   },
   {
     "name": "Pillar Security \u2014 RedGraph",
@@ -2792,7 +2890,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "A knowledge graph of real-world AI attack chains from Pillar Security. Maps actual attack patterns \u2014 not theoretical \u2014 enabling evidence-based threat modelling and defence prioritisation for AI systems.",
     "backSecurity": "RedGraph provides empirical attack data rather than theoretical risks. By mapping how AI systems are actually attacked in the wild, security teams can prioritise defences based on real-world frequency and impact rather than hypothetical scenarios.",
-    "backWhen": "Use when building threat models or prioritising security investments for AI systems. The evidence-based approach is particularly valuable for communicating risk to leadership \u2014 real attack chains are more compelling than theoretical frameworks."
+    "backWhen": "Use when building threat models or prioritising security investments for AI systems. The evidence-based approach is particularly valuable for communicating risk to leadership \u2014 real attack chains are more compelling than theoretical frameworks.",
+    "slug": "pillar-security-redgraph"
   },
   {
     "name": "Pillar Security \u2014 SAIL",
@@ -2824,7 +2923,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "Security AI Language (SAIL) \u2014 a domain-specific language for writing AI security rules as code. Enables programmatic definition, sharing, and enforcement of AI security policies. From Pillar Security, the AI-native AppSec platform.",
     "backSecurity": "Brings 'security as code' to AI systems. Write, version-control, share, and enforce AI security policies programmatically. This is critical for scaling AI security across organisations \u2014 instead of manual guardrail configuration, policies are codified and reproducible.",
-    "backWhen": "Use when you need to codify AI security policies at scale. Requires DSL learning and integration with your AI pipeline. Expert-level work but provides the most systematic approach to managing AI security rules across teams and applications."
+    "backWhen": "Use when you need to codify AI security policies at scale. Requires DSL learning and integration with your AI pipeline. Expert-level work but provides the most systematic approach to managing AI security rules across teams and applications.",
+    "slug": "pillar-security-sail"
   },
   {
     "name": "CSA AI Controls Matrix",
@@ -2871,7 +2971,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "The Cloud Security Alliance's AI-specific controls matrix \u2014 a structured set of controls for securing AI systems. Published alongside MAESTRO and other CSA AI security initiatives. Covers adversarial robustness, system transparency, and cloud-specific AI security requirements.",
     "backSecurity": "CSA is a trusted authority in cloud security, and this matrix extends their expertise to AI. Complements ISO 42001 and NIST AI RMF with cloud-native AI controls. Natural companion to the MAESTRO framework for organisations using CSA standards.",
-    "backWhen": "Use when building AI security control frameworks, particularly for cloud-deployed AI workloads. Reference alongside OWASP, NIST, and ISO standards. The structured matrix format makes it practical for mapping controls to your specific environment."
+    "backWhen": "Use when building AI security control frameworks, particularly for cloud-deployed AI workloads. Reference alongside OWASP, NIST, and ISO standards. The structured matrix format makes it practical for mapping controls to your specific environment.",
+    "slug": "csa-ai-controls-matrix"
   },
   {
     "name": "AI Incident Database",
@@ -2903,7 +3004,8 @@
     "agentic": false,
     "backWhat": "A public database cataloguing real-world AI incidents and failures. Searchable, categorised, and community-contributed. Used by researchers, policymakers, and security practitioners to understand how AI systems fail in practice.",
     "backSecurity": "Provides empirical evidence for AI risk assessment. CISOs can reference actual incidents to justify security investments and build threat models grounded in reality. Useful for board-level risk communication \u2014 real incidents are more compelling than theoretical scenarios.",
-    "backWhen": "Use when building business cases for AI security investment, researching specific failure modes, or preparing board presentations on AI risk. Browse regularly to stay current on how AI systems are failing in the real world."
+    "backWhen": "Use when building business cases for AI security investment, researching specific failure modes, or preparing board presentations on AI risk. Browse regularly to stay current on how AI systems are failing in the real world.",
+    "slug": "ai-incident-database"
   },
   {
     "name": "AWS Agentic AI Security Matrix",
@@ -2940,7 +3042,8 @@
     "agentic": true,
     "backWhat": "An AWS-published framework for scoping security requirements of autonomous AI systems. Provides a matrix approach to mapping agent capabilities (tool use, memory, autonomy level) to appropriate security controls and governance requirements.",
     "backSecurity": "Authoritative guidance from a major cloud provider that provides a structured scoping methodology. Helps security teams answer 'how much security does this agent need?' based on its capabilities and access rather than applying one-size-fits-all controls.",
-    "backWhen": "Use at the design phase of agentic AI projects to determine appropriate security controls. The concepts are transferable beyond AWS \u2014 the scoping methodology applies regardless of cloud provider. Accessible to non-specialists."
+    "backWhen": "Use at the design phase of agentic AI projects to determine appropriate security controls. The concepts are transferable beyond AWS \u2014 the scoping methodology applies regardless of cloud provider. Accessible to non-specialists.",
+    "slug": "aws-agentic-ai-security-matrix"
   },
   {
     "name": "Darktrace AI Maturity Model",
@@ -2963,7 +3066,8 @@
     "agentic": false,
     "backWhat": "Darktrace's framework for assessing organisational AI maturity from a cybersecurity perspective. Provides structured benchmarking of AI security posture across multiple dimensions.",
     "backSecurity": "Provides a structured way to benchmark AI security posture and identify maturity gaps. Useful for CISOs reporting to boards on AI readiness and for building improvement roadmaps with clear milestones.",
-    "backWhen": "Use when you need to assess and communicate your organisation's AI security maturity level. Particularly valuable for board reporting and strategic planning. Complements the NIST AI RMF Maturity Model with a vendor perspective."
+    "backWhen": "Use when you need to assess and communicate your organisation's AI security maturity level. Particularly valuable for board reporting and strategic planning. Complements the NIST AI RMF Maturity Model with a vendor perspective.",
+    "slug": "darktrace-ai-maturity-model"
   },
   {
     "name": "Chainguard",
@@ -2993,7 +3097,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "Provides hardened, minimal container images with zero known CVEs for AI and general workloads. Every image includes signed SBOMs and provenance attestation. Eliminates a huge class of supply chain risk by starting from a verified, minimal base.",
     "backSecurity": "AI pipelines run in containers. Starting from a zero-CVE base image eliminates the most common supply chain attack vector \u2014 vulnerable dependencies in base images. Signed SBOMs provide verifiable provenance for compliance and audit requirements. Directly addresses LLM03 (Supply Chain).",
-    "backWhen": "Use when building container-based AI infrastructure. Drop-in replacement for standard base images \u2014 swap your Dockerfile FROM line and immediately reduce your vulnerability surface. Guided setup that doesn't require changing your build process."
+    "backWhen": "Use when building container-based AI infrastructure. Drop-in replacement for standard base images \u2014 swap your Dockerfile FROM line and immediately reduce your vulnerability surface. Guided setup that doesn't require changing your build process.",
+    "slug": "chainguard"
   },
   {
     "name": "Cisco A2A Scanner",
@@ -3023,7 +3128,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "An open-source scanner from Cisco AI Defense for analysing Agent-to-Agent (A2A) protocol implementations for security vulnerabilities. Scans multi-agent communication patterns for misconfigurations and exploitable weaknesses.",
     "backSecurity": "As A2A becomes the standard protocol for multi-agent communication, scanning for vulnerabilities in these connections is critical. Checks authentication, authorisation, message integrity, and trust boundaries between agents.",
-    "backWhen": "Use when deploying multi-agent systems that use A2A protocol. Requires understanding of agent communication architectures and the A2A specification. Essential for any production multi-agent deployment alongside the A2A Protocol standard."
+    "backWhen": "Use when deploying multi-agent systems that use A2A protocol. Requires understanding of agent communication architectures and the A2A specification. Essential for any production multi-agent deployment alongside the A2A Protocol standard.",
+    "slug": "cisco-a2a-scanner"
   },
   {
     "name": "Cisco Skill Scanner",
@@ -3054,7 +3160,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An open-source tool from Cisco AI Defense for scanning AI agent skills and tools for security vulnerabilities. Analyses tool definitions, permission scopes, and input validation to identify risks in how agents interact with external systems.",
     "backSecurity": "Agent skills (tool use) are a primary attack surface \u2014 improperly configured tools can enable data exfiltration, privilege escalation, and unintended actions. This scanner checks whether skills have proper input validation, permission boundaries, and error handling before deployment.",
-    "backWhen": "Use during development and before deployment of AI agents with tool-use capabilities. Integrates into CI/CD pipelines for continuous scanning. Lower barrier than the A2A Scanner \u2014 suitable for teams getting started with agent security testing."
+    "backWhen": "Use during development and before deployment of AI agents with tool-use capabilities. Integrates into CI/CD pipelines for continuous scanning. Lower barrier than the A2A Scanner \u2014 suitable for teams getting started with agent security testing.",
+    "slug": "cisco-skill-scanner"
   },
   {
     "name": "Token Security",
@@ -3083,7 +3190,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A non-human identity (NHI) security platform. Discovers, prioritises, and remediates risks from machine identities: API keys, service accounts, tokens, and AI agent identities. Provides lifecycle management specifically for non-human identities across enterprise infrastructure.",
     "backSecurity": "Non-human identities outnumber human identities 50:1 in enterprises, and AI agents amplify this problem dramatically. Token Security provides the visibility and governance layer that traditional IAM tools lack for ephemeral, automated, and agent-based identities.",
-    "backWhen": "Deploy when NHI sprawl is an identified risk, particularly as AI agents create new machine identities at scale. Enterprise platform requiring integration with identity providers, cloud platforms, and secrets management infrastructure."
+    "backWhen": "Deploy when NHI sprawl is an identified risk, particularly as AI agents create new machine identities at scale. Enterprise platform requiring integration with identity providers, cloud platforms, and secrets management infrastructure.",
+    "slug": "token-security"
   },
   {
     "name": "FuzzingLabs MCP Security Hub",
@@ -3116,7 +3224,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "An open-source security hub for Model Context Protocol (MCP) connections from FuzzingLabs. Provides security scanning and monitoring of MCP servers, identifying misconfigurations and vulnerabilities in the protocol layer connecting AI agents to tools and data.",
     "backSecurity": "MCP is becoming the standard protocol for connecting AI agents to external tools, but many MCP servers ship with minimal security. This hub scans for common misconfigurations, authentication gaps, and exploitable patterns in MCP implementations.",
-    "backWhen": "Use when deploying MCP-based agent architectures. Complements the MCP Secure Gateway already in Yuntona \u2014 the Security Hub focuses on scanning and assessment while the Gateway provides runtime enforcement. Expert-level deployment requiring MCP protocol knowledge."
+    "backWhen": "Use when deploying MCP-based agent architectures. Complements the MCP Secure Gateway already in Yuntona \u2014 the Security Hub focuses on scanning and assessment while the Gateway provides runtime enforcement. Expert-level deployment requiring MCP protocol knowledge.",
+    "slug": "fuzzinglabs-mcp-security-hub"
   },
   {
     "name": "AI Career Pro (James Kavanaugh)",
@@ -3138,7 +3247,8 @@
     "agentic": false,
     "backWhat": "Practical AI governance content from James Kavanaugh \u2014 an experienced AI governance practitioner. Covers governance frameworks, controls mapping, and implementation guidance. Previously published the AI Governance Controls MegaMap mapping 44 controls across 12 domains to ISO 42001, NIST RMF, EU AI Act, and SOC2.",
     "backSecurity": "One of the few practitioners producing actionable governance content rather than theoretical frameworks. The MegaMap is particularly valuable for teams that need to understand how different AI governance frameworks overlap and where to focus implementation effort.",
-    "backWhen": "Follow for ongoing AI governance insights. Reference the MegaMap when building cross-framework compliance programmes. Particularly valuable for GRC analysts mapping controls across multiple AI governance standards."
+    "backWhen": "Follow for ongoing AI governance insights. Reference the MegaMap when building cross-framework compliance programmes. Particularly valuable for GRC analysts mapping controls across multiple AI governance standards.",
+    "slug": "ai-career-pro-james-kavanaugh"
   },
   {
     "name": "Agenticsecurity.info",
@@ -3171,7 +3281,8 @@
     "agentic": true,
     "backWhat": "A curated guide to AI agent security with comprehensive OWASP mapping, NIST AI RMF alignment, and practical secure development guidance for agentic AI systems.",
     "backSecurity": "Provides accessible, practitioner-oriented guidance specifically for securing AI agents. Maps security concerns to established frameworks (OWASP, NIST AI RMF) making it useful for teams that need to connect agentic security to existing compliance requirements.",
-    "backWhen": "Read as educational material when your team is starting to build or assess agentic AI systems. Good companion to the Lethal Trifecta article for understanding the agentic threat landscape."
+    "backWhen": "Read as educational material when your team is starting to build or assess agentic AI systems. Good companion to the Lethal Trifecta article for understanding the agentic threat landscape.",
+    "slug": "agenticsecurity-info"
   },
   {
     "name": "RiskRubric",
@@ -3205,7 +3316,8 @@
     "agentic": false,
     "backWhat": "A Noma Security project that scores 150+ LLMs on a 0-100 scale (A-F grades) across six weighted pillars: Security (25%), Reliability (20%), Privacy (20%), Transparency (15%), Safety & Societal Impact (15%), and Reputation (5%). Scores are generated using thousands of live, adaptive adversarial prompts per model via Haize Labs' automated red teaming engine \u2014 not pre-canned templates. Updated monthly and on every model version release. Raw results are publicly available on <a href='https://huggingface.co/datasets/nomasecurity/riskrubric-results' target='_blank'>Hugging Face</a>.",
     "backSecurity": "When a business unit wants to use a new LLM, security teams need a quick, evidence-based way to assess it. RiskRubric provides comparable scores that map directly to LLM risks \u2014 prompt injection resilience (LLM01), output validation (LLM02), supply chain transparency (LLM03, LLM05), data privacy (LLM06), and overreliance indicators (LLM09). The weighted scoring prioritises security and privacy over reputation, which aligns with enterprise risk priorities. Set a minimum grade threshold (e.g. C/70) for procurement decisions.",
-    "backWhen": "Use during model selection and procurement decisions. Reference when business units request approval for new AI tools. The A-F grading system enables apples-to-apples comparison across competing models \u2014 essential for CISOs who need to justify model selection to boards. Check the Hugging Face dataset for raw scores when you need granular pillar-level data."
+    "backWhen": "Use during model selection and procurement decisions. Reference when business units request approval for new AI tools. The A-F grading system enables apples-to-apples comparison across competing models \u2014 essential for CISOs who need to justify model selection to boards. Check the Hugging Face dataset for raw scores when you need granular pillar-level data.",
+    "slug": "riskrubric"
   },
   {
     "name": "Insecure Agents Podcast",
@@ -3231,7 +3343,8 @@
     "agentic": true,
     "backWhat": "A vendor-neutral AI security podcast bringing together leading researchers and practitioners. Guests include John Sotiriou (OWASP LLM Top 10 author), Samuel Colvin (Pydantic/MCP), Dor Sarig (Pillar Security/SAIL), Vineeth (OWASP Agentic Top 10), and more. Live sessions from RSA Conference.",
     "backSecurity": "Practitioner-driven conversations that go deep on agentic AI security, MCP vulnerabilities, agent identity, and emerging threat vectors. No marketing fluff \u2014 real technical discussions with the people building and breaking AI security tools.",
-    "backWhen": "Subscribe for ongoing AI security education. Particularly valuable for staying current on agentic security developments. Episodes are typically 30-60 minutes and cover topics before they appear in mainstream security media."
+    "backWhen": "Subscribe for ongoing AI security education. Particularly valuable for staying current on agentic security developments. Episodes are typically 30-60 minutes and cover topics before they appear in mainstream security media.",
+    "slug": "insecure-agents-podcast"
   },
   {
     "name": "ZeroTrustAgent (Ken Huang)",
@@ -3264,7 +3377,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "A reference implementation of zero-trust architecture applied to AI agents, by Ken Huang \u2014 one of the foremost thought leaders in AI security and co-creator of the CSA MAESTRO framework. Demonstrates how to apply zero-trust principles (never trust, always verify) to autonomous AI agent systems.",
     "backSecurity": "Zero trust is the right security model for AI agents \u2014 every tool call, data access, and inter-agent communication should be verified independently. This project provides a practical bridge between the zero-trust concept and actual agent implementation, showing how to enforce least-privilege, continuous verification, and micro-segmentation in agent architectures.",
-    "backWhen": "Study and reference when designing security architectures for AI agents. Requires understanding of both zero-trust principles and agent framework internals. Expert-level work but provides the most rigorous architectural pattern for securing autonomous agents."
+    "backWhen": "Study and reference when designing security architectures for AI agents. Requires understanding of both zero-trust principles and agent framework internals. Expert-level work but provides the most rigorous architectural pattern for securing autonomous agents.",
+    "slug": "zerotrustagent-ken-huang"
   },
   {
     "name": "AIDEFEND",
@@ -3307,7 +3421,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An open-source knowledge base of 70+ defensive countermeasures for protecting AI/ML systems. Three switchable views: Tactics (aligned to MITRE D3FEND), Pillars (Data, Model, Infrastructure, Application), and Phases (Design through Incident Response). Each technique includes implementation strategies, code examples, and tool recommendations. CC-BY-4.0 licensed.",
     "backSecurity": "The defensive counterpart to MITRE ATLAS. While ATLAS maps how AI systems are attacked, AIDEFEND maps how to defend them. Techniques are explicitly mapped to known threats from MITRE ATLAS, MAESTRO, and OWASP LLM Top 10 \u2014 making it the most comprehensive defensive reference available. Includes a local MCP/REST API for programmatic access.",
-    "backWhen": "Use as a primary reference when designing AI security controls. The three views serve different roles: Tactics for security architects, Pillars for ML engineers, Phases for DevSecOps teams. Search by technique ID, threat mapping, or keyword. No login required for the interactive web interface."
+    "backWhen": "Use as a primary reference when designing AI security controls. The three views serve different roles: Tactics for security architects, Pillars for ML engineers, Phases for DevSecOps teams. Search by technique ID, threat mapping, or keyword. No login required for the interactive web interface.",
+    "slug": "aidefend"
   },
   {
     "name": "disesdi (Substack)",
@@ -3329,7 +3444,8 @@
     "agentic": false,
     "backWhat": "An AI security-focused Substack newsletter covering emerging threats, governance developments, and technical security analysis. Written by a practitioner with deep expertise in the intersection of AI and cybersecurity.",
     "backSecurity": "Provides timely analysis of AI security developments, new threat vectors, and governance changes. Useful for staying current on the rapidly evolving AI security landscape without spending hours scanning multiple sources.",
-    "backWhen": "Subscribe for ongoing AI security insights delivered to your inbox. Complements other educational resources in Yuntona for building a well-rounded AI security knowledge base."
+    "backWhen": "Subscribe for ongoing AI security insights delivered to your inbox. Complements other educational resources in Yuntona for building a well-rounded AI security knowledge base.",
+    "slug": "disesdi-substack"
   },
   {
     "name": "PlainID",
@@ -3365,7 +3481,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An authorization platform powered by Policy-Based Access Control (PBAC). PlainID enables organisations to discover, manage, and enforce access policies across SaaS applications, data stores, and AI agents. Named an Overall Leader in KuppingerCole's PBAM Leadership Compass. Dedicated agentic AI capabilities cover AI agent authorization, RAG security, MCP control, and data access governance for Material Non-Public Information (MNPI).",
     "backSecurity": "Addresses the authorization gap in AI deployments \u2014 PlainID enforces what AI agents can access at the data and API level, not just the network level. Particularly strong for regulated industries (financial services, pharma) where data-level access control is non-negotiable. Integrates with existing identity fabrics (Okta, Azure AD, Ping) to extend human identity policies to agentic contexts.",
-    "backWhen": "Evaluate when you need enterprise-grade authorization for AI agents accessing sensitive data, especially in regulated environments. Particularly relevant when your AI agents access data stores with compliance requirements (MNPI, PII, PHI) and you need policy-based controls that go beyond network-level firewalling."
+    "backWhen": "Evaluate when you need enterprise-grade authorization for AI agents accessing sensitive data, especially in regulated environments. Particularly relevant when your AI agents access data stores with compliance requirements (MNPI, PII, PHI) and you need policy-based controls that go beyond network-level firewalling.",
+    "slug": "plainid"
   },
   {
     "name": "Cerbos + Aperture (Tailscale)",
@@ -3397,7 +3514,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "Cerbos provides open-source, fine-grained authorization as a policy engine. Aperture by Tailscale provides visibility into AI agent actions across an organisation. Together they form an agent access control layer: Aperture shows what agents are doing, Cerbos controls what they are allowed to do. Policies are enforced at the gateway, independent of agent code \u2014 no code changes required in the agent itself.",
     "backSecurity": "Addresses LLM08 (Excessive Agency) directly by enforcing least-privilege on every tool call an agent makes. Works with all major agent frameworks: Claude Code, OpenAI Codex, Gemini CLI, Azure AI Agents, Amazon Bedrock, Mistral, and any MCP-compatible server. The gateway enforcement model means security controls cannot be bypassed by the agent \u2014 a critical property for autonomous AI systems.",
-    "backWhen": "Deploy when you have AI coding agents (Claude Code, Codex) or autonomous agents accessing tools and need to enforce per-action authorization without modifying agent code. The gateway model makes this one of the fastest paths to agentic security \u2014 policies enforced externally, visible immediately."
+    "backWhen": "Deploy when you have AI coding agents (Claude Code, Codex) or autonomous agents accessing tools and need to enforce per-action authorization without modifying agent code. The gateway model makes this one of the fastest paths to agentic security \u2014 policies enforced externally, visible immediately.",
+    "slug": "cerbos-aperture-tailscale"
   },
   {
     "name": "Permit.io / agent.security",
@@ -3431,7 +3549,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "Permit.io provides zero-latency fine-grained authorization as a service, supporting RBAC, ABAC, and ReBAC models across human, machine, and agentic identities. agent.security (agent.security/) is Permit's dedicated platform for enterprise-grade AI agent security. Customers include Tesla, Cisco, BP, Palo Alto Networks, and Intel. Built on open-source foundations (OPAL, OPToggles).",
     "backSecurity": "Addresses the authorization challenge for AI agents that act on behalf of users \u2014 the delegated identity problem. Permit.io's model supports the hybrid identity pattern where an agent authenticates as a machine workload but operates under a human's delegated permissions. The agent.security platform provides purpose-built controls for AI agent authorization and governance.",
-    "backWhen": "Evaluate when you need a developer-friendly authorization layer that extends naturally from human users to AI agents. Particularly useful for teams building agentic applications that need fine-grained, policy-driven access control without building authorization infrastructure from scratch. The agent.security platform is purpose-built for security teams assessing AI agent risks."
+    "backWhen": "Evaluate when you need a developer-friendly authorization layer that extends naturally from human users to AI agents. Particularly useful for teams building agentic applications that need fine-grained, policy-driven access control without building authorization infrastructure from scratch. The agent.security platform is purpose-built for security teams assessing AI agent risks.",
+    "slug": "permit-io-agent-security"
   },
   {
     "name": "Oasis Security",
@@ -3465,7 +3584,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "A dedicated Non-Human Identity (NHI) security platform. Oasis provides real-time inventory of all non-human identities, contextual risk assessment, ownership mapping, posture management, lifecycle governance, threat and anomaly detection, and safe secret rotation. Their Agentic Access Management (AAM) product extends these capabilities to AI agents \u2014 understanding agent intent and enforcing time-bound access. Includes AI-SPM (AI Security Posture Management) for checking AI agent configurations, permissions, and risk posture.",
     "backSecurity": "Non-human identities outnumber human identities by 10-50x in most enterprises. Oasis addresses the governance gap \u2014 knowing what NHIs exist, who owns them, what they can access, and whether they are behaving normally. For AI agents specifically, AAM provides intent-based access control and time-bound permissions, preventing agents from accumulating standing privileges. Integrates with AWS, Azure, GCP, Okta, Snowflake, Databricks, GitHub, and Salesforce.",
-    "backWhen": "Evaluate when you need enterprise-wide visibility and governance over non-human identities, particularly if you are deploying AI agents that interact with cloud infrastructure and SaaS platforms. Strong fit for organisations with large NHI estates needing lifecycle management and anomaly detection."
+    "backWhen": "Evaluate when you need enterprise-wide visibility and governance over non-human identities, particularly if you are deploying AI agents that interact with cloud infrastructure and SaaS platforms. Strong fit for organisations with large NHI estates needing lifecycle management and anomaly detection.",
+    "slug": "oasis-security"
   },
   {
     "name": "Astrix Security",
@@ -3499,7 +3619,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "An identity security platform for AI agents and non-human identities. Astrix provides three capabilities: Discover (real-time inventory of all AI agents, MCP servers, and NHIs with risk context), Secure (identify and remediate excessive privileges, vulnerable configurations, abnormal activity, and policy violations), and Deploy via their Agent Control Plane (ACP) \u2014 provision secure-by-design AI agents with short-lived credentials, just-in-time and precisely scoped access, and policy enforcement at creation.",
     "backSecurity": "The Agent Control Plane (ACP) approach addresses security at deployment time rather than after the fact \u2014 agents are provisioned with short-lived credentials and just-in-time access from the start. This prevents the common pattern of agents accumulating standing privileges over time. Astrix also detects supply chain risks from third-party connections to your GitHub, Snowflake, and cloud environments.",
-    "backWhen": "Evaluate when you need to secure the full lifecycle of AI agents \u2014 from deployment through operation to decommissioning. Particularly strong for organisations deploying agents at scale that need a centralised control plane for provisioning, monitoring, and revoking agent access. The ACP model is differentiated from tools that only monitor after deployment."
+    "backWhen": "Evaluate when you need to secure the full lifecycle of AI agents \u2014 from deployment through operation to decommissioning. Particularly strong for organisations deploying agents at scale that need a centralised control plane for provisioning, monitoring, and revoking agent access. The ACP model is differentiated from tools that only monitor after deployment.",
+    "slug": "astrix-security"
   },
   {
     "name": "Shannon (Keygraph)",
@@ -3532,7 +3653,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "A fully autonomous AI pentester from Keygraph that discovers and executes real exploits in web applications. Uses multi-agent architecture powered by Claude to perform reconnaissance, vulnerability analysis, exploitation, and reporting in a single automated run. Achieved 96.15% success rate on the hint-free XBOW Benchmark. Open source (AGPL-3.0) with a Pro tier for CI/CD integration and compliance reporting.",
     "backSecurity": "Shannon's 'proof-by-exploitation' methodology eliminates false positives \u2014 every finding comes with a working proof-of-concept exploit. Covers SQL injection, authentication bypass, XSS, SSRF, and privilege escalation. Discovered 20+ critical vulnerabilities in OWASP Juice Shop in a single automated run including complete auth bypass and database exfiltration. White-box only \u2014 requires source code access.",
-    "backWhen": "Use when you need continuous, automated penetration testing for web applications powering AI systems. Particularly valuable for teams shipping code faster than traditional annual pentests can cover. Requires Docker, Anthropic API key, and target source code access. Expert-level tool \u2014 human oversight recommended for validating LLM-generated report findings."
+    "backWhen": "Use when you need continuous, automated penetration testing for web applications powering AI systems. Particularly valuable for teams shipping code faster than traditional annual pentests can cover. Requires Docker, Anthropic API key, and target source code access. Expert-level tool \u2014 human oversight recommended for validating LLM-generated report findings.",
+    "slug": "shannon-keygraph"
   },
   {
     "name": "Guardrails AI",
@@ -3567,7 +3689,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "An open-source Python framework for adding structural, type, quality, and security guarantees to LLM outputs. Features the Guardrails Hub \u2014 the largest community-driven collection of pre-built validators covering toxicity, PII detection, hallucination, jailbreak prevention, prompt injection detection, RAG relevance, and more. 19k+ GitHub stars. Also launched the Guardrails Index \u2014 the first benchmark comparing 24 guardrails across 6 categories. Snowglobe is the enterprise product.",
     "backSecurity": "Guardrails AI sits in the request/response path and applies composable validators at both input and output. Validators can be combined into Guards \u2014 input guards intercept prompts for injection and sensitive data, output guards check for PII leakage, toxicity, hallucination, and format compliance. The modular design means you deploy only the validators you need. Supports any LLM provider via LiteLLM integration.",
-    "backWhen": "Use when you need flexible, composable guardrails for LLM applications. Python library that integrates into application code or runs as a standalone server via Flask/Docker. Lower barrier than NeMo Guardrails (no Colang to learn) while offering more security-focused validators than most alternatives. Start with the Hub to find validators matching your risk profile."
+    "backWhen": "Use when you need flexible, composable guardrails for LLM applications. Python library that integrates into application code or runs as a standalone server via Flask/Docker. Lower barrier than NeMo Guardrails (no Colang to learn) while offering more security-focused validators than most alternatives. Start with the Hub to find validators matching your risk profile.",
+    "slug": "guardrails-ai"
   },
   {
     "name": "Stacklok / ToolHive",
@@ -3601,7 +3724,8 @@
     "complexityOverride": "Expert Required",
     "backWhat": "An enterprise-grade open-source (Apache 2.0) platform for running and managing Model Context Protocol (MCP) servers. Founded by Craig McLuckie (co-creator of Kubernetes). Four components: Runtime (container-isolated MCP server execution with fine-grained permissions), Registry (curated catalog of trusted MCP servers with Sigstore supply chain verification), Gateway (Virtual MCP Server proxy with OIDC/OAuth SSO, Cedar policy-based authorization, and OpenTelemetry), and Portal (discovery UI for users). Available as CLI, desktop app, or Kubernetes Operator.",
     "backSecurity": "Addresses the critical MCP trust problem \u2014 most MCP servers ship with no security, no isolation, and plaintext API tokens. ToolHive containerises every MCP server with minimal permissions, verifies provenance via Sigstore and GitHub Attestations, encrypts secrets, and enforces fine-grained authorization via Amazon Cedar policies. The Kubernetes Operator provides enterprise-grade deployment with RBAC, network policies, and audit logging. Hooks for Claude Code and Cursor restrict tool calls to managed servers only.",
-    "backWhen": "Deploy when using MCP-based agent architectures in production and you need security, governance, and supply chain verification. The CLI is quick for individual developers; the Kubernetes Operator is designed for teams and enterprises. Requires Docker or Kubernetes expertise depending on deployment model. Essential infrastructure for any production MCP deployment."
+    "backWhen": "Deploy when using MCP-based agent architectures in production and you need security, governance, and supply chain verification. The CLI is quick for individual developers; the Kubernetes Operator is designed for teams and enterprises. Requires Docker or Kubernetes expertise depending on deployment model. Essential infrastructure for any production MCP deployment.",
+    "slug": "stacklok-toolhive"
   },
   {
     "name": "Koi (Palo Alto Networks)",
@@ -3638,7 +3762,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "The pioneer of Agentic Endpoint Security. Koi provides full visibility, risk assessment, and policy enforcement for all non-binary software on enterprise endpoints \u2014 AI agents, MCP servers, browser extensions, code packages, AI models, and containers. The Wings AI risk engine scans actual code (not just reputation), correlating code diffs, runtime behavior, ownership changes, and update channels to detect malware, impersonation, and policy drift. 500k+ endpoints protected across Fortune 50 companies. Being acquired by Palo Alto Networks (announced Feb 2026) for integration into Prisma AIRS and Cortex XDR.",
     "backSecurity": "Traditional EDR tools are blind to non-binary software \u2014 the dominant attack surface on modern endpoints. Koi fills this gap by inventorying every extension, package, MCP server, and AI agent the moment it appears, assessing risk with LLM-powered code analysis, and enforcing policies automatically. The Supply Chain Gateway blocks risky installs before they reach endpoints. Agentless deployment means no endpoint agent required.",
-    "backWhen": "Deploy when AI agents and MCP servers are proliferating across developer endpoints and you need visibility and governance. Particularly relevant as agents gain tool-use capabilities that bypass traditional security controls. Enterprise platform requiring procurement and policy configuration. The Palo Alto Networks acquisition signals deep integration with Prisma AIRS and Cortex XDR."
+    "backWhen": "Deploy when AI agents and MCP servers are proliferating across developer endpoints and you need visibility and governance. Particularly relevant as agents gain tool-use capabilities that bypass traditional security controls. Enterprise platform requiring procurement and policy configuration. The Palo Alto Networks acquisition signals deep integration with Prisma AIRS and Cortex XDR.",
+    "slug": "koi-palo-alto-networks"
   },
   {
     "name": "CoSAI (Coalition for Secure AI)",
@@ -3677,7 +3802,8 @@
     "agentic": true,
     "backWhat": "The Coalition for Secure AI \u2014 an OASIS Open Project bringing together 45+ organisations (Google, Microsoft, IBM, NVIDIA, Anthropic, Palo Alto Networks, Amazon, OpenAI, Cisco, Wiz) to produce open-source AI security frameworks and tools. Key outputs: CoSAI Risk Map (donated from Google SAIF), Principles for Secure-by-Design Agentic Systems, AI Incident Response Framework, ML Artifact Signing guidance, and Project CodeGuard (secure-by-default rules for AI coding agents). Four active workstreams covering supply chain security, defender frameworks, AI security governance, and agentic system security.",
     "backSecurity": "CoSAI is becoming the industry standard-setter for AI security \u2014 positioned similarly to how OWASP standardised web security. The Risk Map provides a shared taxonomy for AI security risks. The Agentic Systems Principles establish baseline expectations for autonomous AI. The Incident Response Framework (on GitHub at cosai-oasis/ws2-defenders) provides actionable playbooks for when AI systems are compromised. All outputs are open source and free to use.",
-    "backWhen": "Reference when building AI security programmes, writing policies, or establishing governance frameworks. CoSAI outputs carry weight with auditors and regulators due to the breadth of industry backing. Technical participation is free and open to all developers \u2014 contribute via GitHub. Subscribe to mailing lists for updates on new framework releases."
+    "backWhen": "Reference when building AI security programmes, writing policies, or establishing governance frameworks. CoSAI outputs carry weight with auditors and regulators due to the breadth of industry backing. Technical participation is free and open to all developers \u2014 contribute via GitHub. Subscribe to mailing lists for updates on new framework releases.",
+    "slug": "cosai-coalition-for-secure-ai"
   },
   {
     "name": "Collibra AI Governance",
@@ -3707,7 +3833,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "Collibra's AI Governance module extends their market-leading data governance platform to cover AI-specific requirements. Provides AI model cataloging and inventory, data lineage tracking through AI pipelines, policy enforcement for AI usage, bias and fairness monitoring, and regulatory compliance workflows for EU AI Act, ISO 42001, and NIST AI RMF. Widely deployed across Fortune 500 for data governance, now extending that trust to AI governance.",
     "backSecurity": "Addresses the governance gap for organisations that already have data governance but lack AI-specific controls. Tracks which data feeds into which models, who approved deployment, what policies apply, and whether models meet regulatory requirements. The data lineage capability is critical for understanding AI supply chain risks (LLM05) and data poisoning exposure (LLM04).",
-    "backWhen": "Deploy when you need enterprise AI governance integrated with existing data governance. Strongest for organisations already using Collibra for data governance \u2014 the AI module extends naturally. Requires procurement, data catalog integration, and cross-functional adoption across data, ML, and security teams."
+    "backWhen": "Deploy when you need enterprise AI governance integrated with existing data governance. Strongest for organisations already using Collibra for data governance \u2014 the AI module extends naturally. Requires procurement, data catalog integration, and cross-functional adoption across data, ML, and security teams.",
+    "slug": "collibra-ai-governance"
   },
   {
     "name": "HiddenLayer",
@@ -3745,7 +3872,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "The most comprehensive AI security platform on the market. Four integrated modules: AI Discovery (shadow AI inventory), AI Supply Chain Security (model scanning, AIBOM, Model Genealogy), AI Runtime Security (prompt injection, jailbreak, data leakage defense), and AI Attack Simulation (continuous automated red teaming). Gartner Cool Vendor. Backed by M12 (Microsoft), IBM Ventures, Booz Allen Ventures, Capital One Ventures.",
     "backSecurity": "Purpose-built for AI-specific threats \u2014 not retrofitted from traditional cybersecurity. Non-invasive architecture means no access to raw data or model weights required. Covers both GenAI and agentic systems including MCP-based workflows. Runtime module detects and blocks prompt injection, model extraction, and unauthorized tool use in real time. Supply chain module generates AIBOMs and tracks model lineage. OWASP GenAI Security Project sponsor.",
-    "backWhen": "Deploy when you need a unified AI security platform that spans the full lifecycle from model discovery through production monitoring. Enterprise-grade with native integrations for AWS Bedrock, SageMaker, Databricks Unity Catalog, and major SIEM/SOAR tools. Significant procurement and integration commitment, but eliminates the need for multiple point solutions."
+    "backWhen": "Deploy when you need a unified AI security platform that spans the full lifecycle from model discovery through production monitoring. Enterprise-grade with native integrations for AWS Bedrock, SageMaker, Databricks Unity Catalog, and major SIEM/SOAR tools. Significant procurement and integration commitment, but eliminates the need for multiple point solutions.",
+    "slug": "hiddenlayer"
   },
   {
     "name": "TrojAI",
@@ -3782,7 +3910,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "Three-product AI security platform. TrojAI Detect: automated red teaming with agentic and multi-turn attack simulation, including a free Red Team Report Card. TrojAI Defend: GenAI application and agent firewall for runtime threat protection. TrojAI Defend for MCP: purpose-built for securing Model Context Protocol workflows \u2014 MCP server registry, traffic monitoring, tool change detection, and policy enforcement. Gartner AI TRiSM representative vendor. CB Insights tracks 100+ Mosaic score growth.",
     "backSecurity": "Addresses the critical blind spot where traditional firewalls and DLP lack visibility into MCP runtime behavior. Defend for MCP discovers shadow MCP servers, registers approved instances, monitors all MCP traffic including prompts/responses, blocks connections to rogue servers, and continuously tracks tool definition changes to prevent tampering, drift, or poisoning. Also covers prompt injection, data exfiltration, and privilege escalation within agentic workflows.",
-    "backWhen": "Deploy when securing agentic AI systems that use MCP. The Defend for MCP product is one of the first purpose-built MCP security solutions on the market. Start with the free Red Team Report Card to assess your current AI model risk posture, then evaluate Detect for build-time testing and Defend for runtime protection. Enterprise platform requiring integration planning."
+    "backWhen": "Deploy when securing agentic AI systems that use MCP. The Defend for MCP product is one of the first purpose-built MCP security solutions on the market. Start with the free Red Team Report Card to assess your current AI model risk posture, then evaluate Detect for build-time testing and Defend for runtime protection. Enterprise platform requiring integration planning.",
+    "slug": "trojai"
   },
   {
     "name": "Patronus AI",
@@ -3817,7 +3946,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "Automated AI evaluation and security platform with purpose-built LLM judge models. Flagship Lynx model outperforms GPT-4o at hallucination detection in RAG systems. Offers both point-in-time guardrails (toxicity, prompt injection, harmful advice detection) and full-trace application debugging via Percival. Published FinanceBench (financial Q&A benchmark) and GLIDER (explainable evaluation model). Self-serve API with Python SDK and pay-as-you-go pricing.",
     "backSecurity": "Provides the evaluation layer that most AI security stacks lack. Detects hallucinations, prompt injection, PII leakage, bias, and toxicity using specialized judge models that are more accurate than generic LLMs for security evaluation. Compliant with OWASP and NIST standards. Custom LLM judges can be configured for domain-specific safety criteria. Addresses the 'who watches the watchers' problem by providing independent verification of AI outputs.",
-    "backWhen": "Use when you need reliable, automated evaluation of LLM outputs for safety and accuracy. Excellent for teams building RAG applications who need hallucination detection, or for security teams who need to validate that guardrails are actually working. API-first with $5 free credits to start. Integrates into CI/CD pipelines. More accessible than building custom evaluation infrastructure."
+    "backWhen": "Use when you need reliable, automated evaluation of LLM outputs for safety and accuracy. Excellent for teams building RAG applications who need hallucination detection, or for security teams who need to validate that guardrails are actually working. API-first with $5 free credits to start. Integrates into CI/CD pipelines. More accessible than building custom evaluation infrastructure.",
+    "slug": "patronus-ai"
   },
   {
     "name": "Lasso Security",
@@ -3850,7 +3980,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "GenAI security platform focused on three pillars: shadow AI discovery (finds unsanctioned AI tool usage across the enterprise), real-time guardrails (blocks prompt injection, jailbreaks, and sensitive data exposure), and data leakage prevention (monitors and controls data flowing into and out of AI applications). OWASP GenAI Security Project sponsor.",
     "backSecurity": "Addresses the shadow AI problem that CB Insights and enterprise surveys consistently identify as a top concern \u2014 employees using unauthorized AI tools with company data. Provides visibility into which AI services are being used, what data is being shared, and enforces policies in real time. Covers both sanctioned and unsanctioned AI usage.",
-    "backWhen": "Deploy when your primary concern is controlling AI sprawl across the enterprise \u2014 discovering shadow AI usage and preventing data leakage into external AI services. Enterprise platform requiring integration with existing security infrastructure. Most valuable for organizations with large employee bases and limited visibility into AI adoption patterns."
+    "backWhen": "Deploy when your primary concern is controlling AI sprawl across the enterprise \u2014 discovering shadow AI usage and preventing data leakage into external AI services. Enterprise platform requiring integration with existing security infrastructure. Most valuable for organizations with large employee bases and limited visibility into AI adoption patterns.",
+    "slug": "lasso-security"
   },
   {
     "name": "Credo AI",
@@ -3879,7 +4010,8 @@
     "complexityOverride": "Enterprise Only",
     "backWhat": "AI governance platform that helps enterprises operationalize responsible AI policies. Provides AI risk assessments, policy packs aligned to regulatory frameworks (EU AI Act, NIST AI RMF, ISO 42001), and continuous compliance monitoring. Features an AI Registry for cataloging all AI systems with risk classifications, and automated evidence collection for audit readiness. Appears in CB Insights' AI agent tech stack Oversight layer.",
     "backSecurity": "Addresses the governance gap between AI development teams and compliance/legal teams. Translates regulatory requirements into technical policies that can be enforced across the AI lifecycle. Tracks model bias, fairness, and transparency metrics with automated reporting. Useful for organizations that need to demonstrate AI compliance to regulators or auditors.",
-    "backWhen": "Deploy when regulatory compliance is a primary driver \u2014 particularly for EU AI Act preparation or when building an enterprise-wide AI governance program. Requires executive sponsorship and cross-functional buy-in. Most valuable for large organizations with many AI systems to govern and multiple regulatory obligations."
+    "backWhen": "Deploy when regulatory compliance is a primary driver \u2014 particularly for EU AI Act preparation or when building an enterprise-wide AI governance program. Requires executive sponsorship and cross-functional buy-in. Most valuable for large organizations with many AI systems to govern and multiple regulatory obligations.",
+    "slug": "credo-ai"
   },
   {
     "name": "Vijil",
@@ -3911,7 +4043,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "LLM security testing platform that automates vulnerability scanning for AI applications. Tests for prompt injection, data leakage, jailbreaking, and output safety issues. Provides continuous monitoring to detect when AI behavior drifts from established baselines. Appears in CB Insights' AI agent tech stack Oversight layer under Observability, Evaluation, & Governance.",
     "backSecurity": "Fills the gap between one-time security assessments and continuous AI security monitoring. Automated scanning catches vulnerabilities that manual red teaming might miss, while continuous monitoring detects behavioral drift in production. Tests against OWASP LLM Top 10 attack vectors.",
-    "backWhen": "Use when you need automated, repeatable security testing for LLM applications. Good complement to manual red teaming tools like Promptfoo or Garak. Integrates into CI/CD for continuous validation."
+    "backWhen": "Use when you need automated, repeatable security testing for LLM applications. Good complement to manual red teaming tools like Promptfoo or Garak. Integrates into CI/CD for continuous validation.",
+    "slug": "vijil"
   },
   {
     "name": "deepchecks",
@@ -3943,7 +4076,8 @@
     "complexityOverride": "Guided Setup",
     "backWhat": "Open-source testing framework for validating AI/ML models and LLM applications. Provides pre-built test suites for data validation, model evaluation, and LLM output testing. Tests for hallucination, bias, toxicity, and data integrity issues. Python-native with CI/CD integration. Appears in CB Insights' AI agent tech stack Oversight layer.",
     "backSecurity": "Provides the testing layer that catches AI quality and safety issues before deployment. Pre-built checks cover common failure modes: data drift, label errors, feature importance shifts, and LLM-specific issues like hallucination and prompt sensitivity. Open-source means full transparency into what's being tested and how.",
-    "backWhen": "Use during AI development to validate model quality and safety before deployment. Excellent for teams that want to add AI-specific testing to existing CI/CD pipelines without vendor lock-in. Python SDK integrates with Jupyter, pytest, and standard ML workflows. Open-source core with commercial cloud offering."
+    "backWhen": "Use during AI development to validate model quality and safety before deployment. Excellent for teams that want to add AI-specific testing to existing CI/CD pipelines without vendor lock-in. Python SDK integrates with Jupyter, pytest, and standard ML workflows. Open-source core with commercial cloud offering.",
+    "slug": "deepchecks"
   },
   {
     "name": "Enkrypt AI",
@@ -3982,7 +4116,8 @@
     "agentic": true,
     "backWhat": "Enterprise AI security platform from Enkrypt AI (Boston, founded 2022 by Yale PhD researchers). Includes AI Red Teaming for automated adversarial testing, real-time Guardrails for input/output filtering, and Compliance Monitoring. Recognised as a Gartner Cool Vendor in AI Security. Supports LLM and agent-specific threat detection including prompt injection, tool misuse, goal hijacking, and hallucination exploitation.",
     "backSecurity": "Provides planner guardrails, memory/knowledge base guardrails, tool/agent guardrails, and output guardrails specifically designed for agentic architectures. Includes dedicated MCP security solution with MCP Scanner for static analysis and Secure MCP Gateway for runtime protection. Detects tool poisoning, capability escalation, and shadow MCP servers.",
-    "backWhen": "Use when deploying AI agents or LLM applications that need continuous security testing, real-time protection, and compliance evidence. Particularly strong for organisations needing agent-specific red teaming beyond basic jailbreak tests."
+    "backWhen": "Use when deploying AI agents or LLM applications that need continuous security testing, real-time protection, and compliance evidence. Particularly strong for organisations needing agent-specific red teaming beyond basic jailbreak tests.",
+    "slug": "enkrypt-ai"
   },
   {
     "name": "Enkrypt AI MCP Security",
@@ -4019,7 +4154,8 @@
     "agentic": true,
     "backWhat": "Enkrypt AI's dedicated MCP security offering. Includes an MCP Scanner for static code analysis of MCP server implementations (detects command injection, insecure configs, exposed secrets) and a Secure MCP Gateway that sits between agents and MCP servers to inspect tool calls, enforce policies, and block malicious activity in real time.",
     "backSecurity": "Addresses the top MCP attack vectors: prompt injection via tool parameters, privilege escalation through tool chaining, data exfiltration via MCP responses, tool poisoning (rug pulls), shadow MCP server adoption, and configuration drift between environments. Supports per-project allowlists and approval workflows.",
-    "backWhen": "Use when deploying MCP-connected AI agents in production. Essential for organisations that need to govern which MCP servers are approved, scan new servers before adoption, and enforce runtime security policies on tool calls."
+    "backWhen": "Use when deploying MCP-connected AI agents in production. Essential for organisations that need to govern which MCP servers are approved, scan new servers before adoption, and enforce runtime security policies on tool calls.",
+    "slug": "enkrypt-ai-mcp-security"
   },
   {
     "name": "Knostic",
@@ -4049,7 +4185,8 @@
     "agentic": false,
     "backWhat": "Knostic (Herndon, VA / Tel Aviv, founded 2023) provides need-to-know access controls for enterprise LLMs like Microsoft Copilot and Glean. Co-founded by Gadi Evron and Sounil Yu (former Chief Security Scientist at Bank of America). Won RSA Conference 2024 Launch Pad and Black Hat 2024 Startup Spotlight. Raised $14.3M. Monitors LLM queries and responses in real time, applying context-aware response rewriting \u2014 from obfuscation to complete blocking \u2014 based on user roles and enterprise need-to-know boundaries.",
     "backSecurity": "Addresses the inference-time data leakage problem that traditional DLP and file permissions cannot solve. LLMs can infer sensitive information by synthesising fragments across repositories even when file-level permissions are valid. Knostic detects and prevents this oversharing at the knowledge layer. Also provides Copilot Readiness Assessment to surface exposure before rollout.",
-    "backWhen": "Use before or during enterprise Copilot/Glean deployment to prevent sensitive data exposure through AI-generated responses. Critical for regulated industries where need-to-know boundaries must be enforced."
+    "backWhen": "Use before or during enterprise Copilot/Glean deployment to prevent sensitive data exposure through AI-generated responses. Critical for regulated industries where need-to-know boundaries must be enforced.",
+    "slug": "knostic"
   },
   {
     "name": "Agent Gateway (Solo.io / Linux Foundation)",
@@ -4083,7 +4220,8 @@
     "agentic": true,
     "backWhat": "Open-source agent gateway created by Solo.io and donated to the Linux Foundation. Built from scratch in Rust (not retrofitted from legacy API gateways) to natively support MCP and A2A protocols. Provides drop-in security, observability, and governance for agent communication. Includes developer portal for tool discovery and monitoring. Enterprise version offers mTLS, multitenant access boundaries, context-aware model routing, and integration with Kubernetes via Ambient Mesh.",
     "backSecurity": "Provides RBAC for MCP servers, audit logging of all tool calls, agent identity via mTLS, and centralised policy enforcement for agent-to-agent and agent-to-tool traffic. Addresses MCP security concerns around unauthenticated tool access and lack of visibility. 300x better memory utilisation and 100x lower latency than alternative AI gateway implementations.",
-    "backWhen": "Use when deploying multi-agent systems that communicate via MCP or A2A in production. Essential infrastructure for organisations that need centralised governance over agent connectivity across teams and environments."
+    "backWhen": "Use when deploying multi-agent systems that communicate via MCP or A2A in production. Essential infrastructure for organisations that need centralised governance over agent connectivity across teams and environments.",
+    "slug": "agent-gateway-solo-io-linux-foundation"
   },
   {
     "name": "IBM Risk Atlas Nexus",
@@ -4121,7 +4259,8 @@
     "agentic": false,
     "backWhat": "Open-source toolkit from IBM Research (Apache 2.0) that unifies multiple AI risk taxonomies into a single knowledge graph. Aggregates risks from IBM AI Risk Atlas, Granite Guardian, MIT AI Risk Repository, NIST AI RMF GenAI Profile, AIR 2024, AILuminate Benchmark, Credo's Unified Control Framework, and OWASP LLM Top 10. Includes Python library for risk exploration, use-case risk detection, compliance questionnaire assistance, and graph database export. Presented at AAAI 2026. HuggingFace demo available.",
     "backSecurity": "Provides cross-framework risk mappings that connect abstract regulatory requirements to concrete technical controls, benchmarks, and mitigations. Enables automated risk identification from use-case descriptions and supports compliance questionnaire workflows.",
-    "backWhen": "Use during AI governance setup to map your AI use cases to relevant risks across multiple frameworks simultaneously. Ideal for organisations needing to demonstrate compliance across NIST, OWASP, and EU AI Act requirements."
+    "backWhen": "Use during AI governance setup to map your AI use cases to relevant risks across multiple frameworks simultaneously. Ideal for organisations needing to demonstrate compliance across NIST, OWASP, and EU AI Act requirements.",
+    "slug": "ibm-risk-atlas-nexus"
   },
   {
     "name": "COMPL-AI",
@@ -4145,7 +4284,8 @@
     "agentic": false,
     "backWhat": "Open-source compliance-centered evaluation framework created by ETH Zurich, INSAIT, and LatticeFlow AI. Provides the first technical interpretation of the EU AI Act, translating broad regulatory requirements into measurable technical requirements for LLMs. Covers 6 core principles: Human Agency & Oversight, Technical Robustness & Safety, Privacy & Data Governance, Transparency, Diversity & Fairness, and Societal & Environmental Well-being. Built on UK AI Safety Institute's Inspect Framework. Supports API, cloud, and local model providers.",
     "backSecurity": "Evaluates LLMs against EU AI Act compliance benchmarks covering robustness, safety, bias, fairness, and transparency. The renewed benchmarking suite addresses saturation and contamination in frontier model evaluation. Also adding support for EU AI Act Code of Practice Safety & Security chapter.",
-    "backWhen": "Use when evaluating LLMs for EU AI Act compliance or when benchmarking foundation models against regulatory safety and fairness requirements."
+    "backWhen": "Use when evaluating LLMs for EU AI Act compliance or when benchmarking foundation models against regulatory safety and fairness requirements.",
+    "slug": "compl-ai"
   },
   {
     "name": "LatticeFlow AI",
@@ -4172,7 +4312,8 @@
     "agentic": false,
     "backWhat": "Swiss AI governance platform (ETH Zurich spin-off, raised $17M+) that bridges AI governance and MLOps. Provides automated AI Health Checks for model performance and data quality, regulatory compliance assessments (EU AI Act, ISO 42001), and continuous monitoring. Suite 2.0 covers data validation, model acceleration, internal AI controls, compliance, and risk monitoring. Acquired AI Sonar for AI discovery. Partners with KPMG Switzerland. Recognised on CB Insights AI100 and received US Army Global Award.",
     "backSecurity": "Automates technical validation against regulatory standards. Health Checks flag data quality issues (duplicates, leaked samples, mislabelled items) and model robustness problems. Supports adversarial robustness testing, bias detection, and explainability analysis. Integrates into CI/CD pipelines for continuous compliance monitoring.",
-    "backWhen": "Use when you need to validate AI models against EU AI Act or ISO standards with deep technical evidence. Ideal for regulated industries (financial services, defence) that need automated compliance assessments."
+    "backWhen": "Use when you need to validate AI models against EU AI Act or ISO standards with deep technical evidence. Ideal for regulated industries (financial services, defence) that need automated compliance assessments.",
+    "slug": "latticeflow-ai"
   },
   {
     "name": "NVIDIA NeMo Agent Toolkit",
@@ -4204,7 +4345,8 @@
     "agentic": true,
     "backWhat": "Open-source Python toolkit from NVIDIA for building, connecting, and optimising teams of AI agents. Framework-agnostic \u2014 works with LangChain, CrewAI, Agno, and custom agents. Key capabilities: YAML-driven workflow configuration, Agent Performance Primitives (parallel execution, speculative branching), full MCP and A2A protocol support, built-in profiling (token usage, latency, cost), and evaluation harness. Safety and Security Engine (v1.3+) enables scenario-based attack simulation, risk profiling, guardrail-ready evaluations, and agent red teaming. Part of the broader NVIDIA NeMo suite for AI agent lifecycle management.",
     "backSecurity": "Safety and Security Engine validates defences, profiles risk, monitors behaviour, and hardens agents. Supports authentication for tool calling, MCP authentication improvements, and sandboxed execution. Also supports automatic RL fine-tuning (GRPO/DPO) to improve agent reliability for specific workflows.",
-    "backWhen": "Use when building production multi-agent systems that need performance profiling, security evaluation, and cross-framework integration. Particularly valuable for NVIDIA GPU-accelerated deployments."
+    "backWhen": "Use when building production multi-agent systems that need performance profiling, security evaluation, and cross-framework integration. Particularly valuable for NVIDIA GPU-accelerated deployments.",
+    "slug": "nvidia-nemo-agent-toolkit"
   },
   {
     "name": "Breeple RAI Blueprint",
@@ -4230,7 +4372,8 @@
     "agentic": true,
     "backWhat": "Responsible AI governance platform by BI Group Australia. The RAI Blueprint uses agentic AI to automate governance workflows: proactive regulatory monitoring (EU AI Act, ISO 42001, NIST, GDPR), gap diagnosis against emerging standards, automated compliance brief drafting, and role-specific dashboards for boards, CISOs, legal, compliance, and developers. Designed to replace manual governance processes with continuous, AI-driven assurance.",
     "backSecurity": "Provides continuous regulatory intelligence \u2014 agents scan for changes in AI laws, alert teams, recommend updates, and draft compliance briefs. Reviews policies, processes, and technical controls against standards and surfaces specific gaps with remediation suggestions.",
-    "backWhen": "Use when you need to operationalise responsible AI governance across an organisation, particularly for scaling AI deployments under multiple regulatory regimes."
+    "backWhen": "Use when you need to operationalise responsible AI governance across an organisation, particularly for scaling AI deployments under multiple regulatory regimes.",
+    "slug": "breeple-rai-blueprint"
   },
   {
     "name": "OWASP Secure MCP Server Development Guide",
@@ -4266,7 +4409,8 @@
     "agentic": true,
     "backWhat": "OWASP GenAI Security Project publication (v1.0, Feb 2026) providing best practices for designing and implementing secure MCP servers. Covers 8 domains: Secure Architecture (local vs remote, session isolation), Safe Tool Design (cryptographic manifests, onboarding), Data Validation, Prompt Injection Controls (HITL, LLM-as-Judge), Authentication & Authorization (OAuth 2.1, token delegation), Secure Deployment, Governance, and Continuous Validation. Includes a minimum bar security checklist.",
     "backSecurity": "Addresses MCP-specific attack surface: tool poisoning, rug pulls (dynamic tool instability), code injection, credential leakage, excessive permissions, and insufficient isolation. Prescribes OAuth 2.1/OIDC, short-lived tokens, centralised policy enforcement, and containerised hardened deployment.",
-    "backWhen": "Reference when building, deploying, or auditing MCP server implementations. Use the minimum bar checklist for MCP security reviews."
+    "backWhen": "Reference when building, deploying, or auditing MCP server implementations. Use the minimum bar checklist for MCP security reviews.",
+    "slug": "owasp-secure-mcp-server-development-guide"
   },
   {
     "name": "OWASP Vendor Evaluation for AI Red Teaming",
@@ -4291,7 +4435,8 @@
     "agentic": true,
     "backWhat": "OWASP GenAI Security Project publication (v1.0, Jan 2026) providing structured criteria for evaluating AI red teaming consultants and automated tools. Covers 13 evaluation categories: Technical Competence, Methodology & Coverage, Adversarial Creativity, Threat Modeling, Evaluation Rigor & Metrics, Tooling Quality, Data Governance, Transparency, Customization, Operational Fit, Limitations, Cost vs Value, and Legal/Compliance. Includes comparison matrix (consultants vs automated tools) and vendor evaluation checklist.",
     "backSecurity": "Distinguishes genuine adversarial evaluation from superficial testing. Identifies red flags like stock jailbreak libraries, no multi-turn capability, AI-generated evaluations without human oversight, and claims of full coverage. Specifies what effective testing looks like for MCP, tool-calling, and multi-agent systems.",
-    "backWhen": "Use when selecting or evaluating AI red teaming vendors. Essential procurement reference for CISOs building AI security testing programmes."
+    "backWhen": "Use when selecting or evaluating AI red teaming vendors. Essential procurement reference for CISOs building AI security testing programmes.",
+    "slug": "owasp-vendor-evaluation-for-ai-red-teaming"
   },
   {
     "name": "CSA/OWASP Agentic AI Red Teaming Guide",
@@ -4328,7 +4473,8 @@
     "agentic": true,
     "backWhat": "Joint publication from CSA AI Organizational Responsibilities Working Group and OWASP AI Exchange. Provides detailed red teaming procedures for agentic AI across 12 threat categories: Authorization & Control Hijacking, Checker-Out-of-the-Loop, Critical System Interaction, Goal & Instruction Manipulation, Hallucination Exploitation, Impact Chain & Blast Radius, Knowledge Base Poisoning, Memory & Context Manipulation, Multi-Agent Exploitation, Resource Exhaustion, Supply Chain Attacks, and Untraceability. Each category includes test requirements, actionable steps, and example prompts.",
     "backSecurity": "Goes deeper than the OWASP Agentic Top 10 by providing specific test procedures for each threat. Covers MCP server hijacking, permission escalation, role inheritance exploitation, cross-session data leakage, memory poisoning, confused deputy attacks, feedback loop exploitation, and forensic analysis obfuscation. Also references tools: MAESTRO, AgentDojo, AgentFence, Promptfoo, and Agent Security Bench.",
-    "backWhen": "Use as a hands-on testing playbook when red teaming agentic AI systems. The 12 categories provide a systematic structure for comprehensive agent security assessment."
+    "backWhen": "Use as a hands-on testing playbook when red teaming agentic AI systems. The 12 categories provide a systematic structure for comprehensive agent security assessment.",
+    "slug": "csa-owasp-agentic-ai-red-teaming-guide"
   },
   {
     "name": "PromptArmor",

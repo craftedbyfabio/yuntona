@@ -239,6 +239,8 @@ function init(){
       if(document.getElementById('sourceBanner')) document.getElementById('sourceBanner').style.display='none';
       buildFilters();stats();render();
       ls.classList.add('hidden');
+      // Open tool card if URL has a deep link hash
+      openFromHash();
     })
     .catch(function(e){
       console.error('Init error:',e);
@@ -454,13 +456,26 @@ function showCardDetail(tool){
   overlay.classList.add('active');
   document.body.style.overflow='hidden';
   document.getElementById('closeDetailBtn').addEventListener('click',closeCardDetail);
+  // Update URL hash for deep linking
+  if(tool.slug)history.replaceState(null,null,'#'+tool.slug);
 }
 function closeCardDetail(){
   document.getElementById('cardOverlay').classList.remove('active');
   document.body.style.overflow='';
+  // Clear hash without scrolling
+  history.replaceState(null,null,window.location.pathname+window.location.search);
 }
 document.getElementById('cardOverlay').addEventListener('click',function(e){if(e.target===this)closeCardDetail()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCardDetail()});
+
+// Deep link: open tool card if URL has a hash
+function openFromHash(){
+  var hash=window.location.hash.replace('#','');
+  if(!hash||!RES.length)return;
+  var tool=RES.find(function(r){return r.slug===hash});
+  if(tool)showCardDetail(tool);
+}
+window.addEventListener('hashchange',openFromHash);
 
 init();
 
