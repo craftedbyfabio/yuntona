@@ -112,7 +112,7 @@ function aiSearch(query){
 
   if(useNL){
     body.innerHTML='<div class="ai-loading"><div class="dots"><span></span><span></span><span></span></div><span class="nl-badge">NL</span> Understanding your question across '+RES.length+' resources...</div>';
-    window.typesenseNLSearch(query,{perPage:8,queryBy:'name,desc,tags,url,backWhat,backSecurity,backWhen,category,audience',queryByWeights:'6,3,5,1,2,2,1,3,2'})
+    window.typesenseNLSearch(query,{perPage:12,queryBy:'name,desc,tags,url,backWhat,backSecurity,backWhen,category,audience',queryByWeights:'6,3,7,1,3,3,3,3,2'})
       .then(function(result){
         if(result.found===0){
           // NL returned nothing — fall back to keyword search
@@ -140,7 +140,7 @@ function aiSearch(query){
 
 function aiSearchKeyword(query){
   if(window.typesenseReady){
-    window.typesenseSearch(query,{perPage:8,queryBy:'name,desc,tags,url,backWhat,backSecurity,backWhen,category,audience',queryByWeights:'6,3,5,1,2,2,1,3,2'})
+    window.typesenseSearch(query,{perPage:12,queryBy:'name,desc,tags,url,backWhat,backSecurity,backWhen,category,audience',queryByWeights:'6,3,7,1,3,3,3,3,2'})
       .then(function(result){
         if(result.found===0){aiSearchFallback(query);return}
         renderAiResults(query,result.hits.map(function(h){
@@ -266,9 +266,9 @@ si.addEventListener('input',function(e){
   db=setTimeout(function(){
     if(window.typesenseReady){
       window.typesenseSearch(v,{
-        perPage:6,
+        perPage:12,
         queryBy:'name,desc,tags,url,category,backWhat,backSecurity,backWhen,audience',
-        queryByWeights:'6,3,5,1,3,2,2,1,2'
+        queryByWeights:'6,3,7,1,3,3,3,3,2'
       }).then(function(result){
         if(!result.hits.length){
           acDrop.classList.remove('open');
