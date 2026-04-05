@@ -4532,5 +4532,406 @@
     "backWhat": "AI-native TPRM platform that identifies, assesses, and continuously monitors AI risk across vendor ecosystems. Maps 26 risk vectors to OWASP LLM Top 10, NIST AI RMF, and MITRE ATLAS.",
     "backSecurity": "Addresses the blind spot in traditional TPRM for AI \u2014 understanding how vendors use AI, what data their models interact with, and how their AI functionality changes over time. Continuous monitoring alerts when vendors change AI scope or permissions.",
     "backWhen": "When your organisation consumes AI through third-party vendors and needs structured risk assessment beyond questionnaires. Particularly relevant for regulated industries where AI vendor dependency compounds risk."
+  },
+  {
+    "name": "AARM Specification",
+    "slug": "aarm-specification",
+    "url": "https://aarm.dev",
+    "category": "AI Governance & Standards",
+    "desc": "Open specification for securing AI-driven actions at runtime. Defines components, behaviours, and conformance requirements for systems that intercept, authorise, and audit autonomous agent actions before execution.",
+    "riskRaw": "Safe",
+    "audience": "AppSec",
+    "tags": [
+      "Specification",
+      "Agentic",
+      "Runtime Security",
+      "Open Source",
+      "Academic"
+    ],
+    "owaspLLM": [
+      "LLM06"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI02",
+      "ASI04",
+      "ASI06",
+      "ASI07",
+      "ASI09"
+    ],
+    "stages": [
+      "plan",
+      "deploy"
+    ],
+    "agentic": true,
+    "backWhat": "Autonomous Action Runtime Management (AARM) is an open system specification \u2014 not a product \u2014 for securing AI agent actions at runtime. It defines what a runtime security system must do: intercept actions before execution, accumulate session context, evaluate against organisational policy, enforce authorisation decisions (allow, deny, modify, defer, or require approval), and record tamper-evident receipts. Covers threat models including prompt injection, confused deputy, privilege amplification, goal hijacking, and cross-agent propagation. Published with an arXiv paper and a technical working group.",
+    "backSecurity": "Addresses the runtime security gap where existing tools (SIEM, API gateways, firewalls, prompt guardrails) fail for autonomous agents. Defines action classification into four categories: forbidden, context-dependent, routine, and novel. The specification's policy engine and action mediation layer concepts map directly to OWASP Agentic risks around excessive agency, insufficient access controls, and insecure tool integration.",
+    "backWhen": "Use as a reference architecture when designing or evaluating agent security systems. Not something you install \u2014 it's a specification you build against or use to assess whether vendor solutions provide genuine runtime agent security. Particularly valuable for security architects designing agentic AI governance frameworks."
+  },
+  {
+    "name": "MintMCP",
+    "slug": "mintmcp",
+    "url": "https://mintmcp.com",
+    "category": "MCP Security",
+    "desc": "Agent governance platform \u2014 hosted MCP gateway with access control, audit logging, and guardrails. Official Cursor partner. SOC 2 Type II certified.",
+    "riskRaw": "Safe",
+    "audience": "CISO",
+    "tags": [
+      "MCP Security",
+      "Governance",
+      "Agent Security",
+      "SaaS",
+      "Commercial"
+    ],
+    "owaspLLM": [
+      "LLM06"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI02",
+      "ASI04",
+      "ASI06",
+      "ASI08"
+    ],
+    "stages": [
+      "deploy",
+      "monitor"
+    ],
+    "agentic": true,
+    "backWhat": "MCP governance platform that lets enterprises deploy Claude, Cursor, and other AI agents with centralised control. Hosts 10,000+ MCP servers with enterprise authentication (SSO via SAML/OIDC), granular access controls per tool/dataset/action, and real-time activity monitoring. The MintMCP Gateway provides pre-configured MCP servers with one-click deployment, custom MCP registries, and role-based endpoints. The Agent Monitor traces tool calls, commands, and file access in real time. Official Cursor partner (announced on Cursor blog). SOC 2 Type II certified. Customers include Coursera CTO.",
+    "backSecurity": "Provides the governance layer missing from raw MCP deployments: centralised credential management, audit-ready compliance logs with full data access trails, and intelligent guardrails that detect and block risky agent actions. The MCP Gateway enforces least-privilege per role \u2014 engineers get different tool access than data scientists. Activity monitoring enables detection of shadow MCP usage and unauthorised tool invocations.",
+    "backWhen": "Use when rolling out AI coding agents (Cursor, Claude) to teams beyond early adopters. The governance gap hits when you move from 5 developers using MCP informally to 50+ across an organisation. MintMCP provides the admin layer \u2014 who can use which tools, what data flows through, and who approved it. SaaS deployment, no infrastructure to manage."
+  },
+  {
+    "name": "Raptor",
+    "slug": "raptor",
+    "url": "https://github.com/gadievron/raptor",
+    "category": "AI Red Teaming",
+    "desc": "Turns Claude Code into a general-purpose offensive/defensive security agent using CLAUDE.md rules, sub-agents, and skill orchestration for adversarial thinking and security operations.",
+    "riskRaw": "Caution",
+    "audience": "Red Team",
+    "tags": [
+      "Red Teaming",
+      "Claude Code",
+      "Agentic",
+      "Open Source",
+      "Offensive"
+    ],
+    "owaspLLM": [
+      "LLM01",
+      "LLM06",
+      "LLM07"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI04",
+      "ASI07"
+    ],
+    "stages": [
+      "test"
+    ],
+    "agentic": true,
+    "openSource": true,
+    "backWhat": "Open-source project by Gadi Evron that transforms Claude Code into a general-purpose AI security agent. Uses CLAUDE.md configuration files to define rules, sub-agents, and skills that orchestrate security tool usage for adversarial thinking. Enables both offensive operations (attack simulation, vulnerability research) and defensive operations (threat detection, incident analysis). The approach is agent-native: rather than building a security tool that uses AI, it configures an AI agent to become a security practitioner.",
+    "backSecurity": "Demonstrates how agentic AI can be weaponised for security operations \u2014 both offensively and defensively. The sub-agent architecture allows specialised agents (recon, exploit, analysis) to coordinate on complex security tasks. Relevant for understanding how adversaries might use AI agents for attacks, and for building defensive agent-based security workflows.",
+    "backWhen": "Use for AI-powered red teaming exercises, security research, or building defensive automation. Requires Claude Code access and comfort with agentic AI workflows. Early-stage project \u2014 experimental, not production-hardened. Best suited for security researchers exploring the intersection of AI agents and offensive/defensive security."
+  },
+  {
+    "name": "Reva AI",
+    "slug": "reva-ai",
+    "url": "https://reva.ai",
+    "category": "Identity & AppSec",
+    "desc": "Continuous adaptive authorisation platform for humans and AI agents. Policy-driven runtime access control with MCP security, intent-aware enforcement, and AWS authorization control plane.",
+    "riskRaw": "Safe",
+    "audience": "AppSec,CISO",
+    "tags": [
+      "Authorization",
+      "MCP Security",
+      "Runtime Security",
+      "Policy-as-Code",
+      "Commercial"
+    ],
+    "owaspLLM": [
+      "LLM06"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI02",
+      "ASI04",
+      "ASI06",
+      "ASI09"
+    ],
+    "stages": [
+      "deploy",
+      "monitor"
+    ],
+    "agentic": true,
+    "backWhat": "Authorization Management Platform (AMP) that enforces, governs, and adapts access decisions across AI agents, cloud-native applications, and data in real time. Features include a Policy Control Tower for designing and governing authorisation policies at scale, a Trust Gateway for runtime enforcement across apps/APIs/agents, Policy Intelligence for explainable decisions and behaviour analytics, and a Data Fabric for unified policy context. Offers dedicated MCP Runtime Security for securing MCP server and tool invocations with centralised policy-driven authorisation. Provides an Authorization Control Plane specifically for AWS (IAM, SCPs, AVP, AgentCore).",
+    "backSecurity": "Replaces static identity-only access controls with context-aware, intent-driven runtime authorisation. For AI agents specifically, it evaluates not just who is calling but what the action means in context \u2014 addressing the gap where traditional IAM fails for autonomous systems. The MCP security module secures tool invocations with policy-as-code, preventing unauthorised tool calls and data access by AI agents.",
+    "backWhen": "Use when deploying AI agents that need fine-grained, context-aware access control beyond basic RBAC. Particularly relevant for organisations using MCP servers where agent-to-tool authorisation needs centralised governance. Also valuable for modernising legacy application authorisation. Enterprise platform requiring procurement."
+  },
+  {
+    "name": "Operant AI",
+    "slug": "operant-ai",
+    "url": "https://operant.ai",
+    "category": "AI Guardrails & Firewalls",
+    "desc": "Runtime AI security platform \u2014 Agent Protector, AI Gatekeeper, MCP Gateway, and 3D Runtime Defense for live cloud and AI workloads. Featured in all four Gartner 2025 AI security guides.",
+    "riskRaw": "Safe",
+    "audience": "AppSec,CISO",
+    "tags": [
+      "Runtime Security",
+      "MCP Security",
+      "Agent Security",
+      "API Security",
+      "Commercial"
+    ],
+    "owaspLLM": [
+      "LLM01",
+      "LLM02",
+      "LLM06",
+      "LLM07"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI02",
+      "ASI04",
+      "ASI05",
+      "ASI06",
+      "ASI07",
+      "ASI08"
+    ],
+    "stages": [
+      "deploy",
+      "monitor"
+    ],
+    "agentic": true,
+    "backWhat": "Runtime security platform for AI applications and agents, cloud-native APIs, and Kubernetes workloads. Products include Agent Protector (purpose-built security for agentic AI), AI Gatekeeper (real-time security for AI applications), MCP Gateway (monitor and protect MCP across endpoints and cloud), 3D Runtime Defense (API and cloud protection), and Woodpecker (open-source AI red teaming). The only vendor featured in all four of Gartner's 2025 AI security market guides: AI TRiSM, API Protection, MCP Gateways, and Securing Custom-Built AI Agents. Series A funded.",
+    "backSecurity": "Provides runtime interception and enforcement for AI agent actions, API calls, and cloud workloads. The Agent ScopeGuard product specifically prevents rogue agents from causing real-world damage by detecting and blocking unauthorised actions. MCP Gateway provides real-time transparency and protection across the entire MCP ecosystem. The Woodpecker open-source tool enables red teaming of AI applications.",
+    "backWhen": "Use when deploying AI agents or LLM applications in production Kubernetes environments that need runtime security across the full stack \u2014 from model inference to API calls to MCP tool invocations. Strongest for organisations that want a single platform covering AI security, API protection, and cloud runtime defense. Enterprise platform with Series A backing."
+  },
+  {
+    "name": "Formal",
+    "slug": "formal",
+    "url": "https://formal.ai",
+    "category": "Identity & AppSec",
+    "desc": "Protocol-aware data security proxy \u2014 enforces least privilege at wire-protocol level across 15+ protocols including MCP. Used by Notion, Ramp, Cursor, and Gusto.",
+    "riskRaw": "Safe",
+    "audience": "AppSec",
+    "tags": [
+      "Data Security",
+      "Proxy",
+      "MCP Security",
+      "Least Privilege",
+      "Commercial"
+    ],
+    "owaspLLM": [
+      "LLM02"
+    ],
+    "owaspASI": [
+      "ASI02",
+      "ASI04",
+      "ASI05",
+      "ASI08"
+    ],
+    "stages": [
+      "deploy",
+      "monitor"
+    ],
+    "agentic": true,
+    "backWhat": "Programmable reverse proxy that parses 15+ wire protocols (Postgres, MySQL, MongoDB, Snowflake, SSH, Kubernetes, HTTP, MCP, S3, Redis, gRPC, and more) and enforces security policies inline at query level with sub-10ms latency. Single stateless binary deployed in your VPC via Terraform, Kubernetes, or Docker. 9 policy actions (Allow, Block, Mask, Filter, Rewrite, Quarantine, Suspend, MFA, Impersonate) evaluated at 3 stages (session, request, response). Customers include Notion (secured hundreds of datastores), Ramp, Cursor, Gusto, and Doctolib. Features PII/PHI masking, JIT access via Slack/Jira, and policy backtesting against 31 days of historical logs.",
+    "backSecurity": "For AI agent security specifically: Formal proxies between AI agents and MCP servers, stripping PII before it reaches the LLM, blocking unauthorised tool calls, enforcing permissions the upstream system lacks, and auditing every agent action. The wire-protocol-level parsing means it understands the actual queries and commands being executed \u2014 not just HTTP headers. Real-time AI session monitoring uses LLM-powered behaviour analysis to detect anomalies in live sessions.",
+    "backWhen": "Use when you need data-level access control between AI agents and backends \u2014 particularly when agents access databases, APIs, or MCP servers that contain sensitive data. The protocol-aware approach means no application code changes. Deploy in under an hour for initial routing, then progressively add masking and access policies. Enterprise product used by major SaaS companies."
+  },
+  {
+    "name": "Geordie AI",
+    "slug": "geordie-ai",
+    "url": "https://geordie.ai",
+    "category": "AI Governance & Standards",
+    "desc": "AI agent security platform \u2014 behavioural observability, posture context, and governance for enterprise agentic AI. Winner of RSAC 2026 Innovation Sandbox 'Most Innovative Startup'.",
+    "riskRaw": "Safe",
+    "audience": "CISO",
+    "tags": [
+      "Agent Security",
+      "Governance",
+      "Observability",
+      "Agentic",
+      "Commercial"
+    ],
+    "owaspLLM": [
+      "LLM06"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI06",
+      "ASI07",
+      "ASI08"
+    ],
+    "stages": [
+      "monitor",
+      "govern"
+    ],
+    "agentic": true,
+    "backWhat": "Enterprise AI agent security platform that provides holistic, real-time understanding of an organisation's agentic footprint \u2014 whether agents are locally coded, self-hosted, SaaS-hosted, or built on low/no-code platforms. Combines behavioural observability (tools invoked, data accessed, code generated) with posture context (who built them, where they run, what they can access) to build a living picture of how agents operate. Named 'Most Innovative Startup' at RSAC 2026 Innovation Sandbox. Proprietary context engine called 'Beam' provides automated, proactive risk mitigations in real time with no latency.",
+    "backSecurity": "Addresses the fundamental challenge that AI agents are non-deterministic, adaptive, and operate across systems without clear perimeters \u2014 making traditional gateway-based security insufficient. Geordie's approach focuses on continuous behavioural understanding rather than point-in-time checks: discovering all agents across the organisation, understanding their access paths and risk profiles, and detecting behavioural anomalies over time. No latency added to agent operations.",
+    "backWhen": "Use when you need visibility and governance across a growing estate of AI agents that span multiple platforms, teams, and deployment models. Particularly valuable for CISOs who need to answer 'what agents do we have, what can they access, and are they behaving as expected?' Enterprise platform \u2014 book a demo for pricing. Strongest for organisations past the pilot phase with agents deployed across multiple business units."
+  },
+  {
+    "name": "Oso",
+    "slug": "oso",
+    "url": "https://osohq.com",
+    "category": "Identity & AppSec",
+    "desc": "Agent security and authorisation platform \u2014 visibility and controls to secure AI coding agents. Scopes permissions, monitors agent behaviour, enforces least-privilege. Used by Verizon, Duolingo, Wayfair, Webflow.",
+    "riskRaw": "Safe",
+    "audience": "AppSec,CISO",
+    "tags": [
+      "Authorization",
+      "Agent Security",
+      "Least Privilege",
+      "Observability",
+      "Commercial"
+    ],
+    "owaspLLM": [
+      "LLM06"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI02",
+      "ASI04",
+      "ASI08"
+    ],
+    "stages": [
+      "deploy",
+      "monitor"
+    ],
+    "agentic": true,
+    "backWhat": "Agent security and authorisation platform that provides visibility and controls for AI coding agents. Three-phase approach: Scope (map permission posture, identify over-privileged identities, recommend what to reduce before agents inherit them), Monitor (real-time visibility into agent actions with risk-classified alerts), and Enforce (policy-driven controls that block unsafe agent behaviour). Maintains a Rogue Agents Registry documenting real-world AI agent incidents. Customers include Verizon, Visa, Duolingo, Wayfair, Webflow, PagerDuty, Brex, Intercom, and Honeycomb. Research shows employees ignore 96% of their permissions \u2014 agents won't.",
+    "backSecurity": "Addresses the fundamental problem that AI agents inherit human permissions but use all of them, unlike humans who self-limit. Maps the permission posture across the organisation, classifies risk, and recommends scoping down before agents are deployed. Runtime monitoring detects anomalous agent behaviour and policy violations. The authorisation engine integrates with existing identity providers to enforce least-privilege dynamically.",
+    "backWhen": "Use when rolling out coding agents (Cursor, Claude Code, Copilot) and need to answer: what can these agents access, and should they? Particularly valuable for organisations where developers have accumulated broad permissions over time. Enterprise platform \u2014 customers include multiple Fortune 500 companies."
+  },
+  {
+    "name": "Runlayer",
+    "slug": "runlayer",
+    "url": "https://www.runlayer.com",
+    "category": "MCP Security",
+    "desc": "Enterprise MCP security platform \u2014 gateway, threat detection, observability, and fine-grained permissions for 18,000+ MCP servers. $11M seed from Khosla/Felicis. MCP creator David Soria Parra is advisor.",
+    "riskRaw": "Safe",
+    "audience": "CISO",
+    "tags": [
+      "MCP Security",
+      "Gateway",
+      "Threat Detection",
+      "Observability",
+      "Commercial"
+    ],
+    "owaspLLM": [
+      "LLM06"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI02",
+      "ASI04",
+      "ASI06",
+      "ASI08"
+    ],
+    "stages": [
+      "deploy",
+      "monitor"
+    ],
+    "agentic": true,
+    "backWhat": "Enterprise MCP security platform founded by the team behind Zapier's MCP and AI Agents (CEO Andrew Berman, ex-Zapier Director of AI). Provides a centralised secure registry for hosting and approving MCP servers, one-click deployment to any AI client (Cursor, Claude Code, ChatGPT, VS Code, Copilot), fine-grained access controls integrated with Okta and Entra, custom threat detection analysing every MCP request, and full observability across all agentic activity. David Soria Parra, the lead creator of MCP at Anthropic, is an angel investor and advisor. $11M seed from Khosla Ventures (Keith Rabois) and Felicis. Customers include Gusto, dbt Labs, Instacart, Opendoor, and Rippling \u2014 eight unicorns or public companies in four months.",
+    "backSecurity": "Addresses the core MCP security gap: the protocol launched without built-in auth, audit trails, or governance. Runlayer matches agent permissions to human user permissions \u2014 if a worker has read-only access to finance systems, the agent inherits the same constraint. Multi-tier security detectors catch policy, compliance, and data-leak risks before they reach tools. Each MCP server release is automatically scanned for vulnerabilities, data leaks, and permission drift before approval.",
+    "backWhen": "Use when deploying MCP across an organisation beyond individual developer use. The governance gap hits when IT needs to answer: which MCP servers are employees connecting to, what data are agents accessing, and who approved it? Self-hosted behind your VPC or cloud deployment. Head of Security at Cursor (Travis McPeak) is an advisor."
+  },
+  {
+    "name": "Lema AI",
+    "slug": "lema-ai",
+    "url": "https://lema.ai",
+    "category": "Third-Party Risk",
+    "desc": "Agentic TPRM and Risk Engineering platform \u2014 forensic AI assessment of vendor artifacts, blast radius monitoring, and open-source recon. Turns TPRM teams into Risk Engineers.",
+    "riskRaw": "Safe",
+    "audience": "GRC,CISO",
+    "tags": [
+      "TPRM",
+      "Risk Engineering",
+      "Agentic",
+      "Vendor Risk",
+      "Commercial"
+    ],
+    "owaspLLM": [],
+    "owaspASI": [],
+    "stages": [
+      "govern",
+      "monitor"
+    ],
+    "agentic": true,
+    "backWhat": "Agentic TPRM platform that transforms third-party risk management from checkbox compliance into active risk engineering. Three core capabilities: Forensic AI Assessment (automatically analyses vendor reports, SOC 2s, pen test results, and compliance documents to surface what's hidden \u2014 like active vulnerabilities misclassified as informational), Blast Radius Monitoring (maps how vendors are actually used inside your organisation, tracking access to critical assets, data flows, procurement activity, and scope drift), and Agentic Risk Engineering (AI agents that continuously monitor vendor risk posture using open-source intelligence, detecting events like security team layoffs, breach disclosures, and compliance drift).",
+    "backSecurity": "Addresses the gap between what vendors tell you in questionnaires and what's actually happening. The forensic artifact analysis catches discrepancies that human reviewers miss in hundreds of pages of vendor documentation. Blast radius monitoring provides continuous visibility into the real-world impact of a vendor compromise \u2014 not just whether they have a SOC 2, but how deeply they're integrated into your critical systems.",
+    "backWhen": "Use when your TPRM programme has outgrown spreadsheets and questionnaire-based assessments, particularly for AI vendors where the risk surface changes rapidly. Designed for TPRM teams that want to move from compliance management to genuine risk mitigation. The agentic approach means assessments continue between review cycles."
+  },
+  {
+    "name": "MetricsLM",
+    "slug": "metricslm",
+    "url": "https://metricslm.com",
+    "category": "AI Governance & Standards",
+    "desc": "AI agent trust and certification platform \u2014 assess, benchmark, and continuously monitor AI agents. IEEE CertifAIEd compliance passport for enterprise buyers and regulators.",
+    "riskRaw": "Safe",
+    "audience": "GRC,CISO",
+    "tags": [
+      "Certification",
+      "Trust",
+      "Benchmarking",
+      "IEEE",
+      "Commercial"
+    ],
+    "owaspLLM": [
+      "LLM09"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI06"
+    ],
+    "stages": [
+      "test",
+      "govern"
+    ],
+    "agentic": true,
+    "backWhat": "AI agent trust and certification platform that provides a 'Compliance Passport for AI'. Assesses, benchmarks, and continuously monitors AI agents against trust metrics. Serves both AI vendors (who get assessed and certified) and enterprise buyers (who can evaluate vendor agents before procurement). Features tiered assurance levels from self-declared to independently audited, with risk categorisation and audit trails. Aligned with IEEE CertifAIEd standards. Customers include BayernLB, Accenture, and Davies. Also serves VCs and analysts evaluating AI companies in their portfolio.",
+    "backSecurity": "Creates a standardised trust layer for the AI agent ecosystem \u2014 addressing the problem that enterprises have no reliable way to evaluate the safety, reliability, and compliance posture of third-party AI agents before deploying them. The continuous monitoring aspect catches drift between certification and actual behaviour. The IEEE CertifAIEd alignment provides a standards-backed framework rather than proprietary scoring.",
+    "backWhen": "Use when procuring or evaluating third-party AI agents and you need standardised trust metrics beyond vendor self-attestation. Also valuable for AI vendors who want to demonstrate compliance and build buyer confidence. The benchmarking capability is useful for organisations comparing multiple AI agent vendors."
+  },
+  {
+    "name": "Clawkeeper",
+    "slug": "clawkeeper",
+    "url": "https://clawkeeper.dev",
+    "category": "AI Guardrails & Firewalls",
+    "desc": "AI agent runtime security platform \u2014 deploy, harden, and monitor OpenClaw, NemoClaw, NanoClaw, and Claude Code agents. Runtime Shield with 90+ detection patterns. By RAD Security.",
+    "riskRaw": "Safe",
+    "audience": "AppSec",
+    "tags": [
+      "Runtime Security",
+      "Agent Security",
+      "OpenClaw",
+      "Claude Code",
+      "Commercial"
+    ],
+    "owaspLLM": [
+      "LLM01",
+      "LLM07"
+    ],
+    "owaspASI": [
+      "ASI01",
+      "ASI04",
+      "ASI05",
+      "ASI06",
+      "ASI08"
+    ],
+    "stages": [
+      "deploy",
+      "monitor"
+    ],
+    "agentic": true,
+    "backWhat": "AI agent runtime security platform built by RAD Security. Supports four agent frameworks: OpenClaw (self-hosted AI gateway), NemoClaw (OpenClaw + NVIDIA NeMo Guardrails), NanoClaw (lightweight bots for WhatsApp/Telegram/Discord), and Claude Code (secure AI coding agents). Core capabilities: one-command cloud deployment from a hardened golden image (SSH hardened, firewall locked, 55 security checks, A-grade from first boot), fleet-wide monitoring with security grades and trend tracking, and Runtime Shield for real-time prompt injection defence with 90+ detection patterns using fuzzy matching. Team Mode provides centralised API key management, deployment policies, and role-based access.",
+    "backSecurity": "Runtime Shield operates at multiple layers: proxy interception blocks malicious inputs before they reach the agent, tool-call blocking prevents unauthorised actions, and output scanning catches data exfiltration attempts. Per-organisation custom blocklists and security policies allow tailored defence. Fleet monitoring with AI-powered insights detects credential exposure, configuration drift, and provides prioritised remediation recommendations.",
+    "backWhen": "Use when deploying AI agents (particularly OpenClaw or Claude Code) and you need runtime security from first deployment. The one-command setup and golden image approach means security is baked in rather than bolted on. Free tier available with CLI. From $15/month for cloud deployments. Particularly strong for teams running multiple agent frameworks that need unified security monitoring."
   }
 ]
