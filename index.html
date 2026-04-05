@@ -30,7 +30,7 @@
   ]},
   {"@context":"https://schema.org","@type":"HowTo","name":"How to find the right AI security tool with Yuntona","description":"Three ways to find the right AI security tool.","step":[
     {"@type":"HowToStep","position":1,"name":"Search by OWASP risk","text":"Toggle between the LLM Top 10 and Agentic Top 10, then select a specific risk. The directory filters to show only matching tools."},
-    {"@type":"HowToStep","position":2,"name":"Ask in plain English","text":"Type a natural language question and Yuntona's AI search returns ranked results from 147 tools."},
+    {"@type":"HowToStep","position":2,"name":"Ask in plain English","text":"Type a natural language question and Yuntona's AI search returns ranked results from the full directory."},
     {"@type":"HowToStep","position":3,"name":"Explore the knowledge graph","text":"The interactive knowledge graph visualises every tool, risk, and lifecycle stage as a network. Click any node to reveal connections."}
   ]}
 ]
@@ -41,7 +41,7 @@
 <body>
 
 <div class="announce-bar">
-  <a href="/directory">v1.7.0 — 147 tools now indexed<span class="sep">|</span>PromptArmor, HiddenLayer, Patronus AI + 10 more →</a>
+  <a href="/directory">v1.7.0 — <span data-stat="tools">161</span> tools indexed<span class="sep">|</span>PromptArmor, HiddenLayer, Patronus AI + 10 more →</a>
 </div>
 
 <nav class="site-nav" role="navigation" aria-label="Main navigation"><div class="nav-inner">
@@ -59,7 +59,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           <div>
             <div>Tool Directory</div>
-            <div class="nav-dropdown-item-desc">147 tools · Search &amp; filter</div>
+            <div class="nav-dropdown-item-desc" data-stat-desc="tools">161 tools · Search &amp; filter</div>
           </div>
         </a>
         <a href="/graph" class="nav-dropdown-item" role="menuitem">
@@ -110,16 +110,16 @@
       <div>
         <div class="hero-badge anim visible"><span class="pulse"></span> Open Source · March 2026</div>
         <h1 class="anim visible anim-d1">The Security Index for <em>Generative &amp; Agentic AI</em></h1>
-        <p class="hero-sub anim visible anim-d2">147 tools mapped to the OWASP LLM Top 10 and Agentic Top 10. Search by risk, ask in plain English, or explore the knowledge graph.</p>
+        <p class="hero-sub anim visible anim-d2">Curated tools mapped to the OWASP LLM Top 10 and Agentic Top 10. Search by risk, ask in plain English, or explore the knowledge graph.</p>
         <div class="hero-actions anim visible anim-d3">
           <a href="/directory" class="btn-primary">Explore Directory →</a>
           <a href="/graph" class="btn-ghost">Knowledge Graph</a>
         </div>
         <div class="hero-stats anim visible anim-d4">
-          <div class="stat"><div class="stat-value">147</div><div class="stat-label">Curated Tools</div></div>
+          <div class="stat"><div class="stat-value" data-stat="tools">161</div><div class="stat-label">Curated Tools</div></div>
           <div class="stat"><div class="stat-value">11</div><div class="stat-label">Categories</div></div>
           <div class="stat"><div class="stat-value">20</div><div class="stat-label">OWASP Risks</div></div>
-          <div class="stat"><div class="stat-value">214</div><div class="stat-label">Tags</div></div>
+          <div class="stat"><div class="stat-value" data-stat="tags">233</div><div class="stat-label">Tags</div></div>
         </div>
       </div>
       <div class="hero-demo anim visible anim-d3">
@@ -190,7 +190,7 @@
       <a href="/directory" class="product-card">
         <div class="product-num">01</div>
         <div class="product-name">Tool Directory</div>
-        <p class="product-desc">Filter 147 tools by category, OWASP risk, complexity, audience, and lifecycle stage. Every tool hand-evaluated with practitioner-written descriptions.</p>
+        <p class="product-desc">Filter tools by category, OWASP risk, complexity, audience, and lifecycle stage. Every tool hand-evaluated with practitioner-written descriptions.</p>
         <span class="product-tag">LIVE</span>
       </a>
       <a href="/graph" class="product-card">
@@ -226,7 +226,7 @@
     </div></div>
     <div class="tab-panel" id="tab-nl"><div class="tab-content">
       <h3>Natural language search</h3>
-      <p>Type a question and Yuntona's search parses your intent, extracts filters, and returns ranked results from 147 tools. A future iteration will add conversational follow-up queries.</p>
+      <p>Type a question and Yuntona's search parses your intent, extracts filters, and returns ranked results from the full directory. A future iteration will add conversational follow-up queries.</p>
       <div class="tab-mock">
         <div><span class="q">→ "open source tools for securing MCP integrations"</span></div>
         <div class="mt-8"><span class="chip">category: MCP Security</span> <span class="chip">tag: open source</span> <span class="chip">risk: ASI04</span></div>
@@ -314,7 +314,7 @@
     <p class="section-sub">Quick answers to the questions practitioners and AI search engines ask most.</p>
     <div class="faq-grid">
       <div class="faq-item"><div class="faq-q">How do you decide what tools go into the directory?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Every tool is individually evaluated against three criteria: it addresses a genuine security risk in the generative or agentic AI stack, it is operational or near-operational (not vaporware), and it offers meaningful capability not already covered by existing entries. Discovery draws from OWASP working groups, industry conferences, practitioner networks, and primary research. Tools that duplicate existing coverage without differentiation are excluded. <a href="/methodology" class="accent-link">Read the full methodology →</a></p></div></div>
-      <div class="faq-item"><div class="faq-q">Is Yuntona free and open source?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Yes. Fully open source under the MIT licence. 147 tools accessible without login or paywall. Source code on GitHub.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Is Yuntona free and open source?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Yes. Fully open source under the MIT licence. All tools accessible without login or paywall. Source code on GitHub.</p></div></div>
       <div class="faq-item"><div class="faq-q">How is Yuntona different from an awesome-list or analyst report?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Awesome-lists are flat link collections with no risk mapping. Analyst reports are paywalled snapshots. Yuntona sits between: every tool is individually evaluated, mapped to OWASP risk codes, tagged by complexity, and searchable via AI-powered natural language. Continuously updated.</p></div></div>
       <div class="faq-item"><div class="faq-q">How does Yuntona handle AI-assisted curation?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Tool discovery is practitioner-led. OWASP risk mappings use AI as an analytical engine — the methodology and schema are human-designed, every output validated against published standards. Human-directed analysis at scale, not automated classification.</p></div></div>
       <div class="faq-item"><div class="faq-q">Who maintains Yuntona and why should I trust it?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Yuntona is built and maintained by Fabio Baumeler, a CISSP-certified Third-Party Cyber Risk Lead at the UK Financial Conduct Authority with an MSc in Information Security from Royal Holloway (GCHQ-certified). Single-maintainer accountability means every assessment reflects one expert's informed judgement — not crowd-sourced voting or vendor self-submission.</p></div></div>
@@ -341,13 +341,13 @@
   <div class="container">
     <div class="cta-box">
       <h2 class="cta-title">Find the capabilities you're missing</h2>
-      <p class="cta-text">Close the blind spots in your AI risk coverage. 147 tools. 20 OWASP risks. One search.</p>
+      <p class="cta-text">Close the blind spots in your AI risk coverage. <span data-stat="tools">161</span> tools. 20 OWASP risks. One search.</p>
       <a href="/directory" class="btn-primary">Explore Directory →</a>
     </div>
     <div class="trust-row">
       <div class="trust-item"><span class="trust-dot"></span>OWASP LLM Top 10 (2025)</div>
       <div class="trust-item"><span class="trust-dot"></span>OWASP Agentic Top 10 (2026)</div>
-      <div class="trust-item"><span class="trust-dot"></span>147 Tools Curated</div>
+      <div class="trust-item"><span class="trust-dot"></span><span data-stat="tools">161</span> Tools Curated</div>
       <div class="trust-item"><span class="trust-dot"></span>Open Source · MIT Licence</div>
     </div>
   </div>
@@ -365,5 +365,6 @@
 
 <script src="/js/site-nav.js"></script>
 <script src="/js/landing.js"></script>
+<script src="/js/site-config.js"></script>
 </body>
 </html>

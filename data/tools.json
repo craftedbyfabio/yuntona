@@ -1383,7 +1383,7 @@
   },
   {
     "name": "Arize Phoenix",
-    "url": "https://arize.com/phoenix/",
+    "url": "https://phoenix.arize.com/",
     "category": "AI Development Tools",
     "desc": "Open-source LLM tracing, evaluation, and hallucination detection.",
     "riskRaw": "Safe",
@@ -4884,11 +4884,13 @@
       "Commercial"
     ],
     "owaspLLM": [
-      "LLM09"
+      "LLM09",
+      "LLM03"
     ],
     "owaspASI": [
       "ASI01",
-      "ASI06"
+      "ASI06",
+      "ASI04"
     ],
     "stages": [
       "test",
@@ -4933,5 +4935,68 @@
     "backWhat": "AI agent runtime security platform built by RAD Security. Supports four agent frameworks: OpenClaw (self-hosted AI gateway), NemoClaw (OpenClaw + NVIDIA NeMo Guardrails), NanoClaw (lightweight bots for WhatsApp/Telegram/Discord), and Claude Code (secure AI coding agents). Core capabilities: one-command cloud deployment from a hardened golden image (SSH hardened, firewall locked, 55 security checks, A-grade from first boot), fleet-wide monitoring with security grades and trend tracking, and Runtime Shield for real-time prompt injection defence with 90+ detection patterns using fuzzy matching. Team Mode provides centralised API key management, deployment policies, and role-based access.",
     "backSecurity": "Runtime Shield operates at multiple layers: proxy interception blocks malicious inputs before they reach the agent, tool-call blocking prevents unauthorised actions, and output scanning catches data exfiltration attempts. Per-organisation custom blocklists and security policies allow tailored defence. Fleet monitoring with AI-powered insights detects credential exposure, configuration drift, and provides prioritised remediation recommendations.",
     "backWhen": "Use when deploying AI agents (particularly OpenClaw or Claude Code) and you need runtime security from first deployment. The one-command setup and golden image approach means security is baked in rather than bolted on. Free tier available with CLI. From $15/month for cloud deployments. Particularly strong for teams running multiple agent frameworks that need unified security monitoring."
+  },
+  {
+    "name": "IEEE CertifAIEd",
+    "slug": "ieee-certifaied",
+    "url": "https://standards.ieee.org/products-programs/icap/ieee-certifaied/",
+    "category": "AI Governance & Standards",
+    "desc": "IEEE's AI ethics certification programme \u2014 product certification mark and professional certification for accountability, transparency, privacy, and algorithmic bias. City of Vienna was first to earn the mark.",
+    "riskRaw": "Safe",
+    "audience": "GRC",
+    "tags": [
+      "Certification",
+      "Ethics",
+      "IEEE",
+      "Standards",
+      "Responsible AI"
+    ],
+    "owaspLLM": [
+      "LLM09"
+    ],
+    "owaspASI": [
+      "ASI01"
+    ],
+    "stages": [
+      "govern"
+    ],
+    "agentic": false,
+    "backWhat": "IEEE Standards Association's certification programme for ethical AI, covering two tracks: product certification (the CertifAIEd Mark demonstrating that an AI product/service meets IEEE ethical criteria) and professional certification (a 3-year credential for individuals trained in the CertifAIEd methodology). Built around four pillars: accountability, transparency, privacy, and algorithmic bias. Developed by an interdisciplinary group of AI ethics experts and aligned with global regulations including the EU AI Act. The City of Vienna became the first city worldwide to earn the certification mark, advancing its Digital Humanism strategy. Training offered via self-study, virtual, or in-person formats.",
+    "backSecurity": "Provides a structured framework for evaluating the ethical dimensions of AI systems \u2014 not just whether they're technically secure, but whether they operate with accountability, explainability, and fairness. The product certification acts as a risk mitigation tool, reducing the risk of system or process failures when introducing new AI into established business processes. The professional certification equips individuals with the methodology to identify ethical gaps across the AI lifecycle.",
+    "backWhen": "Use when you need a globally recognised ethical certification for AI products or when training staff on AI ethics methodology. Particularly valuable for organisations facing EU AI Act compliance requirements or those procuring AI systems that need demonstrable ethical assessment. The professional certification requires at least one year of AI or project management experience."
+  },
+  {
+    "name": "agentregistry",
+    "slug": "agentregistry",
+    "url": "https://aregistry.ai",
+    "category": "AI Development Tools",
+    "desc": "Open-source centralised registry for AI agents, MCP servers, and skills. Build, publish, discover, and govern AI artifacts with CLI and web UI. Pairs with Agent Gateway. By Solo.io.",
+    "riskRaw": "Safe",
+    "audience": "Builder",
+    "tags": [
+      "Registry",
+      "MCP Security",
+      "Agent Security",
+      "Open Source",
+      "DevOps"
+    ],
+    "owaspLLM": [
+      "LLM03"
+    ],
+    "owaspASI": [
+      "ASI02",
+      "ASI04",
+      "ASI08"
+    ],
+    "stages": [
+      "build",
+      "deploy",
+      "govern"
+    ],
+    "agentic": true,
+    "openSource": true,
+    "backWhat": "Open-source platform that provides a single place to find, manage, and run MCP servers, AI agents, and skills. Solves the problem of AI artifacts being scattered across npm, PyPI, Docker Hub, GitHub repos, and random URLs with no trust signals. Features include: centralised catalog with CLI (arctl) and web UI, one-command deployment of agents and MCP servers, automatic IDE configuration for Claude Desktop/Cursor/VS Code, semantic search powered by pgvector, and automated scoring and validation of imported artifacts. Pairs with Agent Gateway (agentgateway.dev) to provide a single secure entry point to all deployed MCP servers and agents. By Solo.io, with contributions from Microsoft, Apple, Alibaba, Adobe, AWS, Cisco, Salesforce, Huawei, and Amdocs.",
+    "backSecurity": "Addresses the supply chain security gap in the AI agent ecosystem. Platform teams curate and publish approved MCP servers and agents; developers discover and deploy from the vetted catalog instead of pulling from unverified GitHub repos. Centralised governance means every artifact goes through approval before company-wide deployment. When paired with Agent Gateway, provides authentication and authorisation before requests reach MCP servers, plus full audit trails of agent-to-tool communication.",
+    "backWhen": "Use when your organisation has multiple teams deploying MCP servers and agents and you need a trusted internal registry \u2014 similar to how you'd use a private npm or Docker registry but purpose-built for AI artifacts. Runs locally via Docker Compose or in Kubernetes. CLI-first workflow. Best suited for platform engineering teams that want to standardise how AI tools are discovered, approved, and deployed across the organisation."
   }
 ]
