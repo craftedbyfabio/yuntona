@@ -14,6 +14,8 @@
 🔗 **Knowledge Graph:** [yuntona.netlify.app/graph](https://yuntona.netlify.app/graph)
 📖 **Methodology:** [yuntona.netlify.app/methodology](https://yuntona.netlify.app/methodology)
 
+![Knowledge Graph](docs/graph-preview.png)
+
 ---
 
 ## Goal
