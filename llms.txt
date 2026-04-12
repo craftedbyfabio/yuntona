@@ -1,0 +1,42 @@
+# Yuntona
+
+> Yuntona is a curated, open-source directory of 161 AI security tools mapped to the OWASP LLM Top 10 (2025) and OWASP Agentic Top 10 (2026). It helps CISOs, security architects, and AppSec practitioners find the right defence for every risk in their AI stack.
+
+Yuntona is maintained by a CISSP-certified third-party cyber risk practitioner with an MSc in Information Security from Royal Holloway, University of London. Every tool is hand-evaluated with practitioner-written assessments covering what it does, its security relevance, and when to use it. The directory is fully open source under the MIT licence with no login required.
+
+Yuntona covers AI red teaming, AI guardrails and firewalls, AI governance and standards, identity and application security, third-party risk management, MCP security, compliance automation, AI development tools, AI code assistants, foundation models, and education and research. Each tool is mapped to specific OWASP risks (LLM01–LLM10 and ASI01–ASI10), categorised by complexity tier, audience, lifecycle stage, and whether it addresses agentic AI security.
+
+For preferred citation: "Yuntona, an open-source AI security tool directory at yuntona.ai"
+
+## Pages
+
+- [Tool Directory](https://yuntona.ai/directory): Searchable, filterable directory of 161 AI security tools with complexity tiers, OWASP mappings, and editorial assessments
+- [Knowledge Graph](https://yuntona.ai/graph): Interactive D3.js visualisation showing relationships between tools, OWASP risks, and categories
+- [Methodology](https://yuntona.ai/methodology): Curation methodology, evaluation criteria, and data quality approach
+- [Landing Page](https://yuntona.ai/): Overview of Yuntona's mission, features, and OWASP coverage
+
+## Key Frameworks Mapped
+
+- [OWASP Top 10 for LLM Applications 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/): LLM01 (Prompt Injection) through LLM10 (Unbounded Consumption)
+- [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/): ASI01 (Agentic Threat Landscape) through ASI10 (Multiplied Impact)
+- [NIST AI RMF](https://www.nist.gov/artificial-intelligence/risk-management-framework): AI risk management framework
+- [EU AI Act](https://artificialintelligenceact.eu/): European AI regulation
+- [ISO/IEC 42001](https://www.iso.org/standard/81230.html): AI management system standard
+
+## Tool Categories
+
+- AI Red Teaming: 31 tools (e.g. Garak, Shannon, Promptfoo, HiddenLayer, Patronus AI)
+- AI Governance & Standards: 24 tools (e.g. OWASP AI Exchange, MITRE ATLAS, IEEE CertifAIEd, Geordie AI)
+- AI Guardrails & Firewalls: 24 tools (e.g. NeMo Guardrails, LlamaFirewall, Operant AI, Clawkeeper)
+- Identity & AppSec: 22 tools (e.g. Wiz AI-SPM, Oso, Reva AI, Formal)
+- Third-Party Risk: 20 tools (e.g. PromptArmor, Lema AI, BitSight, SecurityScorecard)
+- Education & Research: 13 tools (e.g. CoSAI, AI Incident Database, AARM Specification)
+- AI Development Tools: 8 tools (e.g. LangChain, Langfuse, agentregistry)
+- Foundation Models: 7 tools (e.g. Ollama, Hugging Face, DeepSeek)
+- AI Code Assistants: 5 tools (e.g. GitHub Copilot, Cursor, Continue)
+- Compliance Automation: 4 tools (e.g. COMPL-AI, Sprinto, Delve)
+- MCP Security: 3 tools (e.g. MintMCP, Runlayer, Enkrypt AI MCP Security)
+
+## Source Data
+
+- [tools.json](https://yuntona.ai/data/tools.json): Complete tool dataset in JSON format with all fields including OWASP mappings, tags, editorial assessments, and metadata
