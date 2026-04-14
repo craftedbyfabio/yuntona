@@ -1,0 +1,4 @@
+# Plausible Analytics proxy (first-party connection)
+# Replace pa-XXXXX with your actual Plausible script ID from Site Installation settings
+/dv/js/script.js https://plausible.io/js/pa-zLq2_vwHuI6Z32NTEKFSz.js 200
+/dv/api/event https://plausible.io/api/event 200
