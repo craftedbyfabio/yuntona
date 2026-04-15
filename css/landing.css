@@ -114,7 +114,7 @@
 /* FOUNDER */
 .founder{padding:4rem 0 5rem;background:var(--surface)}
 .founder-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;max-width:720px;margin:0 auto;display:flex;gap:2rem;align-items:flex-start}
-.founder-avatar{width:80px;height:80px;border-radius:50%;background:var(--surface2);border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-brand);font-size:1.5rem;font-weight:700;color:var(--accent)}
+.founder-avatar{width:80px;height:80px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;object-fit:cover}
 .founder-name{font-size:1.1rem;font-weight:600;margin-bottom:.15rem}
 .founder-role{font-size:.78rem;color:var(--text-dim);margin-bottom:.85rem}
 .founder-bio{font-size:.88rem;color:var(--text-muted);line-height:1.7;font-weight:300;margin-bottom:1rem}
