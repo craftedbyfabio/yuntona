@@ -1,5 +1,6 @@
-// Tool page — copy-link button handler
-// Used by [data-copy-url] buttons in the top bar and share row
+// Tool page — copy-link + image error handling
+// Used by [data-copy-url] buttons and [data-hide-on-error] images
+// All event handling lives here because CSP disallows inline attributes
 
 (function(){
   'use strict';
@@ -53,9 +54,27 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupCopyButtons);
-  } else {
+  function setupImageErrorHandlers(){
+    var imgs = document.querySelectorAll('[data-hide-on-error]');
+    imgs.forEach(function(img){
+      // If already failed before JS ran
+      if (img.complete && img.naturalWidth === 0) {
+        img.style.display = 'none';
+      }
+      img.addEventListener('error', function(){
+        img.style.display = 'none';
+      });
+    });
+  }
+
+  function init(){
     setupCopyButtons();
+    setupImageErrorHandlers();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();
