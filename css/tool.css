@@ -1,0 +1,122 @@
+/* ═══════════════════════════════════════════════════════════════
+   Yuntona tool page (/tools/[slug])
+   Extends site.css with page-specific styles
+   ═══════════════════════════════════════════════════════════════ */
+
+.tool-page{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+/* ─── Breadcrumb ─────────────────────────────────────────────── */
+.breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--text-dim);margin-bottom:2rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color .15s}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb [aria-current="page"]{color:var(--text)}
+.crumb-sep{opacity:.4}
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+.tool-hero{display:grid;grid-template-columns:1fr 280px;gap:3rem;padding:2rem 0 3rem;border-bottom:1px solid var(--border);margin-bottom:3rem}
+@media(max-width:860px){.tool-hero{grid-template-columns:1fr;gap:1.5rem}}
+
+.tool-hero-left{display:flex;gap:1.5rem;align-items:flex-start}
+.tool-logo-wrap{flex-shrink:0;width:96px;height:96px;border-radius:16px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tool-logo{width:80px;height:80px;object-fit:contain}
+
+.tool-hero-meta{flex:1;min-width:0}
+.tool-kicker{display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem;flex-wrap:wrap}
+.tool-category{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);text-decoration:none;padding:.3rem .65rem;background:var(--accent-glow);border:1px solid var(--accent-border);border-radius:6px;font-weight:600;transition:background .15s}
+.tool-category:hover{background:var(--accent-glow2);color:var(--accent)}
+.tool-badge{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .6rem;border-radius:6px;font-weight:600}
+.tool-badge-agentic{background:rgba(168,85,247,.12);color:var(--purple);border:1px solid rgba(168,85,247,.25)}
+
+.tool-name{font-family:var(--font-brand);font-size:clamp(2rem,4.5vw,3rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;margin-bottom:1rem;color:var(--text)}
+
+.tool-tagline{font-size:1.05rem;line-height:1.55;color:var(--text-muted);margin-bottom:1.5rem;max-width:60ch}
+
+.tool-external{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.tool-link{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;color:var(--text-muted);background:var(--surface2);border:1px solid var(--border);padding:.5rem .85rem;border-radius:8px;text-decoration:none;transition:all .15s}
+.tool-link:hover{color:var(--text);border-color:var(--border-hover);background:var(--surface3)}
+.tool-link-primary{color:var(--bg);background:var(--accent);border-color:var(--accent);font-weight:600}
+.tool-link-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);color:var(--bg)}
+
+/* ─── Facts sidebar ─────────────────────────────────────────── */
+.tool-hero-right{align-self:start}
+.tool-facts{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;gap:1rem}
+.tool-fact{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.tool-fact:last-child{padding-bottom:0;border-bottom:none}
+.tool-fact dt{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);font-weight:500}
+.tool-fact dd{font-size:.88rem;color:var(--text);font-weight:500;text-align:right}
+
+/* ─── Sections ──────────────────────────────────────────────── */
+.tool-section{padding:2.5rem 0;border-bottom:1px solid var(--border)}
+.tool-section:last-child{border-bottom:none}
+.section-title{font-family:var(--font-brand);font-size:1.6rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.5rem;color:var(--text)}
+.section-sub{font-size:.92rem;color:var(--text-muted);margin-bottom:1.75rem;max-width:65ch}
+
+/* ─── Editorial blocks (the USP) ────────────────────────────── */
+.tool-editorial{display:grid;gap:2rem;padding-top:0}
+.editorial-block{position:relative;padding-left:1.5rem}
+.editorial-block::before{content:'';position:absolute;left:0;top:.2em;bottom:.2em;width:2px;background:linear-gradient(to bottom,var(--accent) 0%,var(--accent) 30%,transparent 100%)}
+.editorial-kicker{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:.5rem;font-weight:600}
+.editorial-body{font-size:1rem;line-height:1.7;color:var(--text);max-width:72ch}
+
+/* ─── OWASP chips ───────────────────────────────────────────── */
+.owasp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:720px){.owasp-grid{grid-template-columns:1fr}}
+.owasp-heading{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.owasp-count{font-family:var(--font-mono);font-size:.72rem;background:var(--surface2);color:var(--text-muted);padding:.15rem .45rem;border-radius:4px;border:1px solid var(--border);font-weight:500}
+.owasp-chips{display:flex;flex-direction:column;gap:.5rem}
+.owasp-chip{display:flex;align-items:center;gap:.75rem;padding:.65rem .85rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:all .15s}
+.owasp-chip:hover{border-color:var(--accent-border);background:var(--accent-glow2)}
+.owasp-code{font-family:var(--font-mono);font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:.02em;min-width:48px}
+.owasp-chip-agentic .owasp-code{color:var(--purple)}
+.owasp-label{font-size:.88rem;color:var(--text-muted)}
+.owasp-chip:hover .owasp-label{color:var(--text)}
+
+/* ─── Metadata grid ─────────────────────────────────────────── */
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.meta-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem}
+.meta-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);font-weight:500;margin-bottom:.75rem}
+.meta-chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.meta-chip{display:inline-block;font-size:.78rem;color:var(--text-muted);background:var(--surface2);border:1px solid var(--border);padding:.35rem .65rem;border-radius:6px;text-decoration:none;transition:all .15s}
+a.meta-chip:hover{color:var(--accent);border-color:var(--accent-border);background:var(--accent-glow2)}
+.meta-chip-compliance{color:var(--green);border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.08)}
+
+/* ─── GitHub stats ──────────────────────────────────────────── */
+.gh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem}
+.gh-stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center}
+.gh-val{font-family:var(--font-brand);font-size:1.75rem;font-weight:700;color:var(--text);line-height:1}
+.gh-lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-top:.4rem}
+
+/* ─── News feed placeholder ─────────────────────────────────── */
+.tool-news .news-empty{display:flex;flex-direction:column;align-items:center;gap:.75rem;padding:2.5rem 1rem;background:var(--surface);border:1px dashed var(--border);border-radius:12px;color:var(--text-dim);text-align:center}
+.tool-news .news-empty svg{color:var(--text-muted)}
+.tool-news .news-empty p{font-size:.9rem;max-width:40ch}
+
+/* ─── Related tools ─────────────────────────────────────────── */
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.related-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-decoration:none;transition:all .15s;display:flex;flex-direction:column;gap:.6rem}
+.related-card:hover{border-color:var(--accent-border);background:var(--accent-glow2);transform:translateY(-2px)}
+.related-header{display:flex;align-items:center;gap:.6rem}
+.related-logo{width:32px;height:32px;border-radius:6px;background:var(--surface2);object-fit:contain}
+.related-cat{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:600}
+.related-name{font-family:var(--font-brand);font-size:1.05rem;font-weight:600;color:var(--text);line-height:1.2}
+.related-desc{font-size:.85rem;line-height:1.45;color:var(--text-muted)}
+
+/* ─── Footer CTA ────────────────────────────────────────────── */
+.tool-cta{margin-top:3rem;padding:2rem;background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:1px solid var(--border);border-radius:16px}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
+.cta-inner h3{font-family:var(--font-brand);font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.35rem}
+.cta-inner p{font-size:.88rem;color:var(--text-muted)}
+.cta-actions{display:flex;gap:.5rem;flex-wrap:wrap}
+.cta-btn{padding:.6rem 1.1rem;border-radius:8px;font-size:.85rem;font-weight:500;text-decoration:none;background:var(--surface2);color:var(--text);border:1px solid var(--border);transition:all .15s;white-space:nowrap}
+.cta-btn:hover{border-color:var(--border-hover);background:var(--surface3)}
+.cta-btn-primary{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
+.cta-btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);color:var(--bg)}
+
+/* ─── Mobile tweaks ─────────────────────────────────────────── */
+@media(max-width:640px){
+  .tool-hero-left{flex-direction:column}
+  .tool-logo-wrap{width:72px;height:72px}
+  .tool-logo{width:60px;height:60px}
+  .tool-page{padding:1rem 1rem 3rem}
+  .tool-section{padding:2rem 0}
+}
