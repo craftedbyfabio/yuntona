@@ -111,9 +111,8 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <div class="hero-badge anim visible"><span class="pulse"></span> Open Source · March 2026</div>
         <h1 class="anim visible anim-d1">Find <span class="accent">Security Controls</span> for Your <span class="accent">AI Stack</span></h1>
-        <p class="hero-sub anim visible anim-d2">Curated tools mapped to the OWASP LLM Top 10 and Agentic Top 10. Search by risk, ask in plain English, or explore the knowledge graph.</p>
+        <p class="hero-sub anim visible anim-d2"><span data-stat="tools">161</span> curated security tools and frameworks. Mapped to OWASP LLM and Agentic Top 10. One search.</p>
         <div class="hero-actions anim visible anim-d3">
           <a href="/directory" class="btn-primary">Explore Directory →</a>
           <a href="/graph" class="btn-ghost">Knowledge Graph</a>
@@ -180,6 +179,43 @@
         </ul>
       </div>
     </div>
+
+    <!-- Landscape comparison — positioning Yuntona vs alternatives -->
+    <div class="landscape-comparison">
+      <div class="landscape-header">
+        <div class="section-kicker">Where Yuntona sits</div>
+        <h3 class="landscape-title">Between awesome-lists and analyst reports.</h3>
+      </div>
+      <div class="landscape-grid">
+        <div class="landscape-card">
+          <div class="landscape-name">Awesome-lists</div>
+          <ul class="landscape-points">
+            <li>Free and open</li>
+            <li class="landscape-minus">Flat link collections</li>
+            <li class="landscape-minus">No risk mapping</li>
+            <li class="landscape-minus">No search or filtering</li>
+          </ul>
+        </div>
+        <div class="landscape-card landscape-card-primary">
+          <div class="landscape-badge">Yuntona</div>
+          <ul class="landscape-points">
+            <li class="landscape-plus">Free and open (MIT)</li>
+            <li class="landscape-plus">Every tool individually evaluated</li>
+            <li class="landscape-plus">Mapped to OWASP LLM and Agentic Top 10</li>
+            <li class="landscape-plus">Practitioner-curated, single-maintainer accountable</li>
+          </ul>
+        </div>
+        <div class="landscape-card">
+          <div class="landscape-name">Analyst reports</div>
+          <ul class="landscape-points">
+            <li>Deep analysis</li>
+            <li class="landscape-minus">Paywalled snapshots</li>
+            <li class="landscape-minus">Vendor-sponsored coverage</li>
+            <li class="landscape-minus">Outdated within months</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -188,7 +224,7 @@
   <div class="container">
     <div class="section-kicker">Platform</div>
     <h2 class="section-title">How does Yuntona help you find AI security tools?</h2>
-    <p class="section-sub">Three views designed for different workflows — browse, search, or explore connections.</p>
+    <p class="section-sub">Two ways to explore the directory — browse and filter, or visualise the relationships.</p>
     <div class="product-grid">
       <a href="/directory" class="product-card">
         <div class="product-num">01</div>
@@ -202,12 +238,6 @@
         <p class="product-desc">Interactive visualisation mapping relationships between tools, OWASP risks, and lifecycle stages. Click any node to reveal its connections.</p>
         <span class="product-tag">LIVE</span>
       </a>
-      <div class="product-card static">
-        <div class="product-num">03</div>
-        <div class="product-name">Stack Builder</div>
-        <p class="product-desc">Model your generative or agentic AI architecture and get OWASP risk overlays that highlight coverage gaps linked to curated tools.</p>
-        <span class="product-tag coming">COMING SOON</span>
-      </div>
     </div>
   </div>
 </section>
@@ -256,31 +286,31 @@
     <div class="fw-panel active" id="fw-llm">
       <div class="risk-grid">
         <div class="risk-header"><span>Risk</span><span>Name</span><span>Tools</span><span>Coverage</span></div>
-        <div class="risk-row"><span class="risk-code llm">LLM01</span><span class="risk-name">Prompt Injection</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM02</span><span class="risk-name">Sensitive Information Disclosure</span><span class="risk-count">46</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM03</span><span class="risk-name">Supply Chain Vulnerabilities</span><span class="risk-count">19</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM04</span><span class="risk-name">Data and Model Poisoning</span><span class="risk-count">13</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM05</span><span class="risk-name">Improper Output Handling</span><span class="risk-count">18</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM06</span><span class="risk-name">Excessive Agency</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM07</span><span class="risk-name">System Prompt Leakage</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM08</span><span class="risk-name">Vector &amp; Embedding Weaknesses</span><span class="risk-count">37</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM09</span><span class="risk-name">Misinformation</span><span class="risk-count">19</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code llm">LLM10</span><span class="risk-name">Unbounded Consumption</span><span class="risk-count">8</span><div class="risk-bar"><div class="risk-bar-fill llm w87" ></div></div></div>
+                <a href="/directory?risk=LLM01" class="risk-row" data-risk="LLM01"><span class="risk-code llm">LLM01</span><span class="risk-name">Prompt Injection</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:100%"></div></div></a>
+        <a href="/directory?risk=LLM02" class="risk-row" data-risk="LLM02"><span class="risk-code llm">LLM02</span><span class="risk-name">Sensitive Information Disclosure</span><span class="risk-count">46</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:87%"></div></div></a>
+        <a href="/directory?risk=LLM03" class="risk-row" data-risk="LLM03"><span class="risk-code llm">LLM03</span><span class="risk-name">Supply Chain Vulnerabilities</span><span class="risk-count">19</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:36%"></div></div></a>
+        <a href="/directory?risk=LLM04" class="risk-row" data-risk="LLM04"><span class="risk-code llm">LLM04</span><span class="risk-name">Data and Model Poisoning</span><span class="risk-count">13</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:25%"></div></div></a>
+        <a href="/directory?risk=LLM05" class="risk-row" data-risk="LLM05"><span class="risk-code llm">LLM05</span><span class="risk-name">Improper Output Handling</span><span class="risk-count">18</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:34%"></div></div></a>
+        <a href="/directory?risk=LLM06" class="risk-row" data-risk="LLM06"><span class="risk-code llm">LLM06</span><span class="risk-name">Excessive Agency</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:96%"></div></div></a>
+        <a href="/directory?risk=LLM07" class="risk-row" data-risk="LLM07"><span class="risk-code llm">LLM07</span><span class="risk-name">System Prompt Leakage</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:77%"></div></div></a>
+        <a href="/directory?risk=LLM08" class="risk-row" data-risk="LLM08"><span class="risk-code llm">LLM08</span><span class="risk-name">Vector &amp; Embedding Weaknesses</span><span class="risk-count">37</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:70%"></div></div></a>
+        <a href="/directory?risk=LLM09" class="risk-row" data-risk="LLM09"><span class="risk-code llm">LLM09</span><span class="risk-name">Misinformation</span><span class="risk-count">19</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:36%"></div></div></a>
+        <a href="/directory?risk=LLM10" class="risk-row" data-risk="LLM10"><span class="risk-code llm">LLM10</span><span class="risk-name">Unbounded Consumption</span><span class="risk-count">8</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:15%"></div></div></a>
       </div>
     </div>
     <div class="fw-panel" id="fw-asi">
       <div class="risk-grid">
         <div class="risk-header"><span>Risk</span><span>Name</span><span>Tools</span><span>Coverage</span></div>
-        <div class="risk-row"><span class="risk-code asi">ASI01</span><span class="risk-name">Excessive Agency &amp; Autonomy</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI02</span><span class="risk-name">Insufficient Access Controls</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI03</span><span class="risk-name">Inadequate Sandboxing</span><span class="risk-count">32</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI04</span><span class="risk-name">Insecure Tool Integration</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI05</span><span class="risk-name">Insecure Output Consumption</span><span class="risk-count">25</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI06</span><span class="risk-name">Lack of Runtime Guardrails</span><span class="risk-count">20</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI07</span><span class="risk-name">Insecure Multi-Agent Orchestration</span><span class="risk-count">26</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI08</span><span class="risk-name">Inadequate Logging &amp; Monitoring</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI09</span><span class="risk-name">Trust Boundary Violations</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
-        <div class="risk-row"><span class="risk-code asi">ASI10</span><span class="risk-name">Insufficient Error Handling</span><span class="risk-count">17</span><div class="risk-bar"><div class="risk-bar-fill asi w87" ></div></div></div>
+                <a href="/directory?risk=ASI01" class="risk-row" data-risk="ASI01"><span class="risk-code asi">ASI01</span><span class="risk-name">Excessive Agency &amp; Autonomy</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:100%"></div></div></a>
+        <a href="/directory?risk=ASI02" class="risk-row" data-risk="ASI02"><span class="risk-code asi">ASI02</span><span class="risk-name">Insufficient Access Controls</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:96%"></div></div></a>
+        <a href="/directory?risk=ASI03" class="risk-row" data-risk="ASI03"><span class="risk-code asi">ASI03</span><span class="risk-name">Inadequate Sandboxing</span><span class="risk-count">32</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:60%"></div></div></a>
+        <a href="/directory?risk=ASI04" class="risk-row" data-risk="ASI04"><span class="risk-code asi">ASI04</span><span class="risk-name">Insecure Tool Integration</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:77%"></div></div></a>
+        <a href="/directory?risk=ASI05" class="risk-row" data-risk="ASI05"><span class="risk-code asi">ASI05</span><span class="risk-name">Insecure Output Consumption</span><span class="risk-count">25</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:47%"></div></div></a>
+        <a href="/directory?risk=ASI06" class="risk-row" data-risk="ASI06"><span class="risk-code asi">ASI06</span><span class="risk-name">Lack of Runtime Guardrails</span><span class="risk-count">20</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:38%"></div></div></a>
+        <a href="/directory?risk=ASI07" class="risk-row" data-risk="ASI07"><span class="risk-code asi">ASI07</span><span class="risk-name">Insecure Multi-Agent Orchestration</span><span class="risk-count">26</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:49%"></div></div></a>
+        <a href="/directory?risk=ASI08" class="risk-row" data-risk="ASI08"><span class="risk-code asi">ASI08</span><span class="risk-name">Inadequate Logging &amp; Monitoring</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:30%"></div></div></a>
+        <a href="/directory?risk=ASI09" class="risk-row" data-risk="ASI09"><span class="risk-code asi">ASI09</span><span class="risk-name">Trust Boundary Violations</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:30%"></div></div></a>
+        <a href="/directory?risk=ASI10" class="risk-row" data-risk="ASI10"><span class="risk-code asi">ASI10</span><span class="risk-name">Insufficient Error Handling</span><span class="risk-count">17</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:32%"></div></div></a>
       </div>
     </div>
   </div>
@@ -296,9 +326,9 @@
       <img src="/img/fabio.jpg" alt="Fabio Baumeler" class="founder-avatar" width="80" height="80">
       <div>
         <div class="founder-name">Fabio Baumeler</div>
-        <div class="founder-role">Third-Party Cyber Risk Lead · Financial Conduct Authority</div>
+        <div class="founder-role">Third-Party Cyber Risk Lead</div>
+        <p class="founder-creds"><strong>CISSP</strong> · <strong>MSc Information Security</strong> from Royal Holloway (GCHQ-certified)</p>
         <p class="founder-bio">Security practitioner with over a decade of experience spanning SOC/NOC operations, business information security, and financial services regulation. Built Yuntona to close the gap between AI security frameworks and the tools that operationalise them.</p>
-        <div class="cred-tags"><span class="cred-tag">CISSP</span><span class="cred-tag">MSc InfoSec · Royal Holloway</span><span class="cred-tag">GCHQ-certified</span></div>
         <div class="founder-links">
           <a href="https://www.linkedin.com/in/fbaumeler" target="_blank">LinkedIn ↗</a>
           <a href="https://github.com/craftedbyfabio" target="_blank">GitHub ↗</a>
@@ -318,7 +348,6 @@
     <div class="faq-grid">
       <div class="faq-item"><div class="faq-q">How do you decide what tools go into the directory?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Every tool is individually evaluated against three criteria: it addresses a genuine security risk in the generative or agentic AI stack, it is operational or near-operational (not vaporware), and it offers meaningful capability not already covered by existing entries. Discovery draws from OWASP working groups, industry conferences, practitioner networks, and primary research. Tools that duplicate existing coverage without differentiation are excluded. <a href="/methodology" class="accent-link">Read the full methodology →</a></p></div></div>
       <div class="faq-item"><div class="faq-q">Is Yuntona free and open source?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Yes. Fully open source under the MIT licence. All tools accessible without login or paywall. Source code on GitHub.</p></div></div>
-      <div class="faq-item"><div class="faq-q">How is Yuntona different from an awesome-list or analyst report?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Awesome-lists are flat link collections with no risk mapping. Analyst reports are paywalled snapshots. Yuntona sits between: every tool is individually evaluated, mapped to OWASP risk codes, tagged by complexity, and searchable via AI-powered natural language. Continuously updated.</p></div></div>
       <div class="faq-item"><div class="faq-q">How does Yuntona handle AI-assisted curation?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Tool discovery is practitioner-led. OWASP risk mappings use AI as an analytical engine — the methodology and schema are human-designed, every output validated against published standards. Human-directed analysis at scale, not automated classification.</p></div></div>
       <div class="faq-item"><div class="faq-q">Who maintains Yuntona and why should I trust it?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="faq-a"><p>Yuntona is built and maintained by Fabio Baumeler, a CISSP-certified Third-Party Cyber Risk Lead at the UK Financial Conduct Authority with an MSc in Information Security from Royal Holloway (GCHQ-certified). Single-maintainer accountability means every assessment reflects one expert's informed judgement — not crowd-sourced voting or vendor self-submission.</p></div></div>
     </div>
@@ -369,9 +398,7 @@
     </div>
     <div class="footer-col footer-col-center">
       <p class="footer-heart">Open Source ♥️ Made in the UK 🇬🇧</p>
-      <p class="footer-meta">Maintained by <strong>Fabio Baumeler</strong></p>
-      <p class="footer-meta">CISSP · MSc Information Security (Royal Holloway)</p>
-      <p class="footer-meta"><a href="https://www.linkedin.com/in/fbaumeler" target="_blank" rel="noopener" class="accent-link">LinkedIn ↗</a></p>
+      <p class="footer-meta">Maintained by <a href="https://www.linkedin.com/in/fbaumeler" target="_blank" rel="noopener" class="accent-link">Fabio Baumeler ↗</a></p>
     </div>
     <div class="footer-col footer-col-right">
       <a href="/" class="footer-link">Home</a>

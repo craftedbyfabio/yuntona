@@ -99,16 +99,18 @@
 .fw-btn:hover:not(.active){color:var(--text-muted)}
 .fw-panel{display:none}.fw-panel.active{display:block}
 .risk-grid{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:0}
-.risk-row{display:grid;grid-template-columns:80px 1fr 50px 160px;align-items:center;padding:.7rem 1rem;border-bottom:1px solid var(--border);transition:background .15s}
+.risk-row{display:grid;grid-template-columns:80px 1fr 50px 160px;align-items:center;padding:.7rem 1rem;border-bottom:1px solid var(--border);transition:background .15s;text-decoration:none;color:inherit;cursor:pointer}
 .risk-row:hover{background:var(--surface)}
+.risk-row:hover .risk-bar-fill{opacity:.85}
 .risk-row:last-child{border-bottom:none}
 .risk-code{font-family:var(--font-mono);font-weight:600;font-size:.78rem}
 .risk-code.llm{color:var(--accent)}.risk-code.asi{color:var(--purple)}
 .risk-name{font-size:.85rem;color:var(--text-muted);font-weight:400}
 .risk-count{font-family:var(--font-mono);font-size:.82rem;font-weight:600;color:var(--text);text-align:right}
-.risk-bar{height:4px;background:var(--surface2);border-radius:2px;overflow:hidden}
-.risk-bar-fill{height:100%;border-radius:2px}
-.risk-bar-fill.llm{background:var(--accent)}.risk-bar-fill.asi{background:var(--purple)}
+.risk-bar{height:6px;background:var(--surface2);border-radius:3px;overflow:hidden}
+.risk-bar-fill{height:100%;border-radius:3px;transition:opacity .15s,width .3s}
+.risk-bar-fill.llm{background:linear-gradient(90deg,var(--accent-dark) 0%,var(--accent) 100%)}
+.risk-bar-fill.asi{background:linear-gradient(90deg,#9333ea 0%,var(--purple) 100%)}
 .risk-header{display:grid;grid-template-columns:80px 1fr 50px 160px;padding:.5rem 1rem;font-size:.65rem;font-family:var(--font-mono);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);border-bottom:1px solid var(--border)}
 
 /* FOUNDER */
@@ -183,18 +185,30 @@ footer{border-top:1px solid var(--border);padding:2rem 0}
 .demo-placeholder{flex:1;color:var(--text-dim);font-size:.9rem}
 .mt-8{margin-top:8px}
 .accent-link{color:var(--accent)}
-.w100{width:100%}
-.w15{width:15%}
-.w25{width:25%}
-.w30{width:30%}
-.w32{width:32%}
-.w34{width:34%}
-.w36{width:36%}
-.w38{width:38%}
-.w47{width:47%}
-.w49{width:49%}
-.w60{width:60%}
-.w70{width:70%}
-.w77{width:77%}
-.w87{width:87%}
-.w96{width:96%}
+/* ─── Landscape comparison (Awesome-lists vs Yuntona vs Analyst reports) ─── */
+.landscape-comparison{max-width:1000px;margin:4rem auto 0;padding-top:3rem;border-top:1px solid var(--border)}
+.landscape-header{text-align:center;margin-bottom:2rem}
+.landscape-header .section-kicker{margin-bottom:.5rem}
+.landscape-title{font-family:var(--font-brand);font-size:1.6rem;font-weight:600;letter-spacing:-.01em;color:var(--text)}
+
+.landscape-grid{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:1rem;align-items:start}
+@media(max-width:820px){.landscape-grid{grid-template-columns:1fr}}
+
+.landscape-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative}
+.landscape-card-primary{background:linear-gradient(180deg,var(--accent-glow2) 0%,var(--surface) 100%);border-color:var(--accent-border);box-shadow:0 0 0 1px var(--accent-border),0 8px 24px -8px rgba(34,211,238,.15)}
+
+.landscape-name{font-family:var(--font-brand);font-size:1.05rem;font-weight:600;color:var(--text-muted);margin-bottom:1rem;letter-spacing:.01em}
+.landscape-badge{font-family:var(--font-brand);font-size:1.05rem;font-weight:700;color:var(--accent);margin-bottom:1rem;display:inline-flex;align-items:center;gap:.4rem}
+.landscape-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+
+.landscape-points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.landscape-points li{font-size:.88rem;line-height:1.5;color:var(--text-muted);padding-left:1.25rem;position:relative}
+.landscape-points li::before{content:'·';position:absolute;left:.4rem;color:var(--text-dim);font-weight:700}
+.landscape-points li.landscape-plus{color:var(--text)}
+.landscape-points li.landscape-plus::before{content:'+';color:var(--accent);font-weight:700}
+.landscape-points li.landscape-minus{color:var(--text-dim)}
+.landscape-points li.landscape-minus::before{content:'–';color:var(--red);opacity:.6;font-weight:700}
+
+/* ─── Founder credentials line ─── */
+.founder-creds{font-size:.92rem;color:var(--text);margin:.5rem 0 1rem;letter-spacing:.01em}
+.founder-creds strong{color:var(--accent);font-weight:600}
