@@ -106,13 +106,13 @@
   <a href="/directory" class="nav-mobile-cta">Explore Directory →</a>
 </div>
 
-<!-- ═══ SPLIT HERO ═══ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="container">
+    <h1 class="hero-headline anim visible anim-d1">AI Security Tools for <span class="accent">Generative and Agentic Systems</span></h1>
     <div class="hero-grid">
-      <div>
-        <h1 class="anim visible anim-d1">Find <span class="accent">Security Controls</span> for Your <span class="accent">AI Stack</span></h1>
-        <p class="hero-sub anim visible anim-d2"><span data-stat="tools">161</span> curated security tools and frameworks. Mapped to OWASP LLM and Agentic Top 10. One search.</p>
+      <div class="hero-left">
+        <p class="hero-sub anim visible anim-d2"><span data-stat="tools">161</span> curated solutions mapped to the OWASP LLM &amp; Agentic Top 10 — discover and evaluate in one place.</p>
         <div class="hero-actions anim visible anim-d3">
           <a href="/directory" class="btn-primary">Explore Directory →</a>
           <a href="/graph" class="btn-ghost">Knowledge Graph</a>
@@ -124,28 +124,13 @@
           <div class="stat"><div class="stat-value" data-stat="tags">233</div><div class="stat-label">Tags</div></div>
         </div>
       </div>
-      <div class="hero-demo anim visible anim-d3">
-        <a href="/directory" class="demo-bar demo-bar-link">
-          <span class="demo-icon">⌘K</span>
-          <span class="demo-placeholder">Ask in plain English...</span>
-          <span class="demo-shortcut">Enter</span>
-        </a>
-        <div class="demo-hint">Example: "tools for prompt injection in agentic workflows"</div>
-        <div class="demo-results">
-          <div class="demo-result">
-            <div><div class="demo-result-name">LLM Guard (Protect AI)</div><div class="demo-result-meta">AI Guardrails · LLM01, ASI04</div></div>
-            <span class="demo-result-badge green">Plug &amp; Play</span>
-          </div>
-          <div class="demo-result">
-            <div><div class="demo-result-name">Gandalf (Lakera)</div><div class="demo-result-meta">AI Red Teaming · LLM01, LLM02</div></div>
-            <span class="demo-result-badge cyan">Training</span>
-          </div>
-          <div class="demo-result">
-            <div><div class="demo-result-name">Promptfoo</div><div class="demo-result-meta">AI Red Teaming · LLM01, LLM07</div></div>
-            <span class="demo-result-badge green">Open Source</span>
-          </div>
-        </div>
-        <div class="demo-footer"><span>3 results</span> · 0.2s · Powered by Typesense + Gemini</div>
+      <div class="hero-video-wrap anim visible anim-d3">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/videos/hero-search.jpg" aria-label="Yuntona directory search demonstration">
+          <source src="/videos/hero-search-mobile.webm" type="video/webm" media="(max-width: 640px)">
+          <source src="/videos/hero-search-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
+          <source src="/videos/hero-search.webm" type="video/webm">
+          <source src="/videos/hero-search.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </div>
@@ -156,28 +141,16 @@
   <div class="container">
     <div class="problem-header">
       <div class="section-kicker">The Problem</div>
-      <h2>Why are OWASP checklists not enough for production AI?</h2>
-      <p>The frameworks exist. The industry knows the risks. But most teams are stuck between a PDF and a spreadsheet — with no path from "address LLM06" to "here's the tool."</p>
+      <h2>From framework to tool, in one place</h2>
+      <p>The framework exists. The industry knows the risks. The path from risk to tool is unclear. Here is how Yuntona changes that:</p>
     </div>
-    <div class="compare-grid">
-      <div class="compare-card bad">
-        <div class="compare-label bad">Without Yuntona</div>
-        <ul class="compare-list">
-          <li>OWASP Top 10 lives in a PDF nobody reopens</li>
-          <li>Tool discovery via word-of-mouth and conferences</li>
-          <li>No structured mapping from risk to remediation</li>
-          <li>Coverage gaps invisible until audit or incident</li>
-        </ul>
-      </div>
-      <div class="compare-card good">
-        <div class="compare-label good">With Yuntona</div>
-        <ul class="compare-list">
-          <li>Every risk links to the tools that address it</li>
-          <li>AI search returns ranked results in seconds</li>
-          <li>Knowledge graph allows visual exploration of risk coverage</li>
-          <li>Continuously updated as new tools emerge</li>
-        </ul>
-      </div>
+    <div class="solution-block">
+      <ul class="solution-list">
+        <li>Every risk links to the tools that address it</li>
+        <li>AI search returns ranked results in seconds</li>
+        <li>Knowledge graph allows visual exploration of risk coverage</li>
+        <li>Continuously updated as new tools emerge</li>
+      </ul>
     </div>
 
     <!-- Landscape comparison — positioning Yuntona vs alternatives -->
@@ -242,34 +215,62 @@
   </div>
 </section>
 
-<!-- ═══ FEATURE TABS ═══ -->
+<!-- ═══ HOW IT WORKS ═══ -->
 <section class="features">
   <div class="container">
     <div class="section-kicker">How it works</div>
     <h2 class="section-title">How do you find the right tool?</h2>
     <p class="section-sub">Start from a risk, a category, or a plain-English question.</p>
-    <div class="tab-strip" role="tablist">
-      <button class="tab-btn active" data-tab="search" role="tab">Search by Risk</button>
-      <button class="tab-btn" data-tab="nl" role="tab">Plain English</button>
-      <button class="tab-btn" data-tab="graph" role="tab">Knowledge Graph</button>
-    </div>
-    <div class="tab-panel active" id="tab-search"><div class="tab-content">
-      <h3>Filter by any OWASP risk</h3>
-      <p>Toggle between the LLM Top 10 and Agentic Top 10, then select a specific risk like LLM01 (Prompt Injection) or ASI04 (Insecure Tool Integration). The directory instantly filters to show matching tools with counts per category.</p>
-    </div></div>
-    <div class="tab-panel" id="tab-nl"><div class="tab-content">
-      <h3>Natural language search</h3>
-      <p>Type a question and Yuntona's search parses your intent, extracts filters, and returns ranked results from the full directory. A future iteration will add conversational follow-up queries.</p>
-      <div class="tab-mock">
-        <div><span class="q">→ "open source tools for securing MCP integrations"</span></div>
-        <div class="mt-8"><span class="chip">category: MCP Security</span> <span class="chip">tag: open source</span> <span class="chip">risk: ASI04</span></div>
-        <div class="mt-8"><span class="res">3 results · Stacklok/ToolHive, MCP Secure Gateway, FuzzingLabs</span></div>
+
+    <div class="feature-blocks">
+      <div class="feature-block">
+        <div class="feature-text">
+          <div class="feature-step">01</div>
+          <h3>Search by risk</h3>
+          <p>Filter by any OWASP risk — toggle between the LLM Top 10 and Agentic Top 10, select a specific risk, and the directory instantly filters to show matching tools with counts per category.</p>
+        </div>
+        <div class="feature-media">
+          <video class="feature-video" muted loop playsinline preload="none" poster="/videos/search-by-risk.jpg" aria-label="Filter directory by OWASP risk">
+            <source src="/videos/search-by-risk-mobile.webm" type="video/webm" media="(max-width: 640px)">
+            <source src="/videos/search-by-risk-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
+            <source src="/videos/search-by-risk.webm" type="video/webm">
+            <source src="/videos/search-by-risk.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
-    </div></div>
-    <div class="tab-panel" id="tab-graph"><div class="tab-content">
-      <h3>See the whole landscape</h3>
-      <p>The knowledge graph visualises every tool, risk, and lifecycle stage as an interactive network. Click any node to highlight its connections — revealing coverage clusters and defence gaps at a glance.</p>
-    </div></div>
+
+      <div class="feature-block feature-block-reverse">
+        <div class="feature-text">
+          <div class="feature-step">02</div>
+          <h3>Plain English</h3>
+          <p>Keyword or natural language search. Type a question and Yuntona's search parses your intent, extracts filters, and returns ranked results from the full directory.</p>
+        </div>
+        <div class="feature-media">
+          <video class="feature-video" muted loop playsinline preload="none" poster="/videos/hero-search.jpg" aria-label="Natural language search demonstration">
+            <source src="/videos/hero-search-mobile.webm" type="video/webm" media="(max-width: 640px)">
+            <source src="/videos/hero-search-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
+            <source src="/videos/hero-search.webm" type="video/webm">
+            <source src="/videos/hero-search.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="feature-block">
+        <div class="feature-text">
+          <div class="feature-step">03</div>
+          <h3>Knowledge Graph</h3>
+          <p>See the whole landscape. The knowledge graph visualises every tool, risk, and lifecycle stage as an interactive network. Click any node to highlight its connections — revealing coverage clusters and defence gaps at a glance.</p>
+        </div>
+        <div class="feature-media">
+          <video class="feature-video" muted loop playsinline preload="none" poster="/videos/knowledge-graph.jpg" aria-label="Knowledge graph interactive demonstration">
+            <source src="/videos/knowledge-graph-mobile.webm" type="video/webm" media="(max-width: 640px)">
+            <source src="/videos/knowledge-graph-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
+            <source src="/videos/knowledge-graph.webm" type="video/webm">
+            <source src="/videos/knowledge-graph.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -286,7 +287,7 @@
     <div class="fw-panel active" id="fw-llm">
       <div class="risk-grid">
         <div class="risk-header"><span>Risk</span><span>Name</span><span>Tools</span><span>Coverage</span></div>
-                <a href="/directory?risk=LLM01" class="risk-row" data-risk="LLM01"><span class="risk-code llm">LLM01</span><span class="risk-name">Prompt Injection</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:100%"></div></div></a>
+                        <a href="/directory?risk=LLM01" class="risk-row" data-risk="LLM01"><span class="risk-code llm">LLM01</span><span class="risk-name">Prompt Injection</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:100%"></div></div></a>
         <a href="/directory?risk=LLM02" class="risk-row" data-risk="LLM02"><span class="risk-code llm">LLM02</span><span class="risk-name">Sensitive Information Disclosure</span><span class="risk-count">46</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:87%"></div></div></a>
         <a href="/directory?risk=LLM03" class="risk-row" data-risk="LLM03"><span class="risk-code llm">LLM03</span><span class="risk-name">Supply Chain Vulnerabilities</span><span class="risk-count">19</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:36%"></div></div></a>
         <a href="/directory?risk=LLM04" class="risk-row" data-risk="LLM04"><span class="risk-code llm">LLM04</span><span class="risk-name">Data and Model Poisoning</span><span class="risk-count">13</span><div class="risk-bar"><div class="risk-bar-fill llm" style="width:25%"></div></div></a>
@@ -301,7 +302,7 @@
     <div class="fw-panel" id="fw-asi">
       <div class="risk-grid">
         <div class="risk-header"><span>Risk</span><span>Name</span><span>Tools</span><span>Coverage</span></div>
-                <a href="/directory?risk=ASI01" class="risk-row" data-risk="ASI01"><span class="risk-code asi">ASI01</span><span class="risk-name">Excessive Agency &amp; Autonomy</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:100%"></div></div></a>
+                        <a href="/directory?risk=ASI01" class="risk-row" data-risk="ASI01"><span class="risk-code asi">ASI01</span><span class="risk-name">Excessive Agency &amp; Autonomy</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:100%"></div></div></a>
         <a href="/directory?risk=ASI02" class="risk-row" data-risk="ASI02"><span class="risk-code asi">ASI02</span><span class="risk-name">Insufficient Access Controls</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:96%"></div></div></a>
         <a href="/directory?risk=ASI03" class="risk-row" data-risk="ASI03"><span class="risk-code asi">ASI03</span><span class="risk-name">Inadequate Sandboxing</span><span class="risk-count">32</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:60%"></div></div></a>
         <a href="/directory?risk=ASI04" class="risk-row" data-risk="ASI04"><span class="risk-code asi">ASI04</span><span class="risk-name">Insecure Tool Integration</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:77%"></div></div></a>
