@@ -18,7 +18,7 @@
   {"@context":"https://schema.org","@type":"WebApplication","name":"Yuntona","url":"https://yuntona.netlify.app","description":"A curated, open-source directory of 147 AI security tools mapped to the OWASP LLM Top 10 (2025) and OWASP Agentic Top 10 (2026). Maintained by a financial services risk practitioner.","applicationCategory":"SecurityApplication","operatingSystem":"Web","dateModified":"2026-03-27","version":"1.7.0","keywords":"AI security tools, OWASP LLM Top 10, OWASP Agentic Top 10, prompt injection, AI governance, agentic AI security, AI risk management, third-party AI risk, MCP security, AI guardrails","author":{"@type":"Person","name":"Fabio Baumeler","jobTitle":"Third-Party Cyber Risk Lead","worksFor":{"@type":"Organization","name":"Financial Conduct Authority"},"url":"https://www.linkedin.com/in/fbaumeler","sameAs":["https://github.com/craftedbyfabio"]},"offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"license":"https://opensource.org/licenses/MIT"},
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"What is Yuntona?","acceptedAnswer":{"@type":"Answer","text":"Yuntona is a curated, open-source directory of 147 AI security tools mapped to the OWASP LLM Top 10 (2025) and OWASP Agentic Top 10 (2026). It helps CISOs and security practitioners find the right defence for every risk in their AI stack."}},
-    {"@type":"Question","name":"What OWASP risks does Yuntona cover?","acceptedAnswer":{"@type":"Answer","text":"Yuntona provides full coverage across all 20 OWASP risk categories: 10 from the LLM Top 10 (2025) including prompt injection, sensitive data disclosure, and excessive agency, plus 10 from the Agentic Top 10 (2026) including insecure tool integration, trust boundary violations, and insecure multi-agent orchestration."}},
+    {"@type":"Question","name":"What OWASP risks does Yuntona cover?","acceptedAnswer":{"@type":"Answer","text":"Yuntona provides full coverage across all 20 OWASP risk categories: 10 from the LLM Top 10 (2025) including prompt injection, sensitive data disclosure, and excessive agency, plus 10 from the Agentic Top 10 (2026) including agent goal hijack, tool misuse and exploitation, and memory and context poisoning."}},
     {"@type":"Question","name":"How does Yuntona help you find AI security tools?","acceptedAnswer":{"@type":"Answer","text":"Yuntona offers three ways to find tools: a filterable directory with category, OWASP risk, and complexity filters; AI-powered natural language search that parses plain-English questions; and an interactive knowledge graph that visualises tool-to-risk relationships."}},
     {"@type":"Question","name":"Who built Yuntona?","acceptedAnswer":{"@type":"Answer","text":"Yuntona is built and maintained by Fabio Baumeler, a CISSP-certified Third-Party Cyber Risk Lead at the UK Financial Conduct Authority with an MSc in Information Security from Royal Holloway (GCHQ-certified)."}},
     {"@type":"Question","name":"Is Yuntona free and open source?","acceptedAnswer":{"@type":"Answer","text":"Yes. Yuntona is fully open source under the MIT licence. The complete directory of 147 tools is accessible without login or paywall."}},
@@ -230,12 +230,7 @@
           <p>Filter by any OWASP risk — toggle between the LLM Top 10 and Agentic Top 10, select a specific risk, and the directory instantly filters to show matching tools with counts per category.</p>
         </div>
         <div class="feature-media">
-          <video class="feature-video" muted loop playsinline preload="none" poster="/videos/search-by-risk.jpg" aria-label="Filter directory by OWASP risk">
-            <source src="/videos/search-by-risk-mobile.webm" type="video/webm" media="(max-width: 640px)">
-            <source src="/videos/search-by-risk-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
-            <source src="/videos/search-by-risk.webm" type="video/webm">
-            <source src="/videos/search-by-risk.mp4" type="video/mp4">
-          </video>
+          <img class="feature-screenshot" src="/img/screenshots/search-by-risk.png" alt="Filter directory by OWASP risk" loading="lazy">
         </div>
       </div>
 
@@ -246,12 +241,7 @@
           <p>Keyword or natural language search. Type a question and Yuntona's search parses your intent, extracts filters, and returns ranked results from the full directory.</p>
         </div>
         <div class="feature-media">
-          <video class="feature-video" muted loop playsinline preload="none" poster="/videos/hero-search.jpg" aria-label="Natural language search demonstration">
-            <source src="/videos/hero-search-mobile.webm" type="video/webm" media="(max-width: 640px)">
-            <source src="/videos/hero-search-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
-            <source src="/videos/hero-search.webm" type="video/webm">
-            <source src="/videos/hero-search.mp4" type="video/mp4">
-          </video>
+          <img class="feature-screenshot" src="/img/screenshots/hero-search.png" alt="Natural language search demonstration" loading="lazy">
         </div>
       </div>
 
@@ -262,12 +252,7 @@
           <p>See the whole landscape. The knowledge graph visualises every tool, risk, and lifecycle stage as an interactive network. Click any node to highlight its connections — revealing coverage clusters and defence gaps at a glance.</p>
         </div>
         <div class="feature-media">
-          <video class="feature-video" muted loop playsinline preload="none" poster="/videos/knowledge-graph.jpg" aria-label="Knowledge graph interactive demonstration">
-            <source src="/videos/knowledge-graph-mobile.webm" type="video/webm" media="(max-width: 640px)">
-            <source src="/videos/knowledge-graph-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
-            <source src="/videos/knowledge-graph.webm" type="video/webm">
-            <source src="/videos/knowledge-graph.mp4" type="video/mp4">
-          </video>
+          <img class="feature-screenshot" src="/img/screenshots/knowledge-graph.png" alt="Knowledge graph interactive demonstration" loading="lazy">
         </div>
       </div>
     </div>
@@ -302,16 +287,16 @@
     <div class="fw-panel" id="fw-asi">
       <div class="risk-grid">
         <div class="risk-header"><span>Risk</span><span>Name</span><span>Tools</span><span>Coverage</span></div>
-                        <a href="/directory?risk=ASI01" class="risk-row" data-risk="ASI01"><span class="risk-code asi">ASI01</span><span class="risk-name">Excessive Agency &amp; Autonomy</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:100%"></div></div></a>
-        <a href="/directory?risk=ASI02" class="risk-row" data-risk="ASI02"><span class="risk-code asi">ASI02</span><span class="risk-name">Insufficient Access Controls</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:96%"></div></div></a>
-        <a href="/directory?risk=ASI03" class="risk-row" data-risk="ASI03"><span class="risk-code asi">ASI03</span><span class="risk-name">Inadequate Sandboxing</span><span class="risk-count">32</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:60%"></div></div></a>
-        <a href="/directory?risk=ASI04" class="risk-row" data-risk="ASI04"><span class="risk-code asi">ASI04</span><span class="risk-name">Insecure Tool Integration</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:77%"></div></div></a>
-        <a href="/directory?risk=ASI05" class="risk-row" data-risk="ASI05"><span class="risk-code asi">ASI05</span><span class="risk-name">Insecure Output Consumption</span><span class="risk-count">25</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:47%"></div></div></a>
-        <a href="/directory?risk=ASI06" class="risk-row" data-risk="ASI06"><span class="risk-code asi">ASI06</span><span class="risk-name">Lack of Runtime Guardrails</span><span class="risk-count">20</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:38%"></div></div></a>
-        <a href="/directory?risk=ASI07" class="risk-row" data-risk="ASI07"><span class="risk-code asi">ASI07</span><span class="risk-name">Insecure Multi-Agent Orchestration</span><span class="risk-count">26</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:49%"></div></div></a>
-        <a href="/directory?risk=ASI08" class="risk-row" data-risk="ASI08"><span class="risk-code asi">ASI08</span><span class="risk-name">Inadequate Logging &amp; Monitoring</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:30%"></div></div></a>
-        <a href="/directory?risk=ASI09" class="risk-row" data-risk="ASI09"><span class="risk-code asi">ASI09</span><span class="risk-name">Trust Boundary Violations</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:30%"></div></div></a>
-        <a href="/directory?risk=ASI10" class="risk-row" data-risk="ASI10"><span class="risk-code asi">ASI10</span><span class="risk-name">Insufficient Error Handling</span><span class="risk-count">17</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:32%"></div></div></a>
+                                <a href="/directory?risk=ASI01" class="risk-row" data-risk="ASI01"><span class="risk-code asi">ASI01</span><span class="risk-name">Agent Goal Hijack</span><span class="risk-count">53</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:100%"></div></div></a>
+        <a href="/directory?risk=ASI02" class="risk-row" data-risk="ASI02"><span class="risk-code asi">ASI02</span><span class="risk-name">Tool Misuse &amp; Exploitation</span><span class="risk-count">51</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:96%"></div></div></a>
+        <a href="/directory?risk=ASI03" class="risk-row" data-risk="ASI03"><span class="risk-code asi">ASI03</span><span class="risk-name">Identity &amp; Privilege Abuse</span><span class="risk-count">32</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:60%"></div></div></a>
+        <a href="/directory?risk=ASI04" class="risk-row" data-risk="ASI04"><span class="risk-code asi">ASI04</span><span class="risk-name">Agentic Supply Chain Vulnerabilities</span><span class="risk-count">41</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:77%"></div></div></a>
+        <a href="/directory?risk=ASI05" class="risk-row" data-risk="ASI05"><span class="risk-code asi">ASI05</span><span class="risk-name">Unexpected Code Execution (RCE)</span><span class="risk-count">25</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:47%"></div></div></a>
+        <a href="/directory?risk=ASI06" class="risk-row" data-risk="ASI06"><span class="risk-code asi">ASI06</span><span class="risk-name">Memory &amp; Context Poisoning</span><span class="risk-count">20</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:38%"></div></div></a>
+        <a href="/directory?risk=ASI07" class="risk-row" data-risk="ASI07"><span class="risk-code asi">ASI07</span><span class="risk-name">Insecure Inter-Agent Communication</span><span class="risk-count">26</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:49%"></div></div></a>
+        <a href="/directory?risk=ASI08" class="risk-row" data-risk="ASI08"><span class="risk-code asi">ASI08</span><span class="risk-name">Cascading Failures</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:30%"></div></div></a>
+        <a href="/directory?risk=ASI09" class="risk-row" data-risk="ASI09"><span class="risk-code asi">ASI09</span><span class="risk-name">Human-Agent Trust Exploitation</span><span class="risk-count">16</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:30%"></div></div></a>
+        <a href="/directory?risk=ASI10" class="risk-row" data-risk="ASI10"><span class="risk-code asi">ASI10</span><span class="risk-name">Rogue Agents</span><span class="risk-count">17</span><div class="risk-bar"><div class="risk-bar-fill asi" style="width:32%"></div></div></a>
       </div>
     </div>
   </div>
