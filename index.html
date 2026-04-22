@@ -15,7 +15,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Structured data (SEO) -->
+<!-- Inline styles (covered by CSP sha256 hash below) -->
+<link rel="stylesheet" href="/landing/landing.css">
+
+<!-- Structured data (covered by CSP sha256 hash) -->
 <script type="application/ld+json">
 [
   {"@context":"https://schema.org","@type":"WebApplication","name":"Yuntona","url":"https://yuntona.ai","description":"A curated, open-source directory of 161 AI security tools mapped to the OWASP LLM Top 10 (2025) and OWASP Agentic Top 10 (2026). Maintained by a financial services risk practitioner.","applicationCategory":"SecurityApplication","operatingSystem":"Web","dateModified":"2026-04-22","version":"1.8.0","keywords":"AI security tools, OWASP LLM Top 10, OWASP Agentic Top 10, prompt injection, AI governance, agentic AI security, AI risk management, third-party AI risk, MCP security, AI guardrails","author":{"@type":"Person","name":"Fabio Baumeler","jobTitle":"Third-Party Cyber Risk Lead","worksFor":{"@type":"Organization","name":"Financial Conduct Authority"},"url":"https://www.linkedin.com/in/fbaumeler","sameAs":["https://github.com/craftedbyfabio"]},"offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"license":"https://opensource.org/licenses/MIT"},
@@ -34,34 +37,12 @@
 <script async src="https://yuntona.ai/dv/js/script.js"></script>
 <script src="/js/plausible-init.js"></script>
 
-<style>
-  html, body {
-    margin: 0; padding: 0;
-    background: #0a0e14;
-    color: #f0eee9;
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-feature-settings: 'ss01', 'cv11';
-    -webkit-font-smoothing: antialiased;
-  }
-  * { box-sizing: border-box; }
-  @keyframes ytc-blink { 50% { opacity: 0; } }
-  kbd { font-family: 'JetBrains Mono', monospace; }
-  ::selection { background: rgba(201,100,66,0.35); color: #f0eee9; }
-</style>
-
-<!-- React + Babel (unpkg, pinned with SRI) -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<!-- Self-hosted React + precompiled landing bundle (no CDN, no Babel in browser) -->
+<script src="/landing/react.min.js"></script>
+<script src="/landing/react-dom.min.js"></script>
 </head>
 <body>
 <div id="root"></div>
-
-<script type="text/babel" src="/landing/data.jsx"></script>
-<script type="text/babel" src="/landing/logo.jsx"></script>
-<script type="text/babel" src="/landing/hero.jsx"></script>
-<script type="text/babel" src="/landing/sections.jsx"></script>
-<script type="text/babel" src="/landing/footer-faq.jsx"></script>
-<script type="text/babel" src="/landing/app.jsx"></script>
+<script src="/landing/bundle.js"></script>
 </body>
 </html>
