@@ -1,0 +1,225 @@
+<!--
+  PR 3 — methodology.html BODY REPLACEMENT
+  ─────────────────────────────────────────
+  Drop this <body> content INSIDE the existing <body> wrapper, keeping:
+    • the shared <head> (tokens, fonts, site.css)
+    • the shared <nav class="site-nav"> at top
+    • the announce bar (if present)
+    • the shared <footer class="site-footer"> at bottom
+    • all existing site-config.js / analytics scripts
+
+  Add to <head>:
+    <link rel="stylesheet" href="/css/methodology.css">
+
+  Add just before </body>:
+    <script src="/js/methodology.js"></script>
+-->
+
+<!-- [KEEP] <nav class="site-nav">…</nav> -->
+<!-- [KEEP] <div class="announce-bar">…</div> (if present) -->
+
+<div class="method-page">
+  <div class="method-bread">
+    <a href="/">~</a> <span>/</span> <span class="method-bread-cur">methodology</span>
+  </div>
+
+  <header class="method-header">
+    <div class="kicker">Methodology · v1.7.0</div>
+    <h1>How we <em class="italic-accent">curate</em>.</h1>
+    <p class="method-lead">
+      Yuntona is built on practitioner-led continuous intelligence gathering with expert curation — not automated scraping or vendor self-submission.
+    </p>
+    <div class="meta-strip">
+      <span>Last reviewed · 2026-03-18</span>
+      <span>·</span>
+      <span>Single maintainer · accountable</span>
+      <span>·</span>
+      <span>MIT · open source</span>
+    </div>
+  </header>
+
+  <div class="method-grid">
+    <aside class="method-toc">
+      <div class="kicker toc-label">On this page</div>
+      <nav class="toc-nav">
+        <a href="#philosophy"><span>01</span> Philosophy</a>
+        <a href="#principles"><span>02</span> Curation principles</a>
+        <a href="#sources"><span>03</span> Intelligence sources</a>
+        <a href="#mapping"><span>04</span> OWASP risk mapping</a>
+        <a href="#inclusion"><span>05</span> What gets listed</a>
+        <a href="#transparency"><span>06</span> Transparency</a>
+      </nav>
+      <div class="toc-meta">
+        <div><span data-stat="tools">161</span> tools indexed</div>
+        <div>20 OWASP risks</div>
+        <div>11 categories</div>
+        <div>v1.7.0 · 2026-03-18</div>
+      </div>
+    </aside>
+
+    <main class="method-body">
+      <!-- 01 Philosophy -->
+      <section id="philosophy" class="method-section">
+        <div class="section-num">01</div>
+        <h2>Philosophy</h2>
+        <p>The AI security tooling landscape moves faster than any automated system can meaningfully evaluate. New tools, frameworks, and attack surfaces emerge weekly. Keeping pace requires continuous immersion in the practitioner community — not periodic desk research.</p>
+        <p>Every entry has been individually evaluated by a security professional with <strong>over a decade</strong> of experience spanning SOC/NOC operations, third-party risk, financial services regulation, and hands-on AI-security research. The directory reflects professional judgement informed by real-world operational context — not algorithmic scoring.</p>
+        <blockquote class="pull-quote">Curation quality depends on accountability, not volume.</blockquote>
+      </section>
+
+      <!-- 02 Principles -->
+      <section id="principles" class="method-section">
+        <div class="section-num">02</div>
+        <h2>Curation principles</h2>
+        <p>Four commitments that shape every decision, from discovery to inclusion to retirement.</p>
+        <div class="principle-grid">
+          <div class="principle">
+            <div class="principle-num">P.01</div>
+            <h3>Multi-source intelligence</h3>
+            <p>Discovery draws from practitioner discourse on LinkedIn and specialist forums, conference proceedings, standards body publications, OWASP working groups, industry intelligence newsletters, and direct engagement with AI-security thought leaders.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">P.02</div>
+            <h3>Expert signal filtering</h3>
+            <p>Not everything discovered gets listed. Each candidate is assessed against the current threat landscape, mapped to OWASP categories, and evaluated for genuine operational utility. Duplicates without meaningful differentiation are excluded.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">P.03</div>
+            <h3>Community-embedded discovery</h3>
+            <p>The best tools surface in comment threads, conference hallway conversations, and working-group Slacks — not product launch pages. Following the people who build and break AI systems is how tools reach us before mainstream awareness.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">P.04</div>
+            <h3>Continuous, not periodic</h3>
+            <p>The directory updates on a rolling basis. This is not a quarterly report. It is a living artefact maintained through daily engagement with the AI-security ecosystem.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 Sources -->
+      <section id="sources" class="method-section">
+        <div class="section-num">03</div>
+        <h2>Intelligence sources</h2>
+        <p>Where the signal comes from. Five channels feeding one pipeline.</p>
+
+        <div class="source-table">
+          <div class="source-row">
+            <span class="source-name">Standards bodies</span>
+            <div class="source-chips"><span class="chip">OWASP</span><span class="chip">NIST</span><span class="chip">CSA</span><span class="chip">MITRE</span><span class="chip">ISO/IEC</span></div>
+            <span class="source-desc">Publications + working group output</span>
+          </div>
+          <div class="source-row">
+            <span class="source-name">Industry intelligence</span>
+            <div class="source-chips"><span class="chip">CB Insights</span><span class="chip">analyst reports</span><span class="chip">market research</span></div>
+            <span class="source-desc">Vendor-neutral coverage of emerging tech</span>
+          </div>
+          <div class="source-row">
+            <span class="source-name">Conferences &amp; events</span>
+            <div class="source-chips"><span class="chip">NHIcon</span><span class="chip">CSA summits</span><span class="chip">AI security workshops</span></div>
+            <span class="source-desc">Vendor-neutral industry events</span>
+          </div>
+          <div class="source-row">
+            <span class="source-name">Practitioner networks</span>
+            <div class="source-chips"><span class="chip">OWASP AIUC</span><span class="chip">LinkedIn groups</span><span class="chip">specialist forums</span></div>
+            <span class="source-desc">Thought-leader commentary</span>
+          </div>
+          <div class="source-row">
+            <span class="source-name">Primary research</span>
+            <div class="source-chips"><span class="chip">academic papers</span><span class="chip">arXiv</span><span class="chip">vendor docs</span><span class="chip">GitHub</span></div>
+            <span class="source-desc">First-hand documentation</span>
+          </div>
+        </div>
+
+        <div class="pipeline">
+          <div class="kicker pipeline-label">Pipeline</div>
+          <div class="pipeline-grid">
+            <div class="pipeline-step"><div class="pipeline-k">Sources</div><div class="pipeline-v">5 channels</div></div>
+            <div class="pipeline-arrow">›</div>
+            <div class="pipeline-step"><div class="pipeline-k">Discovery</div><div class="pipeline-v">raw signal</div></div>
+            <div class="pipeline-arrow">›</div>
+            <div class="pipeline-step"><div class="pipeline-k">Evaluation</div><div class="pipeline-v">3 criteria</div></div>
+            <div class="pipeline-arrow">›</div>
+            <div class="pipeline-step"><div class="pipeline-k">Mapping</div><div class="pipeline-v">OWASP fit</div></div>
+            <div class="pipeline-arrow">›</div>
+            <div class="pipeline-step"><div class="pipeline-k">Published</div><div class="pipeline-v">directory</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 OWASP mapping -->
+      <section id="mapping" class="method-section">
+        <div class="section-num">04</div>
+        <h2>OWASP risk mapping</h2>
+        <p>Every tool is mapped against the <strong>OWASP LLM Top 10 (2025)</strong> and the <strong>OWASP Agentic Top 10 (2026)</strong>. Mappings are derived from each tool's documented capabilities, target threat model, and operational scope — assessed against the published risk descriptions.</p>
+
+        <div class="coverage-cards">
+          <div class="coverage-card">
+            <div class="kicker">LLM Top 10 · 2025</div>
+            <div class="coverage-num">10 <span>/ 10</span></div>
+            <div class="coverage-note">Full coverage</div>
+            <div class="coverage-bar-10">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="coverage-card">
+            <div class="kicker">Agentic Top 10 · 2026</div>
+            <div class="coverage-num">10 <span>/ 10</span></div>
+            <div class="coverage-note">Full coverage</div>
+            <div class="coverage-bar-10">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout--kelp">
+          <div class="callout-label"><span class="callout-dot"></span>AI-assisted, human-designed</div>
+          <p>OWASP risk mappings across <span data-stat="tools">161</span> tools and 20 categories were produced using AI as an analytical engine. The methodology, evaluation schema, and framework inputs were designed by the curator. Every output was reviewed and validated against the published OWASP standards. This is <em class="italic-accent">human-directed analysis at scale</em> — not automated classification.</p>
+        </div>
+      </section>
+
+      <!-- 05 Inclusion -->
+      <section id="inclusion" class="method-section">
+        <div class="section-num">05</div>
+        <h2>What gets listed</h2>
+        <p>A tool is added when it meets three criteria. All three. No two-out-of-three.</p>
+        <div class="criteria">
+          <div class="criterion">
+            <span class="criterion-num">C.1</span>
+            <div><strong>Addresses a genuine security risk</strong><span>in the generative or agentic AI stack, mapped to at least one OWASP category.</span></div>
+          </div>
+          <div class="criterion">
+            <span class="criterion-num">C.2</span>
+            <div><strong>Operational or near-operational</strong><span>not vaporware, not a concept paper, not a GitHub readme without code.</span></div>
+          </div>
+          <div class="criterion">
+            <span class="criterion-num">C.3</span>
+            <div><strong>Offers meaningful capability</strong><span>not already covered by existing entries; differentiated in scope, approach, or depth.</span></div>
+          </div>
+        </div>
+        <p class="method-footer-note">Open-source tools, commercial platforms, and frameworks are all eligible. <strong>Vendor sponsorship does not influence inclusion or risk ratings.</strong></p>
+      </section>
+
+      <!-- 06 Transparency -->
+      <section id="transparency" class="method-section">
+        <div class="section-num">06</div>
+        <h2>Transparency</h2>
+        <p>Yuntona is maintained by a single practitioner. The directory reflects one expert's informed judgement — not committee consensus, not crowd-sourced voting. This is a deliberate choice.</p>
+        <div class="disclosure">
+          <div class="kicker">Affiliation disclosure</div>
+          <p>Yuntona&trade; is an independent, open-source project. It is <strong>not affiliated with or endorsed by</strong> OWASP, NIST, MITRE, or any vendor listed in the directory.</p>
+          <p>OWASP risk categories are used under the Creative Commons licence.</p>
+        </div>
+        <div class="method-ctas">
+          <a href="/submit" class="btn-primary">Submit a tool for review →</a>
+          <a href="https://github.com/craftedbyfabio/yuntona" class="btn-ghost">View source ↗</a>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- [KEEP] <footer class="site-footer">…</footer> -->
+<!-- [KEEP] existing scripts (site-config.js, analytics, etc.) -->
+<!-- [ADD]  <script src="/js/methodology.js"></script> -->
