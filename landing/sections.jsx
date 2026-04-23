@@ -278,5 +278,3 @@ function SectionTitle({children}) {
     }}>{children}</h2>
   );
 }
-
-Object.assign(window, { CoverageMatrix, ThreeWaysIn, Positioning, SectionLabel, SectionTitle });

@@ -155,12 +155,6 @@ const FAQS = [{
   q: 'Can I contribute?',
   a: 'Yes. Suggest a tool via GitHub issue template, report gaps, or open a PR against the YAML source. Vendor submissions welcome but held to the same evaluation bar.'
 }];
-Object.assign(window, {
-  LLM_RISKS,
-  ASI_RISKS,
-  SAMPLE_TOOLS,
-  FAQS
-});
 
 /* ──────── logo.jsx ──────── */
 // Small Yuntona octopus+Y mark for the landing page header/footer.
@@ -219,9 +213,6 @@ function YuntonaMark({
     fill: color
   }));
 }
-Object.assign(window, {
-  YuntonaMark
-});
 
 /* ──────── hero.jsx ──────── */
 // Top nav + hero. Hero leans on a "command palette" motif — it's the
@@ -803,10 +794,6 @@ const kbdSt = {
   color: '#c2cbd4',
   fontFamily: 'inherit'
 };
-Object.assign(window, {
-  TopNav,
-  Hero
-});
 
 /* ──────── sections.jsx ──────── */
 // Middle sections: OWASP coverage heatmap, how-it-works, positioning.
@@ -1201,13 +1188,6 @@ function SectionTitle({
     }
   }, children);
 }
-Object.assign(window, {
-  CoverageMatrix,
-  ThreeWaysIn,
-  Positioning,
-  SectionLabel,
-  SectionTitle
-});
 
 /* ──────── footer-faq.jsx ──────── */
 // Curator, FAQ, final CTA, footer.
@@ -1620,28 +1600,11 @@ function Footer() {
     }
   }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 Yuntona Ltd \xB7 All rights reserved"), /*#__PURE__*/React.createElement("span", null, "v1.7.0 \xB7 161 tools \xB7 last updated 2026-04-22")));
 }
-Object.assign(window, {
-  Curator,
-  FAQ,
-  FinalCTA,
-  Footer
-});
 
 /* ──────── app.jsx ──────── */
 // Bootstraps the landing page. Split out of index.html because the site CSP
 // blocks inline <script> blocks.
 
-const {
-  TopNav,
-  Hero,
-  CoverageMatrix,
-  ThreeWaysIn,
-  Positioning,
-  Curator,
-  FAQ,
-  FinalCTA,
-  Footer
-} = window;
 function App() {
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(TopNav, null), /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(CoverageMatrix, null), /*#__PURE__*/React.createElement(ThreeWaysIn, null), /*#__PURE__*/React.createElement(Positioning, null), /*#__PURE__*/React.createElement(Curator, null), /*#__PURE__*/React.createElement(FAQ, null), /*#__PURE__*/React.createElement(FinalCTA, null), /*#__PURE__*/React.createElement(Footer, null));
 }

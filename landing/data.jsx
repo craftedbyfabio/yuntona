@@ -67,5 +67,3 @@ const FAQS = [
     a: 'Yes. Suggest a tool via GitHub issue template, report gaps, or open a PR against the YAML source. Vendor submissions welcome but held to the same evaluation bar.'
   },
 ];
-
-Object.assign(window, { LLM_RISKS, ASI_RISKS, SAMPLE_TOOLS, FAQS });
