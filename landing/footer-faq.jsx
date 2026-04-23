@@ -225,5 +225,3 @@ function Footer() {
     </footer>
   );
 }
-
-Object.assign(window, { Curator, FAQ, FinalCTA, Footer });

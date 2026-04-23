@@ -320,5 +320,3 @@ const kbdSt = {
   background:'rgba(255,255,255,0.06)', padding:'1px 5px', borderRadius:3,
   marginRight:4, color:'#c2cbd4', fontFamily:'inherit',
 };
-
-Object.assign(window, { TopNav, Hero });

@@ -24,5 +24,3 @@ function YuntonaMark({ size = 28, color = 'currentColor' }) {
     </svg>
   );
 }
-
-Object.assign(window, { YuntonaMark });
