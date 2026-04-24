@@ -1,164 +1,329 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yuntona™ — Methodology</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://api.fontshare.com">
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/site.css">
-<link rel="stylesheet" href="/css/methodology.css">
+  <meta charset="utf-8">
+  <title>Methodology — Yuntona</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Yuntona curates AI security tools — practitioner-led continuous intelligence gathering with expert curation, mapped to OWASP LLM Top 10 and Agentic Top 10.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="canonical" href="https://yuntona.ai/methodology">
-<script async src="https://yuntona.ai/dv/js/script.js"></script>
-<script src="/js/plausible-init.js"></script>
+  <link rel="canonical" href="https://yuntona.ai/methodology">
+
+  <!-- Fonts (same stack as the landing) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/methodology.css">
+
+  <script async src="https://yuntona.ai/dv/js/script.js"></script>
+  <script src="/js/plausible-init.js"></script>
 </head>
-<body>
-<nav class="site-nav" role="navigation" aria-label="Main navigation"><div class="nav-inner">
-  <a href="/" class="wordmark" aria-label="Yuntona home">YUNTONA<span class="tm">™</span> <span class="wordmark-tag">Find security controls for your AI stack</span></a>
-  <div class="nav-links" id="desktopNav">
-    <div class="nav-dropdown" id="platformDropdown">
-      <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="platformMenu">Platform <svg class="nav-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="nav-dropdown-menu" id="platformMenu" role="menu">
-        <a href="/directory" class="nav-dropdown-item" role="menuitem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><div><div>Tool Directory</div><div class="nav-dropdown-item-desc" data-stat-desc="tools">161 tools · Search &amp; filter</div></div></a>
-        <a href="/graph" class="nav-dropdown-item" role="menuitem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 7.5 15.5 16.5M15.5 7.5 8.5 16.5"/></svg><div><div>Knowledge Graph</div><div class="nav-dropdown-item-desc">Interactive risk visualisation</div></div></a>
-      </div>
+<body style="margin:0;padding:0;background:#0a0e14;color:#f0eee9;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     NAV — matches landing page exactly
+     ═══════════════════════════════════════════════════════════════════ -->
+<nav style="position:sticky;top:0;z-index:20;background:rgba(10,14,20,0.92);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid rgba(255,255,255,0.06);">
+  <div style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px;">
+    <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#f0eee9;">
+      <svg width="26" height="26" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+        <circle cx="100" cy="74" r="38" fill="none" stroke="#f0eee9" stroke-width="9"/>
+        <g fill="none" stroke="#f0eee9" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 78 106 Q 76 134, 70 160"/>
+          <path d="M 122 106 Q 124 134, 130 160"/>
+          <path d="M 100 112 L 100 176"/>
+        </g>
+        <g fill="none" stroke="#f0eee9" stroke-width="9" stroke-linecap="round">
+          <path d="M 64 96 Q 50 108, 52 126"/>
+          <path d="M 136 96 Q 150 108, 148 126"/>
+        </g>
+        <circle cx="88" cy="70" r="4.5" fill="#f0eee9"/>
+        <circle cx="112" cy="70" r="4.5" fill="#f0eee9"/>
+      </svg>
+      <span style="font-family:Fraunces,serif;font-size:20px;font-weight:600;letter-spacing:-0.4px;">Yuntona</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b7a88;letter-spacing:1px;margin-top:2px;">v1.7.0</span>
+    </a>
+
+    <div style="flex:1;"></div>
+
+    <div class="nav-links-row" style="display:flex;align-items:center;gap:4px;font-size:13px;color:#9aa6b2;font-family:Inter,sans-serif;">
+      <a href="/directory" class="nav-link-item" style="color:#c2cbd4;text-decoration:none;padding:8px 14px;border-radius:6px;transition:background .12s;">Directory</a>
+      <a href="/graph" class="nav-link-item" style="color:#c2cbd4;text-decoration:none;padding:8px 14px;border-radius:6px;transition:background .12s;">Graph</a>
+      <a href="/methodology" class="nav-link-item" aria-current="page" style="color:#f0eee9;text-decoration:none;padding:8px 14px;border-radius:6px;background:rgba(255,255,255,0.05);transition:background .12s;">Methodology</a>
+      <a href="https://github.com/craftedbyfabio/yuntona" class="nav-link-item" style="color:#c2cbd4;text-decoration:none;padding:8px 14px;border-radius:6px;transition:background .12s;">GitHub ↗</a>
     </div>
-    <a href="/methodology" class="nav-link" aria-current="page">Methodology</a>
-    <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" class="nav-link">GitHub</a>
-    <a href="/directory" class="nav-cta">Explore Directory</a>
+
+    <a href="/directory" style="font-family:'JetBrains Mono',monospace;font-size:12px;background:#c96442;color:#0a0e14;text-decoration:none;padding:9px 16px;border-radius:7px;font-weight:600;letter-spacing:0.2px;display:flex;align-items:center;gap:8px;">
+      <span>Search</span>
+      <kbd style="background:rgba(10,14,20,0.18);padding:2px 6px;border-radius:4px;font-size:10px;font-family:inherit;color:#0a0e14;">⌘K</kbd>
+    </a>
   </div>
-  <button class="nav-hamburger" id="navHamburger" aria-expanded="false" aria-controls="navMobile" aria-label="Open menu"><svg id="hamburgerIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="initially-hidden"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-</div></nav>
-<div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile navigation">
-  <div class="nav-mobile-label">Platform</div>
-  <a href="/directory" class="nav-mobile-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Tool Directory</a>
-  <a href="/graph" class="nav-mobile-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 7.5 15.5 16.5M15.5 7.5 8.5 16.5"/></svg>Knowledge Graph</a>
-  <div class="nav-mobile-label">Resources</div>
-  <a href="/methodology" class="nav-mobile-link">Methodology</a>
-  <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" class="nav-mobile-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-  <a href="/directory" class="nav-mobile-cta">Explore Directory →</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     METHODOLOGY BODY
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="method-page">
+  <div class="method-bread">
+    <a href="/">~</a> <span>/</span> <span class="method-bread-cur">methodology</span>
+  </div>
+
+  <header class="method-header">
+    <div class="kicker">Methodology · v1.7.0</div>
+    <h1>How we <em class="italic-accent">curate</em>.</h1>
+    <p class="method-lead">
+      Yuntona is built on practitioner-led continuous intelligence gathering with expert curation — not automated scraping or vendor self-submission.
+    </p>
+    <div class="meta-strip">
+      <span>Last reviewed · 2026-03-18</span>
+      <span>·</span>
+      <span>Single maintainer · accountable</span>
+      <span>·</span>
+      <span>MIT · open source</span>
+    </div>
+  </header>
+
+  <div class="method-grid">
+    <aside class="method-toc">
+      <div class="kicker toc-label">On this page</div>
+      <nav class="toc-nav">
+        <a href="#philosophy"><span>01</span> Philosophy</a>
+        <a href="#principles"><span>02</span> Curation principles</a>
+        <a href="#sources"><span>03</span> Intelligence sources</a>
+        <a href="#mapping"><span>04</span> OWASP risk mapping</a>
+        <a href="#inclusion"><span>05</span> What gets listed</a>
+        <a href="#transparency"><span>06</span> Transparency</a>
+      </nav>
+      <div class="toc-meta">
+        <div>161 tools indexed</div>
+        <div>20 OWASP risks</div>
+        <div>11 categories</div>
+        <div>v1.7.0 · 2026-03-18</div>
+      </div>
+    </aside>
+
+    <main class="method-body">
+      <!-- 01 Philosophy -->
+      <section id="philosophy" class="method-section">
+        <div class="section-num">01</div>
+        <h2>Philosophy</h2>
+        <p>The AI security tooling landscape moves faster than any automated system can meaningfully evaluate. New tools, frameworks, and attack surfaces emerge weekly. Keeping pace requires continuous immersion in the practitioner community — not periodic desk research.</p>
+        <p>Every entry has been individually evaluated by a security professional with <strong>over a decade</strong> of experience spanning SOC/NOC operations, third-party risk, financial services regulation, and hands-on AI-security research. The directory reflects professional judgement informed by real-world operational context — not algorithmic scoring.</p>
+        <blockquote class="pull-quote">Curation quality depends on accountability, not volume.</blockquote>
+      </section>
+
+      <!-- 02 Principles -->
+      <section id="principles" class="method-section">
+        <div class="section-num">02</div>
+        <h2>Curation principles</h2>
+        <p>Four commitments that shape every decision, from discovery to inclusion to retirement.</p>
+        <div class="principle-grid">
+          <div class="principle">
+            <div class="principle-num">P.01</div>
+            <h3>Multi-source intelligence</h3>
+            <p>Discovery draws from practitioner discourse on LinkedIn and specialist forums, conference proceedings, standards body publications, OWASP working groups, industry intelligence newsletters, and direct engagement with AI-security thought leaders.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">P.02</div>
+            <h3>Expert signal filtering</h3>
+            <p>Not everything discovered gets listed. Each candidate is assessed against the current threat landscape, mapped to OWASP categories, and evaluated for genuine operational utility. Duplicates without meaningful differentiation are excluded.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">P.03</div>
+            <h3>Community-embedded discovery</h3>
+            <p>The best tools surface in comment threads, conference hallway conversations, and working-group Slacks — not product launch pages. Following the people who build and break AI systems is how tools reach us before mainstream awareness.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">P.04</div>
+            <h3>Continuous, not periodic</h3>
+            <p>The directory updates on a rolling basis. This is not a quarterly report. It is a living artefact maintained through daily engagement with the AI-security ecosystem.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 Sources -->
+      <section id="sources" class="method-section">
+        <div class="section-num">03</div>
+        <h2>Intelligence sources</h2>
+        <p>Where the signal comes from. Five channels feeding one pipeline.</p>
+
+        <div class="source-table">
+          <div class="source-row">
+            <span class="source-name">Standards bodies</span>
+            <div class="source-chips"><span class="chip">OWASP</span><span class="chip">NIST</span><span class="chip">CSA</span><span class="chip">MITRE</span><span class="chip">ISO/IEC</span></div>
+            <span class="source-desc">Publications + working group output</span>
+          </div>
+          <div class="source-row">
+            <span class="source-name">Industry intelligence</span>
+            <div class="source-chips"><span class="chip">CB Insights</span><span class="chip">analyst reports</span><span class="chip">market research</span></div>
+            <span class="source-desc">Vendor-neutral coverage of emerging tech</span>
+          </div>
+          <div class="source-row">
+            <span class="source-name">Conferences &amp; events</span>
+            <div class="source-chips"><span class="chip">NHIcon</span><span class="chip">CSA summits</span><span class="chip">AI security workshops</span></div>
+            <span class="source-desc">Vendor-neutral industry events</span>
+          </div>
+          <div class="source-row">
+            <span class="source-name">Practitioner networks</span>
+            <div class="source-chips"><span class="chip">OWASP AIUC</span><span class="chip">LinkedIn groups</span><span class="chip">specialist forums</span></div>
+            <span class="source-desc">Thought-leader commentary</span>
+          </div>
+          <div class="source-row">
+            <span class="source-name">Primary research</span>
+            <div class="source-chips"><span class="chip">academic papers</span><span class="chip">arXiv</span><span class="chip">vendor docs</span><span class="chip">GitHub</span></div>
+            <span class="source-desc">First-hand documentation</span>
+          </div>
+        </div>
+
+        <div class="pipeline">
+          <div class="kicker pipeline-label">Pipeline</div>
+          <div class="pipeline-grid">
+            <div class="pipeline-step"><div class="pipeline-k">Sources</div><div class="pipeline-v">5 channels</div></div>
+            <div class="pipeline-arrow">›</div>
+            <div class="pipeline-step"><div class="pipeline-k">Discovery</div><div class="pipeline-v">raw signal</div></div>
+            <div class="pipeline-arrow">›</div>
+            <div class="pipeline-step"><div class="pipeline-k">Evaluation</div><div class="pipeline-v">3 criteria</div></div>
+            <div class="pipeline-arrow">›</div>
+            <div class="pipeline-step"><div class="pipeline-k">Mapping</div><div class="pipeline-v">OWASP fit</div></div>
+            <div class="pipeline-arrow">›</div>
+            <div class="pipeline-step"><div class="pipeline-k">Published</div><div class="pipeline-v">directory</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 OWASP mapping -->
+      <section id="mapping" class="method-section">
+        <div class="section-num">04</div>
+        <h2>OWASP risk mapping</h2>
+        <p>Every tool is mapped against the <strong>OWASP LLM Top 10 (2025)</strong> and the <strong>OWASP Agentic Top 10 (2026)</strong>. Mappings are derived from each tool's documented capabilities, target threat model, and operational scope — assessed against the published risk descriptions.</p>
+
+        <div class="coverage-cards">
+          <div class="coverage-card">
+            <div class="kicker">LLM Top 10 · 2025</div>
+            <div class="coverage-num">10 <span>/ 10</span></div>
+            <div class="coverage-note">Full coverage</div>
+            <div class="coverage-bar-10">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="coverage-card">
+            <div class="kicker">Agentic Top 10 · 2026</div>
+            <div class="coverage-num">10 <span>/ 10</span></div>
+            <div class="coverage-note">Full coverage</div>
+            <div class="coverage-bar-10">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout--kelp">
+          <div class="callout-label"><span class="callout-dot"></span>AI-assisted, human-designed</div>
+          <p>OWASP risk mappings across 161 tools and 20 categories were produced using AI as an analytical engine. The methodology, evaluation schema, and framework inputs were designed by the curator. Every output was reviewed and validated against the published OWASP standards. This is <em class="italic-accent">human-directed analysis at scale</em> — not automated classification.</p>
+        </div>
+      </section>
+
+      <!-- 05 Inclusion -->
+      <section id="inclusion" class="method-section">
+        <div class="section-num">05</div>
+        <h2>What gets listed</h2>
+        <p>A tool is added when it meets three criteria. All three. No two-out-of-three.</p>
+        <div class="criteria">
+          <div class="criterion">
+            <span class="criterion-num">C.1</span>
+            <div><strong>Addresses a genuine security risk</strong><span>in the generative or agentic AI stack, mapped to at least one OWASP category.</span></div>
+          </div>
+          <div class="criterion">
+            <span class="criterion-num">C.2</span>
+            <div><strong>Operational or near-operational</strong><span>not vaporware, not a concept paper, not a GitHub readme without code.</span></div>
+          </div>
+          <div class="criterion">
+            <span class="criterion-num">C.3</span>
+            <div><strong>Offers meaningful capability</strong><span>not already covered by existing entries; differentiated in scope, approach, or depth.</span></div>
+          </div>
+          <p class="method-footer-note">Open-source tools, commercial platforms, and frameworks are all eligible. <strong>Vendor sponsorship does not influence inclusion or risk ratings.</strong></p>
+        </div>
+      </section>
+
+      <!-- 06 Transparency -->
+      <section id="transparency" class="method-section">
+        <div class="section-num">06</div>
+        <h2>Transparency</h2>
+        <p>Yuntona is maintained by a single practitioner. The directory reflects one expert's informed judgement — not committee consensus, not crowd-sourced voting. This is a deliberate choice.</p>
+        <div class="disclosure">
+          <div class="kicker">Affiliation disclosure</div>
+          <p>Yuntona&trade; is an independent, open-source project. It is <strong>not affiliated with or endorsed by</strong> OWASP, NIST, MITRE, or any vendor listed in the directory.</p>
+          <p>OWASP risk categories are used under the Creative Commons licence.</p>
+        </div>
+        <div class="method-ctas">
+          <a href="/submit" class="btn-primary">Submit a tool for review →</a>
+          <a href="https://github.com/craftedbyfabio/yuntona" class="btn-ghost">View source ↗</a>
+        </div>
+      </section>
+    </main>
+  </div>
 </div>
 
-<div class="page-container">
-    <header class="page-header">
-
-      <h1>How We Curate</h1>
-      <p class="subtitle">Yuntona is built on practitioner-led continuous intelligence gathering with expert curation — not automated scraping or vendor self-submission.</p>
-    </header>
-
-    <h2>Philosophy</h2>
-    <p>The AI security tooling landscape moves faster than any automated system can meaningfully evaluate. New tools, frameworks, and attack surfaces emerge weekly. Keeping pace requires continuous immersion in the practitioner community, not periodic desk research.</p>
-    <p>Every tool in the Yuntona directory has been individually evaluated by a security professional with over a decade of experience spanning SOC/NOC operations, third-party risk management, financial services regulation, and hands-on AI security research. The directory reflects professional judgement informed by real-world operational context — not algorithmic scoring.</p>
-
-    <h2>Curation Principles</h2>
-    <div class="principles">
-      <div class="principle">
-        <div class="principle-label">Multi-Source Intelligence</div>
-        <p class="principle-text">Discovery draws from practitioner discourse on LinkedIn and specialist forums, industry conference proceedings, standards body publications, OWASP working group publications, industry intelligence newsletters, and direct engagement with thought leaders in AI security.</p>
+<!-- ═══════════════════════════════════════════════════════════════════
+     FOOTER — matches landing page exactly
+     ═══════════════════════════════════════════════════════════════════ -->
+<footer style="padding:48px 32px 36px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.2);">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <svg width="24" height="24" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+          <circle cx="100" cy="74" r="38" fill="none" stroke="#f0eee9" stroke-width="9"/>
+          <g fill="none" stroke="#f0eee9" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 78 106 Q 76 134, 70 160"/>
+            <path d="M 122 106 Q 124 134, 130 160"/>
+            <path d="M 100 112 L 100 176"/>
+          </g>
+          <g fill="none" stroke="#f0eee9" stroke-width="9" stroke-linecap="round">
+            <path d="M 64 96 Q 50 108, 52 126"/>
+            <path d="M 136 96 Q 150 108, 148 126"/>
+          </g>
+          <circle cx="88" cy="70" r="4.5" fill="#f0eee9"/>
+          <circle cx="112" cy="70" r="4.5" fill="#f0eee9"/>
+        </svg>
+        <span style="font-family:Fraunces,serif;font-size:18px;color:#f0eee9;font-weight:600;letter-spacing:-0.3px;">Yuntona&trade;</span>
       </div>
-      <div class="principle">
-        <div class="principle-label">Expert Signal Filtering</div>
-        <p class="principle-text">Not everything discovered gets listed. Each candidate tool is assessed against the current threat landscape, mapped to OWASP risk categories, and evaluated for genuine operational utility. Tools that duplicate existing coverage without meaningful differentiation are excluded.</p>
-      </div>
-      <div class="principle">
-        <div class="principle-label">Community-Embedded Discovery</div>
-        <p class="principle-text">The best tools surface in comment threads, conference hallway conversations, and working group discussions — not product launch pages. Following the practitioners who build and break AI systems is how Yuntona finds tools before they reach mainstream awareness.</p>
-      </div>
-      <div class="principle">
-        <div class="principle-label">Continuous Rather Than Periodic</div>
-        <p class="principle-text">The directory is updated on a rolling basis as new tools are discovered and evaluated. This is not a quarterly report — it is a living artefact maintained through daily engagement with the AI security ecosystem.</p>
-      </div>
-    </div>
-
-    <h2>Intelligence Sources</h2>
-    <div class="source-grid">
-      <div class="source-item">
-        <div class="source-name">Standards Bodies</div>
-        <div class="source-desc">OWASP, NIST, CSA, MITRE, ISO/IEC publications and working group output</div>
-      </div>
-      <div class="source-item">
-        <div class="source-name">Industry Intelligence</div>
-        <div class="source-desc">CB Insights, analyst reports, vendor-neutral market research, emerging technology coverage</div>
-      </div>
-      <div class="source-item">
-        <div class="source-name">Conferences & Events</div>
-        <div class="source-desc">NHIcon, CSA summits, AI security workshops, vendor-neutral industry events</div>
-      </div>
-      <div class="source-item">
-        <div class="source-name">Practitioner Networks</div>
-        <div class="source-desc">OWASP AIUC community, LinkedIn specialist groups, thought leader commentary</div>
-      </div>
-      <div class="source-item">
-        <div class="source-name">Primary Research</div>
-        <div class="source-desc">Academic papers, arXiv preprints, vendor documentation, GitHub repositories</div>
+      <p style="color:#6b7a88;font-size:13px;line-height:1.6;margin:0;max-width:320px;">
+        Practitioner-curated directory of AI security controls, mapped to the OWASP LLM &amp; Agentic Top 10.
+      </p>
+      <div style="margin-top:18px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#6b7a88;letter-spacing:0.3px;">
+        Open Source &#9829; Made in the UK 🇬🇧
       </div>
     </div>
 
-    <h2>OWASP Risk Mapping</h2>
-    <p>Every tool is mapped against the OWASP LLM Top 10 (2025) and the OWASP Agentic Top 10 (2026) to show which risks it addresses. Mappings are derived from analysis of each tool's documented capabilities, target threat model, and operational scope — assessed against the published risk descriptions in each OWASP standard.</p>
-
-    <div class="section-spacer">
-      <div class="coverage-row">
-        <span class="coverage-label">LLM Top 10 (2025)</span>
-        <div class="coverage-bar-track"><div class="coverage-bar-fill" class="full-width"></div></div>
-        <span class="coverage-value">10 / 10</span>
-      </div>
-      <div class="coverage-row">
-        <span class="coverage-label">Agentic Top 10 (2026)</span>
-        <div class="coverage-bar-track"><div class="coverage-bar-fill" class="full-width"></div></div>
-        <span class="coverage-value">10 / 10</span>
-      </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b7a88;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Platform</div>
+      <a href="/directory" style="display:block;color:#c2cbd4;font-size:13px;text-decoration:none;padding:4px 0;">Directory</a>
+      <a href="/graph" style="display:block;color:#c2cbd4;font-size:13px;text-decoration:none;padding:4px 0;">Knowledge Graph</a>
     </div>
 
-    <div class="callout callout-accent">
-      <p><strong>AI-Assisted Execution, Human Design.</strong> OWASP risk mappings across <span data-stat="tools">161</span> tools and 20 risk categories were produced using AI as an analytical engine. The methodology, evaluation schema, and framework inputs were designed by the curator. Every output was reviewed and validated against the published OWASP standards. This is human-directed analysis at scale — not automated classification.</p>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b7a88;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Resources</div>
+      <a href="/methodology" style="display:block;color:#c2cbd4;font-size:13px;text-decoration:none;padding:4px 0;">Methodology</a>
+      <a href="https://github.com/craftedbyfabio/yuntona" style="display:block;color:#c2cbd4;font-size:13px;text-decoration:none;padding:4px 0;">GitHub</a>
     </div>
 
-    <h2>What Gets Listed</h2>
-    <p>A tool or framework is added to the directory when it meets three criteria: it addresses a genuine security risk in the generative or agentic AI stack, it is operational or near-operational (not vaporware), and it offers meaningful capability that is not already covered by existing entries. Open-source tools, commercial platforms, and frameworks are all eligible. Vendor sponsorship does not influence inclusion or risk ratings.</p>
-
-    <div class="callout callout-warm">
-      <p><strong>Transparency note.</strong> Yuntona is maintained by a single practitioner. The directory reflects one expert's informed judgement — not committee consensus or crowd-sourced voting. This is a deliberate choice: curation quality depends on accountability, not volume. If you believe a tool should be included or a mapping corrected, <a href="/submit">submit it for review</a>.</p>
-    </div>
-
-    <div class="footer-note">
-      Yuntona™ is an independent, open-source project. It is not affiliated with or endorsed by OWASP, NIST, MITRE, or any vendor listed in the directory. OWASP risk categories are used under the Creative Commons licence. Last updated March 2026.
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b7a88;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Contribute</div>
+      <a href="#" style="display:block;color:#c2cbd4;font-size:13px;text-decoration:none;padding:4px 0;">Suggest a tool</a>
+      <a href="#" style="display:block;color:#c2cbd4;font-size:13px;text-decoration:none;padding:4px 0;">Report an issue</a>
+      <a href="https://github.com/craftedbyfabio/yuntona" style="display:block;color:#c2cbd4;font-size:13px;text-decoration:none;padding:4px 0;">Star on GitHub</a>
     </div>
   </div>
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-col">
-      <div class="footer-brand">
-        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 100 100" fill="none"><path d="M42 50 L58 50 L58 90 L42 90 Z" fill="#F8FAFC"/><path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#F8FAFC"/><path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#22d3ee"/></svg>
-        <span class="footer-wordmark">YUNTONA<span class="tm">™</span></span>
-      </div>
-      <p class="footer-meta">Developed by Yuntona Ltd</p>
-      <p class="footer-meta">&copy; 2026 Yuntona Ltd. All rights reserved.</p>
-      <p class="footer-meta">Logos provided by <a href="https://logo.dev" target="_blank" rel="noopener" class="accent-link">Logo.dev</a></p>
-    </div>
-    <div class="footer-col footer-col-center">
-      <p class="footer-heart">Open Source ♥️ Made in the UK 🇬🇧</p>
-      <p class="footer-meta">Maintained by <strong>Fabio Baumeler</strong></p>
-      <p class="footer-meta">CISSP · MSc Information Security (Royal Holloway)</p>
-      <p class="footer-meta"><a href="https://www.linkedin.com/in/fbaumeler" target="_blank" rel="noopener" class="accent-link">LinkedIn ↗</a></p>
-    </div>
-    <div class="footer-col footer-col-right">
-      <a href="/" class="footer-link">Home</a>
-      <a href="/directory" class="footer-link">Directory</a>
-      <a href="/graph" class="footer-link">Knowledge Graph</a>
-      <a href="/methodology" class="footer-link">Methodology</a>
-      <a href="https://github.com/craftedbyfabio/yuntona" target="_blank" rel="noopener" class="footer-link">GitHub ↗</a>
-    </div>
+
+  <div style="max-width:1240px;margin:36px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;font-size:11px;font-family:'JetBrains Mono',monospace;color:#6b7a88;letter-spacing:0.3px;flex-wrap:wrap;gap:12px;">
+    <span>© 2026 Yuntona Ltd · All rights reserved</span>
+    <span>v1.7.0 · 161 tools · last updated 2026-04-22</span>
   </div>
 </footer>
 
-<script src="/js/site-nav.js"></script>
-<script src="/js/site-config.js"></script>
+<script src="/js/methodology.js"></script>
 </body>
 </html>

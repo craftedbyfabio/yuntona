@@ -80,14 +80,13 @@
 .coverage-bar-10 { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 3px; margin-top: 14px; }
 .coverage-bar-10 span { height: 6px; border-radius: 2px; background: linear-gradient(90deg, var(--kelp-deep), var(--kelp-soft)); }
 
-/* Criteria */
-.criteria { margin-top: 28px; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); }
-.criterion { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; padding: 18px 22px; border-bottom: 1px solid var(--border); align-items: flex-start; }
-.criterion:last-child { border-bottom: none; }
-.criterion-num { font-family: var(--font-mono); font-size: 11px; color: var(--coral); letter-spacing: 0.1em; }
+/* Criteria — plain list, no card background */
+.criteria { margin-top: 28px; border-top: 1px solid var(--border); }
+.criterion { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+.criterion-num { font-family: var(--font-mono); font-size: 11px; color: var(--coral); letter-spacing: 0.1em; padding-top: 2px; }
 .criterion strong { display: block; color: var(--text); font-weight: 500; margin-bottom: 4px; font-size: 15px; }
 .criterion span { font-size: 13px; color: var(--text-dim); line-height: 1.55; }
-.method-footer-note { margin-top: 22px; }
+.method-footer-note { margin-top: 18px; }
 
 /* Disclosure */
 .disclosure { margin-top: 24px; padding: 22px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
