@@ -1,8 +1,59 @@
 /* ═══════════════════════════════════════════════════════════════════
    Methodology page — PR 3
    Two-column (220px TOC rail + 760px content) at ≥900px.
-   Uses tokens from css/site.css (PR 1).
+   Tokens inlined here so the page is self-sufficient.
    ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Surfaces */
+  --bg: #0a0e14;
+  --surface: rgba(255,255,255,0.025);
+  --border: rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.14);
+
+  /* Text */
+  --text: #f0eee9;
+  --text-muted: #c2cbd4;
+  --text-dim: #9aa6b2;
+  --text-faint: #6b7a88;
+
+  /* Accents — coral (primary) */
+  --coral: #c96442;
+  --coral-soft: #e08a6e;
+  --coral-border: rgba(201, 100, 66, 0.35);
+  --coral-glow: rgba(201, 100, 66, 0.08);
+
+  /* Accents — kelp (secondary, used for chips + italic accents) */
+  --kelp-deep: #3d6b5c;
+  --kelp-soft: #7fb89f;
+  --kelp-border: rgba(127, 184, 159, 0.28);
+  --kelp-glow: rgba(127, 184, 159, 0.08);
+
+  /* Type */
+  --font-brand: 'Fraunces', Georgia, serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Radius */
+  --radius: 6px;
+  --radius-lg: 10px;
+}
+
+/* Shared atoms used across the page */
+.kicker { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--coral); }
+.italic-accent { font-style: italic; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; color: var(--kelp-soft); }
+.meta-strip { font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); display: flex; flex-wrap: wrap; gap: 10px; letter-spacing: 0.02em; }
+
+/* Callouts */
+.callout { margin: 28px 0; padding: 20px 24px; border-radius: var(--radius-lg); background: var(--kelp-glow); border: 1px solid var(--kelp-border); }
+.callout-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--kelp-soft); display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.callout-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--kelp-soft); display: inline-block; }
+.callout p { margin: 0; font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+.callout--kelp { /* alias */ }
+
+/* Section numbers */
+.section-num { font-family: var(--font-mono); font-size: 11px; color: var(--coral); letter-spacing: 0.15em; margin-bottom: 10px; }
 
 .method-page { max-width: 1240px; margin: 0 auto; padding: 24px 32px 80px; }
 
