@@ -9,3 +9,7 @@
   # per Supabase's design (RLS gates the data). Tell Netlify's secrets scanner
   # to skip these specific keys. https://ntl.fyi/configure-secrets-scanning
   SECRETS_SCAN_OMIT_KEYS = "PUBLIC_LOGO_DEV_TOKEN,SUPABASE_URL,SUPABASE_ANON_KEY"
+  # Skip the archived legacy site and the design reference folder. Neither
+  # ships in dist/, but the legacy code already used the same publishable
+  # logo.dev token in <img src> URLs and would re-trigger the scanner.
+  SECRETS_SCAN_OMIT_PATHS = "archive/**,design ref 2.0/**"
