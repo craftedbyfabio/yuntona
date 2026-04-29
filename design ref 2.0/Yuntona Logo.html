@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Yuntona — Logo Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&family=Instrument+Serif:ital@0;1&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #f0eee9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="octopus-marks.jsx"></script>
+<script type="text/babel">
+  const { DesignCanvas, DCSection, DCArtboard, DCPostIt } = window;
+  const {
+    Mark_TentacleY,      // 01 — tentacles literally form the Y
+    Mark_PerchedY,       // 02 — octopus sitting on a geometric Y
+    Mark_BodyIsBowl,     // 03 — octopus head = Y's triangular bowl
+    Mark_Monoline,       // 04 — single-stroke minimal
+    Mark_Badge,          // 05 — circular badge / app icon
+    Mark_Inktrap,        // 06 — geometric / angular variant
+    Wordmark_Fraunces,
+    Wordmark_Instrument,
+    Wordmark_Nunito,
+    LockupHorizontal,
+    LockupStacked,
+    InitialBadge,
+  } = window;
+
+  const Frame = ({children, bg='#faf8f3', pad=24, align='center'}) => (
+    <div style={{
+      width:'100%', height:'100%', background:bg, display:'flex',
+      alignItems:'center', justifyContent: align==='center' ? 'center' : 'flex-start',
+      padding: pad, boxSizing:'border-box', position:'relative'
+    }}>
+      {children}
+    </div>
+  );
+
+  const Corner = ({label}) => (
+    <div style={{
+      position:'absolute', top:10, left:12, fontFamily:'"JetBrains Mono", monospace',
+      fontSize:10, letterSpacing:1, textTransform:'uppercase', color:'rgba(0,0,0,.35)'
+    }}>{label}</div>
+  );
+
+  function App() {
+    return (
+      <DesignCanvas>
+        {/* ──────────── Intro ──────────── */}
+        <DCSection id="intro" title="Yuntona" subtitle="Digital drafts from the napkin sketch — octopus + Y, several directions">
+          <DCArtboard id="brief" label="Brief" width={520} height={420}>
+            <div style={{padding:'36px 40px', fontFamily:'Fraunces, serif', color:'#2b2620', height:'100%', boxSizing:'border-box'}}>
+              <div style={{fontFamily:'"JetBrains Mono", monospace', fontSize:11, letterSpacing:2, textTransform:'uppercase', color:'#9b8b6f', marginBottom:18}}>Brief</div>
+              <div style={{fontSize:28, lineHeight:1.25, fontWeight:500, letterSpacing:-0.3, marginBottom:20}}>
+                An octopus, perched on &amp; woven into the <em style={{fontStyle:'italic', color:'#1f6b5e'}}>Y</em> of <strong style={{fontWeight:600}}>Yuntona</strong>.
+              </div>
+              <div style={{fontSize:14, lineHeight:1.6, color:'#5a5048', fontFamily:'-apple-system, sans-serif'}}>
+                Following the sketch: a friendly cephalopod character with two eyes, a soft round head and fluted tentacles that hang or sprawl. Six directions below — plus wordmark &amp; lockup studies. Drag to reorder, click any thumbnail to focus.
+              </div>
+            </div>
+          </DCArtboard>
+          <DCArtboard id="palette" label="Palette &amp; type" width={520} height={420}>
+            <div style={{padding:'32px 36px', height:'100%', boxSizing:'border-box', fontFamily:'-apple-system, sans-serif'}}>
+              <div style={{fontFamily:'"JetBrains Mono", monospace', fontSize:11, letterSpacing:2, textTransform:'uppercase', color:'#9b8b6f', marginBottom:18}}>System</div>
+              <div style={{display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap:10, marginBottom:22}}>
+                {[
+                  ['#0d1f2d','Deep'],
+                  ['#1f6b5e','Kelp'],
+                  ['#c96442','Coral'],
+                  ['#f0eee9','Paper'],
+                ].map(([c,n])=>(
+                  <div key={c}>
+                    <div style={{height:56, background:c, borderRadius:2, border:c==='#f0eee9'?'1px solid #e2ddd3':'none'}}/>
+                    <div style={{fontSize:11, marginTop:6, color:'#2b2620', fontWeight:500}}>{n}</div>
+                    <div style={{fontSize:10, color:'#9b8b6f', fontFamily:'"JetBrains Mono", monospace'}}>{c}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{borderTop:'1px solid #e6e0d3', paddingTop:18}}>
+                <div style={{fontFamily:'Fraunces, serif', fontSize:38, fontWeight:500, letterSpacing:-0.5, lineHeight:1, color:'#1a1510'}}>Yuntona</div>
+                <div style={{fontSize:11, color:'#9b8b6f', marginTop:6, fontFamily:'"JetBrains Mono", monospace'}}>Fraunces · humanist serif · warm</div>
+              </div>
+              <div style={{marginTop:14}}>
+                <div style={{fontFamily:'Instrument Serif, serif', fontSize:38, fontStyle:'italic', letterSpacing:-0.3, lineHeight:1, color:'#1a1510'}}>Yuntona</div>
+                <div style={{fontSize:11, color:'#9b8b6f', marginTop:6, fontFamily:'"JetBrains Mono", monospace'}}>Instrument Serif · italic · soft</div>
+              </div>
+            </div>
+          </DCArtboard>
+        </DCSection>
+
+        {/* ──────────── Marks ──────────── */}
+        <DCSection id="marks" title="Mark directions" subtitle="Six takes on the octopus+Y. Same character, different integrations.">
+          <DCArtboard id="m1" label="01 · Tentacle-Y" width={340} height={340}>
+            <Frame><Corner label="01"/><Mark_TentacleY size={240}/></Frame>
+          </DCArtboard>
+          <DCArtboard id="m2" label="02 · Perched" width={340} height={340}>
+            <Frame><Corner label="02"/><Mark_PerchedY size={240}/></Frame>
+          </DCArtboard>
+          <DCArtboard id="m3" label="03 · Body-is-bowl" width={340} height={340}>
+            <Frame><Corner label="03"/><Mark_BodyIsBowl size={240}/></Frame>
+          </DCArtboard>
+          <DCArtboard id="m4" label="04 · Monoline" width={340} height={340}>
+            <Frame><Corner label="04"/><Mark_Monoline size={240}/></Frame>
+          </DCArtboard>
+          <DCArtboard id="m5" label="05 · Badge" width={340} height={340}>
+            <Frame><Corner label="05"/><Mark_Badge size={260}/></Frame>
+          </DCArtboard>
+          <DCArtboard id="m6" label="06 · Geometric" width={340} height={340}>
+            <Frame><Corner label="06"/><Mark_Inktrap size={240}/></Frame>
+          </DCArtboard>
+        </DCSection>
+
+        {/* ──────────── Wordmark ──────────── */}
+        <DCSection id="wordmark" title="Wordmark studies" subtitle="Three typographic treatments of 'Yuntona'.">
+          <DCArtboard id="w1" label="Fraunces · warm humanist" width={520} height={260}>
+            <Frame><Wordmark_Fraunces/></Frame>
+          </DCArtboard>
+          <DCArtboard id="w2" label="Instrument · italic" width={520} height={260}>
+            <Frame><Wordmark_Instrument/></Frame>
+          </DCArtboard>
+          <DCArtboard id="w3" label="Nunito · soft sans" width={520} height={260}>
+            <Frame><Wordmark_Nunito/></Frame>
+          </DCArtboard>
+        </DCSection>
+
+        {/* ──────────── Lockup ──────────── */}
+        <DCSection id="lockup" title="Full lockups" subtitle="Mark + wordmark together. Using Tentacle-Y (01) as the lead candidate.">
+          <DCArtboard id="l1" label="Horizontal" width={640} height={260}>
+            <Frame><LockupHorizontal/></Frame>
+          </DCArtboard>
+          <DCArtboard id="l2" label="Stacked" width={400} height={420}>
+            <Frame><LockupStacked/></Frame>
+          </DCArtboard>
+          <DCArtboard id="l3" label="Initial badge" width={400} height={420}>
+            <Frame bg="#0d1f2d"><InitialBadge/></Frame>
+          </DCArtboard>
+        </DCSection>
+
+        {/* ──────────── Context ──────────── */}
+        <DCSection id="context" title="In context" subtitle="Lead mark on light &amp; dark, at favicon scale and signage scale.">
+          <DCArtboard id="c1" label="On dark" width={420} height={320}>
+            <Frame bg="#0d1f2d"><Mark_TentacleY size={200} fg="#f0eee9" accent="#c96442"/></Frame>
+          </DCArtboard>
+          <DCArtboard id="c2" label="On coral" width={420} height={320}>
+            <Frame bg="#c96442"><Mark_TentacleY size={200} fg="#f0eee9" accent="#0d1f2d"/></Frame>
+          </DCArtboard>
+          <DCArtboard id="c3" label="Favicon · 32px" width={200} height={200}>
+            <Frame bg="#faf8f3" pad={12}>
+              <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:10}}>
+                <div style={{width:32, height:32, display:'flex', alignItems:'center', justifyContent:'center'}}>
+                  <Mark_TentacleY size={32}/>
+                </div>
+                <div style={{width:64, height:64, display:'flex', alignItems:'center', justifyContent:'center'}}>
+                  <Mark_TentacleY size={64}/>
+                </div>
+                <div style={{fontFamily:'"JetBrains Mono", monospace', fontSize:9, color:'#9b8b6f'}}>32px · 64px</div>
+              </div>
+            </Frame>
+          </DCArtboard>
+          <DCArtboard id="c4" label="Signage" width={420} height={320}>
+            <Frame bg="#f0eee9" pad={0}>
+              <div style={{display:'flex', alignItems:'center', gap:22}}>
+                <Mark_TentacleY size={90}/>
+                <div style={{fontFamily:'Fraunces, serif', fontSize:60, fontWeight:500, letterSpacing:-1.2, color:'#0d1f2d'}}>Yuntona</div>
+              </div>
+            </Frame>
+          </DCArtboard>
+        </DCSection>
+
+      </DesignCanvas>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
