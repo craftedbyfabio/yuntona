@@ -2,6 +2,13 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { LLM_TOP10, ASI_TOP10, type DirectoryTool } from '../../lib/directory-data';
 import styles from './Directory.module.css';
 
+const LOGO_TOKEN = import.meta.env.PUBLIC_LOGO_DEV_TOKEN;
+
+function logoUrl(domain: string | undefined, size = 80): string | null {
+  if (!domain || !LOGO_TOKEN) return null;
+  return `https://img.logo.dev/${domain}?token=${LOGO_TOKEN}&size=${size}&format=png&theme=auto`;
+}
+
 type Props = { tools: DirectoryTool[] };
 
 type SortKey = 'relevance' | 'updated' | 'name';
@@ -429,7 +436,23 @@ function ToolRow({ t }: { t: DirectoryTool }) {
 
   return (
     <a className={styles.row} href={`/tool/${t.id}`}>
-      <div className={styles.rowGlyph} style={{ background: t.glyphBg }}>{t.glyph}</div>
+      <div className={styles.rowGlyph} style={{ background: t.glyphBg }}>
+        {t.glyph}
+        {(() => {
+          const url = logoUrl(t.logoDomain, 96);
+          return url ? (
+            <img
+              className={styles.rowGlyphImg}
+              src={url}
+              alt=""
+              loading="lazy"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          ) : null;
+        })()}
+      </div>
       <div className={styles.rowMain}>
         <div className={styles.rowHeader}>
           <span className={styles.rowName}>{t.name}</span>
@@ -478,7 +501,23 @@ function ToolCard({ t }: { t: DirectoryTool }) {
   return (
     <a className={styles.card} href={`/tool/${t.id}`}>
       <div className={styles.cardHeader}>
-        <div className={styles.cardGlyph} style={{ background: t.glyphBg }}>{t.glyph}</div>
+        <div className={styles.cardGlyph} style={{ background: t.glyphBg }}>
+          {t.glyph}
+          {(() => {
+            const url = logoUrl(t.logoDomain, 80);
+            return url ? (
+              <img
+                className={styles.cardGlyphImg}
+                src={url}
+                alt=""
+                loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            ) : null;
+          })()}
+        </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div className={styles.cardName}>{t.name}</div>
           <div className={styles.cardCat}>{catLabel}</div>

@@ -128,7 +128,7 @@ export default function SankeyView({ stages, risks, flows, categories, activeCat
   return (
     <>
       <svg viewBox={`0 0 ${W} ${H}`} className={styles.svgFull}>
-        <g fontFamily="Inter" fontSize="11" letterSpacing="2" fill="rgba(240,238,233,0.42)">
+        <g fontFamily="Inter" fontSize="9.5" letterSpacing="2" fill="rgba(240,238,233,0.42)">
           <text x={COL.stage - NODE_W / 2} y="22">LIFECYCLE STAGE</text>
           <text x={COL.cat - 70} y="22">TOOL CATEGORY</text>
           <text x={COL.risk - NODE_W / 2 - 95} y="22" textAnchor="start">OWASP RISK</text>
@@ -169,7 +169,7 @@ export default function SankeyView({ stages, risks, flows, categories, activeCat
                 y={n.y + n.h / 2 + 4}
                 textAnchor="end"
                 fontFamily="Inter"
-                fontSize="13"
+                fontSize="9.5"
                 fontWeight="500"
                 fill="#f0eee9"
               >
@@ -180,7 +180,7 @@ export default function SankeyView({ stages, risks, flows, categories, activeCat
                 y={n.y + n.h / 2 + 18}
                 textAnchor="end"
                 fontFamily="JetBrains Mono"
-                fontSize="10.5"
+                fontSize="9"
                 fill="rgba(240,238,233,0.5)"
               >
                 {n.count} tools
@@ -208,7 +208,7 @@ export default function SankeyView({ stages, risks, flows, categories, activeCat
                   x={COL.cat - 68}
                   y={c.y + c.h / 2 + 4}
                   fontFamily="Inter"
-                  fontSize="12"
+                  fontSize="10"
                   fontWeight="500"
                   fill="#f0eee9"
                 >
@@ -234,7 +234,7 @@ export default function SankeyView({ stages, risks, flows, categories, activeCat
                 x={COL.risk + NODE_W / 2 + 10}
                 y={n.y + n.h / 2 - 1}
                 fontFamily="JetBrains Mono"
-                fontSize="11"
+                fontSize="9.5"
                 fontWeight="600"
                 fill="#e85d75"
               >
@@ -244,7 +244,7 @@ export default function SankeyView({ stages, risks, flows, categories, activeCat
                 x={COL.risk + NODE_W / 2 + 10}
                 y={n.y + n.h / 2 + 14}
                 fontFamily="Inter"
-                fontSize="12"
+                fontSize="10"
                 fill="#f0eee9"
               >
                 {n.label}
@@ -261,11 +261,11 @@ export default function SankeyView({ stages, risks, flows, categories, activeCat
           return (
             <g transform={`translate(${COL.cat - 90} ${cy - 30})`} pointerEvents="none">
               <rect width="180" height="60" rx="6" fill="#0a0e14" stroke="rgba(240,238,233,0.18)" />
-              <text x="14" y="22" fontFamily="Inter" fontSize="11" fill="rgba(240,238,233,0.55)" letterSpacing="1.5">FLOW</text>
-              <text x="14" y="40" fontFamily="Inter" fontSize="13" fontWeight="600" fill="#f0eee9">
+              <text x="14" y="22" fontFamily="Inter" fontSize="9.5" fill="rgba(240,238,233,0.55)" letterSpacing="1.5">FLOW</text>
+              <text x="14" y="40" fontFamily="Inter" fontSize="9.5" fontWeight="600" fill="#f0eee9">
                 {sN.label} → {hoveredFlow.rid}
               </text>
-              <text x="14" y="54" fontFamily="JetBrains Mono" fontSize="11" fill="#c96442">
+              <text x="14" y="54" fontFamily="JetBrains Mono" fontSize="9.5" fill="#c96442">
                 {hoveredFlow.w} tools
               </text>
             </g>

@@ -326,6 +326,7 @@
 .row:hover { background: rgba(201, 100, 66, 0.04); }
 
 .rowGlyph {
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -338,6 +339,17 @@
   color: var(--text);
   letter-spacing: -0.3px;
   flex-shrink: 0;
+  overflow: hidden;
+}
+.rowGlyphImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px;
+  border-radius: inherit;
 }
 .rowMain { min-width: 0; }
 .rowHeader {
@@ -432,6 +444,7 @@
   align-items: center;
 }
 .cardGlyph {
+  position: relative;
   width: 36px;
   height: 36px;
   border-radius: 7px;
@@ -443,6 +456,17 @@
   font-weight: 600;
   color: var(--text);
   flex-shrink: 0;
+  overflow: hidden;
+}
+.cardGlyphImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3px;
+  border-radius: inherit;
 }
 .cardName { font-size: 15px; font-weight: 600; color: var(--text); }
 .cardCat {

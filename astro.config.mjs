@@ -10,9 +10,6 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'never',
   },
-  experimental: {
-    csp: true,
-  },
   vite: {
     ssr: {
       noExternal: ['@fontsource-variable/*', '@fontsource/*'],

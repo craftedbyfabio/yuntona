@@ -74,7 +74,7 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
                   x={x}
                   y={TOP - 58}
                   fontFamily="JetBrains Mono"
-                  fontSize="11"
+                  fontSize="9.5"
                   fontWeight="600"
                   fill="#e85d75"
                   textAnchor="middle"
@@ -85,7 +85,7 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
                   x={x}
                   y={TOP - 42}
                   fontFamily="Inter"
-                  fontSize="10"
+                  fontSize="8.5"
                   fill="rgba(240,238,233,0.65)"
                   textAnchor="middle"
                 >
@@ -124,7 +124,7 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
                   y={y - 2}
                   textAnchor="end"
                   fontFamily="Inter"
-                  fontSize="13"
+                  fontSize="9.5"
                   fontWeight="500"
                   fill="#7fb89f"
                 >
@@ -135,7 +135,7 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
                   y={y + 12}
                   textAnchor="end"
                   fontFamily="JetBrains Mono"
-                  fontSize="10"
+                  fontSize="8.5"
                   fill="rgba(240,238,233,0.45)"
                 >
                   {layout.rowTotals[ri]} tools
@@ -173,7 +173,7 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
                     y={y + layout.ch / 2 + 4}
                     textAnchor="middle"
                     fontFamily="JetBrains Mono"
-                    fontSize="12"
+                    fontSize="8.5"
                     fontWeight="600"
                     fill={
                       v === 0
@@ -197,7 +197,7 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
             x="0"
             y="-4"
             fontFamily="Inter"
-            fontSize="11"
+            fontSize="9.5"
             letterSpacing="1.5"
             fill="rgba(240,238,233,0.5)"
           >
@@ -214,14 +214,14 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
               rx="1"
             />
           ))}
-          <text x="0" y="32" fontFamily="JetBrains Mono" fontSize="10" fill="rgba(240,238,233,0.5)">
+          <text x="0" y="32" fontFamily="JetBrains Mono" fontSize="8.5" fill="rgba(240,238,233,0.5)">
             0 tools
           </text>
           <text
             x="210"
             y="32"
             fontFamily="JetBrains Mono"
-            fontSize="10"
+            fontSize="8.5"
             fill="rgba(240,238,233,0.5)"
           >
             {layout.max}+ tools
@@ -260,7 +260,7 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
                   x="12"
                   y="18"
                   fontFamily="Inter"
-                  fontSize="10"
+                  fontSize="8.5"
                   letterSpacing="1.5"
                   fill="rgba(232,93,117,0.85)"
                 >
@@ -270,7 +270,7 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
                   x="12"
                   y="36"
                   fontFamily="Fraunces"
-                  fontSize="13"
+                  fontSize="9.5"
                   fontStyle="italic"
                   fill="#f0eee9"
                 >
@@ -280,7 +280,7 @@ export default function HeatmapView({ stages, risks, matrix, onSelect }: Props) 
                   x="12"
                   y="50"
                   fontFamily="JetBrains Mono"
-                  fontSize="10.5"
+                  fontSize="9"
                   fill="rgba(240,238,233,0.6)"
                 >
                   {v} tools

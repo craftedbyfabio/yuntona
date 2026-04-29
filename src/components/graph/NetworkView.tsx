@@ -131,7 +131,7 @@ export default function NetworkView({
                 y={s.y + 4}
                 textAnchor="middle"
                 fontFamily="Inter"
-                fontSize="11"
+                fontSize="9"
                 fontWeight="600"
                 fill="#7fb89f"
               >
@@ -161,7 +161,7 @@ export default function NetworkView({
                 y={r.y + 4}
                 textAnchor="middle"
                 fontFamily="JetBrains Mono"
-                fontSize="9.5"
+                fontSize="8.5"
                 fontWeight="600"
                 fill="#e85d75"
               >
@@ -216,7 +216,7 @@ export default function NetworkView({
                 x="10"
                 y="15"
                 fontFamily="Inter"
-                fontSize="11"
+                fontSize="9.5"
                 fontWeight="500"
                 fill="#f0eee9"
               >

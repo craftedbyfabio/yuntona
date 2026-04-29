@@ -23,6 +23,11 @@ if (!tool) throw new Error(`Tool not found: ${slug}`);
 const related = await getRelatedTools(categorySlug, tool.id, 3);
 const detail = deriveToolDetail(tool, related);
 
+const logoToken = import.meta.env.PUBLIC_LOGO_DEV_TOKEN;
+const logoUrl = tool.logoDomain && logoToken
+  ? `https://img.logo.dev/${tool.logoDomain}?token=${logoToken}&size=144&format=png&theme=auto`
+  : null;
+
 const llmCovered = new Set(detail.risks.LLM.map((r) => r[0]));
 const asiCovered = new Set(detail.risks.ASI.map((r) => r[0]));
 
@@ -70,7 +75,10 @@ const yamlText = yamlLines.join('\n');
   <header class="head">
     <div class="head-inner">
       <div class="glyph" style={`background:${detail.glyphBg};color:${detail.glyphAccent};border-color:${detail.glyphAccent}22`}>
-        {detail.glyph}
+        <span class="glyph-text">{detail.glyph}</span>
+        {logoUrl && (
+          <img class="glyph-img" src={logoUrl} alt="" loading="lazy" />
+        )}
       </div>
       <div class="head-main">
         <div class="head-meta">
@@ -281,6 +289,7 @@ const yamlText = yamlLines.join('\n');
     align-items: flex-start;
   }
   .glyph {
+    position: relative;
     width: 72px;
     height: 72px;
     border-radius: 12px;
@@ -293,6 +302,19 @@ const yamlText = yamlLines.join('\n');
     letter-spacing: -1px;
     flex-shrink: 0;
     border: 1px solid;
+    overflow: hidden;
+  }
+  .glyph-text { z-index: 0; }
+  .glyph-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px;
+    border-radius: inherit;
+    z-index: 1;
   }
   .head-main { flex: 1; min-width: 0; }
   .head-meta {
@@ -716,3 +738,9 @@ const yamlText = yamlLines.join('\n');
     .title { font-size: 38px; letter-spacing: -1px; }
   }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLImageElement>('img.glyph-img').forEach((img) => {
+    img.addEventListener('error', () => { img.style.display = 'none'; });
+  });
+</script>

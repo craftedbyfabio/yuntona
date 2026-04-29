@@ -93,30 +93,6 @@ export default function TopBar({
 
         <div className={styles.spacer} />
 
-        <button
-          type="button"
-          className={styles.searchBox}
-          data-search-trigger
-          aria-label="Open search"
-        >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="rgba(240,238,233,0.5)"
-            strokeWidth="2"
-            aria-hidden="true"
-          >
-            <circle cx="11" cy="11" r="7" />
-            <path d="m20 20-3.5-3.5" />
-          </svg>
-          <span className={styles.searchInput} style={{ color: 'rgba(240,238,233,0.5)' }}>
-            Search tools, risks, stages…
-          </span>
-          <kbd className={styles.searchKbd}>⌘K</kbd>
-        </button>
-
         <div className={styles.viewToggle} role="tablist" aria-label="View">
           {VIEW_OPTS.map((o) => {
             const on = view === o.id;
