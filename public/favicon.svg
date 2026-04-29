@@ -1,16 +1,26 @@
-<svg 
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 100 100" 
-  width="100%" 
-  height="100%"
->
-  <rect width="100" height="100" rx="20" fill="#000000" />
-  
-  <g style="filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));">
-    <path d="M42 50 L58 50 L58 90 L42 90 Z" fill="#ffffff" />
-    
-    <path d="M42 50 L14 15 L32 15 L50 50 Z" fill="#ffffff" />
-    
-    <path d="M58 50 L86 15 L68 15 L50 50 Z" fill="#22d3ee" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" rx="36" fill="#f0eee9"/>
+
+  <g fill="none" stroke="#0d1f2d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 70 70 Q 40 70, 32 92 Q 28 108, 40 118"/>
+    <path d="M 130 70 Q 160 70, 168 92 Q 172 108, 160 118"/>
+    <path d="M 78 82 Q 58 100, 60 128"/>
+    <path d="M 122 82 Q 142 100, 140 128"/>
   </g>
+
+  <g fill="none" stroke="#0d1f2d" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 85 80 Q 78 115, 70 150 Q 68 162, 62 172"/>
+    <path d="M 115 80 Q 122 115, 130 150 Q 132 162, 138 172"/>
+    <path d="M 100 84 L 100 172"/>
+  </g>
+
+  <path d="M 56 72 C 56 38, 144 38, 144 72 C 144 86, 136 94, 128 94 L 72 94 C 64 94, 56 86, 56 72 Z" fill="#0d1f2d"/>
+  <path d="M 70 52 Q 100 44, 130 52" fill="none" stroke="#f0eee9" stroke-opacity="0.18" stroke-width="3" stroke-linecap="round"/>
+
+  <circle cx="86" cy="72" r="6.5" fill="#f0eee9"/>
+  <circle cx="114" cy="72" r="6.5" fill="#f0eee9"/>
+  <circle cx="87.5" cy="73" r="3" fill="#0d1f2d"/>
+  <circle cx="115.5" cy="73" r="3" fill="#0d1f2d"/>
+
+  <circle cx="100" cy="83" r="2.5" fill="#c96442" opacity="0.9"/>
 </svg>
