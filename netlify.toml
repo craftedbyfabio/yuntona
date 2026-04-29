@@ -3,7 +3,8 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  # Astro 6 requires Node >=22.12
+  NODE_VERSION = "22"
   # PUBLIC_LOGO_DEV_TOKEN is a logo.dev publishable key (pk_*) baked into
   # <img src> URLs by design; SUPABASE_URL + SUPABASE_ANON_KEY are publishable
   # per Supabase's design (RLS gates the data). Tell Netlify's secrets scanner
