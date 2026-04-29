@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Yuntona — Knowledge Graph</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: #0a0e14;
+    color: #f0eee9;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  * { box-sizing: border-box; }
+  #root { height: 100vh; display: flex; flex-direction: column; }
+  kbd { font-family: 'JetBrains Mono', monospace; }
+  ::selection { background: rgba(201,100,66,0.35); color: #f0eee9; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { background: rgba(240,238,233,0.12); border-radius: 99px; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="graph/logo.jsx"></script>
+<script type="text/babel" src="graph/data.jsx"></script>
+<script type="text/babel" src="graph/topbar.jsx"></script>
+<script type="text/babel" src="graph/sankey.jsx"></script>
+<script type="text/babel" src="graph/network.jsx"></script>
+<script type="text/babel" src="graph/heatmap.jsx"></script>
+<script type="text/babel" src="graph/sidepanel.jsx"></script>
+<script type="text/babel">
+  const { useState } = React;
+  const { GraphTopBar, SankeyView, NetworkView, HeatmapView, SidePanel } = window;
+
+  function App() {
+    const [view, setView] = useState('sankey');
+    const [scope, setScope] = useState('all');
+    const [activeCats, setActiveCats] = useState([]);
+    const [selection, setSelection] = useState({ stage:'operate', risk:'LLM01' });
+
+    return (
+      <div style={{ height:'100vh', display:'flex', flexDirection:'column' }} data-screen-label="01 Knowledge Graph">
+        <GraphTopBar
+          view={view} setView={setView}
+          scope={scope} setScope={setScope}
+          activeCats={activeCats} setActiveCats={setActiveCats}
+        />
+        <div style={{ flex:1, position:'relative', overflow:'hidden' }}>
+          {view==='sankey'  && <SankeyView  activeCats={activeCats} onCellClick={setSelection}/>}
+          {view==='network' && <NetworkView activeCats={activeCats} onCellClick={setSelection}/>}
+          {view==='heatmap' && <HeatmapView                          onCellClick={setSelection}/>}
+          <SidePanel selection={selection} onClose={()=>setSelection(null)}/>
+          <StatBar view={view}/>
+        </div>
+      </div>
+    );
+  }
+
+  function StatBar({ view }) {
+    const stats = {
+      sankey:  '161 tools · 32 mapped flows · click ribbons to explore',
+      network: '161 tools · 8 stages · 10 risks · drag to reposition',
+      heatmap: '80 intersections · 4 coverage gaps · darkest = densest',
+    };
+    return (
+      <div style={{
+        position:'absolute', top:18, right:444, zIndex:4,
+        padding:'7px 14px', borderRadius:999,
+        background:'rgba(10,14,20,0.85)', backdropFilter:'blur(8px)',
+        border:'1px solid rgba(240,238,233,0.1)',
+        fontSize:11.5, color:'rgba(240,238,233,0.65)', fontFamily:'Inter',
+        display:'flex', alignItems:'center', gap:10,
+      }}>
+        <span style={{ width:6, height:6, borderRadius:99, background:'#7fb89f', boxShadow:'0 0 8px #7fb89f' }}/>
+        {stats[view]}
+      </div>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

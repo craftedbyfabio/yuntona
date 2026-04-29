@@ -1,0 +1,153 @@
+---
+import SectionLabel from '../SectionLabel.astro';
+import SectionTitle from '../SectionTitle.astro';
+
+type Col = {
+  t: string;
+  s: string;
+  rows: Array<[string, string]>;
+  dim: boolean;
+};
+
+const cols: Col[] = [
+  {
+    t: 'Awesome-lists',
+    s: 'Crowd-sourced',
+    rows: [
+      ['Cost', 'Free'],
+      ['Structure', 'Flat links'],
+      ['Risk mapping', 'None'],
+      ['Search / filter', 'None'],
+      ['Accountability', 'Community'],
+      ['Freshness', 'Drift after fork'],
+    ],
+    dim: true,
+  },
+  {
+    t: 'Yuntona',
+    s: 'Practitioner-curated',
+    rows: [
+      ['Cost', 'Free · MIT'],
+      ['Structure', 'Evaluated entries'],
+      ['Risk mapping', 'LLM + Agentic Top 10'],
+      ['Search / filter', 'Plain English + filters'],
+      ['Accountability', 'Named maintainer'],
+      ['Freshness', 'Continuous'],
+    ],
+    dim: false,
+  },
+  {
+    t: 'Analyst reports',
+    s: 'Paywalled snapshots',
+    rows: [
+      ['Cost', '£££'],
+      ['Structure', 'PDF chapters'],
+      ['Risk mapping', 'Often'],
+      ['Search / filter', 'No'],
+      ['Accountability', 'Institution'],
+      ['Freshness', 'Months'],
+    ],
+    dim: true,
+  },
+];
+---
+
+<section class="positioning">
+  <div class="inner">
+    <SectionLabel label="Where Yuntona sits" />
+    <SectionTitle>
+      Between <em class="italic-accent">awesome-lists</em> and <em class="italic-accent">analyst reports</em>.
+    </SectionTitle>
+    <p class="lead">
+      Free and open like the first. Individually evaluated and structurally mapped like the second.
+      Accountable to one named practitioner either way.
+    </p>
+
+    <div class="grid">
+      {cols.map((c) => (
+        <div class:list={['col', c.dim && 'dim']}>
+          <div class="title">{c.t}</div>
+          <div class="sub">{c.s}</div>
+          <div class="rows">
+            {c.rows.map(([k, v]) => (
+              <div class="row">
+                <span class="key">{k}</span>
+                <span class="val">{v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .positioning { padding: 96px 32px; }
+  .inner { max-width: 1240px; margin: 0 auto; }
+  .lead {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-dim);
+    max-width: 620px;
+    margin: 0 0 8px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .col {
+    background: linear-gradient(180deg, rgba(201, 100, 66, 0.08) 0%, rgba(201, 100, 66, 0.02) 100%);
+    border: 1px solid rgba(201, 100, 66, 0.25);
+    border-radius: 12px;
+    padding: 26px 24px;
+  }
+  .col.dim {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.06);
+    opacity: 0.62;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+  .sub {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--coral);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .col.dim .sub { color: var(--text-faint); }
+  .rows {
+    margin-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 13px;
+  }
+  .key {
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    align-self: center;
+  }
+  .val { color: var(--text); }
+  .col.dim .val { color: #8593a0; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>

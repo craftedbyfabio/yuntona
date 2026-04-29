@@ -1,0 +1,185 @@
+---
+import SectionLabel from '../SectionLabel.astro';
+import SectionTitle from '../SectionTitle.astro';
+
+const credentials = [
+  'CISSP',
+  'MSc Info Security · Royal Holloway',
+  'GCHQ-certified',
+  '10+ yrs SOC · infosec · regulation',
+];
+const links: Array<[string, string]> = [
+  ['LinkedIn',    'https://www.linkedin.com/in/fbaumeler'],
+  ['GitHub',      'https://github.com/craftedbyfabio'],
+  ['Methodology', '/methodology'],
+];
+---
+
+<section class="curator">
+  <div class="inner">
+    <SectionLabel label="Curator" />
+    <SectionTitle>Single-maintainer accountability.</SectionTitle>
+    <p class="lead">
+      Every assessment reflects one expert's informed judgement — not crowd-sourced voting, not
+      vendor self-submission.
+    </p>
+
+    <div class="card">
+      <div class="avatar">
+        <div class="avatar-glow" aria-hidden="true"></div>
+        <span>FB</span>
+      </div>
+
+      <div class="bio">
+        <div class="role-label">Maintainer</div>
+        <div class="name">Fabio Baumeler</div>
+        <div class="title">Third-Party Cyber Risk Lead · UK Financial Conduct Authority</div>
+
+        <div class="creds">
+          {credentials.map((t) => (
+            <span class="cred">{t}</span>
+          ))}
+        </div>
+
+        <p class="blurb">
+          Built Yuntona to close the gap between AI security frameworks and the tools that
+          operationalise them. Every decision — inclusion, exclusion, risk mapping — traceable
+          to one accountable reviewer.
+        </p>
+      </div>
+
+      <div class="links">
+        {links.map(([l, h]) => (
+          <a class="link" href={h}>{l} ↗</a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .curator {
+    padding: 96px 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .inner { max-width: 1240px; margin: 0 auto; }
+  .lead {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-dim);
+    max-width: 620px;
+    margin: 0 0 8px;
+  }
+
+  .card {
+    margin-top: 48px;
+    padding: 36px 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: 180px 1fr auto;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--kelp-deep) 0%, #0d1f2d 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-glow {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08), transparent 60%);
+  }
+  .avatar span {
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -2px;
+    z-index: 1;
+  }
+
+  .role-label {
+    font-size: 13px;
+    color: var(--coral);
+    font-family: var(--font-mono);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .name {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+  .title {
+    color: var(--text-dim);
+    font-size: 15px;
+    margin-top: 6px;
+    margin-bottom: 20px;
+  }
+
+  .creds {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .cred {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--kelp-soft);
+    background: rgba(31, 107, 94, 0.1);
+    border: 1px solid rgba(31, 107, 94, 0.25);
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+
+  .blurb {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 560px;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-self: flex-start;
+  }
+  .link {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    min-width: 120px;
+  }
+  .link:hover { border-color: var(--text-muted); }
+
+  @media (max-width: 900px) {
+    .card {
+      grid-template-columns: 1fr;
+      padding: 28px;
+    }
+    .avatar { width: 120px; height: 120px; }
+    .avatar span { font-size: 56px; }
+    .links { flex-direction: row; flex-wrap: wrap; }
+  }
+</style>

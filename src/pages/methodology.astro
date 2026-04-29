@@ -1,0 +1,666 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MethodologyTOC, { type Section as TocSection } from '../components/methodology/MethodologyTOC.tsx';
+
+const SECTIONS: TocSection[] = [
+  { id: 'philosophy',   n: '01', k: 'Philosophy' },
+  { id: 'principles',   n: '02', k: 'Curation principles' },
+  { id: 'sources',      n: '03', k: 'Intelligence sources' },
+  { id: 'mapping',      n: '04', k: 'OWASP risk mapping' },
+  { id: 'inclusion',    n: '05', k: 'What gets listed' },
+  { id: 'transparency', n: '06', k: 'Transparency' },
+];
+
+const PRINCIPLES = [
+  { t: 'Multi-source intelligence',     d: 'Discovery draws from practitioner discourse on LinkedIn and specialist forums, conference proceedings, standards body publications, OWASP working groups, industry intelligence newsletters, and direct engagement with AI-security thought leaders.' },
+  { t: 'Expert signal filtering',       d: 'Not everything discovered gets listed. Each candidate is assessed against the current threat landscape, mapped to OWASP categories, and evaluated for genuine operational utility. Duplicates without meaningful differentiation are excluded.' },
+  { t: 'Community-embedded discovery',  d: 'The best tools surface in comment threads, conference hallway conversations, and working-group Slacks — not product launch pages. Following the people who build and break AI systems is how tools reach us before mainstream awareness.' },
+  { t: 'Continuous, not periodic',      d: 'The directory updates on a rolling basis. This is not a quarterly report. It is a living artefact maintained through daily engagement with the AI-security ecosystem.' },
+];
+
+type Source = { t: string; e: string[]; d: string };
+const SOURCES: Source[] = [
+  { t: 'Standards bodies',      e: ['OWASP', 'NIST', 'CSA', 'MITRE', 'ISO/IEC'],                d: 'Publications + working group output' },
+  { t: 'Industry intelligence', e: ['CB Insights', 'analyst reports', 'market research'],       d: 'Vendor-neutral coverage of emerging tech' },
+  { t: 'Conferences & events',  e: ['NHIcon', 'CSA summits', 'AI security workshops'],          d: 'Vendor-neutral industry events' },
+  { t: 'Practitioner networks', e: ['OWASP AIUC', 'LinkedIn groups', 'specialist forums'],      d: 'Thought-leader commentary' },
+  { t: 'Primary research',      e: ['academic papers', 'arXiv', 'vendor docs', 'GitHub'],       d: 'First-hand documentation' },
+];
+
+const PIPELINE: Array<[string, string]> = [
+  ['sources',    '5 channels'],
+  ['discovery',  'raw signal'],
+  ['evaluation', '3 criteria'],
+  ['mapping',    'OWASP fit'],
+  ['published',  'directory'],
+];
+
+const COVERAGE = [
+  { label: 'LLM Top 10 · 2025',     cov: '10 / 10', note: 'Full coverage' },
+  { label: 'Agentic Top 10 · 2026', cov: '10 / 10', note: 'Full coverage' },
+];
+
+const CRITERIA: Array<[string, string, string]> = [
+  ['C.1', 'Addresses a genuine security risk', 'in the generative or agentic AI stack, mapped to at least one OWASP category'],
+  ['C.2', 'Operational or near-operational',   'not vaporware, not a concept paper, not a GitHub readme without code'],
+  ['C.3', 'Offers meaningful capability',      'not already covered by existing entries; differentiated in scope, approach, or depth'],
+];
+---
+
+<BaseLayout title="Methodology — Yuntona" current="methodology">
+  <div class="bread">
+    <a href="/" class="crumb">~</a>
+    <span>/</span>
+    <span class="crumb-cur">methodology</span>
+  </div>
+
+  <header class="head">
+    <div class="kicker">Methodology · v1.7.0</div>
+    <h1 class="title">How we <em class="italic-accent">curate</em>.</h1>
+    <p class="lead">
+      Yuntona is built on practitioner-led continuous intelligence gathering with expert curation —
+      not automated scraping or vendor self-submission.
+    </p>
+    <div class="meta-strip">
+      <span>last reviewed · 2026-03-18</span>
+      <span>·</span>
+      <span>single maintainer · accountable</span>
+      <span>·</span>
+      <span>MIT · open source</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <MethodologyTOC client:load sections={SECTIONS} />
+
+    <main class="main">
+      <section id="philosophy" class="numbered">
+        <div class="num-row">
+          <div class="num">01</div>
+          <h2 class="h2">Philosophy</h2>
+        </div>
+        <p class="p">
+          The AI security tooling landscape moves faster than any automated system can meaningfully
+          evaluate. New tools, frameworks, and attack surfaces emerge weekly. Keeping pace requires
+          continuous immersion in the practitioner community — not periodic desk research.
+        </p>
+        <p class="p">
+          Every entry has been individually evaluated by a security professional with
+          <strong>over a decade</strong> of experience spanning SOC/NOC operations, third-party
+          risk, financial services regulation, and hands-on AI-security research. The directory
+          reflects professional judgement informed by real-world operational context — not
+          algorithmic scoring.
+        </p>
+        <blockquote class="pull">
+          Curation quality depends on accountability, not volume.
+        </blockquote>
+      </section>
+
+      <section id="principles" class="numbered">
+        <div class="num-row">
+          <div class="num">02</div>
+          <h2 class="h2">Curation principles</h2>
+        </div>
+        <p class="p">
+          Four commitments that shape every decision, from discovery to inclusion to retirement.
+        </p>
+        <div class="p-grid">
+          {PRINCIPLES.map((p, i) => (
+            <div class="p-card">
+              <div class="p-num">P.{String(i + 1).padStart(2, '0')}</div>
+              <div class="p-title">{p.t}</div>
+              <div class="p-desc">{p.d}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="sources" class="numbered">
+        <div class="num-row">
+          <div class="num">03</div>
+          <h2 class="h2">Intelligence sources</h2>
+        </div>
+        <p class="p">Where the signal comes from. Five channels feeding one pipeline.</p>
+
+        <div class="src-table">
+          {SOURCES.map((s, i) => (
+            <div class={`src-row ${i === SOURCES.length - 1 ? 'last' : ''}`}>
+              <span class="src-name">{s.t}</span>
+              <div class="src-chips">
+                {s.e.map((x) => <span class="src-chip">{x}</span>)}
+              </div>
+              <span class="src-note">{s.d}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="pipeline">
+          <div class="pipeline-label">Pipeline</div>
+          <div class="pipeline-grid">
+            {PIPELINE.map(([k, v], i) => (
+              <div class="pipe-step">
+                <div class="pipe-box">
+                  <div class="pipe-key">{k}</div>
+                  <div class="pipe-val">{v}</div>
+                </div>
+                {i < PIPELINE.length - 1 && <div class="pipe-arrow">›</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="mapping" class="numbered">
+        <div class="num-row">
+          <div class="num">04</div>
+          <h2 class="h2">OWASP risk mapping</h2>
+        </div>
+        <p class="p">
+          Every tool is mapped against the <strong>OWASP LLM Top 10 (2025)</strong> and the
+          <strong>OWASP Agentic Top 10 (2026)</strong>. Mappings are derived from each tool's
+          documented capabilities, target threat model, and operational scope — assessed against
+          the published risk descriptions.
+        </p>
+
+        <div class="cov-grid">
+          {COVERAGE.map((x) => (
+            <div class="cov-card">
+              <div class="cov-label">{x.label}</div>
+              <div class="cov-row">
+                <span class="cov-num">{x.cov}</span>
+                <span class="cov-note">{x.note}</span>
+              </div>
+              <div class="cov-bars">
+                {Array.from({ length: 10 }).map(() => <div class="cov-bar"></div>)}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">
+            <span class="callout-dot"></span>
+            AI-assisted, human-designed
+          </div>
+          <div class="callout-body">
+            OWASP risk mappings across 161 tools and 20 categories were produced using AI as an
+            analytical engine. The methodology, evaluation schema, and framework inputs were
+            designed by the curator. Every output was reviewed and validated against the published
+            OWASP standards. This is <em class="italic-accent">human-directed analysis at scale</em> —
+            not automated classification.
+          </div>
+        </div>
+      </section>
+
+      <section id="inclusion" class="numbered">
+        <div class="num-row">
+          <div class="num">05</div>
+          <h2 class="h2">What gets listed</h2>
+        </div>
+        <p class="p">
+          A tool is added when it meets three criteria. All three. No two-out-of-three.
+        </p>
+
+        <div class="crit-table">
+          {CRITERIA.map(([n, t, d], i) => (
+            <div class={`crit-row ${i < 2 ? 'has-border' : ''}`}>
+              <span class="crit-num">{n}</span>
+              <div>
+                <div class="crit-title">{t}</div>
+                <div class="crit-desc">{d}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p class="p mt">
+          Open-source tools, commercial platforms, and frameworks are all eligible.{' '}
+          <strong>Vendor sponsorship does not influence inclusion or risk ratings.</strong>
+        </p>
+      </section>
+
+      <section id="transparency" class="numbered">
+        <div class="num-row">
+          <div class="num">06</div>
+          <h2 class="h2">Transparency</h2>
+        </div>
+        <p class="p">
+          Yuntona is maintained by a single practitioner. The directory reflects one expert's
+          informed judgement — not committee consensus, not crowd-sourced voting. This is a
+          deliberate choice.
+        </p>
+
+        <div class="disclosure">
+          <div class="disclosure-label">Affiliation disclosure</div>
+          <p class="disclosure-body">
+            Yuntona<sup>™</sup> is an independent, open-source project. It is{' '}
+            <strong>not affiliated with or endorsed by</strong> OWASP, NIST, MITRE, or any vendor
+            listed in the directory.
+          </p>
+          <p class="disclosure-body">
+            OWASP risk categories are used under the Creative Commons licence.
+          </p>
+        </div>
+
+        <div class="cta-row">
+          <a class="cta-primary" href="/submit">Submit a tool for review →</a>
+          <a class="cta-ghost" href="https://github.com/craftedbyfabio/yuntona">View source ↗</a>
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .bread {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px 32px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+  }
+  .crumb { color: var(--text-dim); text-decoration: none; }
+  .crumb-cur { color: var(--coral); }
+
+  .head {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 28px 32px 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--coral);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 500;
+    letter-spacing: -1.8px;
+    color: var(--text);
+    margin: 0 0 20px;
+    line-height: 1.02;
+  }
+  .lead {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0;
+  }
+  .meta-strip {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.3px;
+    flex-wrap: wrap;
+  }
+
+  .layout {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 48px 32px 72px;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 56px;
+  }
+  .main { max-width: 760px; }
+
+  .numbered {
+    margin-bottom: 64px;
+    scroll-margin-top: 100px;
+  }
+  .num-row { margin-bottom: 22px; }
+  .num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--coral);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .h2 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.05;
+  }
+  .p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin: 0 0 18px;
+  }
+  .p.mt { margin-top: 22px; }
+  .p strong { color: var(--text); }
+
+  .pull {
+    margin: 28px 0;
+    padding: 18px 24px;
+    border-left: 3px solid var(--coral);
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--text);
+    background: rgba(201, 100, 66, 0.04);
+  }
+
+  .p-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .p-card {
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .p-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+  .p-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .p-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  .src-table {
+    margin-top: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.015);
+  }
+  .src-row {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .src-row.last { border-bottom: none; }
+  .src-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+  .src-chips { display: flex; gap: 4px; flex-wrap: wrap; }
+  .src-chip {
+    font-size: 11px;
+    color: var(--kelp-soft);
+    background: rgba(31, 107, 94, 0.1);
+    border: 1px solid rgba(31, 107, 94, 0.2);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+  }
+  .src-note {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .pipeline {
+    margin-top: 28px;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+  }
+  .pipeline-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .pipe-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  .pipe-box {
+    background: rgba(201, 100, 66, 0.08);
+    border: 1px solid rgba(201, 100, 66, 0.25);
+    padding: 10px 8px;
+    border-radius: 6px;
+    color: var(--text);
+    width: 100%;
+    margin-bottom: 6px;
+  }
+  .pipe-key {
+    color: var(--coral);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .pipe-val {
+    color: var(--text-muted);
+    font-size: 10px;
+    margin-top: 4px;
+  }
+  .pipe-arrow {
+    position: absolute;
+    right: -6px;
+    top: 24px;
+    color: var(--text-faint);
+  }
+
+  .cov-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .cov-card {
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+  }
+  .cov-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .cov-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .cov-num {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -1px;
+  }
+  .cov-note {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--kelp-soft);
+  }
+  .cov-bars {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 3px;
+  }
+  .cov-bar {
+    height: 6px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--kelp-deep), var(--kelp-soft));
+  }
+
+  .callout {
+    margin-top: 28px;
+    padding: 22px 24px;
+    background: linear-gradient(180deg, rgba(127, 184, 170, 0.08), rgba(127, 184, 170, 0.02));
+    border: 1px solid rgba(127, 184, 170, 0.3);
+    border-radius: 10px;
+  }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--kelp-soft);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .callout-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--kelp-soft);
+  }
+  .callout-body {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .crit-table {
+    margin-top: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .crit-row {
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .crit-row.has-border {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .crit-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--coral);
+    letter-spacing: 1px;
+  }
+  .crit-title {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .crit-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+
+  .disclosure {
+    margin-top: 24px;
+    padding: 22px 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+  }
+  .disclosure-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .disclosure-body {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin: 0 0 12px;
+  }
+  .disclosure-body:last-child { margin-bottom: 0; }
+  .disclosure-body strong { color: var(--text); }
+
+  .cta-row {
+    margin-top: 28px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .cta-primary {
+    background: var(--coral);
+    color: var(--bg);
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: var(--font-body);
+  }
+  .cta-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: var(--font-body);
+  }
+
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .title { font-size: 44px; letter-spacing: -1.2px; }
+    .p-grid { grid-template-columns: 1fr; }
+    .cov-grid { grid-template-columns: 1fr; }
+    .src-row { grid-template-columns: 1fr; }
+    .pipeline-grid { grid-template-columns: 1fr; }
+    .pipe-arrow { display: none; }
+  }
+</style>

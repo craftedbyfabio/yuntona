@@ -1,0 +1,114 @@
+.section {
+  padding: 96px 32px;
+  position: relative;
+}
+.inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.lead {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text-dim);
+  max-width: 620px;
+  margin: 0 0 8px;
+}
+
+.tabs {
+  display: inline-flex;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px;
+  border-radius: 8px;
+  margin-bottom: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.tab {
+  background: transparent;
+  color: var(--text-dim);
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+.tabActive {
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.heatmap {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 110px 1fr 100px 80px;
+  gap: 24px;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.row:last-child { border-bottom: none; }
+.row:hover { background: rgba(201, 100, 66, 0.05); }
+
+.rowId {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--coral);
+  letter-spacing: 1px;
+}
+.rowName {
+  font-size: 15px;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+.bar {
+  position: relative;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.barFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, #1f6b5e 0%, #7fb8aa 100%);
+  border-radius: 3px;
+}
+.rowCount {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.rowCountLabel {
+  color: var(--text-faint);
+  font-size: 11px;
+}
+
+.metaRow {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.3px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .row { grid-template-columns: 80px 1fr 80px; gap: 12px; padding: 14px 16px; }
+  .bar { display: none; }
+}

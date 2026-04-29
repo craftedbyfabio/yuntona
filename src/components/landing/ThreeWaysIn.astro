@@ -1,0 +1,137 @@
+---
+import SectionLabel from '../SectionLabel.astro';
+import SectionTitle from '../SectionTitle.astro';
+
+const paths = [
+  {
+    n: '01',
+    k: 'Filter by risk',
+    d: 'Toggle between LLM Top 10 and Agentic Top 10. Pick a risk. Directory instantly filters — tools grouped by category with counts.',
+    code: [
+      ['filter', 'risk:LLM01'],
+      ['stage',  'production'],
+      ['result', '24 tools'],
+    ] as Array<[string, string]>,
+  },
+  {
+    n: '02',
+    k: 'Natural language',
+    d: 'Plain English. "Tools for supply chain scanning in CI." Parser extracts filters, returns ranked results from the full directory.',
+    code: [
+      ['query',  '"scan models in CI"'],
+      ['parsed', 'risk:LLM03 stage:ci'],
+      ['result', '9 tools'],
+    ] as Array<[string, string]>,
+  },
+  {
+    n: '03',
+    k: 'Explore the graph',
+    d: 'Every tool, risk, and lifecycle stage as an interactive network. Click a node, see its connections. Coverage clusters and defence gaps at a glance.',
+    code: [
+      ['nodes',  '161 + 20 + 8'],
+      ['edges',  '642'],
+      ['layout', 'force-directed'],
+    ] as Array<[string, string]>,
+  },
+];
+---
+
+<section class="threeways">
+  <div class="container inner">
+    <SectionLabel label="How it works" />
+    <SectionTitle>Three paths from risk to tool.</SectionTitle>
+    <p class="lead">
+      Start from whatever you already know — a specific OWASP risk, a plain-English question, or
+      no starting point at all.
+    </p>
+
+    <div class="grid">
+      {paths.map((p) => (
+        <div class="card">
+          <div class="num">{p.n}</div>
+          <h3 class="title">{p.k}</h3>
+          <p class="desc">{p.d}</p>
+          <div class="code">
+            {p.code.map(([k, v]) => (
+              <div class="row">
+                <span class="key">{k}</span>
+                <span class="val">{v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .threeways {
+    padding: 96px 32px;
+    background: linear-gradient(180deg, transparent, rgba(201, 100, 66, 0.02));
+  }
+  .inner { max-width: 1240px; margin: 0 auto; }
+  .lead {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-dim);
+    max-width: 620px;
+    margin: 0 0 8px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--coral);
+    letter-spacing: 1.5px;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.15;
+  }
+  .desc {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .code {
+    margin-top: auto;
+    padding: 14px;
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+  }
+  .key { color: var(--text-faint); }
+  .val { color: var(--kelp-soft); }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
