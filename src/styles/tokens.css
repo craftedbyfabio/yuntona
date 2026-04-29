@@ -1,0 +1,64 @@
+/*
+  Design tokens — ported from "design ref 2.0/handoff/00-design-tokens.md"
+  + "07-copy-this-into-site-css.css".
+*/
+
+:root {
+  --bg:          #0a0e14;
+  --surface:     #10161f;
+  --surface-2:   #161d28;
+  --surface-3:   #1d2530;
+
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-hover:  rgba(255, 255, 255, 0.16);
+  --border-strong: rgba(255, 255, 255, 0.22);
+
+  --text:        #f0eee9;
+  --text-muted:  #c2cbd4;
+  --text-dim:    #9aa6b2;
+  --text-faint:  #6b7a88;
+
+  --kelp-deep:   #1f6b5e;
+  --kelp:        #2d8572;
+  --kelp-soft:   #7fb8aa;
+  --kelp-glow:   rgba(127, 184, 170, 0.08);
+  --kelp-border: rgba(127, 184, 170, 0.30);
+
+  --coral:        #c96442;
+  --coral-soft:   #e08a6b;
+  --coral-glow:   rgba(201, 100, 66, 0.08);
+  --coral-border: rgba(201, 100, 66, 0.30);
+
+  --accent:        var(--coral);
+  --accent-glow:   var(--coral-glow);
+  --accent-glow2:  rgba(201, 100, 66, 0.04);
+  --accent-border: var(--coral-border);
+  --accent-dark:   #a85234;
+
+  --warm:        #e0a963;
+  --warm-glow:   rgba(224, 169, 99, 0.08);
+  --warm-border: rgba(224, 169, 99, 0.30);
+  --green:       #7fb8aa;
+  --red:         #e07373;
+  --purple:      #9988c9;
+
+  --live:        #4ade80;
+
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-italic:  'Instrument Serif', Georgia, serif;
+  --font-body:    'Inter Variable', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono Variable', ui-monospace, Menlo, monospace;
+  --font-brand:   var(--font-display);
+
+  --radius-sm: 4px;
+  --radius:    8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow:    0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.5);
+
+  --container-max: 1240px;
+  --page-pad-x:    32px;
+}

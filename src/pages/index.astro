@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import Hero from '../components/landing/Hero.tsx';
+import CoverageMatrix from '../components/landing/CoverageMatrix.tsx';
+import ThreeWaysIn from '../components/landing/ThreeWaysIn.astro';
+import Positioning from '../components/landing/Positioning.astro';
+import Curator from '../components/landing/Curator.astro';
+import FAQ from '../components/landing/FAQ.tsx';
+import FinalCTA from '../components/landing/FinalCTA.astro';
+---
+
+<BaseLayout title="Yuntona — security controls for your AI stack, indexed by risk">
+  <Hero client:load />
+
+  <section class="coverage">
+    <div class="coverage-inner">
+      <SectionLabel label="Coverage" />
+      <SectionTitle>
+        Every OWASP risk, mapped to the tools<br />
+        that <em class="italic-accent">actually address it</em>.
+      </SectionTitle>
+      <CoverageMatrix client:load />
+    </div>
+  </section>
+
+  <ThreeWaysIn />
+  <Positioning />
+  <Curator />
+
+  <section class="faq">
+    <div class="faq-inner">
+      <SectionLabel label="FAQ" />
+      <SectionTitle>Questions practitioners ask.</SectionTitle>
+      <p class="faq-lead">
+        Before you commit to trusting a curated list, you want to know who put it together and how.
+      </p>
+      <FAQ client:load />
+    </div>
+  </section>
+
+  <FinalCTA />
+</BaseLayout>
+
+<style>
+  .coverage { padding: 96px 32px; position: relative; }
+  .coverage-inner { max-width: 1240px; margin: 0 auto; }
+
+  .faq { padding: 96px 32px; }
+  .faq-inner { max-width: 1040px; margin: 0 auto; }
+  .faq-lead {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-dim);
+    max-width: 620px;
+    margin: 0 0 8px;
+  }
+</style>

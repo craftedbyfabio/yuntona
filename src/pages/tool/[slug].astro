@@ -1,0 +1,746 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getApprovedTools, getToolBySlug, getRelatedTools } from '../../lib/queries';
+import { deriveToolDetail } from '../../lib/tool-detail';
+import { LLM_TOP10, ASI_TOP10 } from '../../lib/directory-data';
+
+export async function getStaticPaths() {
+  const tools = await getApprovedTools();
+  return tools.map((t) => ({
+    params: { slug: t.id },
+    props: { toolId: t.id, categorySlug: t.cat },
+  }));
+}
+
+const { slug } = Astro.params;
+const { categorySlug } = Astro.props;
+
+if (!slug) throw new Error('Missing slug param');
+
+const tool = await getToolBySlug(slug);
+if (!tool) throw new Error(`Tool not found: ${slug}`);
+
+const related = await getRelatedTools(categorySlug, tool.id, 3);
+const detail = deriveToolDetail(tool, related);
+
+const logoToken = import.meta.env.PUBLIC_LOGO_DEV_TOKEN;
+const logoUrl = tool.logoDomain && logoToken
+  ? `https://img.logo.dev/${tool.logoDomain}?token=${logoToken}&size=144&format=png&theme=auto`
+  : null;
+
+const llmCovered = new Set(detail.risks.LLM.map((r) => r[0]));
+const asiCovered = new Set(detail.risks.ASI.map((r) => r[0]));
+
+function yamlList(items: string[]): string {
+  return `[${items.join(', ')}]`;
+}
+
+const yamlLines = [
+  `name: ${detail.name}`,
+  `slug: ${detail.slug}`,
+  `type: ${detail.type}`,
+  `category: ${detail.category}`,
+  detail.url ? `url: https://${detail.url}` : null,
+  '',
+  `reviewed:   ${detail.reviewed}`,
+  `added:      ${detail.added}`,
+  `updated:    ${detail.updated}`,
+  '',
+  'risks:',
+  `  llm:  ${yamlList(detail.risks.LLM.map((r) => r[0]))}`,
+  `  asi:  ${yamlList(detail.risks.ASI.map((r) => r[0]))}`,
+  '',
+  `complexity:    ${detail.glance.complexity}`,
+  `pricing:       ${detail.glance.pricing}`,
+  `audience:      ${detail.glance.audience}`,
+  `lifecycle:     ${yamlList(detail.glance.lifecycle)}`,
+  detail.certs.length ? `certifications: ${yamlList(detail.certs)}` : null,
+  '',
+  `tags: ${yamlList(detail.glance.tags)}`,
+].filter((l) => l !== null) as string[];
+const yamlText = yamlLines.join('\n');
+---
+
+<BaseLayout title={`${detail.name} — Yuntona`} description={detail.tagline}>
+  <div class="bread">
+    <div class="bread-inner">
+      <a href="/" class="crumb">~</a>
+      <span>/</span>
+      <a href="/directory" class="crumb">directory</a>
+      <span>/</span>
+      <span class="crumb-cur">{detail.slug}</span>
+    </div>
+  </div>
+
+  <header class="head">
+    <div class="head-inner">
+      <div class="glyph" style={`background:${detail.glyphBg};color:${detail.glyphAccent};border-color:${detail.glyphAccent}22`}>
+        <span class="glyph-text">{detail.glyph}</span>
+        {logoUrl && (
+          <img class="glyph-img" src={logoUrl} alt="" loading="lazy" />
+        )}
+      </div>
+      <div class="head-main">
+        <div class="head-meta">
+          <span class="type-badge">{detail.type}</span>
+          <span class="cat">· {detail.category}</span>
+          <span class="reviewed">· reviewed {detail.reviewed}</span>
+        </div>
+        <h1 class="title">{detail.name}</h1>
+        <p class="tagline">{detail.tagline}</p>
+        <div class="cta-row">
+          <a href={detail.links.website} class="cta-primary">
+            {detail.url ? `Visit ${detail.url}` : 'Visit website'}{' '}<span class="ext">↗</span>
+          </a>
+          <button type="button" class="cta-ghost" disabled>Copy YAML</button>
+          <button type="button" class="cta-ghost" disabled>Suggest edit ↗</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+    <main class="body-main">
+      {detail.sections.map((s) => (
+        <section class="numbered">
+          <div class="num-row">
+            <div class="num">{s.n}</div>
+            <h2 class="h2">{s.k}</h2>
+          </div>
+          {s.p.map((p) => <p class="p">{p}</p>)}
+        </section>
+      ))}
+
+      <section class="numbered">
+        <div class="num-row">
+          <div class="num">04</div>
+          <h2 class="h2">OWASP coverage</h2>
+        </div>
+        <p class="copy">
+          Risks addressed — mapped to both OWASP Top 10 standards. {detail.risks.LLM.length} in LLM, {detail.risks.ASI.length} in Agentic.
+        </p>
+
+        <div class="cov-block">
+          <div class="cov-label">LLM Top 10 · 2025 · {detail.risks.LLM.length}/10 covered</div>
+          <div class="strip">
+            {LLM_TOP10.map(([id]) => {
+              const on = llmCovered.has(id);
+              return (
+                <div class={`cell ${on ? 'on' : ''}`} title={id}>{id.slice(3)}</div>
+              );
+            })}
+          </div>
+          <div class="chips">
+            {detail.risks.LLM.map(([id, name]) => (
+              <a href={`/directory?risk=${id}`} class="chip kelp">
+                <span class="chip-code">{id}</span> · {name}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="cov-block">
+          <div class="cov-label">Agentic Top 10 · 2026 · {detail.risks.ASI.length}/10 covered</div>
+          <div class="strip">
+            {ASI_TOP10.map(([id]) => {
+              const on = asiCovered.has(id);
+              return (
+                <div class={`cell ${on ? 'on' : ''}`} title={id}>{id.slice(3)}</div>
+              );
+            })}
+          </div>
+          <div class="chips">
+            {detail.risks.ASI.map(([id, name]) => (
+              <a href={`/directory?risk=${id}`} class="chip coral">
+                <span class="chip-code">{id}</span> · {name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="numbered">
+        <div class="num-row">
+          <div class="num">05</div>
+          <h2 class="h2">The raw record</h2>
+        </div>
+        <p class="copy">What Yuntona stores. Single source of truth — fork it on GitHub.</p>
+        <pre class="yaml">{yamlText}</pre>
+      </section>
+
+      {detail.activity.length > 0 && (
+        <section class="numbered">
+          <div class="num-row">
+            <div class="num">06</div>
+            <h2 class="h2">Activity</h2>
+          </div>
+          <div class="timeline">
+            {detail.activity.map((a) => (
+              <div class="event">
+                <span class={`event-dot ${a.type === 'release' ? 'kelp' : a.type === 'announcement' ? 'coral' : 'dim'}`}></span>
+                <div class="event-meta">
+                  <span class="event-date">{a.date}</span>
+                  <span class="event-type">{a.type}</span>
+                </div>
+                <div class="event-title">{a.title}</div>
+                <div class="event-source">via {a.source}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+
+    <aside class="sidebar">
+      <div class="glance-card">
+        <div class="glance-title">At a glance</div>
+        {[
+          ['Complexity', detail.glance.complexity],
+          ['Pricing', detail.glance.pricing],
+          ['Audience', detail.glance.audience],
+          ['Lifecycle', detail.glance.lifecycle.join(' · ')],
+          ['Funding', detail.funder],
+        ].map(([k, v]) => (
+          <div class="glance-row">
+            <span class="glance-key">{k}</span>
+            <span class="glance-val">{v}</span>
+          </div>
+        ))}
+        <div class="tags-block">
+          <div class="tags-title">Tags</div>
+          <div class="tags-row">
+            {detail.glance.tags.map((t) => <span class="tag">{t}</span>)}
+          </div>
+        </div>
+      </div>
+
+      {detail.certs.length > 0 && (
+        <div class="cert-card">
+          <div class="cert-title">Certifications</div>
+          {detail.certs.map((c) => (
+            <div class="cert-row">
+              <span class="cert-check">✓</span>{c}
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div class="ref-block">
+        <div>added: {detail.added}</div>
+        <div>updated: {detail.updated}</div>
+        <div>slug: {detail.slug}</div>
+        <div>yuntona: v1.7.0</div>
+      </div>
+    </aside>
+  </div>
+
+  {detail.related.length > 0 && (
+    <section class="related">
+      <div class="related-inner">
+        <div class="related-head">
+          <span class="related-kicker">Related</span>
+          <h2 class="related-title">Tools that overlap coverage.</h2>
+        </div>
+        <div class="related-grid">
+          {detail.related.map((r) => (
+            <a class="related-card" href={`/tool/${r.id}`}>
+              <div class="related-card-head">
+                <div class="related-glyph" style={`background:${r.bg}`}>{r.glyph}</div>
+                <div>
+                  <div class="related-name">{r.name}</div>
+                  <div class="related-cat">{r.cat}</div>
+                </div>
+              </div>
+              <div class="related-desc">{r.desc}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .bread {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px 32px 0;
+  }
+  .bread-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+  }
+  .crumb { color: var(--text-dim); text-decoration: none; }
+  .crumb-cur { color: var(--coral); }
+
+  .head {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 24px 32px 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .head-inner {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .glyph {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    flex-shrink: 0;
+    border: 1px solid;
+    overflow: hidden;
+  }
+  .glyph-text { z-index: 0; }
+  .glyph-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px;
+    border-radius: inherit;
+    z-index: 1;
+  }
+  .head-main { flex: 1; min-width: 0; }
+  .head-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .type-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid rgba(201, 100, 66, 0.3);
+    border-radius: 4px;
+    background: rgba(201, 100, 66, 0.08);
+  }
+  .cat, .reviewed {
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .cat { color: var(--text-dim); }
+  .reviewed { color: var(--text-faint); }
+  .title {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 500;
+    letter-spacing: -1.6px;
+    color: var(--text);
+    margin: 0 0 14px;
+    line-height: 1;
+  }
+  .tagline {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 780px;
+  }
+  .cta-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .cta-primary {
+    background: var(--text);
+    color: var(--bg);
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+  }
+  .ext { font-family: var(--font-mono); opacity: 0.6; }
+  .cta-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-family: var(--font-body);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .body {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 48px;
+  }
+
+  .numbered { margin-bottom: 56px; }
+  .num-row { margin-bottom: 18px; }
+  .num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--coral);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .h2 {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.8px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.1;
+  }
+  .p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 0 0 14px;
+    max-width: 700px;
+  }
+  .copy {
+    font-size: 14px;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 0 24px;
+  }
+
+  .cov-block { margin-bottom: 24px; }
+  .cov-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 4px;
+    max-width: 480px;
+  }
+  .cell {
+    height: 28px;
+    border-radius: 3px;
+    min-width: 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-faint);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+  .cell.on {
+    background: linear-gradient(135deg, var(--kelp-deep), var(--kelp-soft));
+    border-color: rgba(127, 184, 170, 0.4);
+    color: var(--bg);
+  }
+  .chips {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .chip.kelp {
+    color: var(--kelp-soft);
+    background: rgba(31, 107, 94, 0.12);
+    border: 1px solid rgba(31, 107, 94, 0.25);
+  }
+  .chip.coral {
+    color: var(--coral);
+    background: rgba(201, 100, 66, 0.1);
+    border: 1px solid rgba(201, 100, 66, 0.25);
+  }
+  .chip-code { opacity: 0.7; }
+
+  .yaml {
+    margin: 0;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: auto;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--text-muted);
+    white-space: pre;
+  }
+
+  .timeline {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    padding-left: 24px;
+    margin-left: 4px;
+  }
+  .event {
+    position: relative;
+    padding-bottom: 22px;
+  }
+  .event-dot {
+    position: absolute;
+    left: -29px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 5px;
+    border: 2px solid var(--bg);
+  }
+  .event-dot.kelp { background: var(--kelp-soft); }
+  .event-dot.coral { background: var(--coral); }
+  .event-dot.dim { background: var(--text-faint); }
+  .event-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .event-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+  }
+  .event-type {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .event-title {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .event-source {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 90px;
+    align-self: start;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+  }
+  .glance-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 14px;
+  }
+  .glance-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .glance-row {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 12px;
+  }
+  .glance-key {
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .glance-val { color: var(--text); }
+  .tags-block { margin-top: 16px; }
+  .tags-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .tags-row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .cert-card {
+    background: linear-gradient(180deg, rgba(201, 100, 66, 0.08), rgba(201, 100, 66, 0.02));
+    border: 1px solid rgba(201, 100, 66, 0.2);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .cert-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .cert-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .cert-check { color: var(--kelp-soft); }
+
+  .ref-block {
+    margin-top: 22px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    line-height: 1.7;
+    padding: 0 4px;
+  }
+
+  .related {
+    padding: 60px 32px 96px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .related-inner { max-width: 1240px; margin: 0 auto; }
+  .related-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .related-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--coral);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .related-title {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.8px;
+    color: var(--text);
+    margin: 0;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .related-card {
+    display: block;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color 0.12s;
+  }
+  .related-card:hover { border-color: rgba(201, 100, 66, 0.35); }
+  .related-card-head {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .related-glyph {
+    width: 36px;
+    height: 36px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .related-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .related-cat {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+  }
+  .related-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 960px) {
+    .body { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .related-grid { grid-template-columns: 1fr; }
+    .title { font-size: 38px; letter-spacing: -1px; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLImageElement>('img.glyph-img').forEach((img) => {
+    img.addEventListener('error', () => { img.style.display = 'none'; });
+  });
+</script>

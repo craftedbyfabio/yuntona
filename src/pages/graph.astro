@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GraphApp from '../components/graph/GraphApp.tsx';
+import { getApprovedTools } from '../lib/queries';
+import { buildGraphData } from '../lib/graph-data';
+
+const tools = await getApprovedTools();
+const data = buildGraphData(tools);
+---
+
+<BaseLayout title="Knowledge Graph — Yuntona" current="graph">
+  <GraphApp client:load data={data} />
+</BaseLayout>

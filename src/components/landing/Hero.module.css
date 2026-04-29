@@ -1,0 +1,135 @@
+.hero {
+  position: relative;
+  padding: 80px 32px 72px;
+  overflow: hidden;
+}
+
+.gridBackdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 900px 500px at 50% 30%, black 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 900px 500px at 50% 30%, black 40%, transparent 75%);
+}
+
+.inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 72px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--kelp-soft);
+  background: rgba(31, 107, 94, 0.1);
+  border: 1px solid rgba(31, 107, 94, 0.25);
+  padding: 6px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--live);
+  box-shadow: 0 0 8px var(--live);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: 68px;
+  line-height: 1.02;
+  font-weight: 500;
+  letter-spacing: -2px;
+  color: var(--text);
+  margin: 26px 0 22px;
+}
+.headline em {
+  font-style: italic;
+  color: var(--kelp-soft);
+  font-family: var(--font-italic);
+  font-weight: 400;
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--text-dim);
+  max-width: 520px;
+  margin: 0 0 36px;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.ctaPrimary {
+  background: var(--text);
+  color: var(--bg);
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+}
+.ctaPrimary .arrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.6;
+}
+.ctaGhost {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-body);
+}
+
+.statRow {
+  display: flex;
+  gap: 28px;
+  margin-top: 40px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.3px;
+}
+.statValue {
+  color: var(--text);
+  font-size: 22px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+.statLabel {
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 960px) {
+  .inner { grid-template-columns: 1fr; gap: 48px; }
+  .headline { font-size: 48px; letter-spacing: -1.2px; }
+}

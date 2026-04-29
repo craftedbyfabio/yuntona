@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DirectoryShell from '../components/directory/DirectoryShell.tsx';
+import { getApprovedTools } from '../lib/queries';
+
+const tools = await getApprovedTools();
+---
+
+<BaseLayout title="Directory — Yuntona" current="directory">
+  <DirectoryShell client:load tools={tools} />
+</BaseLayout>
