@@ -4,7 +4,11 @@ import YuntonaMark from './YuntonaMark.tsx';
 const cols: Array<{ title: string; links: Array<[string, string]> }> = [
   { title: 'Platform',   links: [['Directory', '/directory'], ['Knowledge Graph', '/graph']] },
   { title: 'Resources',  links: [['Methodology', '/methodology'], ['GitHub', 'https://github.com/craftedbyfabio/yuntona']] },
-  { title: 'Contribute', links: [['Suggest a tool', '#'], ['Report an issue', '#'], ['Star on GitHub', 'https://github.com/craftedbyfabio/yuntona']] },
+  { title: 'Contribute', links: [
+    ['Suggest a tool',   'https://github.com/craftedbyfabio/yuntona/issues/new?labels=tool-suggestion&title=Tool+suggestion%3A+%5Btool+name%5D&body=See+CONTRIBUTING.md+for+the+schema.%0A%0A**Tool+name+%2B+URL%3A**%0A%0A**Category%3A**%0A%0A**Why+it+belongs+%28one+sentence%29%3A**%0A%0A**OWASP+LLM+risks+it+addresses%3A**%0A'],
+    ['Report an issue',  'https://github.com/craftedbyfabio/yuntona/issues/new?labels=bug'],
+    ['Star on GitHub',   'https://github.com/craftedbyfabio/yuntona'],
+  ] },
 ];
 ---
 
@@ -24,9 +28,19 @@ const cols: Array<{ title: string; links: Array<[string, string]> }> = [
     {cols.map((c) => (
       <div class="link-col">
         <div class="col-title">{c.title}</div>
-        {c.links.map(([label, href]) => (
-          <a class="footer-link" href={href}>{label}</a>
-        ))}
+        {c.links.map(([label, href]) => {
+          const external = href.startsWith('http');
+          return (
+            <a
+              class="footer-link"
+              href={href}
+              target={external ? '_blank' : undefined}
+              rel={external ? 'noopener noreferrer' : undefined}
+            >
+              {label}
+            </a>
+          );
+        })}
       </div>
     ))}
   </div>
