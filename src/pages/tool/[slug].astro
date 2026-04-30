@@ -31,6 +31,20 @@ const logoUrl = tool.logoDomain && logoToken
 const llmCovered = new Set(detail.risks.LLM.map((r) => r[0]));
 const asiCovered = new Set(detail.risks.ASI.map((r) => r[0]));
 
+const editIssueBody =
+  `**Tool:** ${tool.name} (\`${tool.id}\`)\n` +
+  `**Category:** ${tool.catName ?? tool.cat}\n` +
+  `**URL on Yuntona:** https://yuntona.ai/tool/${tool.id}\n` +
+  (tool.url ? `**Vendor URL:** ${tool.url}\n` : '') +
+  `\n---\n\n` +
+  `**What needs to change:**\n\n` +
+  `**Why / source:**\n`;
+const editIssueUrl =
+  'https://github.com/craftedbyfabio/yuntona/issues/new?' +
+  'labels=bug&' +
+  `title=${encodeURIComponent(`Edit suggestion: ${tool.name}`)}&` +
+  `body=${encodeURIComponent(editIssueBody)}`;
+
 function yamlList(items: string[]): string {
   return `[${items.join(', ')}]`;
 }
@@ -89,11 +103,23 @@ const yamlText = yamlLines.join('\n');
         <h1 class="title">{detail.name}</h1>
         <p class="tagline">{detail.tagline}</p>
         <div class="cta-row">
-          <a href={detail.links.website} class="cta-primary">
+          <a
+            href={detail.links.website}
+            class="cta-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {detail.url ? `Visit ${detail.url}` : 'Visit website'}{' '}<span class="ext">↗</span>
           </a>
           <button type="button" class="cta-ghost" disabled>Copy YAML</button>
-          <button type="button" class="cta-ghost" disabled>Suggest edit ↗</button>
+          <a
+            href={editIssueUrl}
+            class="cta-ghost"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Suggest edit ↗
+          </a>
         </div>
       </div>
     </div>
@@ -199,7 +225,6 @@ const yamlText = yamlLines.join('\n');
           ['Pricing', detail.glance.pricing],
           ['Audience', detail.glance.audience],
           ['Lifecycle', detail.glance.lifecycle.join(' · ')],
-          ['Funding', detail.funder],
         ].map(([k, v]) => (
           <div class="glance-row">
             <span class="glance-key">{k}</span>
@@ -386,8 +411,25 @@ const yamlText = yamlLines.join('\n');
     font-weight: 500;
     border: 1px solid rgba(255, 255, 255, 0.12);
     font-family: var(--font-body);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.12s, color 0.12s;
+  }
+  .cta-ghost:hover {
+    border-color: var(--text-muted);
+    color: var(--text);
+  }
+  .cta-ghost:disabled,
+  .cta-ghost[disabled] {
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: 0.5;
+  }
+  .cta-ghost:disabled:hover,
+  .cta-ghost[disabled]:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--text-muted);
   }
 
   .body {

@@ -41,7 +41,6 @@ export type ToolDetail = {
   glyphBg: string;
   glyphAccent: string;
   certs: string[];
-  funder: string;
   sections: Section[];
   glance: {
     complexity: string;
@@ -73,7 +72,6 @@ const MINTMCP_FIXTURE: ToolDetail = {
   glyphBg: '#1f3b2a',
   glyphAccent: '#7fb8aa',
   certs: ['SOC 2 Type II'],
-  funder: 'Vendor',
   sections: [
     {
       n: '01',
@@ -118,17 +116,10 @@ const MINTMCP_FIXTURE: ToolDetail = {
       ['ASI08', 'Cascading Failures'],
     ],
   },
-  related: [
-    { id: 'runlayer', name: 'Runlayer',                   cat: 'MCP Security',   glyph: 'RL', bg: '#1e2a3b', desc: 'Enterprise MCP security with $11M seed funding and MCP creator as advisor.' },
-    { id: 'enkrypt',  name: 'Enkrypt AI MCP Security',    cat: 'MCP Security',   glyph: 'EK', bg: '#2a1f3b', desc: 'Red teaming and runtime protection specifically for MCP server deployments.' },
-    { id: 'operant',  name: 'Operant AI',                 cat: 'AI Guardrails',  glyph: 'OP', bg: '#3b1f2a', desc: 'Runtime AI security featured in all four Gartner 2025 AI security guides.' },
-  ],
-  activity: [
-    { date: '2026-04-12', type: 'release',      title: 'Gateway v4.2 — custom MCP registries',          source: 'mintmcp.com/changelog' },
-    { date: '2026-03-28', type: 'announcement', title: 'Named official Cursor integration partner',     source: 'cursor.com/blog' },
-    { date: '2026-02-14', type: 'audit',        title: 'Achieved SOC 2 Type II certification',          source: 'mintmcp.com' },
-    { date: '2026-01-20', type: 'release',      title: 'Agent Monitor — real-time tool call traces',    source: 'mintmcp.com' },
-  ],
+  // related[] is filled at call time from live getRelatedTools() — no hardcoded slugs.
+  related: [],
+  // activity[] stays empty until tool_news is wired to Supabase (deferred).
+  activity: [],
 };
 
 function partitionRisks(risks: string[]): { LLM: RiskTuple[]; ASI: RiskTuple[] } {
@@ -146,8 +137,21 @@ function partitionRisks(risks: string[]): { LLM: RiskTuple[]; ASI: RiskTuple[] }
   return { LLM, ASI };
 }
 
+function mapRelated(relatedTools: DirectoryTool[]): RelatedRef[] {
+  return relatedTools.slice(0, 3).map((r) => ({
+    id: r.id,
+    name: r.name,
+    cat: r.catName ?? lookup(FACETS.category, r.cat, r.cat),
+    glyph: r.glyph,
+    bg: r.glyphBg,
+    desc: r.desc,
+  }));
+}
+
 export function deriveToolDetail(t: DirectoryTool, relatedTools: DirectoryTool[]): ToolDetail {
-  if (t.id === 'mintmcp') return MINTMCP_FIXTURE;
+  if (t.id === 'mintmcp') {
+    return { ...MINTMCP_FIXTURE, related: mapRelated(relatedTools) };
+  }
 
   const llmCodes = t.llmRisks ?? t.risks.filter((r) => r.startsWith('LLM'));
   const asiCodes = t.agenticRisks ?? t.risks.filter((r) => r.startsWith('ASI'));
@@ -157,8 +161,8 @@ export function deriveToolDetail(t: DirectoryTool, relatedTools: DirectoryTool[]
 
   const categoryLabel = t.catName ?? lookup(FACETS.category, t.cat, t.cat);
   const stageLabel = lookup(FACETS.stage, t.stage, t.stage);
-  const pricingLabel = t.pricingName ?? lookup(FACETS.pricing, t.pricing, t.pricing);
-  const complexityLabel = t.complexityName ?? lookup(FACETS.complexity, t.complexity, t.complexity);
+  const pricingLabel = t.pricingName ?? lookup(FACETS.pricing, t.pricing ?? '', t.pricing ?? '');
+  const complexityLabel = t.complexityName ?? lookup(FACETS.complexity, t.complexity ?? '', t.complexity ?? '');
   const audienceLabels = t.audience.map((a) => lookup(FACETS.audience, a, a));
 
   const sections: Section[] = [];
@@ -206,7 +210,6 @@ export function deriveToolDetail(t: DirectoryTool, relatedTools: DirectoryTool[]
     glyphBg: t.glyphBg,
     glyphAccent: '#7fb8aa',
     certs: [],
-    funder: t.isOpenSource ? 'Open source' : 'Independent',
     sections,
     glance: {
       complexity: complexityLabel || '—',
@@ -216,14 +219,7 @@ export function deriveToolDetail(t: DirectoryTool, relatedTools: DirectoryTool[]
       tags: t.tags && t.tags.length > 0 ? t.tags : [categoryLabel, type, pricingLabel].filter(Boolean) as string[],
     },
     risks: { LLM: partitionedLLM, ASI: partitionedASI },
-    related: relatedTools.slice(0, 3).map((r) => ({
-      id: r.id,
-      name: r.name,
-      cat: r.catName ?? lookup(FACETS.category, r.cat, r.cat),
-      glyph: r.glyph,
-      bg: r.glyphBg,
-      desc: r.desc,
-    })),
+    related: mapRelated(relatedTools),
     activity: [],
   };
 }
