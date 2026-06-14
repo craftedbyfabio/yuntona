@@ -9,7 +9,11 @@
   # <img src> URLs by design; SUPABASE_URL + SUPABASE_ANON_KEY are publishable
   # per Supabase's design (RLS gates the data). Tell Netlify's secrets scanner
   # to skip these specific keys. https://ntl.fyi/configure-secrets-scanning
-  SECRETS_SCAN_OMIT_KEYS = "PUBLIC_LOGO_DEV_TOKEN,SUPABASE_URL,SUPABASE_ANON_KEY"
+  # TYPESENSE_HOST and PUBLIC_TYPESENSE_SEARCH_KEY are publishable client-side
+  # (search-only key is collection-scoped, GET-only). TYPESENSE_ADMIN_KEY +
+  # GEMINI_API_KEY are server-only but added defensively so the scanner doesn't
+  # trip on legacy/test files that happen to contain them.
+  SECRETS_SCAN_OMIT_KEYS = "PUBLIC_LOGO_DEV_TOKEN,SUPABASE_URL,SUPABASE_ANON_KEY,TYPESENSE_HOST,TYPESENSE_ADMIN_KEY,PUBLIC_TYPESENSE_SEARCH_KEY,GEMINI_API_KEY"
   # Skip the archived legacy site and the design reference folder. Neither
   # ships in dist/, but the legacy code already used the same publishable
   # logo.dev token in <img src> URLs and would re-trigger the scanner.

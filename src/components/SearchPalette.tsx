@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import styles from './SearchPalette.module.css';
+import { hybridSearch, isTypesenseConfigured } from '../lib/typesense-search';
 
 type SearchTool = {
   slug: string;
@@ -73,32 +74,12 @@ function scoreMatch(haystack: string, needle: string): number {
   return 0;
 }
 
-function search(index: SearchIndex, query: string): Result[] {
+// Tools — local substring scoring (fallback when Typesense isn't configured
+// or errors out). Typesense results take priority when available.
+function searchToolsLocal(index: SearchIndex, query: string): Result[] {
   const q = query.trim();
-  if (!q) {
-    // Empty query: show top-level pages first, then a sample of tools.
-    return [
-      ...index.pages.map((p) => ({
-        kind: 'page' as const,
-        label: p.label,
-        sub: p.href,
-        href: p.href,
-        glyph: '/',
-        score: 100,
-      })),
-      ...index.tools.slice(0, 8).map((t) => ({
-        kind: 'tool' as const,
-        label: t.name,
-        sub: t.catName,
-        href: `/tool/${t.slug}`,
-        glyph: deriveGlyph(t.name),
-        score: 50,
-      })),
-    ];
-  }
-
-  const results: Result[] = [];
-
+  if (!q) return [];
+  const out: Result[] = [];
   for (const t of index.tools) {
     let s = 0;
     s = Math.max(s, scoreMatch(t.name, q));
@@ -112,7 +93,7 @@ function search(index: SearchIndex, query: string): Result[] {
       s = Math.max(s, scoreMatch(tag, q) * 0.7);
     }
     if (s > 0) {
-      results.push({
+      out.push({
         kind: 'tool',
         label: t.name,
         sub: t.catName,
@@ -122,11 +103,37 @@ function search(index: SearchIndex, query: string): Result[] {
       });
     }
   }
+  out.sort((a, b) => b.score - a.score);
+  return out.slice(0, 12);
+}
+
+// Non-tool result kinds — always served from the local static index
+// because they're tiny (< 50 entries combined) and don't benefit from
+// semantic search. Same code path whether Typesense is up or down.
+function searchOthers(index: SearchIndex, query: string): Result[] {
+  const q = query.trim();
+  const out: Result[] = [];
+
+  if (!q) {
+    // Empty query: pages only (tools fill in via either Typesense empty
+    // call or local sample below).
+    for (const p of index.pages) {
+      out.push({
+        kind: 'page',
+        label: p.label,
+        sub: p.href,
+        href: p.href,
+        glyph: '/',
+        score: 100,
+      });
+    }
+    return out;
+  }
 
   for (const r of index.risks) {
     const s = Math.max(scoreMatch(r.id, q), scoreMatch(r.label, q));
     if (s > 0) {
-      results.push({
+      out.push({
         kind: r.kind === 'llm' ? 'risk-llm' : 'risk-asi',
         label: `${r.id} · ${r.label}`,
         sub: r.kind === 'llm' ? 'OWASP LLM Top 10' : 'OWASP Agentic Top 10',
@@ -140,7 +147,7 @@ function search(index: SearchIndex, query: string): Result[] {
   for (const c of index.categories) {
     const s = scoreMatch(c.label, q);
     if (s > 0) {
-      results.push({
+      out.push({
         kind: 'category',
         label: c.label,
         sub: 'Category',
@@ -154,7 +161,7 @@ function search(index: SearchIndex, query: string): Result[] {
   for (const st of index.stages) {
     const s = scoreMatch(st.label, q);
     if (s > 0) {
-      results.push({
+      out.push({
         kind: 'stage',
         label: st.label,
         sub: 'Lifecycle stage',
@@ -168,7 +175,7 @@ function search(index: SearchIndex, query: string): Result[] {
   for (const p of index.pages) {
     const s = scoreMatch(p.label, q);
     if (s > 0) {
-      results.push({
+      out.push({
         kind: 'page',
         label: p.label,
         sub: p.href,
@@ -179,8 +186,22 @@ function search(index: SearchIndex, query: string): Result[] {
     }
   }
 
-  results.sort((a, b) => b.score - a.score);
-  return results.slice(0, 24);
+  out.sort((a, b) => b.score - a.score);
+  return out;
+}
+
+// Empty-query placeholder list: 8 local tools so the palette isn't blank
+// before the user types. Used both when Typesense isn't configured and
+// while waiting for the first Typesense call.
+function sampleToolsLocal(index: SearchIndex): Result[] {
+  return index.tools.slice(0, 8).map((t) => ({
+    kind: 'tool' as const,
+    label: t.name,
+    sub: t.catName,
+    href: `/tool/${t.slug}`,
+    glyph: deriveGlyph(t.name),
+    score: 50,
+  }));
 }
 
 const GROUP_TITLES: Record<ResultKind, string> = {
@@ -208,7 +229,20 @@ export default function SearchPalette() {
   const [query, setQuery] = useState('');
   const [index, setIndex] = useState<SearchIndex | null>(null);
   const [active, setActive] = useState(0);
+  // Typesense state: null = no result yet / fall back to local;
+  // Result[] = use these (even if empty).
+  const [tsTools, setTsTools] = useState<Result[] | null>(null);
+  // PR D: NL search badge — when a sentence-length query is parsed by
+  // Gemini server-side, we surface the resulting `filter_by` clause as a
+  // chip below the input so users see *why* results filtered.
+  const [nlBadge, setNlBadge] = useState<string | null>(null);
+  const tsAbortRef = useRef<AbortController | null>(null);
+  const nlAbortRef = useRef<AbortController | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const tsAvailable = isTypesenseConfigured();
+  const NL_MODEL_ID = 'gemini-nl-1';
+  const NL_MIN_WORDS = 3;
+  const NL_DEBOUNCE_MS = 800;
 
   // Open / close listeners
   useEffect(() => {
@@ -249,7 +283,100 @@ export default function SearchPalette() {
     }
   }, [open, index]);
 
-  const results = useMemo(() => (index ? search(index, query) : []), [index, query]);
+  // Debounced Typesense call. Skips if Typesense isn't configured, palette
+  // is closed, or query is empty. Falls through to local on error.
+  useEffect(() => {
+    if (!open || !tsAvailable) {
+      setTsTools(null);
+      return;
+    }
+    const q = query.trim();
+    if (!q) {
+      setTsTools(null);
+      return;
+    }
+    tsAbortRef.current?.abort();
+    const ctrl = new AbortController();
+    tsAbortRef.current = ctrl;
+    const timer = setTimeout(async () => {
+      try {
+        const res = await hybridSearch(q, { perPage: 12, signal: ctrl.signal });
+        const results: Result[] = res.hits.map((h) => ({
+          kind: 'tool',
+          label: h.name,
+          sub: h.catName,
+          href: `/tool/${h.slug}`,
+          glyph: deriveGlyph(h.name),
+          score: 100,
+        }));
+        setTsTools(results);
+      } catch (err) {
+        if ((err as Error).name === 'AbortError') return;
+        console.warn('[search] typesense failed, falling back to local:', err);
+        setTsTools(null);
+      }
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [open, query, tsAvailable]);
+
+  // NL Search effect: when the query is sentence-length (>= 3 words) and
+  // the user pauses for ~800ms, send `nl_query=true` to Typesense. Gemini
+  // parses the sentence server-side into a structured filter_by, which
+  // re-ranks/filters the same tools_v2 hits. Failure silently keeps the
+  // hybrid results from the keystroke pass.
+  useEffect(() => {
+    if (!open || !tsAvailable) {
+      setNlBadge(null);
+      return;
+    }
+    const q = query.trim();
+    const words = q.split(/\s+/).filter(Boolean);
+    if (words.length < NL_MIN_WORDS) {
+      setNlBadge(null);
+      return;
+    }
+    nlAbortRef.current?.abort();
+    const ctrl = new AbortController();
+    nlAbortRef.current = ctrl;
+    const timer = setTimeout(async () => {
+      try {
+        const res = await hybridSearch(q, {
+          perPage: 12,
+          signal: ctrl.signal,
+          nlMode: { modelId: NL_MODEL_ID },
+        });
+        const nlResults: Result[] = res.hits.map((h) => ({
+          kind: 'tool',
+          label: h.name,
+          sub: h.catName,
+          href: `/tool/${h.slug}`,
+          glyph: deriveGlyph(h.name),
+          score: 100,
+        }));
+        setTsTools(nlResults);
+        setNlBadge(res.parsedNL?.filter_by ?? null);
+      } catch (err) {
+        if ((err as Error).name === 'AbortError') return;
+        console.warn('[search] NL failed — keeping hybrid results:', err);
+      }
+    }, NL_DEBOUNCE_MS);
+    return () => clearTimeout(timer);
+  }, [open, query, tsAvailable]);
+
+  const results = useMemo(() => {
+    if (!index) return [];
+    const q = query.trim();
+    const others = searchOthers(index, query);
+    let tools: Result[];
+    if (!q) {
+      tools = sampleToolsLocal(index);
+    } else if (tsTools !== null) {
+      tools = tsTools;
+    } else {
+      tools = searchToolsLocal(index, query);
+    }
+    return [...tools, ...others];
+  }, [index, query, tsTools]);
 
   // Group results
   const groups = useMemo(() => {
@@ -332,6 +459,13 @@ export default function SearchPalette() {
           />
           <kbd className={styles.escKbd}>esc</kbd>
         </div>
+
+        {nlBadge && (
+          <div className={styles.nlBadge} title="Generated by AI from your query">
+            <span className={styles.nlBadgeLabel}>AI filter</span>
+            <code className={styles.nlBadgeValue}>{nlBadge}</code>
+          </div>
+        )}
 
         <div className={styles.results}>
           {!index ? (
