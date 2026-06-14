@@ -5,6 +5,7 @@ interface ImportMetaEnv {
   readonly SUPABASE_ANON_KEY: string;
   readonly PUBLIC_LOGO_DEV_TOKEN?: string;
   readonly TYPESENSE_HOST?: string;
+  readonly PUBLIC_TYPESENSE_HOST?: string;
   readonly PUBLIC_TYPESENSE_SEARCH_KEY?: string;
 }
 

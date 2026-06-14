@@ -7,7 +7,10 @@
 //
 // Server-side admin/index operations live in scripts/sync-typesense.mjs.
 
-const HOST = import.meta.env.TYPESENSE_HOST;
+// Both must be PUBLIC_-prefixed — Vite/Astro only inlines that prefix
+// into client bundles. The host is also returned in every network
+// request anyway, so exposing it is not a security regression.
+const HOST = import.meta.env.PUBLIC_TYPESENSE_HOST;
 const KEY = import.meta.env.PUBLIC_TYPESENSE_SEARCH_KEY;
 const COLLECTION = 'tools_v2';
 
