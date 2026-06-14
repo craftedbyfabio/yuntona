@@ -230,6 +230,34 @@
   font-family: var(--font-mono);
 }
 
+.aiBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(127, 184, 170, 0.12);
+  border: 1px solid rgba(127, 184, 170, 0.32);
+  color: var(--kelp-soft);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.aiDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--kelp-soft);
+  box-shadow: 0 0 6px rgba(127, 184, 170, 0.5);
+  animation: ai-pulse 1.6s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+
 .viewToggle {
   display: flex;
   background: var(--surface);
