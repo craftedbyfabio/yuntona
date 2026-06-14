@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { LLM_TOP10, ASI_TOP10, type DirectoryTool } from '../../lib/directory-data';
+import { hybridSearch, isTypesenseConfigured } from '../../lib/typesense-search';
 import styles from './Directory.module.css';
 
 const LOGO_TOKEN = import.meta.env.PUBLIC_LOGO_DEV_TOKEN;
@@ -39,6 +40,114 @@ function sortByCountThenLabel(entries: FacetEntry[]): FacetEntry[] {
   return [...entries].sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 }
 
+// AI filter buckets — parallel structure to the facet Sets so we can track
+// which values came from a NL parse vs which the user toggled manually.
+type AIFilters = {
+  cats: Set<string>;
+  risks: Set<string>;
+  stages: Set<string>;
+  aud: Set<string>;
+  comp: Set<string>;
+  price: Set<string>;
+};
+
+function emptyAIFilters(): AIFilters {
+  return {
+    cats: new Set(),
+    risks: new Set(),
+    stages: new Set(),
+    aud: new Set(),
+    comp: new Set(),
+    price: new Set(),
+  };
+}
+
+function aiFiltersEmpty(f: AIFilters): boolean {
+  return (
+    f.cats.size +
+      f.risks.size +
+      f.stages.size +
+      f.aud.size +
+      f.comp.size +
+      f.price.size ===
+    0
+  );
+}
+
+/**
+ * Parses Typesense `filter_by` strings emitted by Gemini through the NL
+ * search pipeline. Handles the two patterns the LLM is instructed to
+ * produce: `field:=value` and `field:=[v1, v2]`. Values may be quoted.
+ *
+ * Example input:
+ *   "llm_risks:=LLM01 && lifecycle_stages:=[deploy, operate, monitor]"
+ *
+ * Maps recognised fields onto the directory's facet buckets. Silently
+ * ignores fields the directory has no UI for (e.g. is_agentic).
+ */
+function parseFilterByToAIFilters(filterBy: string): AIFilters {
+  const out = emptyAIFilters();
+  // Split on `&&` but only at top level — values can't contain `&&` so this is safe.
+  const clauses = filterBy.split(/\s*&&\s*/);
+  for (const clause of clauses) {
+    const m = clause.match(/^\s*(\w+)\s*:=?\s*(.+?)\s*$/);
+    if (!m) continue;
+    const field = m[1];
+    let raw = m[2].trim();
+    let values: string[];
+    if (raw.startsWith('[') && raw.endsWith(']')) {
+      values = raw
+        .slice(1, -1)
+        .split(',')
+        .map((v) => v.trim().replace(/^["']|["']$/g, ''))
+        .filter(Boolean);
+    } else {
+      values = [raw.replace(/^["']|["']$/g, '')];
+    }
+    switch (field) {
+      case 'category_slug':
+        values.forEach((v) => out.cats.add(v));
+        break;
+      case 'llm_risks':
+      case 'agentic_risks':
+        values.forEach((v) => out.risks.add(v));
+        break;
+      case 'lifecycle_stages':
+        values.forEach((v) => out.stages.add(v));
+        break;
+      case 'audiences':
+        values.forEach((v) => out.aud.add(v));
+        break;
+      case 'complexity_name':
+        values.forEach((v) => out.comp.add(v));
+        break;
+      case 'pricing_name':
+        values.forEach((v) => out.price.add(v));
+        break;
+      case 'is_open_source':
+        if (values[0] === 'true') out.price.add('Open Source');
+        break;
+    }
+  }
+  return out;
+}
+
+function subtractSet<T>(active: Set<T>, toRemove: Set<T>): Set<T> {
+  if (toRemove.size === 0) return active;
+  const out = new Set<T>();
+  active.forEach((x) => {
+    if (!toRemove.has(x)) out.add(x);
+  });
+  return out;
+}
+
+function unionSet<T>(a: Set<T>, b: Set<T>): Set<T> {
+  if (b.size === 0) return a;
+  const out = new Set<T>(a);
+  b.forEach((x) => out.add(x));
+  return out;
+}
+
 export default function DirectoryShell({ tools }: Props) {
   const [query, setQuery] = useState('');
   const [activeCats, setActiveCats] = useState<Set<string>>(new Set());
@@ -48,6 +157,16 @@ export default function DirectoryShell({ tools }: Props) {
   const [activeComp, setActiveComp] = useState<Set<string>>(new Set());
   const [activePrice, setActivePrice] = useState<Set<string>>(new Set());
   const [riskTab, setRiskTab] = useState<RiskTab>('LLM');
+  // AI filter tracking — whatever the last NL call added, so we can subtract
+  // it before applying the next call (or when the user shortens the query).
+  const [aiFilters, setAiFilters] = useState<AIFilters>(emptyAIFilters);
+  const [aiQuery, setAiQuery] = useState<string | null>(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const aiAbortRef = useRef<AbortController | null>(null);
+  const tsAvailable = isTypesenseConfigured();
+  const NL_MODEL_ID = 'gemini-nl-1';
+  const NL_MIN_WORDS = 3;
+  const NL_DEBOUNCE_MS = 800;
   const [view, setView] = useState<View>('list');
   const [sort, setSort] = useState<SortKey>('relevance');
 
@@ -75,6 +194,74 @@ export default function DirectoryShell({ tools }: Props) {
     const risk = params.get('risk');
     if (risk && risk.startsWith('ASI')) setRiskTab('ASI');
   }, []);
+
+  // NL Search effect — when the query is a sentence (≥ 3 words) and the user
+  // pauses for ~800ms, send `nl_query=true` to Typesense. Gemini parses the
+  // sentence into a structured `filter_by`. We map that onto the directory's
+  // facet Sets so the existing filter pipeline runs them automatically and
+  // the active-pills row shows them like any other facet selection.
+  useEffect(() => {
+    if (!tsAvailable) return;
+    const q = query.trim();
+    const words = q.split(/\s+/).filter(Boolean);
+
+    // Short query → unwind any previous AI additions and bail.
+    if (words.length < NL_MIN_WORDS) {
+      if (!aiFiltersEmpty(aiFilters)) {
+        setActiveCats((p) => subtractSet(p, aiFilters.cats));
+        setActiveRisks((p) => subtractSet(p, aiFilters.risks));
+        setActiveStages((p) => subtractSet(p, aiFilters.stages));
+        setActiveAud((p) => subtractSet(p, aiFilters.aud));
+        setActiveComp((p) => subtractSet(p, aiFilters.comp));
+        setActivePrice((p) => subtractSet(p, aiFilters.price));
+        setAiFilters(emptyAIFilters());
+        setAiQuery(null);
+      }
+      setAiLoading(false);
+      return;
+    }
+
+    aiAbortRef.current?.abort();
+    const ctrl = new AbortController();
+    aiAbortRef.current = ctrl;
+    setAiLoading(true);
+
+    const timer = setTimeout(async () => {
+      try {
+        const res = await hybridSearch(q, {
+          perPage: 1, // we only need parsed_nl_query, not the hits
+          signal: ctrl.signal,
+          nlMode: { modelId: NL_MODEL_ID },
+        });
+        const parsed = res.parsedNL?.filter_by
+          ? parseFilterByToAIFilters(res.parsedNL.filter_by)
+          : emptyAIFilters();
+        // Subtract previous AI additions, then union the new ones.
+        setActiveCats((p) => unionSet(subtractSet(p, aiFilters.cats), parsed.cats));
+        setActiveRisks((p) => unionSet(subtractSet(p, aiFilters.risks), parsed.risks));
+        setActiveStages((p) => unionSet(subtractSet(p, aiFilters.stages), parsed.stages));
+        setActiveAud((p) => unionSet(subtractSet(p, aiFilters.aud), parsed.aud));
+        setActiveComp((p) => unionSet(subtractSet(p, aiFilters.comp), parsed.comp));
+        setActivePrice((p) => unionSet(subtractSet(p, aiFilters.price), parsed.price));
+        setAiFilters(parsed);
+        setAiQuery(aiFiltersEmpty(parsed) ? null : q);
+      } catch (err) {
+        if ((err as Error).name === 'AbortError') return;
+        console.warn('[directory] NL parse failed:', err);
+      } finally {
+        setAiLoading(false);
+      }
+    }, NL_DEBOUNCE_MS);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, tsAvailable]);
+
+  // Clear AI tracking helper — used by clearAll. We don't subtract here
+  // because clearAll resets all the active Sets too.
+  const clearAITracking = () => {
+    setAiFilters(emptyAIFilters());
+    setAiQuery(null);
+  };
 
   const facets = useMemo(() => {
     const cats = new Map<string, FacetEntry>();
@@ -113,7 +300,11 @@ export default function DirectoryShell({ tools }: Props) {
 
   const results = useMemo(() => {
     let r = tools.slice();
-    if (query) {
+    // Skip the literal substring match when an AI parse is active — the
+    // user's sentence won't match name/desc literally, and the parsed
+    // facets already filter to the right subset.
+    const skipSubstring = aiQuery !== null && query.trim() === aiQuery;
+    if (query && !skipSubstring) {
       const q = query.toLowerCase();
       r = r.filter(
         (t) => t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q),
@@ -128,7 +319,7 @@ export default function DirectoryShell({ tools }: Props) {
     if (sort === 'updated') r.sort((a, b) => b.updated.localeCompare(a.updated));
     if (sort === 'name') r.sort((a, b) => a.name.localeCompare(b.name));
     return r;
-  }, [tools, query, activeCats, activeRisks, activeStages, activeAud, activeComp, activePrice, sort]);
+  }, [tools, query, activeCats, activeRisks, activeStages, activeAud, activeComp, activePrice, sort, aiQuery]);
 
   const activeCount =
     activeCats.size +
@@ -146,6 +337,7 @@ export default function DirectoryShell({ tools }: Props) {
     setActiveComp(new Set());
     setActivePrice(new Set());
     setQuery('');
+    clearAITracking();
   };
 
   const riskList = riskTab === 'LLM' ? facets.risksLLM : facets.risksASI;
@@ -282,6 +474,16 @@ export default function DirectoryShell({ tools }: Props) {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search tools or ask in plain English — 'prompt injection for production'"
             />
+            {aiLoading && (
+              <span className={styles.aiBadge} title="Parsing your query with AI…">
+                <span className={styles.aiDot} /> AI…
+              </span>
+            )}
+            {!aiLoading && aiQuery && (
+              <span className={styles.aiBadge} title={`AI parsed: "${aiQuery}"`}>
+                <span className={styles.aiDot} /> AI
+              </span>
+            )}
             <kbd className={styles.searchKbd}>⌘K</kbd>
           </div>
           <div className={styles.viewToggle}>
