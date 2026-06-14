@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "sync:typesense": "node scripts/sync-typesense.mjs"
+    "sync:typesense": "node scripts/sync-typesense.mjs",
+    "setup:nl-model": "node scripts/setup-nl-model.mjs"
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.8",
